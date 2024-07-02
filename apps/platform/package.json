@@ -1,0 +1,31 @@
+{
+  "name": "platform",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "nuke": "pnpm dlx del-cli .turbo .next .output node_modules"
+  },
+  "dependencies": {
+    "@allo/kit": "workspace:*",
+    "next": "14.2.2",
+    "react": "18",
+    "react-dom": "18",
+    "wagmi": "2.10.2"
+  },
+  "devDependencies": {
+    "typescript": "5",
+    "@types/node": "20",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "postcss": "8",
+    "tailwindcss": "3.4.1",
+    "eslint": "8",
+    "eslint-config-next": "14.2.2",
+    "@muqa/eslint-config": "workspace:*",
+    "@muqa/typescript-config": "workspace:*"
+  }
+}
