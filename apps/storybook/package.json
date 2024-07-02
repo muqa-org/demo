@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx storybook dev -p 6006",
-    "start": "npx storybook dev -p 6006",
-    "build": "npx storybook build"
+    "dev": "pnpx storybook dev -p 6006",
+    "start": "pnpx storybook dev -p 6006",
+    "build": "pnpx storybook build"
   },
   "dependencies": {
     "react": "^18",
