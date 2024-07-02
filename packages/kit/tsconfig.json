@@ -1,0 +1,14 @@
+{
+  "extends": "@allo/typescript-config/react-library.json",
+  "compilerOptions": {
+    "lib": ["dom", "ES2020"],
+    "sourceMap": true,
+    "inlineSources": true,
+    "moduleResolution": "NodeNext",
+    "outDir": "dist"
+    // "baseUrl": "."
+    // "rootDir": "."
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}
