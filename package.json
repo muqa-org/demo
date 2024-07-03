@@ -5,11 +5,11 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "nuke": "pnpm turbo nuke --force && pnpm dlx del-cli node_modules"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
-    "turbo": "latest"
+    "turbo": "2.0.6"
   },
   "engines": {
     "node": ">=18"
