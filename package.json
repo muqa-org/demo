@@ -1,0 +1,18 @@
+{
+  "name": "muqa",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "nuke": "pnpm turbo nuke --force && pnpm dlx del-cli node_modules"
+  },
+  "devDependencies": {
+    "turbo": "2.0.6"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@8.7.1"
+}
