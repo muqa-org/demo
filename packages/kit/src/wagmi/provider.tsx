@@ -18,7 +18,7 @@ export const chains = Object.values(wagmiChains).filter((chain) =>
 ) as unknown as [Chain, ...Chain[]];
 
 const defaultConfig = getDefaultConfig({
-  appName: "Allo Starter Kit",
+  appName: "MUQA initiative",
   projectId: "ffa6468a2accec2f1e59502fae10c166",
   chains,
   ssr: true,

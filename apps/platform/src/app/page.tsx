@@ -1,15 +1,14 @@
 "use client";
 import { supportedChains, Avatar } from "@allo/kit";
 import Link from "next/link";
+import HeroBanner from './HeroBanner';
 
 export default function Home() {
   return (
     <section>
-      <h1 className="text-7xl pt-12 pb-24 font-semibold text-center">
-        Allo Starter Kit
-      </h1>
+      <HeroBanner/>
 
-      <h3 className="text-2xl text-center mb-8 font-semibold">Browse Rounds</h3>
+      <h3 className="text-2xl text-center mb-8 font-semibold mt-5">Browse Rounds</h3>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
         {supportedChains.map((chain) => (
           <Link
