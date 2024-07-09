@@ -7,7 +7,14 @@ import {
 } from "@allo/kit";
 import Link from "next/link";
 
+// SAMPLE DATA
+import sampleContent from "../../../../data/sample_content/culture_grants.json";
+import { useState } from "react";
+import SampleGrandCard from "@/app/components/SampleGrantCard";
+
 export default function RoundPage({ params: { chainId = 0, roundId = "" } }) {
+  const [sampleData, setSampleData] = useState(sampleContent);
+
   return (
     <section className="space-y-8">
       <RoundDetails
@@ -31,7 +38,12 @@ export default function RoundPage({ params: { chainId = 0, roundId = "" } }) {
       />
 
       <h3 className="text-lg font-semibold">Approved Projects</h3>
-      <DiscoverApplications
+      <div className="gap-4 sm:grid sm:grid-cols-1 md:grid-cols-3">
+        {sampleData.map((item, index) => (
+          <SampleGrandCard key={index} item={item} />
+        ))}
+      </div>
+      {/* <DiscoverApplications
         columns={[1, 3]}
         query={{
           take: 12,
@@ -48,7 +60,7 @@ export default function RoundPage({ params: { chainId = 0, roundId = "" } }) {
             <Component {...application} />
           </Link>
         )}
-      />
+      /> */}
     </section>
   );
 }
