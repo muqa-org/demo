@@ -1,6 +1,6 @@
 'use client';
 
-import { ApiProvider, Web3Provider, strategies } from '@allo/kit';
+import { ApiProvider, ComethProvider, strategies } from '@allo/kit';
 
 export function AlloKitProviders({
   children,
@@ -17,7 +17,7 @@ export function AlloKitProviders({
             .then((r) => r.cid),
       }}
     >
-      <Web3Provider>{children}</Web3Provider>
+      <ComethProvider>{children}</ComethProvider>
     </ApiProvider>
   );
 }
