@@ -6,10 +6,11 @@ import { Config, WagmiProvider } from "wagmi";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import type { Chain } from "viem/chains";
 import * as wagmiChains from "viem/chains";
-
 import { getChains } from "@gitcoin/gitcoin-chain-data";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export const supportedChains = getChains();
+
 
 console.log(supportedChains);
 
@@ -21,8 +22,10 @@ const defaultConfig = getDefaultConfig({
   appName: "MUQA initiative",
   projectId: "ffa6468a2accec2f1e59502fae10c166",
   chains,
-  ssr: true,
+  ssr: true
 });
+
+const queryClient = new QueryClient();
 
 export function Web3Provider({
   children,
@@ -30,7 +33,9 @@ export function Web3Provider({
 }: PropsWithChildren<{ config?: Config }>) {
   return (
     <WagmiProvider config={config}>
-      <RainbowKitProvider>{children}</RainbowKitProvider>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>{children}</RainbowKitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
 }

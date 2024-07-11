@@ -1,2 +1,2 @@
 export * from "wagmi";
-export * from "./provider";
+export * from "./providers";

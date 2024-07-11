@@ -17,7 +17,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { supportedChains } from "../wagmi/provider";
+import { supportedChains } from "../wagmi/providers/rainbow-kit.provider";
 import {
   Address,
   formatUnits,
