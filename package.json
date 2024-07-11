@@ -7,7 +7,9 @@
     "start": "turbo start",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "nuke": "pnpm turbo nuke --force && pnpm dlx del-cli node_modules"
+    "nuke": "pnpm turbo nuke --force && pnpm dlx del-cli node_modules",
+    "construct": "pnpm install && pnpm build",
+    "reconstruct": "pnpm nuke && pnpm install"
   },
   "devDependencies": {
     "turbo": "2.0.6"
