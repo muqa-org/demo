@@ -1,5 +1,5 @@
 "use client";
-import { ConnectButton } from "@allo/kit";
+import { ComethButton } from "@allo/kit";
 import Link from "next/link";
 export function Header() {
   return (
@@ -16,7 +16,7 @@ export function Header() {
         <Link href={"/11155111/projects/create"}>Create Project</Link>
       </nav>
 
-      <ConnectButton />
+      <ComethButton />
     </header>
   );
 }
