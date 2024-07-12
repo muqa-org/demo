@@ -10,7 +10,8 @@
     "nuke": "pnpm turbo nuke --force && pnpm dlx del-cli node_modules"
   },
   "devDependencies": {
-    "turbo": "2.0.6"
+    "turbo": "2.0.6",
+    "@muqa/eslint-config": "workspace:*"
   },
   "engines": {
     "node": ">=18"
