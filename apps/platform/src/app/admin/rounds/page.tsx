@@ -1,7 +1,7 @@
 'use client';
-import { useAccount } from 'wagmi';
 import { DiscoverRounds } from '@allo/kit';
 import Link from 'next/link';
+import { useAccount } from 'wagmi';
 
 export default function AdminRounds() {
   const { address } = useAccount();

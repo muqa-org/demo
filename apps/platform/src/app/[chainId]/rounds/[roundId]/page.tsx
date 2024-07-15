@@ -6,10 +6,9 @@ import {
   RoundDetails,
 } from '@allo/kit';
 import Link from 'next/link';
-
-// SAMPLE DATA
-import sampleContent from '../../../../data/sample_content/culture_grants.json';
 import { useState } from 'react';
+
+import sampleContent from '../../../../data/sample_content/culture_grants.json';
 import SampleGrandCard from '@/app/components/SampleGrantCard';
 
 export default function RoundPage({ params: { chainId = 0, roundId = '' } }) {

@@ -1,6 +1,5 @@
 'use client';
-import { ApplicationReviewTable, Button } from '@allo/kit';
-import { BackButton, RoundDetails } from '@allo/kit';
+import { ApplicationReviewTable, Button, BackButton, RoundDetails } from '@allo/kit';
 import Link from 'next/link';
 
 export default function RoundPage({ params: { chainId = 0, roundId = '' } }) {
