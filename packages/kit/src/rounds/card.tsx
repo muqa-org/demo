@@ -1,14 +1,15 @@
-import { useMemo } from 'react';
 import { isAfter, formatDistanceToNow } from 'date-fns';
+import { useMemo } from 'react';
+
+import { RoundStrategyBadge } from './strategy-badge';
+import { cn, supportedChains } from '..';
 import { Round } from '../api/types';
-import { TokenAmount } from '../ui/token-amount';
+import { Avatar } from '../ui/avatar';
 import { BackgroundImage } from '../ui/background-image';
 import { Badge } from '../ui/badge';
-import { Separator } from '../ui/separator';
 import { Card, CardContent } from '../ui/card';
-import { Avatar } from '../ui/avatar';
-import { cn, supportedChains } from '..';
-import { RoundStrategyBadge } from './strategy-badge';
+import { Separator } from '../ui/separator';
+import { TokenAmount } from '../ui/token-amount';
 
 const toNow = (date?: string) =>
   date ? formatDistanceToNow(date, { addSuffix: true }) : undefined;

@@ -1,11 +1,12 @@
+import { format } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
+import { PropsWithChildren } from 'react';
+import { ControllerRenderProps, FieldPath, FieldValues } from 'react-hook-form';
+
+import { Calendar } from './calendar';
+import { Popover, PopoverTrigger, PopoverContent } from './popover';
 import { Button, FormControl } from '..';
 import { cn } from '../lib/utils';
-import { Popover, PopoverTrigger, PopoverContent } from './popover';
-import { Calendar } from './calendar';
-import { format } from 'date-fns';
-import { ControllerRenderProps, FieldPath, FieldValues } from 'react-hook-form';
-import { PropsWithChildren } from 'react';
 
 export function RangeCalendar<
   TFieldValues extends FieldValues = FieldValues,

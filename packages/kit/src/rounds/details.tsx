@@ -1,9 +1,10 @@
 'use client';
 import { ReactNode } from 'react';
+
+import { RoundNetworkBadge } from './network-badge';
 import { Markdown } from '..';
 import { QueryOpts } from '../api/types';
 import { useRoundById } from '../hooks/useRounds';
-import { RoundNetworkBadge } from './network-badge';
 
 type RoundDetailsProps = {
   id: string;

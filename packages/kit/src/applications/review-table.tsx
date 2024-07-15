@@ -1,14 +1,16 @@
 'use client';
-import { ReactNode, useMemo } from 'react';
 import { Check } from 'lucide-react';
+import { ReactNode, useMemo } from 'react';
+
 import { Button, Form, FormField, useForm, useFormContext } from '@allo/kit';
+
+import { Application } from '../api/types';
 import { ApplicationApprovalItem } from '../applications/approval-item';
 import { useApplications } from '../hooks/useApplications';
-import { Application } from '../api/types';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { useRoundById } from '../hooks/useRounds';
 import { useStrategyAddon, useStrategyType } from '../strategies';
 import { EmptyState } from '../ui/empty-state';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 
 export function ApplicationReviewTable({
   roundId,

@@ -1,10 +1,12 @@
 'use client';
 
-import { useAccount } from 'wagmi';
 import { useEffect } from 'react';
-import { encodeAbiParameters, parseAbiParameters } from 'viem';
 import { useFormContext } from 'react-hook-form';
+import { encodeAbiParameters, parseAbiParameters } from 'viem';
+import { useAccount } from 'wagmi';
 import { z } from 'zod';
+
+import { EthAddressSchema } from '../../schemas';
 import {
   FormControl,
   FormDescription,
@@ -13,8 +15,6 @@ import {
   FormLabel,
   FormMessage,
 } from '../../ui/form';
-
-import { EthAddressSchema } from '../../schemas';
 import { Input } from '../../ui/input';
 
 export const schema = z

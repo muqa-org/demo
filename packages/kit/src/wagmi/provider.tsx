@@ -1,13 +1,12 @@
 'use client';
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { PropsWithChildren } from 'react';
-import { Config, WagmiProvider } from 'wagmi';
+import { getChains } from '@gitcoin/gitcoin-chain-data';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { PropsWithChildren } from 'react';
 import type { Chain } from 'viem/chains';
 import * as wagmiChains from 'viem/chains';
-
-import { getChains } from '@gitcoin/gitcoin-chain-data';
+import { Config, WagmiProvider } from 'wagmi';
 
 export const supportedChains = getChains();
 

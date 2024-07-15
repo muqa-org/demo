@@ -1,6 +1,7 @@
-import { getAddress as alloAddress } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
 import { DirectGrantsLiteStrategy } from '@allo-team/allo-v2-sdk';
+import { getAddress as alloAddress } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
 import { Address, Chain, WalletClient, getAddress } from 'viem';
+
 import { API, Application, Round, TransactionInput } from '../../api/types';
 
 type Allocation = {

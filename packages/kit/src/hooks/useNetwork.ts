@@ -1,4 +1,5 @@
 import { useChainId } from 'wagmi';
+
 import { supportedChains } from '../wagmi';
 
 export function useNetwork() {

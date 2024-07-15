@@ -1,5 +1,6 @@
-import { Alert, AlertDescription, AlertTitle } from './alert';
 import { AlertCircle } from 'lucide-react';
+
+import { Alert, AlertDescription, AlertTitle } from './alert';
 
 export function ErrorMessageLog({ error }: { error: unknown }) {
   return (

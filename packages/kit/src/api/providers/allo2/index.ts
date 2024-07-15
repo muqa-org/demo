@@ -1,3 +1,5 @@
+import { Allo, Registry, TransactionData } from '@allo-team/allo-v2-sdk/';
+import { abi as AlloABI } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
 import {
   PublicClient,
   encodePacked,
@@ -11,11 +13,9 @@ import {
   TransactionBase,
   TransactionRequestBase,
 } from 'viem';
-import { API } from '../../types';
-import { Allo, Registry, TransactionData } from '@allo-team/allo-v2-sdk/';
-import { abi as AlloABI } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
-
 import { decodeEventLog, type Address, type Chain } from 'viem';
+
+import { API } from '../../types';
 
 const createAlloOpts = (chain: Chain) => ({
   chain: chain.id,

@@ -1,6 +1,7 @@
-import { ComponentProps } from 'react';
-import { Button } from './button';
 import { ChevronLeft } from 'lucide-react';
+import { ComponentProps } from 'react';
+
+import { Button } from './button';
 import { cn } from '../lib/utils';
 
 export function BackButton({

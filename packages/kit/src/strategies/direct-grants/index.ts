@@ -1,4 +1,6 @@
 import z from 'zod';
+
+import { call as allocateCall } from './allocate';
 import {
   schema as directGrantsRoundSchema,
   CreateRoundForm as DirectGrantsCreateRoundForm,
@@ -8,7 +10,6 @@ import {
   RegisterRecipientForm as DirectGrantsRegisterRecipientForm,
 } from './register-recipient';
 import { call as reviewRecipientsCall } from './review-recipients';
-import { call as allocateCall } from './allocate';
 import { StrategyExtension } from '..';
 import { supportedChains } from '../..';
 

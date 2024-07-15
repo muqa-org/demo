@@ -1,13 +1,13 @@
 'use client';
-import { PropsWithChildren, createContext, useContext } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
+import { PropsWithChildren, createContext, useContext } from 'react';
 import { WalletClient, getAddress } from 'viem';
 
-import { grantsStackAPI } from './providers/grants-stack';
 import { allo2API } from './providers/allo2';
 import { easyRpgfAPI } from './providers/easy-rpgf';
-import { directGrants } from '../strategies/direct-grants';
-import { quadraticFunding } from '../strategies/quadratic-funding';
+import { grantsStackAPI } from './providers/grants-stack';
 import {
   API,
   RoundsQuery,
@@ -17,11 +17,10 @@ import {
   ApplicationsQuery,
   ProjectsQuery,
 } from './types';
-
-import posthog from 'posthog-js';
-import { PostHogProvider } from 'posthog-js/react';
-import { Toaster } from '../ui/toaster';
 import { StrategyExtensions } from '../strategies';
+import { directGrants } from '../strategies/direct-grants';
+import { quadraticFunding } from '../strategies/quadratic-funding';
+import { Toaster } from '../ui/toaster';
 
 if (typeof window !== 'undefined') {
   posthog.init('phc_MkecAopGBhofBbwLqvcvV0iyHBZWSlemr7krp6lxLjl', {

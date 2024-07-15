@@ -1,8 +1,9 @@
-import { ComponentType, ReactNode } from 'react';
 import { UseQueryResult } from '@tanstack/react-query';
+import { ComponentType, ReactNode } from 'react';
+
+import { EmptyState } from './empty-state';
 import { ErrorMessageLog } from './error-message';
 import { cn } from '../lib/utils';
-import { EmptyState } from './empty-state';
 
 type ColumnValue = 0 | 1 | 2 | 3 | 4;
 type Columns = [ColumnValue?, ColumnValue?, ColumnValue?, ColumnValue?];

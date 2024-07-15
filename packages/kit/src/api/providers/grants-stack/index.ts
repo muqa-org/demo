@@ -1,5 +1,7 @@
+import { isValid } from 'date-fns';
 import { request } from 'graphql-request';
-import { API, Application, Project, Round, Transformers } from '../../types';
+import { getAddress } from 'viem';
+
 import {
   roundsQuery,
   applicationsQuery,
@@ -7,10 +9,9 @@ import {
   projectsQuery,
   applicationsByIdQuery,
 } from './queries';
-import { ipfsGateway, queryToFilter } from './utils';
 import { GSRound, GSApplication, GSProject } from './types';
-import { isValid } from 'date-fns';
-import { getAddress } from 'viem';
+import { ipfsGateway, queryToFilter } from './utils';
+import { API, Application, Project, Round, Transformers } from '../../types';
 
 const apiURL = 'https://grants-stack-indexer-v2.gitcoin.co/graphql';
 

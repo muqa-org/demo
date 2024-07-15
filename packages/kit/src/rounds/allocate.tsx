@@ -1,12 +1,13 @@
 'use client';
+import { useRef } from 'react';
 import { NumericFormat } from 'react-number-format';
+
+import { Button } from '..';
 import { useApplications } from '../hooks/useApplications';
 import { useRoundById } from '../hooks/useRounds';
 import { useStrategyAddon } from '../strategies';
 import { BackgroundImage } from '../ui/background-image';
 import { Input } from '../ui/input';
-import { Button } from '..';
-import { useRef } from 'react';
 
 type AllocateProps = {
   roundId: string;

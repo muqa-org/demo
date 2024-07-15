@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { cn } from '..';
 import { Project } from '../api/types';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { BackgroundImage } from '../ui/background-image';
 import { Card, CardContent } from '../ui/card';
-import { cn } from '..';
 
 export type ProjectCard = Project & {
   // components?: ProjectComponent[];

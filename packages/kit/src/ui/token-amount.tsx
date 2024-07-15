@@ -1,6 +1,7 @@
 'use client';
 import { erc20Abi, formatUnits, getAddress } from 'viem';
 import { useReadContracts } from 'wagmi';
+
 import { formatNumber } from '../lib/utils';
 
 export function TokenAmount({
