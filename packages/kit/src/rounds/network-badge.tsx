@@ -1,8 +1,9 @@
-"use client";
-import { useMemo } from "react";
-import { cn } from "../lib/utils";
-import { Badge } from "../ui/badge";
-import { supportedChains } from "..";
+'use client';
+import { useMemo } from 'react';
+
+import { supportedChains } from '..';
+import { cn } from '../lib/utils';
+import { Badge } from '../ui/badge';
 
 export function RoundNetworkBadge({ chainId }: { chainId?: number }) {
   const network = useMemo(
@@ -12,7 +13,7 @@ export function RoundNetworkBadge({ chainId }: { chainId?: number }) {
   if (!network) return null;
 
   return (
-    <Badge variant="secondary" className={cn("capitalize")}>
+    <Badge variant="secondary" className={cn('capitalize')}>
       {network.name}
     </Badge>
   );

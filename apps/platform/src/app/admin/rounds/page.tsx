@@ -1,7 +1,7 @@
-"use client";
-import { useAccount } from "wagmi";
-import { DiscoverRounds } from "@allo/kit";
-import Link from "next/link";
+'use client';
+import { DiscoverRounds } from '@allo/kit';
+import Link from 'next/link';
+import { useAccount } from 'wagmi';
 
 export default function AdminRounds() {
   const { address } = useAccount();
@@ -11,7 +11,7 @@ export default function AdminRounds() {
       query={{
         where: {
           strategyName: {
-            in: ["allov2.DirectGrantsLiteStrategy"],
+            in: ['allov2.DirectGrantsLiteStrategy'],
           },
           // chainId: { in: [11155111] },
           // createdBy: { in: [address!] },
@@ -20,7 +20,7 @@ export default function AdminRounds() {
           //   address: { in: [String(address)] },
           // },
         },
-        orderBy: { created_at_block: "desc" },
+        orderBy: { created_at_block: 'desc' },
         skip: 0,
         take: 12,
       }}

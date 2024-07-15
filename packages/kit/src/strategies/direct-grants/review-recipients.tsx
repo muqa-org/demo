@@ -1,14 +1,14 @@
-import { Address, WalletClient } from "viem";
+import { DirectGrantsLiteStrategy } from '@allo-team/allo-v2-sdk/';
+import { Address, WalletClient } from 'viem';
 
-import { DirectGrantsLiteStrategy } from "@allo-team/allo-v2-sdk/";
-import { API, Application } from "../../api/types";
+import { API, Application } from '../../api/types';
 
 export const call = (
   applications: Application[],
   selected: string[],
   strategy: Address,
   statusValue: bigint,
-  api: Pick<API, "sendTransaction">,
+  api: Pick<API, 'sendTransaction'>,
   signer: WalletClient,
 ) => {
   const statuses: { index: bigint; statusRow: bigint }[] = applications.map(

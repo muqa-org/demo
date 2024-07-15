@@ -1,3 +1,5 @@
+import { Allo, Registry, TransactionData } from '@allo-team/allo-v2-sdk/';
+import { abi as AlloABI } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
 import {
   PublicClient,
   encodePacked,
@@ -10,28 +12,26 @@ import {
   parseAbiParameters,
   TransactionBase,
   TransactionRequestBase,
-} from "viem";
-import { API } from "../../types";
-import { Allo, Registry, TransactionData } from "@allo-team/allo-v2-sdk/";
-import { abi as AlloABI } from "@allo-team/allo-v2-sdk/dist/Allo/allo.config";
+} from 'viem';
+import { decodeEventLog, type Address, type Chain } from 'viem';
 
-import { decodeEventLog, type Address, type Chain } from "viem";
+import { API } from '../../types';
 
 const createAlloOpts = (chain: Chain) => ({
   chain: chain.id,
   rpc: chain.rpcUrls.default.http[0],
 });
 function getProfileId(address: Address): Address {
-  return keccak256(encodePacked(["uint256", "address"], [BigInt(0), address]));
+  return keccak256(encodePacked(['uint256', 'address'], [BigInt(0), address]));
 }
 
 export const alloNativeToken: Address =
-  "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+  '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
 
 export const allo2API: Partial<API> = {
   createRound: async function (data, signer) {
     try {
-      if (!signer?.account) throw new Error("Signer missing");
+      if (!signer?.account) throw new Error('Signer missing');
 
       const allo = new Allo(createAlloOpts(signer.chain!));
 
@@ -45,10 +45,10 @@ export const allo2API: Partial<API> = {
         strategy,
         token,
         managers = [],
-        initStrategyData = "0x",
+        initStrategyData = '0x',
       } = data;
-      if (typeof initStrategyData !== "string")
-        throw new Error("initStrategyData must be a bytes string.");
+      if (typeof initStrategyData !== 'string')
+        throw new Error('initStrategyData must be a bytes string.');
 
       const tx = allo.createPool({
         profileId,
@@ -64,7 +64,7 @@ export const allo2API: Partial<API> = {
       const hash = await this.sendTransaction?.(tx, signer);
 
       // Wait for PoolCreated event and return poolId
-      return createLogDecoder(AlloABI, client)(hash!, ["PoolCreated"]).then(
+      return createLogDecoder(AlloABI, client)(hash!, ['PoolCreated']).then(
         (logs) => {
           const id = String((logs?.[0]?.args as { poolId: bigint }).poolId);
           return { id, chainId: signer.chain?.id as number };
@@ -77,12 +77,12 @@ export const allo2API: Partial<API> = {
   },
   createApplication: async function (data, signer) {
     try {
-      if (!signer?.account) throw new Error("Signer missing");
+      if (!signer?.account) throw new Error('Signer missing');
       const allo = new Allo(createAlloOpts(signer.chain!));
 
       const client = signer.extend(publicActions);
 
-      const { roundId, strategyData = "0x" } = data;
+      const { roundId, strategyData = '0x' } = data;
 
       const tx = allo.registerRecipient(roundId, strategyData);
 
@@ -90,7 +90,7 @@ export const allo2API: Partial<API> = {
 
       // Wait for PoolCreated event and return poolId
       return createLogDecoder(AlloABI, client)(hash!, [
-        "UpdatedRegistration",
+        'UpdatedRegistration',
       ]).then((logs) => {
         const id = String(
           (logs?.[0]?.args as { recipientId: Address }).recipientId,
@@ -104,7 +104,7 @@ export const allo2API: Partial<API> = {
   },
   createProject: async function (data, signer) {
     try {
-      if (!signer?.account) throw new Error("Signer missing");
+      if (!signer?.account) throw new Error('Signer missing');
       const address = getAddress(signer.account?.address);
       const allo = new Allo(createAlloOpts(signer.chain!));
 
@@ -113,8 +113,8 @@ export const allo2API: Partial<API> = {
       const { name, description } = data;
 
       const chainId = signer.chain?.id as number;
-      throw new Error("Create Project not implemented yet");
-      return { id: "id", chainId };
+      throw new Error('Create Project not implemented yet');
+      return { id: 'id', chainId };
     } catch (error) {
       console.error(error);
       throw error;
@@ -142,8 +142,8 @@ async function getOrCreateProfile(signer: WalletClient) {
           nonce: BigInt(0),
           members: [address],
           owner: address,
-          metadata: { protocol: BigInt(1), pointer: "" },
-          name: "",
+          metadata: { protocol: BigInt(1), pointer: '' },
+          name: '',
         });
         const hash = await signer.sendTransaction({
           to,
@@ -152,7 +152,7 @@ async function getOrCreateProfile(signer: WalletClient) {
           chain: signer.chain,
         });
         return createLogDecoder(AlloABI, signer.extend(publicActions))(hash, [
-          "ProfileCreated",
+          'ProfileCreated',
         ]).then(
           (logs) => (logs?.[0]?.args as { profileId: Address })?.profileId,
         );
@@ -164,7 +164,7 @@ async function getOrCreateProfile(signer: WalletClient) {
 function createLogDecoder(
   abi: readonly unknown[],
   client?: {
-    waitForTransactionReceipt: PublicClient["waitForTransactionReceipt"];
+    waitForTransactionReceipt: PublicClient['waitForTransactionReceipt'];
   },
 ) {
   return async (hash: Address, events: string[]) =>
@@ -192,8 +192,8 @@ function encodeDirectGrantsLiteData(data: {
 }) {
   return encodeAbiParameters(
     parseAbiParameters([
-      "InitializeData data",
-      "struct InitializeData { bool useRegistryAnchor; bool metadataRequired; uint64 registrationStartTime; uint64 registrationEndTime; }",
+      'InitializeData data',
+      'struct InitializeData { bool useRegistryAnchor; bool metadataRequired; uint64 registrationStartTime; uint64 registrationEndTime; }',
     ]),
     [
       {

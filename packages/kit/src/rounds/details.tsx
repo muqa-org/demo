@@ -1,9 +1,10 @@
-"use client";
-import { ReactNode } from "react";
-import { Markdown } from "..";
-import { QueryOpts } from "../api/types";
-import { useRoundById } from "../hooks/useRounds";
-import { RoundNetworkBadge } from "./network-badge";
+'use client';
+import { ReactNode } from 'react';
+
+import { RoundNetworkBadge } from './network-badge';
+import { Markdown } from '..';
+import { QueryOpts } from '../api/types';
+import { useRoundById } from '../hooks/useRounds';
 
 type RoundDetailsProps = {
   id: string;
@@ -31,7 +32,7 @@ export function RoundDetails({
         </div>
         <div>{primaryAction}</div>
       </div>
-      <Markdown className={"prose-xl"}>{data?.description}</Markdown>
+      <Markdown className={'prose-xl'}>{data?.description}</Markdown>
     </section>
   );
 }

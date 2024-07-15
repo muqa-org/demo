@@ -1,6 +1,6 @@
-"use client";
-import { DiscoverRounds } from "@allo/kit";
-import Link from "next/link";
+'use client';
+import { DiscoverRounds } from '@allo/kit';
+import Link from 'next/link';
 
 export default function DiscoverRoundsPage({ params: { chainId = 1 } }) {
   return (
@@ -26,19 +26,19 @@ export default function DiscoverRoundsPage({ params: { chainId = 1 } }) {
             chainId: { in: [Number(chainId)] },
             // Approved applications
             applications: {
-              where: { status: { in: ["APPROVED"] } },
-              orderBy: { status: "asc" },
+              where: { status: { in: ['APPROVED'] } },
+              orderBy: { status: 'asc' },
             },
             roles: {
               where: {
-                role: { in: ["ADMIN"] },
+                role: { in: ['ADMIN'] },
               },
             },
             // tags: { contains: ["allo-v2"] },
             // roundStart: { gte: new Date().toISOString() },
           },
           // orderBy: { created_at_block: "desc" },
-          orderBy: { unique_donors_count: "desc" },
+          orderBy: { unique_donors_count: 'desc' },
           skip: 0,
           take: 12,
         }}

@@ -1,13 +1,13 @@
-"use client";
-import { PropsWithChildren, createContext, useContext } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WalletClient, getAddress } from "viem";
+'use client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
+import { PropsWithChildren, createContext, useContext } from 'react';
+import { WalletClient, getAddress } from 'viem';
 
-import { grantsStackAPI } from "./providers/grants-stack";
-import { allo2API } from "./providers/allo2";
-import { easyRpgfAPI } from "./providers/easy-rpgf";
-import { directGrants } from "../strategies/direct-grants";
-import { quadraticFunding } from "../strategies/quadratic-funding";
+import { allo2API } from './providers/allo2';
+import { easyRpgfAPI } from './providers/easy-rpgf';
+import { grantsStackAPI } from './providers/grants-stack';
 import {
   API,
   RoundsQuery,
@@ -16,17 +16,16 @@ import {
   TransactionInput,
   ApplicationsQuery,
   ProjectsQuery,
-} from "./types";
+} from './types';
+import { StrategyExtensions } from '../strategies';
+import { directGrants } from '../strategies/direct-grants';
+import { quadraticFunding } from '../strategies/quadratic-funding';
+import { Toaster } from '../ui/toaster';
 
-import posthog from "posthog-js";
-import { PostHogProvider } from "posthog-js/react";
-import { Toaster } from "../ui/toaster";
-import { StrategyExtensions } from "../strategies";
-
-if (typeof window !== "undefined") {
-  posthog.init("phc_MkecAopGBhofBbwLqvcvV0iyHBZWSlemr7krp6lxLjl", {
-    api_host: "https://us.i.posthog.com",
-    person_profiles: "always",
+if (typeof window !== 'undefined') {
+  posthog.init('phc_MkecAopGBhofBbwLqvcvV0iyHBZWSlemr7krp6lxLjl', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'always',
   });
 }
 
@@ -37,25 +36,25 @@ const defaultApi: API = {
   rounds: async (query: RoundsQuery) => [],
   roundById: async (id: string, opts?: QueryOpts) => undefined,
   createRound: async (data: RoundInput) =>
-    Promise.reject(new Error("Not Implemented: Create Round")),
+    Promise.reject(new Error('Not Implemented: Create Round')),
   projects: async (query: ProjectsQuery) => [],
   projectById: async (id: string, opts?: QueryOpts) => undefined,
   applications: async (query: ApplicationsQuery) => [],
   applicationById: async (id: string, opts?: QueryOpts) => undefined,
-  allocate: async () => Promise.reject(new Error("Not Implemented: Allocate")),
+  allocate: async () => Promise.reject(new Error('Not Implemented: Allocate')),
   createProject: async () =>
-    Promise.reject(new Error("Not Implemented: createProject")),
+    Promise.reject(new Error('Not Implemented: createProject')),
   createApplication: async () =>
-    Promise.reject(new Error("Not Implemented: createApplication")),
+    Promise.reject(new Error('Not Implemented: createApplication')),
   distribute: async () =>
-    Promise.reject(new Error("Not Implemented: Distribute")),
-  ballot: async () => Promise.reject(new Error("Not Implemented: Ballot")),
+    Promise.reject(new Error('Not Implemented: Distribute')),
+  ballot: async () => Promise.reject(new Error('Not Implemented: Ballot')),
   saveBallot: async () =>
-    Promise.reject(new Error("Not Implemented: Ballot Save")),
+    Promise.reject(new Error('Not Implemented: Ballot Save')),
   addToBallot: async () =>
-    Promise.reject(new Error("Not Implemented: Ballot Add")),
+    Promise.reject(new Error('Not Implemented: Ballot Add')),
   upload: async () =>
-    Promise.reject(new Error("Not Implemented: Upload Metadata")),
+    Promise.reject(new Error('Not Implemented: Upload Metadata')),
   sendTransaction,
   ...grantsStackAPI,
   ...allo2API,
@@ -65,7 +64,7 @@ export async function sendTransaction(
   tx: TransactionInput,
   signer: WalletClient,
 ) {
-  if (!signer?.account) throw new Error("Signer missing");
+  if (!signer?.account) throw new Error('Signer missing');
   const address = getAddress(signer.account?.address);
 
   return signer.sendTransaction({
@@ -103,7 +102,7 @@ function makeQueryClient() {
 let browserQueryClient: QueryClient | undefined = undefined;
 
 function getQueryClient() {
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     // Server: always make a new query client
     return makeQueryClient();
   } else {

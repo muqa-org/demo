@@ -33,8 +33,8 @@
     "nuke": "pnpm dlx del-cli .turbo dist node_modules"
   },
   "devDependencies": {
-    "@allo/eslint-config": "workspace:*",
-    "@allo/typescript-config": "workspace:*",
+    "@muqa/eslint-config": "workspace:*",
+    "@muqa/typescript-config": "workspace:*",
     "@swc/helpers": "^0.5.11",
     "@turbo/gen": "^1.12.4",
     "@types/eslint": "^8.56.5",

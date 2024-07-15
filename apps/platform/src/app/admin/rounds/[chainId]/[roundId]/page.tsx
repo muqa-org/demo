@@ -1,9 +1,8 @@
-"use client";
-import { ApplicationReviewTable, Button } from "@allo/kit";
-import { BackButton, RoundDetails } from "@allo/kit";
-import Link from "next/link";
+'use client';
+import { ApplicationReviewTable, Button, BackButton, RoundDetails } from '@allo/kit';
+import Link from 'next/link';
 
-export default function RoundPage({ params: { chainId = 0, roundId = "" } }) {
+export default function RoundPage({ params: { chainId = 0, roundId = '' } }) {
   console.log({ roundId, chainId });
   return (
     <section className="space-y-8">

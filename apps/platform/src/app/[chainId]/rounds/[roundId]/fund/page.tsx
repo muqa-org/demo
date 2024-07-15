@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { CreateApplication, FundRound } from "@allo/kit";
-import { useRouter } from "next/navigation";
+import { CreateApplication, FundRound } from '@allo/kit';
+import { useRouter } from 'next/navigation';
 
 export default function CreateApplicationPage({
   params: { roundId, chainId },

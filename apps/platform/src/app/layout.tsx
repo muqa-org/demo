@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "@allo/kit/styles.css";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import '@allo/kit/styles.css';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
-
-import { Header } from "./header";
-import { AlloKitProviders } from "./providers";
 import { WalletStatus } from './WalletStatus';
+import { Header } from './header';
+import { AlloKitProviders } from './providers';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "MUQA initiative Demo App",
-  description: "",
+  title: 'MUQA initiative Demo App test1',
+  description: '',
 };
 
 export default function RootLayout({

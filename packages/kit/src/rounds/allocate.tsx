@@ -1,12 +1,13 @@
-"use client";
-import { NumericFormat } from "react-number-format";
-import { useApplications } from "../hooks/useApplications";
-import { useRoundById } from "../hooks/useRounds";
-import { useStrategyAddon } from "../strategies";
-import { BackgroundImage } from "../ui/background-image";
-import { Input } from "../ui/input";
-import { Button } from "..";
-import { useRef } from "react";
+'use client';
+import { useRef } from 'react';
+import { NumericFormat } from 'react-number-format';
+
+import { Button } from '..';
+import { useApplications } from '../hooks/useApplications';
+import { useRoundById } from '../hooks/useRounds';
+import { useStrategyAddon } from '../strategies';
+import { BackgroundImage } from '../ui/background-image';
+import { Input } from '../ui/input';
 
 type AllocateProps = {
   roundId: string;
@@ -25,12 +26,12 @@ export function Allocate({ roundId, chainId }: AllocateProps) {
   const { data: applications, isPending } = useApplications({
     where: {
       roundId: { equals: roundId },
-      status: { equals: "APPROVED" },
+      status: { equals: 'APPROVED' },
       chainId: { equals: chainId },
     },
   });
 
-  const strategyAddon = useStrategyAddon("allocate", round);
+  const strategyAddon = useStrategyAddon('allocate', round);
   const { state, set } = useAllocateState();
 
   return (
@@ -40,7 +41,7 @@ export function Allocate({ roundId, chainId }: AllocateProps) {
         <Button
           isLoading={strategyAddon?.call?.isPending}
           onClick={() => {
-            console.log("call", round, state, applications);
+            console.log('call', round, state, applications);
             strategyAddon?.call?.mutate([round, state, applications]);
           }}
         >

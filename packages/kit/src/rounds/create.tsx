@@ -1,8 +1,21 @@
-"use client";
+'use client';
 
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, useFormContext } from "react-hook-form";
+import { TContracts } from '@gitcoin/gitcoin-chain-data';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { PropsWithChildren, createElement, useState } from 'react';
+import { useForm, useFormContext } from 'react-hook-form';
+import { getAddress, zeroAddress } from 'viem';
+import { z } from 'zod';
+
+import { supportedChains, useStrategies } from '..';
+import { RoundCreated } from '../api/types';
+import { useNetwork } from '../hooks/useNetwork';
+import { useCreateRound } from '../hooks/useRounds';
+import { useUpload } from '../hooks/useUpload';
+import { EthAddressSchema } from '../schemas';
+import { StrategyExtensions, StrategyType } from '../strategies';
+import { Button } from '../ui/button';
+import { EnsureCorrectNetwork } from '../ui/correct-network';
 import {
   Form,
   FormControl,
@@ -11,34 +24,21 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
-import { useCreateRound } from "../hooks/useRounds";
-import { getAddress, zeroAddress } from "viem";
-import { RoundCreated } from "../api/types";
-
-import { PropsWithChildren, createElement, useState } from "react";
-import { ImageUpload } from "../ui/image-upload";
-import { useUpload } from "../hooks/useUpload";
-import { EthAddressSchema } from "../schemas";
-import { StrategyExtensions, StrategyType } from "../strategies";
-import { EnsureCorrectNetwork } from "../ui/correct-network";
+} from '../ui/form';
+import { ImageUpload } from '../ui/image-upload';
+import { Input } from '../ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { supportedChains, useStrategies } from "..";
-import { useNetwork } from "../hooks/useNetwork";
-import { TContracts } from "@gitcoin/gitcoin-chain-data";
+} from '../ui/select';
+import { Textarea } from '../ui/textarea';
 
 const baseRoundSchema = z.object({
   name: z.string().min(2, {
-    message: "Round name must be at least 2 characters.",
+    message: 'Round name must be at least 2 characters.',
   }),
   description: z.string().optional(),
   bannerUrl: z.string().optional(),
@@ -51,7 +51,7 @@ const baseRoundSchema = z.object({
     .optional()
     .transform((v) =>
       v
-        ?.split(",")
+        ?.split(',')
         .map((v) => v.trim())
         .map(getAddress),
     ),
@@ -61,7 +61,7 @@ function CreateButton({
   isLoading,
   children,
 }: PropsWithChildren<{ isLoading: boolean }>) {
-  const chainId = Number(useFormContext().watch("chainId"));
+  const chainId = Number(useFormContext().watch('chainId'));
 
   return (
     <EnsureCorrectNetwork chainId={chainId}>
@@ -78,7 +78,7 @@ export function CreateRound({
   onCreated?: (round: RoundCreated) => void;
 }) {
   const strategies = useStrategies();
-  console.log("str", strategies);
+  console.log('str', strategies);
   const [strategy, setStrategy] = useState<StrategyType>(
     Object.values(strategies)[0]?.type!,
   );
@@ -114,8 +114,8 @@ function CreateRoundForm({
     resolver: zodResolver(schema),
     defaultValues: {
       amount: BigInt(0),
-      name: "",
-      description: "",
+      name: '',
+      description: '',
       chainId: 11155111,
       strategy: selected,
       token: zeroAddress,
@@ -133,7 +133,7 @@ function CreateRoundForm({
       <form
         onSubmit={form.handleSubmit(
           async ({ name, description, ...values }) => {
-            console.log("create round", values);
+            console.log('create round', values);
 
             // Get the strategy address based on selected network
             const strategy = getAddress(
@@ -147,7 +147,7 @@ function CreateRoundForm({
               round: {
                 name,
                 description,
-                roundType: "public",
+                roundType: 'public',
                 quadraticFundingConfig: {
                   matchingFundsAvailable: 0,
                 },
@@ -170,10 +170,10 @@ function CreateRoundForm({
           <h3 className="text-2xl font-semibold">Create round</h3>
           <CreateButton isLoading={upload.isPending || create.isPending}>
             {upload.isPending
-              ? "Uploading metadata..."
+              ? 'Uploading metadata...'
               : create.isPending
-                ? "Signing transaction..."
-                : "Create"}
+                ? 'Signing transaction...'
+                : 'Create'}
           </CreateButton>
         </div>
         <FormField

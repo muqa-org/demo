@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ApiProvider, ComethProvider, strategies } from "@allo/kit";
+import { ApiProvider, ComethProvider, strategies } from '@allo/kit';
 
 export function AlloKitProviders({
   children,
@@ -12,7 +12,7 @@ export function AlloKitProviders({
       strategies={strategies}
       api={{
         upload: async (data) =>
-          fetch(`/api/ipfs`, { method: "POST", body: data })
+          fetch(`/api/ipfs`, { method: 'POST', body: data })
             .then((r) => r.json())
             .then((r) => r.cid),
       }}
