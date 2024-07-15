@@ -1,8 +1,8 @@
-import { ComponentType, ReactNode } from "react";
-import { UseQueryResult } from "@tanstack/react-query";
-import { ErrorMessageLog } from "./error-message";
-import { cn } from "../lib/utils";
-import { EmptyState } from "./empty-state";
+import { ComponentType, ReactNode } from 'react';
+import { UseQueryResult } from '@tanstack/react-query';
+import { ErrorMessageLog } from './error-message';
+import { cn } from '../lib/utils';
+import { EmptyState } from './empty-state';
 
 type ColumnValue = 0 | 1 | 2 | 3 | 4;
 type Columns = [ColumnValue?, ColumnValue?, ColumnValue?, ColumnValue?];
@@ -23,7 +23,7 @@ export function Grid<T extends { id: string; isLoading?: boolean }>({
   columns = [1, 1, 2, 3],
   data,
   error,
-  keys = ["id", "chainId"],
+  keys = ['id', 'chainId'],
   isPending,
   component: Component,
   renderItem = (item, Component: any) => <Component {...item} />,
@@ -32,7 +32,7 @@ export function Grid<T extends { id: string; isLoading?: boolean }>({
   if (!isPending && !data?.length) return <EmptyState />;
 
   return (
-    <div className={cn("gap-4 sm:grid", gridClass(columns))}>
+    <div className={cn('gap-4 sm:grid', gridClass(columns))}>
       {(isPending ? createLoadingCards(6, keys) : data)?.map((item) =>
         renderItem(createItemKey(item as T, keys), Component),
       )}
@@ -41,7 +41,7 @@ export function Grid<T extends { id: string; isLoading?: boolean }>({
 }
 
 function createItemKey<T>(item: T, keys: string[]) {
-  const key = keys.map((k) => item[k as keyof typeof item]).join("_");
+  const key = keys.map((k) => item[k as keyof typeof item]).join('_');
   return { ...item, key };
 }
 function createLoadingCards(length: number, keys: string[]) {
@@ -55,37 +55,37 @@ function createLoadingCards(length: number, keys: string[]) {
 }
 function gridClass(columns: Columns): string {
   return columns.reduce<string>(
-    (cols, col = 0, i) => cols.concat(columnMap?.[i]?.[col] ?? "") + " ",
-    "",
+    (cols, col = 0, i) => cols.concat(columnMap?.[i]?.[col] ?? '') + ' ',
+    '',
   );
 }
 const columnMap = [
   {
-    0: "",
-    1: "sm:grid-cols-1",
-    2: "sm:grid-cols-2",
-    3: "sm:grid-cols-3",
-    4: "sm:grid-cols-4",
+    0: '',
+    1: 'sm:grid-cols-1',
+    2: 'sm:grid-cols-2',
+    3: 'sm:grid-cols-3',
+    4: 'sm:grid-cols-4',
   },
   {
-    0: "",
-    1: "md:grid-cols-1",
-    2: "md:grid-cols-2",
-    3: "md:grid-cols-3",
-    4: "md:grid-cols-4",
+    0: '',
+    1: 'md:grid-cols-1',
+    2: 'md:grid-cols-2',
+    3: 'md:grid-cols-3',
+    4: 'md:grid-cols-4',
   },
   {
-    0: "",
-    1: "lg:grid-cols-1",
-    2: "lg:grid-cols-2",
-    3: "lg:grid-cols-3",
-    4: "lg:grid-cols-4",
+    0: '',
+    1: 'lg:grid-cols-1',
+    2: 'lg:grid-cols-2',
+    3: 'lg:grid-cols-3',
+    4: 'lg:grid-cols-4',
   },
   {
-    0: "",
-    1: "xl:grid-cols-1",
-    2: "xl:grid-cols-2",
-    3: "xl:grid-cols-3",
-    4: "xl:grid-cols-4",
+    0: '',
+    1: 'xl:grid-cols-1',
+    2: 'xl:grid-cols-2',
+    3: 'xl:grid-cols-3',
+    4: 'xl:grid-cols-4',
   },
 ] as const;

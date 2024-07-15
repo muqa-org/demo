@@ -1,11 +1,11 @@
-import { CalendarIcon } from "lucide-react";
-import { Button, FormControl } from "..";
-import { cn } from "../lib/utils";
-import { Popover, PopoverTrigger, PopoverContent } from "./popover";
-import { Calendar } from "./calendar";
-import { format } from "date-fns";
-import { ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
-import { PropsWithChildren } from "react";
+import { CalendarIcon } from 'lucide-react';
+import { Button, FormControl } from '..';
+import { cn } from '../lib/utils';
+import { Popover, PopoverTrigger, PopoverContent } from './popover';
+import { Calendar } from './calendar';
+import { format } from 'date-fns';
+import { ControllerRenderProps, FieldPath, FieldValues } from 'react-hook-form';
+import { PropsWithChildren } from 'react';
 
 export function RangeCalendar<
   TFieldValues extends FieldValues = FieldValues,
@@ -14,7 +14,7 @@ export function RangeCalendar<
   children,
   field,
 }: PropsWithChildren<{ field: ControllerRenderProps<TFieldValues, TName> }>) {
-  console.log("field", field);
+  console.log('field', field);
   const { value, onChange } = field;
   const { from, to } = value ?? { from: null, to: null };
   return (
@@ -22,10 +22,10 @@ export function RangeCalendar<
       <PopoverTrigger asChild>
         <FormControl>
           <Button
-            variant={"outline"}
+            variant={'outline'}
             className={cn(
-              "pl-3 text-left font-normal",
-              !value && "text-muted-foreground",
+              'pl-3 text-left font-normal',
+              !value && 'text-muted-foreground',
             )}
           >
             {value ? formatDateRange({ from, to }) : children}
@@ -46,5 +46,5 @@ export function RangeCalendar<
   );
 }
 function formatDateRange({ from, to }: { from: Date | null; to: Date | null }) {
-  return from && `${format(from, "PPP")}${to ? ` - ${format(to, "PPP")}` : ""}`;
+  return from && `${format(from, 'PPP')}${to ? ` - ${format(to, 'PPP')}` : ''}`;
 }

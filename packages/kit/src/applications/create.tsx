@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { createElement } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Form } from "../ui/form";
-import { Button } from "../ui/button";
-import { useRoundById } from "../hooks/useRounds";
-import { ApplicationCreated, Round } from "../api/types";
-import { useCreateApplication } from "../hooks/useApplications";
-import { useStrategyAddon } from "../strategies";
+import { createElement } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form } from '../ui/form';
+import { Button } from '../ui/button';
+import { useRoundById } from '../hooks/useRounds';
+import { ApplicationCreated, Round } from '../api/types';
+import { useCreateApplication } from '../hooks/useApplications';
+import { useStrategyAddon } from '../strategies';
 
 const baseApplicationSchema = z.object({
   roundId: z.coerce.bigint(),
@@ -24,7 +24,7 @@ function ApplicationForm({
   defaultValues: z.infer<typeof baseApplicationSchema>;
   onCreated?: (application: ApplicationCreated) => void;
 }) {
-  const addon = useStrategyAddon("registerRecipient", round);
+  const addon = useStrategyAddon('registerRecipient', round);
   // Merge strategy schema into base round schema
   const schema = addon
     ? baseApplicationSchema.merge(z.object({ strategyData: addon.schema }))
@@ -40,7 +40,7 @@ function ApplicationForm({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((values) => {
-          console.log("create application", values);
+          console.log('create application', values);
           create.mutate(values, { onSuccess: onCreated });
         })}
         className="mx-auto max-w-screen-sm space-y-4"

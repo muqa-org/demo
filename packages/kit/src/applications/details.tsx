@@ -1,10 +1,10 @@
-"use client";
-import { Markdown } from "../ui/markdown";
-import { QueryOpts } from "../api/types";
-import { useApplicationById } from "../hooks/useApplications";
-import { BackgroundImage } from "../ui/background-image";
-import { ApplicationStatusBadge } from "./status-badge";
-import { ReactNode } from "react";
+'use client';
+import { Markdown } from '../ui/markdown';
+import { QueryOpts } from '../api/types';
+import { useApplicationById } from '../hooks/useApplications';
+import { BackgroundImage } from '../ui/background-image';
+import { ApplicationStatusBadge } from './status-badge';
+import { ReactNode } from 'react';
 
 type ApplicationDetailsProps = {
   id: string;
@@ -21,7 +21,7 @@ export function ApplicationDetails({
 
   console.log(id, opts, data);
   return (
-    <div className={"space-y-4"}>
+    <div className={'space-y-4'}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <h1 className="text-2xl font-medium">{data?.name}</h1>

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useForm } from "react-hook-form";
-import { useAccount, useBalance } from "wagmi";
-import { NATIVE } from "@allo-team/allo-v2-sdk";
-import { TToken } from "@gitcoin/gitcoin-chain-data";
-import { QueryOpts, Round } from "../api/types";
-import { useRoundById } from "../hooks/useRounds";
+import { useForm } from 'react-hook-form';
+import { useAccount, useBalance } from 'wagmi';
+import { NATIVE } from '@allo-team/allo-v2-sdk';
+import { TToken } from '@gitcoin/gitcoin-chain-data';
+import { QueryOpts, Round } from '../api/types';
+import { useRoundById } from '../hooks/useRounds';
 import {
   Form,
   FormControl,
@@ -14,22 +14,22 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { supportedChains } from "../wagmi/provider";
+} from '../ui/form';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { supportedChains } from '../wagmi/provider';
 import {
   Address,
   formatUnits,
   getAddress,
   parseUnits,
   zeroAddress,
-} from "viem";
-import { useToken } from "../hooks/useToken";
-import { useToast } from "../ui/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { Alert } from "../ui/alert";
-import { LoaderIcon } from "lucide-react";
+} from 'viem';
+import { useToken } from '../hooks/useToken';
+import { useToast } from '../ui/use-toast';
+import { useMutation } from '@tanstack/react-query';
+import { Alert } from '../ui/alert';
+import { LoaderIcon } from 'lucide-react';
 
 type RoundFundProps = {
   id: string;
@@ -45,7 +45,7 @@ export function useFundPool() {
       new Promise((r) => {
         setTimeout(() => r({ amount }), 1000);
       }),
-    onSuccess: () => toast({ title: "Not implemented yet" }),
+    onSuccess: () => toast({ title: 'Not implemented yet' }),
   });
 }
 
@@ -61,7 +61,7 @@ export function getNetworkToken(round?: Round) {
 
       return token || match;
     },
-    { code: "", decimals: 0, icon: "" },
+    { code: '', decimals: 0, icon: '' },
   );
 }
 
@@ -132,7 +132,7 @@ function TokenBalance({
   const { data: balance } = useTokenBalance({ address, token });
   return (
     <>
-      {balance && formatUnits(balance?.value, balance?.decimals).slice(0, 6)}{" "}
+      {balance && formatUnits(balance?.value, balance?.decimals).slice(0, 6)}{' '}
       {balance?.symbol}
     </>
   );
@@ -156,10 +156,10 @@ function FundForm({
 
   const { data } = useToken({ token });
   const { data: balance } = useTokenBalance({ address, token });
-  console.log("data", data, balance);
+  console.log('data', data, balance);
 
   const amountInUints = balance
-    ? parseUnits(form.watch("amount") ?? "0", balance?.decimals)
+    ? parseUnits(form.watch('amount') ?? '0', balance?.decimals)
     : 0;
   const canSubmit = amountInUints > 0 && amountInUints <= (balance?.value ?? 0);
 

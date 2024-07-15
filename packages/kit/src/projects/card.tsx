@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Project } from "../api/types";
-import { BackgroundImage } from "../ui/background-image";
-import { Card, CardContent } from "../ui/card";
-import { cn } from "..";
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Project } from '../api/types';
+import { BackgroundImage } from '../ui/background-image';
+import { Card, CardContent } from '../ui/card';
+import { cn } from '..';
 
 export type ProjectCard = Project & {
   // components?: ProjectComponent[];
@@ -19,8 +19,8 @@ export function ProjectCard({
 }: ProjectCard) {
   return (
     <Card
-      className={cn("relative overflow-hidden rounded-3xl shadow-xl", {
-        ["animate-pulse"]: isLoading,
+      className={cn('relative overflow-hidden rounded-3xl shadow-xl', {
+        ['animate-pulse']: isLoading,
       })}
     >
       <div className="">

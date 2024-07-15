@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useAccount } from "wagmi";
-import { useEffect } from "react";
-import { encodeAbiParameters, parseAbiParameters } from "viem";
-import { useFormContext } from "react-hook-form";
-import { z } from "zod";
+import { useAccount } from 'wagmi';
+import { useEffect } from 'react';
+import { encodeAbiParameters, parseAbiParameters } from 'viem';
+import { useFormContext } from 'react-hook-form';
+import { z } from 'zod';
 import {
   FormControl,
   FormDescription,
@@ -12,10 +12,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../ui/form";
+} from '../../ui/form';
 
-import { EthAddressSchema } from "../../schemas";
-import { Input } from "../../ui/input";
+import { EthAddressSchema } from '../../schemas';
+import { Input } from '../../ui/input';
 
 export const schema = z
   .object({
@@ -28,9 +28,9 @@ export const schema = z
     const { recipientAddress } = val.__internal__;
 
     // TODO: add application metadata
-    const metadata = { protocol: BigInt(1), pointer: "" };
+    const metadata = { protocol: BigInt(1), pointer: '' };
     return encodeAbiParameters(
-      parseAbiParameters("address, address, (uint256, string)"),
+      parseAbiParameters('address, address, (uint256, string)'),
       [
         recipientAddress,
         recipientAddress,
@@ -43,7 +43,7 @@ export function RegisterRecipientForm() {
   const { control, setValue } = useFormContext();
   const { address } = useAccount();
   useEffect(() => {
-    setValue("strategyData.__internal__.recipientAddress", address);
+    setValue('strategyData.__internal__.recipientAddress', address);
   }, [address]);
   return (
     <>

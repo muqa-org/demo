@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { ApplicationsQuery } from "../api/types";
-import { useApplications } from "../hooks/useApplications";
-import { Grid, GridProps } from "../ui/grid";
-import { ApplicationCard } from "./card";
+import { ApplicationsQuery } from '../api/types';
+import { useApplications } from '../hooks/useApplications';
+import { Grid, GridProps } from '../ui/grid';
+import { ApplicationCard } from './card';
 
 export function DiscoverApplications({
   query,
@@ -13,7 +13,7 @@ export function DiscoverApplications({
   return (
     <Grid
       component={ApplicationCard}
-      keys={["projectId"]}
+      keys={['projectId']}
       {...applications}
       {...props}
     />

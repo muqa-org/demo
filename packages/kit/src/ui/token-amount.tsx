@@ -1,7 +1,7 @@
-"use client";
-import { erc20Abi, formatUnits, getAddress } from "viem";
-import { useReadContracts } from "wagmi";
-import { formatNumber } from "../lib/utils";
+'use client';
+import { erc20Abi, formatUnits, getAddress } from 'viem';
+import { useReadContracts } from 'wagmi';
+import { formatNumber } from '../lib/utils';
 
 export function TokenAmount({
   amount = BigInt(0),
@@ -16,7 +16,7 @@ export function TokenAmount({
 
   return (
     <>
-      {formatNumber(Number(formatUnits(amount, data?.decimals)))}{" "}
+      {formatNumber(Number(formatUnits(amount, data?.decimals)))}{' '}
       {symbol && data?.symbol}
     </>
   );
@@ -30,12 +30,12 @@ export function useToken(tokenAddress: string) {
   const token = useReadContracts({
     allowFailure: false,
     contracts: [
-      { ...tokenContract, functionName: "decimals" },
-      { ...tokenContract, functionName: "symbol" },
+      { ...tokenContract, functionName: 'decimals' },
+      { ...tokenContract, functionName: 'symbol' },
     ],
   });
 
-  const [decimals = 18, symbol = "ETH"] = token.data ?? [];
+  const [decimals = 18, symbol = 'ETH'] = token.data ?? [];
   return {
     ...token,
     data: { address, symbol, decimals },

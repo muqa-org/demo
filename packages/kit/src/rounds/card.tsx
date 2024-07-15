@@ -1,26 +1,26 @@
-import { useMemo } from "react";
-import { isAfter, formatDistanceToNow } from "date-fns";
-import { Round } from "../api/types";
-import { TokenAmount } from "../ui/token-amount";
-import { BackgroundImage } from "../ui/background-image";
-import { Badge } from "../ui/badge";
-import { Separator } from "../ui/separator";
-import { Card, CardContent } from "../ui/card";
-import { Avatar } from "../ui/avatar";
-import { cn, supportedChains } from "..";
-import { RoundStrategyBadge } from "./strategy-badge";
+import { useMemo } from 'react';
+import { isAfter, formatDistanceToNow } from 'date-fns';
+import { Round } from '../api/types';
+import { TokenAmount } from '../ui/token-amount';
+import { BackgroundImage } from '../ui/background-image';
+import { Badge } from '../ui/badge';
+import { Separator } from '../ui/separator';
+import { Card, CardContent } from '../ui/card';
+import { Avatar } from '../ui/avatar';
+import { cn, supportedChains } from '..';
+import { RoundStrategyBadge } from './strategy-badge';
 
 const toNow = (date?: string) =>
   date ? formatDistanceToNow(date, { addSuffix: true }) : undefined;
 
-const getRoundTime = (phases: Round["phases"] = {}): string => {
+const getRoundTime = (phases: Round['phases'] = {}): string => {
   const now = new Date();
 
   if (isAfter(phases.roundStart!, now))
     return `Starts ${toNow(phases.roundStart)}`;
   if (isAfter(now, phases.roundEnd!)) return `Ended ${toNow(phases.roundEnd)}`;
   if (isAfter(phases.roundEnd!, now)) return `Ends ${toNow(phases.roundEnd)}`;
-  return "";
+  return '';
 };
 
 const getNetwork = (chainId: number) =>
@@ -45,8 +45,8 @@ export function RoundCard({
   const network = useMemo(() => getNetwork(chainId), [chainId]);
   return (
     <Card
-      className={cn("relative overflow-hidden rounded-3xl shadow-xl", {
-        ["animate-pulse"]: isLoading,
+      className={cn('relative overflow-hidden rounded-3xl shadow-xl', {
+        ['animate-pulse']: isLoading,
       })}
     >
       <div className="">
@@ -69,12 +69,12 @@ export function RoundCard({
             <div>
               <div className="flex gap-2">
                 {applications && (
-                  <Badge variant={"secondary"}>
+                  <Badge variant={'secondary'}>
                     {applications?.length} projects
                   </Badge>
                 )}
                 {matching && (
-                  <Badge variant={"secondary"}>
+                  <Badge variant={'secondary'}>
                     <TokenAmount {...matching} />
                   </Badge>
                 )}

@@ -1,21 +1,21 @@
-import { FunctionComponent, useMemo } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { supportedChains, useWalletClient } from "../wagmi";
-import { Round } from "../api/types";
-import { useAPI, useStrategies } from "..";
-import { Address } from "viem";
-import { TContracts } from "@gitcoin/gitcoin-chain-data";
+import { FunctionComponent, useMemo } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { supportedChains, useWalletClient } from '../wagmi';
+import { Round } from '../api/types';
+import { useAPI, useStrategies } from '..';
+import { Address } from 'viem';
+import { TContracts } from '@gitcoin/gitcoin-chain-data';
 
 export type StrategyComponentType =
-  | "createRound"
-  | "registerRecipient"
-  | "reviewRecipients"
-  | "allocate";
+  | 'createRound'
+  | 'registerRecipient'
+  | 'reviewRecipients'
+  | 'allocate';
 
-export type StrategyType = keyof TContracts | string
+export type StrategyType = keyof TContracts | string;
 export type StrategyExtension = {
   name: string;
-  type: StrategyType ;
+  type: StrategyType;
   contracts: Record<number, Address>;
   components: Partial<
     Record<
@@ -29,13 +29,10 @@ export type StrategyExtension = {
     >
   >;
 };
-export type StrategyExtensions = Record<
-  StrategyType ,
-  StrategyExtension
->;
+export type StrategyExtensions = Record<StrategyType, StrategyExtension>;
 
 const strategyMap = {
-  "allov2.DirectGrantsLiteStrategy": "directGrants",
+  'allov2.DirectGrantsLiteStrategy': 'directGrants',
 } as const;
 
 function getStrategyTypeFromName(strategyName: string, chainId: number) {
@@ -56,7 +53,7 @@ function reduceSupportedChains(
     );
 
     return type?.[0] || match;
-  }, "");
+  }, '');
 }
 
 export function useStrategyType(round?: Round) {

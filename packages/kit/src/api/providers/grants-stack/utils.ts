@@ -1,24 +1,24 @@
-import { RoundsQuery } from "../../types";
+import { RoundsQuery } from '../../types';
 
 export const ipfsGateway = (cid: string) => {
-  if (!cid) return "";
-  return cid?.includes("http") ? cid : `https://ipfs.io/ipfs/${cid}`;
+  if (!cid) return '';
+  return cid?.includes('http') ? cid : `https://ipfs.io/ipfs/${cid}`;
 };
 
 export function queryToFilter(query: RoundsQuery) {
   function mapOrderBy(obj: unknown) {
     return Object.entries(obj ?? {})[0]
       ?.map((v) => v.toUpperCase())
-      .join("_");
+      .join('_');
   }
 
   const filter = renameKeys(query, {
-    equals: "equalTo",
-    gte: "greaterThanOrEqualTo",
-    roundStart: "applicationsStartTime",
-    allocateStart: "donationsStartTime",
-    distributeStart: "donationsEndTime",
-    roundEnd: "donationsEndTime",
+    equals: 'equalTo',
+    gte: 'greaterThanOrEqualTo',
+    roundStart: 'applicationsStartTime',
+    allocateStart: 'donationsStartTime',
+    distributeStart: 'donationsEndTime',
+    roundEnd: 'donationsEndTime',
   }).where;
 
   /* 
@@ -37,7 +37,7 @@ export function queryToFilter(query: RoundsQuery) {
 
   TODO: Currently only implemented in roundsQuery. Update applicationsQuery and projectsQuery.
   */
-  const nestedKeys = ["applications", "roles", "projects"];
+  const nestedKeys = ['applications', 'roles', 'projects'];
   const nestedFilters = nestedKeys.reduce((acc, key) => {
     if (!filter?.[key as keyof typeof filter]) return acc;
     const { where, orderBy } = pick(filter, [key])?.[key];
@@ -64,7 +64,7 @@ function renameKeys(
   function rename(obj: any): any {
     if (Array.isArray(obj)) {
       return obj.map(rename);
-    } else if (obj !== null && typeof obj === "object") {
+    } else if (obj !== null && typeof obj === 'object') {
       return Object.keys(obj).reduce((acc, key) => {
         const renamedKey = keys[key] || key;
         acc[renamedKey] = rename(obj[key]);

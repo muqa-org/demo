@@ -1,7 +1,7 @@
-import { ComponentProps } from "react";
-import { Button } from "./button";
-import { ChevronLeft } from "lucide-react";
-import { cn } from "../lib/utils";
+import { ComponentProps } from 'react';
+import { Button } from './button';
+import { ChevronLeft } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 export function BackButton({
   className,
@@ -9,9 +9,9 @@ export function BackButton({
 }: ComponentProps<typeof Button>) {
   return (
     <Button
-      variant={"ghost"}
+      variant={'ghost'}
       size="icon"
-      className={cn("rounded-full", className)}
+      className={cn('rounded-full', className)}
       icon={ChevronLeft}
       {...props}
     />

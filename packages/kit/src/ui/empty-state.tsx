@@ -1,5 +1,5 @@
-import { Info } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "./alert";
+import { Info } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from './alert';
 
 export function EmptyState() {
   return (

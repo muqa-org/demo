@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Application } from "../api/types";
-import { BackgroundImage } from "../ui/background-image";
-import { Checkbox } from "../ui/checkbox";
-import { ReactNode } from "react";
-import { ApplicationStatusBadge } from "./status-badge";
+import { Application } from '../api/types';
+import { BackgroundImage } from '../ui/background-image';
+import { Checkbox } from '../ui/checkbox';
+import { ReactNode } from 'react';
+import { ApplicationStatusBadge } from './status-badge';
 
 export function ApplicationApprovalItem({
   id,

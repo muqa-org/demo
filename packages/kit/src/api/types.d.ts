@@ -1,26 +1,26 @@
-import { Address, Hash, WalletClient } from "viem";
+import { Address, Hash, WalletClient } from 'viem';
 
-type OrderBy = "asc" | "desc";
+type OrderBy = 'asc' | 'desc';
 
 type RoundOrderKeys =
-  | "created_at_block"
-  | "funded_amount_in_usd"
-  | "funded_amount"
-  | "match_amount_in_usd"
-  | "match_amount"
-  | "matching_distribution"
-  | "total_amount_donated_in_usd"
-  | "total_donations_count"
-  | "unique_donors_count";
+  | 'created_at_block'
+  | 'funded_amount_in_usd'
+  | 'funded_amount'
+  | 'match_amount_in_usd'
+  | 'match_amount'
+  | 'matching_distribution'
+  | 'total_amount_donated_in_usd'
+  | 'total_donations_count'
+  | 'unique_donors_count';
 
-type ProjectOrderKeys = "name" | "created_at_block";
+type ProjectOrderKeys = 'name' | 'created_at_block';
 type ApplicationOrderKeys =
-  | "created_at_block"
-  | "status"
-  | "status_updated_at_block"
-  | "total_donations_count"
-  | "total_amount_donated_in_usd"
-  | "unique_donors_count";
+  | 'created_at_block'
+  | 'status'
+  | 'status_updated_at_block'
+  | 'total_donations_count'
+  | 'total_amount_donated_in_usd'
+  | 'unique_donors_count';
 interface Query<T> {
   orderBy?: { [key: T]: OrderBy };
   skip?: number;
@@ -46,7 +46,7 @@ type Compare<T = string | number> = {
 };
 type RolesQueryWhere = {
   address?: Compare<Address>;
-  role?: Compare<"ADMIN" | "MANAGER">;
+  role?: Compare<'ADMIN' | 'MANAGER'>;
 };
 type ApplicationQueryWhere = {
   chainId?: Compare<number>;
@@ -61,12 +61,12 @@ type RoundQueryWhere = {
   id?: Compare;
   strategy?: Compare<Address>;
   strategyName?: Compare<
-    | "allov2.DirectGrantsLiteStrategy"
-    | "allov2.DonationVotingMerkleDistributionDirectTransferStrategy"
-    | "allov2.SQFSuperFluidStrategy"
+    | 'allov2.DirectGrantsLiteStrategy'
+    | 'allov2.DonationVotingMerkleDistributionDirectTransferStrategy'
+    | 'allov2.SQFSuperFluidStrategy'
   >;
   chainId?: Compare<number>;
-  tags?: Compare<"allo-v1" | "allo-v2" | "grants-stack">; // GrantsStack only (create a type in gs to extend)
+  tags?: Compare<'allo-v1' | 'allo-v2' | 'grants-stack'>; // GrantsStack only (create a type in gs to extend)
   roundId?: Compare;
   createdAt?: Compare;
   createdBy?: Compare;
@@ -161,11 +161,11 @@ export type RoundCreated = { id: string; chainId: number };
 
 type BaseApplication = {};
 export type ApplicationStatus =
-  | "APPROVED"
-  | "PENDING"
-  | "REJECTED"
-  | "CANCELLED"
-  | "IN_REVIEW";
+  | 'APPROVED'
+  | 'PENDING'
+  | 'REJECTED'
+  | 'CANCELLED'
+  | 'IN_REVIEW';
 
 export type Application = BaseApplication & {
   id: string;

@@ -1,23 +1,23 @@
-"use client";
-import { ReactNode, useMemo } from "react";
-import { Check } from "lucide-react";
-import { Button, Form, FormField, useForm, useFormContext } from "@allo/kit";
-import { ApplicationApprovalItem } from "../applications/approval-item";
-import { useApplications } from "../hooks/useApplications";
-import { Application } from "../api/types";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { useRoundById } from "../hooks/useRounds";
-import { useStrategyAddon, useStrategyType } from "../strategies";
-import { EmptyState } from "../ui/empty-state";
+'use client';
+import { ReactNode, useMemo } from 'react';
+import { Check } from 'lucide-react';
+import { Button, Form, FormField, useForm, useFormContext } from '@allo/kit';
+import { ApplicationApprovalItem } from '../applications/approval-item';
+import { useApplications } from '../hooks/useApplications';
+import { Application } from '../api/types';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { useRoundById } from '../hooks/useRounds';
+import { useStrategyAddon, useStrategyType } from '../strategies';
+import { EmptyState } from '../ui/empty-state';
 
 export function ApplicationReviewTable({
   roundId,
   chainId,
-  initialTab = "PENDING",
+  initialTab = 'PENDING',
 }: {
   roundId: string;
   chainId: number;
-  initialTab?: Application["status"];
+  initialTab?: Application['status'];
 }) {
   const { data: round } = useRoundById(roundId, { chainId });
   const { data: applications, isPending } = useApplications({
@@ -26,8 +26,8 @@ export function ApplicationReviewTable({
 
   const form = useForm();
 
-  const strategyAddon = useStrategyAddon("reviewRecipients", round);
-  console.log("strategyAddon", strategyAddon);
+  const strategyAddon = useStrategyAddon('reviewRecipients', round);
+  console.log('strategyAddon', strategyAddon);
   const applicationByStatus = useMemo(() => {
     const initialState = {
       APPROVED: [],
@@ -35,7 +35,7 @@ export function ApplicationReviewTable({
       REJECTED: [],
       CANCELLED: [],
       IN_REVIEW: [],
-    } as Record<Application["status"], Application[]>;
+    } as Record<Application['status'], Application[]>;
     return (applications ?? [])?.reduce(
       (acc, x) => ({
         ...acc,
@@ -61,7 +61,7 @@ export function ApplicationReviewTable({
         <Tabs
           defaultValue={initialTab}
           className=""
-          onValueChange={() => form.setValue("selected", [])}
+          onValueChange={() => form.setValue('selected', [])}
         >
           <TabsList>
             <TabsTrigger value="APPROVED">Approved</TabsTrigger>
@@ -107,8 +107,8 @@ export function ApplicationReviewTable({
   );
 }
 
-function ApproveButton({ label = "", isLoading = false }) {
-  const selected = useFormContext().watch("selected")?.length ?? 0;
+function ApproveButton({ label = '', isLoading = false }) {
+  const selected = useFormContext().watch('selected')?.length ?? 0;
   return (
     <Button
       type="submit"
@@ -127,20 +127,20 @@ function SelectAllButton({
   applications: Application[];
 }) {
   const form = useFormContext();
-  const selected = form.watch("selected");
+  const selected = form.watch('selected');
   const isAllSelected =
     selected?.length > 0 && selected?.length === applications?.length;
   return (
     <Button
       disabled={!applications.length}
       type="button"
-      variant={"outline"}
+      variant={'outline'}
       onClick={() => {
         const selectAll = isAllSelected ? [] : applications.map(({ id }) => id);
-        form.setValue("selected", selectAll);
+        form.setValue('selected', selectAll);
       }}
     >
-      {isAllSelected ? "Deselect all" : "Select all"}
+      {isAllSelected ? 'Deselect all' : 'Select all'}
     </Button>
   );
 }
