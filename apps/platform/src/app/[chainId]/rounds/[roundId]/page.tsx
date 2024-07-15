@@ -1,18 +1,18 @@
-"use client";
+'use client';
 import {
   Button,
   BackButton,
   DiscoverApplications,
   RoundDetails,
-} from "@allo/kit";
-import Link from "next/link";
+} from '@allo/kit';
+import Link from 'next/link';
 
 // SAMPLE DATA
-import sampleContent from "../../../../data/sample_content/culture_grants.json";
-import { useState } from "react";
-import SampleGrandCard from "@/app/components/SampleGrantCard";
+import sampleContent from '../../../../data/sample_content/culture_grants.json';
+import { useState } from 'react';
+import SampleGrandCard from '@/app/components/SampleGrantCard';
 
-export default function RoundPage({ params: { chainId = 0, roundId = "" } }) {
+export default function RoundPage({ params: { chainId = 0, roundId = '' } }) {
   const [sampleData, setSampleData] = useState(sampleContent);
 
   return (
@@ -28,7 +28,7 @@ export default function RoundPage({ params: { chainId = 0, roundId = "" } }) {
         primaryAction={
           <div className="flex gap-2">
             <Link href={`/${chainId}/rounds/${roundId}/fund`}>
-              <Button variant={"outline"}>Fund Round</Button>
+              <Button variant={'outline'}>Fund Round</Button>
             </Link>
             <Link href={`/${chainId}/rounds/${roundId}/apply`}>
               <Button>Apply to Round</Button>

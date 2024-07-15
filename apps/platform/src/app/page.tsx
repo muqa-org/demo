@@ -1,6 +1,6 @@
-"use client";
-import { supportedChains, Avatar } from "@allo/kit";
-import Link from "next/link";
+'use client';
+import { supportedChains, Avatar } from '@allo/kit';
+import Link from 'next/link';
 import HeroBanner from './HeroBanner';
 
 export default function Home() {

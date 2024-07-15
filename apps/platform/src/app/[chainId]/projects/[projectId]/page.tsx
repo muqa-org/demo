@@ -1,7 +1,7 @@
-import { ProjectDetails } from "@allo/kit";
+import { ProjectDetails } from '@allo/kit';
 
 export default function ProjectPage({
-  params: { chainId = 0, projectId = "" },
+  params: { chainId = 0, projectId = '' },
 }) {
   return (
     <section className="space-y-8">
