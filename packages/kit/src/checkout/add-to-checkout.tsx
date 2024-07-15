@@ -1,6 +1,7 @@
-"use client";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useAPI } from "..";
+'use client';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+
+import { useAPI } from '..';
 
 // function useCheckout() {
 //   const api = useAPI();
@@ -21,7 +22,7 @@ import { useAPI } from "..";
 //   });
 // }
 
-export function AddToCheckout({ id = "" }) {
+export function AddToCheckout({ id = '' }) {
   // const { data: checkout } = useCheckout();
   // const { data, mutate, isPending } = useAddToCheckout();
   // console.log(data, checkout, isPending);
@@ -31,10 +32,10 @@ export function AddToCheckout({ id = "" }) {
     <div className="flex gap-2">
       <button
         // disabled={isPending}
-        className="px-3 py-2 border border-gray-100 rounded"
+        className="rounded border border-gray-100 px-3 py-2"
         // onClick={() => mutate({ id })}
       >
-        {isAdded ? "In cart" : "Add to checkout"}
+        {isAdded ? 'In cart' : 'Add to checkout'}
       </button>
     </div>
   );

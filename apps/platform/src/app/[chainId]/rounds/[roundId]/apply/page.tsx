@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { CreateApplication } from "@allo/kit";
-import { useRouter } from "next/navigation";
+import { CreateApplication } from '@allo/kit';
+import { useRouter } from 'next/navigation';
 
 export default function CreateApplicationPage({
   params: { roundId, chainId },
@@ -15,7 +15,7 @@ export default function CreateApplicationPage({
         chainId={chainId}
         roundId={roundId}
         onCreated={({ id, chainId }) => {
-          console.log("Application created", { id, chainId });
+          console.log('Application created', { id, chainId });
           router.push(`/${chainId}/applications/${id}`);
         }}
       />

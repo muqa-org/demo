@@ -1,8 +1,8 @@
-"use client";
-import { Allocate } from "@allo/kit";
+'use client';
+import { Allocate } from '@allo/kit';
 
 export default function AllocatePage({
-  params: { chainId = 0, roundId = "" },
+  params: { chainId = 0, roundId = '' },
 }) {
   return (
     <section className="space-y-8">

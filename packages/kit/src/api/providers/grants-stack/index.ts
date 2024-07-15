@@ -1,18 +1,19 @@
-import { request } from "graphql-request";
-import { API, Application, Project, Round, Transformers } from "../../types";
+import { isValid } from 'date-fns';
+import { request } from 'graphql-request';
+import { getAddress } from 'viem';
+
 import {
   roundsQuery,
   applicationsQuery,
   roundsByIdQuery,
   projectsQuery,
   applicationsByIdQuery,
-} from "./queries";
-import { ipfsGateway, queryToFilter } from "./utils";
-import { GSRound, GSApplication, GSProject } from "./types";
-import { isValid } from "date-fns";
-import { getAddress } from "viem";
+} from './queries';
+import { GSRound, GSApplication, GSProject } from './types';
+import { ipfsGateway, queryToFilter } from './utils';
+import { API, Application, Project, Round, Transformers } from '../../types';
 
-const apiURL = "https://grants-stack-indexer-v2.gitcoin.co/graphql";
+const apiURL = 'https://grants-stack-indexer-v2.gitcoin.co/graphql';
 
 export const grantsStackAPI: Partial<API> = {
   rounds: async (query) => {
@@ -66,7 +67,7 @@ export const grantsStackAPI: Partial<API> = {
       document: projectsQuery,
       variables: {
         take: 1,
-        filter: { id: { equalTo: id }, projectType: { equalTo: "CANONICAL" } },
+        filter: { id: { equalTo: id }, projectType: { equalTo: 'CANONICAL' } },
       },
     }).then((res) =>
       res.projects?.[0] ? transformers.project(res.projects?.[0]) : undefined,
@@ -94,7 +95,7 @@ const transformers: Transformers<GSRound, GSApplication, GSProject> = {
   }: GSRound): Round => ({
     id,
     chainId,
-    name: name || title || "?",
+    name: name || title || '?',
     description: description || eligibility?.description,
     applications,
     matching: { amount: BigInt(matchAmount), token: matchTokenAddress },

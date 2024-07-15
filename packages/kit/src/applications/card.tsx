@@ -1,15 +1,15 @@
-import { Button } from "..";
-import { Application } from "../api/types";
-import { cn, formatMoney, formatNumber } from "../lib/utils";
-import { BackgroundImage } from "../ui/background-image";
-import { Card, CardContent } from "../ui/card";
-import { Separator } from "../ui/separator";
+import { Button } from '..';
+import { Application } from '../api/types';
+import { cn, formatMoney, formatNumber } from '../lib/utils';
+import { BackgroundImage } from '../ui/background-image';
+import { Card, CardContent } from '../ui/card';
+import { Separator } from '../ui/separator';
 
 export type ApplicationCard = Application & {
   components?: ApplicationComponent[];
   isLoading?: boolean;
 };
-type ApplicationComponent = "contributors" | "add_button";
+type ApplicationComponent = 'contributors' | 'add_button';
 export function ApplicationCard({
   name,
   description,
@@ -20,8 +20,8 @@ export function ApplicationCard({
 }: ApplicationCard) {
   return (
     <Card
-      className={cn("relative overflow-hidden rounded-3xl shadow-xl", {
-        ["animate-pulse"]: isLoading,
+      className={cn('relative overflow-hidden rounded-3xl shadow-xl', {
+        ['animate-pulse']: isLoading,
       })}
     >
       <BackgroundImage className="h-32 bg-gray-100" src={bannerUrl} />
@@ -35,18 +35,18 @@ export function ApplicationCard({
           </div>
         ) : null}
         <div className="flex justify-between">
-          {contributors && components.includes("contributors") && (
+          {contributors && components.includes('contributors') && (
             <div>
               <div className="flex items-center gap-1 text-sm font-medium text-primary">
                 <ContributionIcon />
-                {formatMoney(contributors?.amount, "usd", 0)}
+                {formatMoney(contributors?.amount, 'usd', 0)}
               </div>
               <div className="text-xs">
                 {formatNumber(contributors?.count)} contributors
               </div>
             </div>
           )}
-          {components.includes("add_button") && <Button size="sm">Add</Button>}
+          {components.includes('add_button') && <Button size="sm">Add</Button>}
         </div>
       </CardContent>
     </Card>

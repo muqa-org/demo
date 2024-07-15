@@ -1,7 +1,8 @@
-"use client";
-import { PropsWithChildren } from "react";
-import { Button } from "./ui/button";
-import { ConnectButton as RainbowConnectButton } from "@rainbow-me/rainbowkit";
+'use client';
+import { ConnectButton as RainbowConnectButton } from '@rainbow-me/rainbowkit';
+import { PropsWithChildren } from 'react';
+
+import { Button } from './ui/button';
 
 export function ConnectButton({ children }: PropsWithChildren) {
   return (
@@ -19,11 +20,11 @@ export function ConnectButton({ children }: PropsWithChildren) {
         return (
           <div
             {...(!mounted && {
-              "aria-hidden": true,
+              'aria-hidden': true,
               style: {
                 opacity: 0,
-                pointerEvents: "none",
-                userSelect: "none",
+                pointerEvents: 'none',
+                userSelect: 'none',
               },
             })}
           >
@@ -44,7 +45,7 @@ export function ConnectButton({ children }: PropsWithChildren) {
                     {account.displayName}
                     {account.displayBalance
                       ? ` (${account.displayBalance})`
-                      : ""}
+                      : ''}
                   </Button>
                 )
               );

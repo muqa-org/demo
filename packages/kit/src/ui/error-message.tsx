@@ -1,5 +1,6 @@
-import { Alert, AlertDescription, AlertTitle } from "./alert";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle } from 'lucide-react';
+
+import { Alert, AlertDescription, AlertTitle } from './alert';
 
 export function ErrorMessageLog({ error }: { error: unknown }) {
   return (
@@ -17,7 +18,7 @@ export function ErrorMessageLog({ error }: { error: unknown }) {
   );
 }
 
-export function ErrorMessage({ message = "" }) {
+export function ErrorMessage({ message = '' }) {
   return (
     message && (
       <Alert variant="destructive">

@@ -1,4 +1,4 @@
-import { Address } from "viem";
+import { Address } from 'viem';
 
 type GSRoundMetadata = {
   name: string;
@@ -63,7 +63,7 @@ export type GSApplication = {
   chainId: number;
   roundId: string;
   projectId: string;
-  status: "APPROVED" | "PENDING";
+  status: 'APPROVED' | 'PENDING';
   totalAmountDonatedInUsd: number;
   uniqueDonorsCount: number;
   totalDonationsCount: number;
@@ -79,7 +79,7 @@ export type GSApplication = {
 export type GSProject = {
   id: string;
   name: string;
-  projectType: "CANONICAL";
+  projectType: 'CANONICAL';
   chainId: 10;
   createdByAddress: string;
   metadata: GSProjectMetadata;

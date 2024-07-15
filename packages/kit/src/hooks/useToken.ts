@@ -1,10 +1,11 @@
-import { NATIVE } from "@allo-team/allo-v2-sdk";
-import { useMutation } from "@tanstack/react-query";
-import { Address, erc20Abi, zeroAddress } from "viem";
-import { useAccount, useBalance, useReadContracts } from "wagmi";
-import { useToast } from "../ui/use-toast";
+import { NATIVE } from '@allo-team/allo-v2-sdk';
+import { useMutation } from '@tanstack/react-query';
+import { Address, erc20Abi, zeroAddress } from 'viem';
+import { useAccount, useBalance, useReadContracts } from 'wagmi';
 
-export const nativeToken = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+import { useToast } from '../ui/use-toast';
+
+export const nativeToken = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
 
 const isNativeToken = (token?: Address) =>
   [zeroAddress, NATIVE].includes(token?.toLowerCase()!);
@@ -13,7 +14,7 @@ export function useToken(opts: { token?: Address }) {
   const { address } = useAccount();
   const token = isNativeToken(opts.token) ? undefined : opts.token;
 
-  console.log("token", opts, token);
+  console.log('token', opts, token);
   const tokenContract = {
     address: token,
     abi: erc20Abi,
@@ -27,8 +28,8 @@ export function useToken(opts: { token?: Address }) {
   const query = useReadContracts({
     allowFailure: false,
     contracts: [
-      { ...tokenContract, functionName: "decimals" },
-      { ...tokenContract, functionName: "symbol" },
+      { ...tokenContract, functionName: 'decimals' },
+      { ...tokenContract, functionName: 'symbol' },
       //   {
       //     ...tokenContract,
       //     functionName: "allowance",
