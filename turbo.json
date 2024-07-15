@@ -3,7 +3,11 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["PINATA_JWT", "PINATA_GATEWAY_URL"],
+      "env": [
+        "NEXT_PUBLIC_COMETH_API_KEY",
+        "PINATA_JWT",
+        "PINATA_GATEWAY_URL"
+      ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "check-types": {

@@ -1,12 +1,10 @@
-"use client";
-import "@rainbow-me/rainbowkit/styles.css";
+'use client';
 
-import { PropsWithChildren } from "react";
-import { Config, createConfig, http, WagmiProvider } from "wagmi";
+import '@rainbow-me/rainbowkit/styles.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
-
+import { PropsWithChildren } from 'react';
 import { baseSepolia, polygonAmoy } from 'viem/chains';
+import { Config, createConfig, http, WagmiProvider } from 'wagmi';
 
 const wagmiConfig = createConfig({
   chains: [

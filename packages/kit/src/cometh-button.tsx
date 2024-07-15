@@ -1,6 +1,7 @@
-"use client";
+'use client';
 
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+
 import { Button } from './ui/button';
 import { comethConnector } from './wagmi/config';
 
