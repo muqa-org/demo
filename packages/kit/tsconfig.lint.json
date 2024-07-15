@@ -1,5 +1,5 @@
 {
-  "extends": "@allo/typescript-config/react-library.json",
+  "extends": "@muqa/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist"
   },

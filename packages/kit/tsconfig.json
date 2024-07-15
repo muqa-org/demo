@@ -1,14 +1,9 @@
 {
-  "extends": "@allo/typescript-config/react-library.json",
+  "extends": "@muqa/typescript-config/react-library.json",
   "compilerOptions": {
-    "lib": ["dom", "ES2020"],
-    "sourceMap": true,
-    "inlineSources": true,
-    "moduleResolution": "NodeNext",
+    "rootDir": "./",
     "outDir": "dist"
-    // "baseUrl": "."
-    // "rootDir": "."
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["src", "turbo"],
   "exclude": ["node_modules", "dist"]
 }
