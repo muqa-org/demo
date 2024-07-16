@@ -3,19 +3,28 @@
 import { useAccount } from 'wagmi';
 
 export function WalletStatus() {
-  const { addresses, chain, connector, status } = useAccount();
+  const account = useAccount();
 
   return (
     <div className="max-w-screen-lg mx-auto">
-      <p>Status: {status}</p>
-      <p>Connector: {connector?.name}</p>
-      <p>Chain: {chain?.name}</p>
       <div>
-        <p>Connected addresses: </p>
+        <span className="font-semibold mr-2">STATUS</span>
+        <span className="text-xs">{account?.status}</span>
+      </div>
+      <div>
+        <span className="font-semibold mr-2">CONNECTOR</span>
+        <span className="text-xs">{account?.connector?.name}</span>
+      </div>
+      <div>
+        <span className="font-semibold mr-2">CHAIN</span>
+        <span className="text-xs">{account?.chain?.name}</span>
+      </div>
+      <div>
+        <span className="font-semibold mr-2">CONNECTED ADDRESSES</span>
         <ul>
-          {addresses?.map((address) => (
-            <li key={address}>{address}</li>
-            ))}
+          {account?.addresses?.map((address) => (
+            <li key={address} className="text-xs">{address}</li>
+            )) ?? []}
         </ul>
       </div>
     </div>

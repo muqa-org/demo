@@ -1,12 +1,11 @@
-'use client';
 import { ComethButton } from '@allo/kit';
 import Link from 'next/link';
+
 export function Header() {
   return (
     <header className="h-16 max-w-screen-lg mx-auto flex items-center justify-between">
       <Link href="/">
         <span className="font-semibold mr-2">MUQA initiative</span>
-
         <span className="text-xs">demo</span>
       </Link>
 
