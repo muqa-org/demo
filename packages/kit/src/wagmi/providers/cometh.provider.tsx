@@ -3,16 +3,16 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
-import { polygonAmoy } from 'viem/chains';
+import { avalancheFuji } from 'viem/chains';
 import { Config, createConfig, http, WagmiProvider } from 'wagmi';
 
 const wagmiConfig = createConfig({
   chains: [
-    polygonAmoy
+    avalancheFuji
   ],
   ssr: true,
   transports: {
-    [polygonAmoy.id]: http()
+    [avalancheFuji.id]: http()
   }
 })
 

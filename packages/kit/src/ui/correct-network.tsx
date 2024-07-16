@@ -9,14 +9,14 @@ export function EnsureCorrectNetwork({
   children,
   chainId,
 }: PropsWithChildren<{ chainId: number }>) {
-  const connectedNetwork = useChainId();
+  const connectedChainId = useChainId();
   const { isConnecting } = useAccount();
   const { switchChain } = useSwitchChain();
 
-  if (connectedNetwork !== chainId)
+  if (connectedChainId !== chainId)
     return (
       <Button isLoading={isConnecting} onClick={() => switchChain({ chainId })}>
-        Change network
+        Change network to create
       </Button>
     );
   return <>{children}</>;
