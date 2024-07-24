@@ -1,0 +1,33 @@
+{
+  "type": "module",
+  "name": "harbour-ts-sdk",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "author": "Harbour",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@bufbuild/protobuf": "^1.8.0",
+    "@connectrpc/connect": "^1.4.0",
+    "@connectrpc/connect-web": "^1.4.0"
+  },
+  "devDependencies": {
+    "@bufbuild/protoc-gen-es": "^1.8.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.4.0",
+    "@cosmostation/cosmosjs": "^0.9.7",
+    "@muqa/eslint-config": "workspace:*",
+    "@muqa/typescript-config": "workspace:*",
+    "@mysten/sui.js": "^0.51.0",
+    "@polkadot/api": "^11.0.3",
+    "@polkadot/keyring": "^12.6.2",
+    "@polkadot/util-crypto": "^12.6.2",
+    "@terra-money/terra.js": "^3.1.10",
+    "@types/secp256k1": "^4.0.6",
+    "ethers": "^6.11.1",
+    "secp256k1": "^3.8.0",
+    "tsx": "^4.9.3"
+  },
+  "scripts": {
+    "buf:generate": "buf generate && sed -i '' s/_pb.js/_pb/ src/gen/*/v1/public_*.ts"
+  }
+}
