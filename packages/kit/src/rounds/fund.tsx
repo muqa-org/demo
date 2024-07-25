@@ -30,7 +30,7 @@ import {
 } from '../ui/form';
 import { Input } from '../ui/input';
 import { useToast } from '../ui/use-toast';
-import { supportedChains } from '../wagmi/provider';
+import { supportedChains } from '../wagmi/providers/rainbow-kit.provider';
 
 type RoundFundProps = {
   id: string;
@@ -93,7 +93,7 @@ export function FundRound({ id, opts, autoFocus, onSuccess }: RoundFundProps) {
   const fund = useFundPool();
   if (isPending)
     return (
-      <Alert className="flex h-[172px] items-center justify-center">
+      <Alert className='flex h-[172px] items-center justify-center'>
         Loading...
       </Alert>
     );
@@ -168,26 +168,26 @@ function FundForm({
   return (
     <Form {...form}>
       <form
-        className="space-y-2"
+        className='space-y-2'
         onSubmit={form.handleSubmit((v) => onSubmit(v.amount))}
       >
         <FormField
           control={form.control}
-          name="amount"
+          name='amount'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <FormControl>
-                <div className="relative flex items-center">
+                <div className='relative flex items-center'>
                   <Input
                     autoFocus={autoFocus}
-                    placeholder="0"
+                    placeholder='0'
                     step={0.0000000001}
-                    type="number"
+                    type='number'
                     min={0}
                     {...field}
                   />
-                  <div className="absolute right-2 p-2 text-muted-foreground"></div>
+                  <div className='absolute right-2 p-2 text-muted-foreground'></div>
                 </div>
               </FormControl>
               <FormDescription>
@@ -200,8 +200,8 @@ function FundForm({
         <Button
           isLoading={isLoading}
           disabled={!canSubmit || isLoading}
-          className="w-full"
-          type="submit"
+          className='w-full'
+          type='submit'
         >
           Fund
         </Button>

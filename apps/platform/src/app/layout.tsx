@@ -3,10 +3,11 @@ import { Inter } from 'next/font/google';
 import '@allo/kit/styles.css';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
-
+import { WalletStatus } from './WalletStatus';
 import { Header } from './header';
 import { AlloKitProviders } from './providers';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'MUQA initiative Demo App test1',
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AlloKitProviders>
           <Header />
+          <WalletStatus/>
           <main className="max-w-screen-lg mx-auto py-16">{children}</main>
         </AlloKitProviders>
       </body>
