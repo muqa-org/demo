@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DM_Sans } from 'next/font/google';
+import { DM_Sans, Share_Tech_Mono } from 'next/font/google';
 import '@allo/kit/styles.css';
 import './globals.css';
 
@@ -9,6 +9,7 @@ import { Header } from './header';
 import { AlloKitProviders } from './providers';
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'] });
+
 
 export const metadata: Metadata = {
 	title: 'MUQA initiative Demo App test1',
@@ -26,7 +27,7 @@ export default function RootLayout({
 				<AlloKitProviders>
 					<Header />
 					<WalletStatus />
-					<main className='max-w-screen-lg mx-auto py-16'>
+					<main>
 						{children}
 					</main>
 					<Footer />
