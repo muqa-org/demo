@@ -36,7 +36,7 @@ export function Header() {
 				</nav>
 
 				<div className='ml-auto'>
-					<MuqaConnectButton  variant='blue' />
+					<ComethButton className='flex items-center px-5 py-2 bg-blue rounded-lg font-normal text-base leading-6 text-white' />
 				</div>
 			</div>
 		</header>
