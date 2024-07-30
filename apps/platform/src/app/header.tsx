@@ -1,11 +1,15 @@
+'use client';
+
 import { ComethButton } from '@allo/kit';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Button } from './components/Button';
+
 export function Header() {
 	return (
-		<header className='border-b border-color-borderGray'>
-			<div className='py-5 max-w-7xl mx-auto flex items-center justify-between'>
+		<header className='border-color-borderGray border-b'>
+			<div className='mx-auto flex max-w-7xl items-center justify-between py-5'>
 				<Link href='/'>
 					<Image
 						width='44'
@@ -15,29 +19,37 @@ export function Header() {
 					/>
 				</Link>
 
-				<nav className='flex gap-8 ml-24'>
+				<nav className='ml-24 flex gap-8'>
 					<Link
 						href={'/admin/rounds'}
-						className='text-primary font-medium text-sm uppercase leading-6 hover:text-blue'
+						className='text-sm font-medium uppercase leading-6 text-primary hover:text-blue'
 					>
 						Projekti
 					</Link>
 					<Link
 						href={'/admin/rounds/create'}
-						className='text-primary font-medium text-sm uppercase leading-6 hover:text-blue'
+						className='text-sm font-medium uppercase leading-6 text-primary hover:text-blue'
 					>
 						Create Round
 					</Link>
 					<Link
 						href={'/11155111/projects/create'}
-						className='text-primary font-medium text-sm uppercase leading-6 hover:text-blue'
+						className='text-sm font-medium uppercase leading-6 text-primary hover:text-blue'
 					>
 						Create Project
 					</Link>
 				</nav>
 
 				<div className='ml-auto'>
-					<ComethButton className='flex items-center px-5 py-2 bg-blue rounded-lg font-normal text-base leading-6 text-white' />
+					<Button
+						buttonType='blue'
+						handleOnClick={() => {
+							return true;
+						}}
+					>
+						Prijavi se
+					</Button>
+					<ComethButton />
 				</div>
 			</div>
 		</header>

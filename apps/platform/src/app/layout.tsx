@@ -4,7 +4,7 @@ import '@allo/kit/styles.css';
 import './globals.css';
 
 import { WalletStatus } from './WalletStatus';
-import { Footer } from './components/footer/footer';
+import { Footer } from './components/footer/Footer';
 import { Header } from './header';
 import { AlloKitProviders } from './providers';
 

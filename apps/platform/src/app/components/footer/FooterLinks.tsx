@@ -3,8 +3,11 @@ import Link from 'next/link';
 
 export function FooterLinks() {
 	return (
-		<div className='items-center flex gap-10'>
-			<Link href='/' className='flex items-center gap-2 font-medium text-primary leading-6 hover:text-blue'>
+		<div className='flex items-center gap-10'>
+			<Link
+				href='/'
+				className='flex items-center gap-2 font-medium leading-6 text-primary hover:text-blue'
+			>
 				Documentation
 				<Image
 					width='20'
@@ -13,7 +16,10 @@ export function FooterLinks() {
 					src={`/images/icons/icon-top-right-arrow.svg`}
 				/>
 			</Link>
-			<Link href='/' className='flex items-center gap-2 font-medium text-primary leading-6 hover:text-blue'>
+			<Link
+				href='/'
+				className='flex items-center gap-2 font-medium leading-6 text-primary hover:text-blue'
+			>
 				About Quadratic Funding
 				<Image
 					width='18'
