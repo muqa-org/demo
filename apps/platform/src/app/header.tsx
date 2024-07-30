@@ -1,10 +1,10 @@
 'use client';
 
+import { ComethButton } from '@allo/kit';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Images from './components/common/Images';
-import { MuqaConnectButton } from './components/MuqaConnectButton';
+import { Button } from './components/Button';
 
 export function Header() {
 	return (
@@ -36,7 +36,15 @@ export function Header() {
 				</nav>
 
 				<div className='ml-auto'>
-					<ComethButton className='flex items-center px-5 py-2 bg-blue rounded-lg font-normal text-base leading-6 text-white' />
+					<Button
+						buttonType='blue'
+						handleOnClick={() => {
+							return true;
+						}}
+					>
+						Prijavi se
+					</Button>
+					<ComethButton />
 				</div>
 			</div>
 		</header>
