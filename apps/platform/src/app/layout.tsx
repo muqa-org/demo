@@ -9,6 +9,7 @@ import { AlloKitProviders } from './providers';
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
+
 export const metadata: Metadata = {
 	title: 'MUQA initiative Demo App test1',
 	description: '',
