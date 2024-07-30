@@ -4,6 +4,7 @@ import '@allo/kit/styles.css';
 import './globals.css';
 
 import { WalletStatus } from './WalletStatus';
+import { Footer } from './components/footer/footer';
 import { Header } from './header';
 import { AlloKitProviders } from './providers';
 
@@ -28,6 +29,7 @@ export default function RootLayout({
 					<main className='max-w-screen-lg mx-auto py-16'>
 						{children}
 					</main>
+					<Footer />
 				</AlloKitProviders>
 			</body>
 		</html>
