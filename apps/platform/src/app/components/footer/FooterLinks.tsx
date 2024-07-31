@@ -6,7 +6,7 @@ export function FooterLinks() {
 		<div className='flex items-center gap-10'>
 			<Link
 				href='/'
-				className='flex items-center gap-2 font-medium leading-6 text-primary hover:text-blue'
+				className='flex items-center gap-2 font-medium leading-6 text-primaryBlack hover:text-blue'
 			>
 				Documentation
 				<Image
@@ -18,7 +18,7 @@ export function FooterLinks() {
 			</Link>
 			<Link
 				href='/'
-				className='flex items-center gap-2 font-medium leading-6 text-primary hover:text-blue'
+				className='flex items-center gap-2 font-medium leading-6 text-primaryBlack hover:text-blue'
 			>
 				About Quadratic Funding
 				<Image

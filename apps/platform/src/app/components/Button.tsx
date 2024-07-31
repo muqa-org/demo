@@ -11,7 +11,7 @@ export function Button({
 	handleOnClick,
 	buttonType,
 }: buttonProps) {
-	const buttonBg = buttonType === 'blue' ? 'bg-blue-500' : 'bg-blue-100';
+	const buttonBg = buttonType === 'blue' ? 'bg-blue' : 'bg-primaryBlack';
 	return (
 		<button
 			onClick={handleOnClick}

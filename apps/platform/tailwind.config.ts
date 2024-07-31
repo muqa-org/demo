@@ -11,7 +11,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				primary: {
+				primaryBlack: {
 					DEFAULT: '#0B0B0B',
 					dark: '#FFFFFF',
 				},
@@ -22,6 +22,9 @@ const config: Config = {
 				gray: {
 					DEFAULT: '#888888',
 					dark: '#555555',
+				},
+				grayLight: {
+					DEFAULT: '#B0B0B0',
 				},
 				borderGray: '#D1D1D1',
 			},

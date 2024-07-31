@@ -6,7 +6,7 @@ export function WalletStatus() {
   const account = useAccount();
 
   return (
-    <div className="fixed top-30 left-0 w-auto h-16 px-4 py-2 bg-white border-t border-gray-200">
+    <div className="fixed top-40 left-0 w-auto h-auto px-4 py-2 bg-white border-t border-gray-200">
       <div>
         <span className="font-semibold mr-2">STATUS</span>
         <span className="text-xs">{account?.status}</span>
