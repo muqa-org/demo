@@ -1,15 +1,15 @@
 {
   "type": "module",
-  "name": "harbour-ts-sdk",
+  "name": "@allo/harbour-ts-sdk",
   "version": "1.0.0",
-  "main": "index.ts",
   "author": "Harbour",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "@bufbuild/protobuf": "^1.8.0",
     "@connectrpc/connect": "^1.4.0",
-    "@connectrpc/connect-web": "^1.4.0"
+    "@connectrpc/connect-web": "^1.4.0",
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
     "@bufbuild/protoc-gen-es": "^1.8.0",

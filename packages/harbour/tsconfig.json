@@ -2,8 +2,8 @@
   "extends": "@muqa/typescript-config/base.json",
   "compilerOptions": {
     "rootDir": "./",
-    "outDir": "dist"
+    "outDir": "dist",
   },
-  "include": ["src", "turbo"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

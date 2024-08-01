@@ -11,6 +11,7 @@ export default defineConfig((options: Options) => ({
   external: ["react"],
   ...options,
   esbuildOptions(options) {
+    options.external = ['*.yaml']
     options.banner = {
       js: '"use client"',
     };

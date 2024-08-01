@@ -2,7 +2,13 @@
   "extends": "@muqa/typescript-config/react-library.json",
   "compilerOptions": {
     "rootDir": "./",
-    "outDir": "dist"
+    "outDir": "dist",
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "paths": {
+      // "@allo/*": ["./node_modules/@allo/*"]
+    },
+    "preserveSymlinks": true
   },
   "include": ["src", "turbo"],
   "exclude": ["node_modules", "dist"]

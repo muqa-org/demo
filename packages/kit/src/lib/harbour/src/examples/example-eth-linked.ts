@@ -3,13 +3,13 @@
 
 import { keccak256, toUtf8Bytes, Wallet } from "ethers";
 
-import RampClient, { EthereumSignature, Signature } from "../";
+import RampClient, { EthereumSignature, Signature } from "..";
 import {
   GetAccountInfoRequest,
   Protocol,
   SetBankAccountRequest,
   WhitelistAddressRequest,
-} from "../gen/ramp/v1/public_pb";
+} from "../../gen/ramp/v1/public_pb";
 
 const mnemonic = "smooth clump orphan else enjoy blue legend panda waste weapon wire aunt"
 const wallet = Wallet.fromPhrase(mnemonic);

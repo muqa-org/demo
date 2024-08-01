@@ -3,8 +3,8 @@
 
 import { keccak256, toUtf8Bytes, Wallet } from "ethers";
 
-import RampClient, { EthereumSignature, Signature } from "../";
-import {GetAccountInfoRequest} from "../gen/ramp/v1/public_pb";
+import RampClient, { EthereumSignature, Signature } from "..";
+import {GetAccountInfoRequest} from "../../gen/ramp/v1/public_pb";
 
 const mnemonic = "indoor dish desk flag debris potato excuse depart ticket judge file exit"
 const wallet = Wallet.fromPhrase(mnemonic);

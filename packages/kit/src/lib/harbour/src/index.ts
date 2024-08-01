@@ -1,8 +1,8 @@
-import { createPromiseClient, PromiseClient } from "@connectrpc/connect";
-import { createConnectTransport } from "@connectrpc/connect-web";
+import { PartialMessage } from '@bufbuild/protobuf';
+import { createPromiseClient, PromiseClient } from '@connectrpc/connect';
+import { createConnectTransport } from '@connectrpc/connect-web';
 
-import { RampService } from "./gen/ramp/v1/public_connect";
-
+import { RampService } from '../gen/ramp/v1/public_connect';
 import {
   EstimateOffRampFeeRequest,
   EstimateOffRampFeeResponse,
@@ -16,8 +16,7 @@ import {
   SetBankAccountResponse,
   WhitelistAddressRequest,
   WhitelistAddressResponse,
-} from "./gen/ramp/v1/public_pb";
-import { PartialMessage } from "@bufbuild/protobuf";
+} from '../gen/ramp/v1/public_pb';
 
 export class RampClient {
   public client: PromiseClient<typeof RampService>;
@@ -30,7 +29,7 @@ export class RampClient {
   constructor(endpoint: string, signer: SignerFunction) {
     const fetchWithSignature: typeof globalThis.fetch = async (r, init) => {
       if (!(init?.body instanceof Uint8Array)) {
-        throw "unsupported body type";
+        throw 'unsupported body type';
       }
       const bodyText = new TextDecoder().decode(init.body);
       const timestamp = Date.now().toString();
@@ -38,14 +37,14 @@ export class RampClient {
       const signature = await signer(data);
 
       const headers = new Headers(init?.headers);
-      headers.append("X-Signature", signature.signature);
+      headers.append('X-Signature', signature.signature);
       headers.append(
-        "X-Signature-Type",
+        'X-Signature-Type',
         `${signature.hashingAlgorithm}/${signature.signingAlgorithm}`,
       );
-      headers.append("X-Signature-PublicKey", signature.publicKey);
-      headers.append("X-Encoding", signature.encodingAlgorithm);
-      headers.append("X-Signature-Timestamp", timestamp);
+      headers.append('X-Signature-PublicKey', signature.publicKey);
+      headers.append('X-Encoding', signature.encodingAlgorithm);
+      headers.append('X-Signature-Timestamp', timestamp);
 
       const modifiedInit: RequestInit = { ...init, headers };
       return fetch(r, modifiedInit);
@@ -126,25 +125,25 @@ export default RampClient;
  * Hashing algorithm used for signing requests to Harbour API
  */
 export enum HashingAlgorithm {
-  Keccak256 = "keccak256",
-  SHA256 = "sha256",
-  Blake2b256 = "blake2b256",
+  Keccak256 = 'keccak256',
+  SHA256 = 'sha256',
+  Blake2b256 = 'blake2b256',
 }
 
 /**
  * Signing algorithm used for signing requests to Harbour API
  */
 export enum SigningAlgorithm {
-  SECP256K1 = "secp256k1",
-  SR25519 = "sr25519"
+  SECP256K1 = 'secp256k1',
+  SR25519 = 'sr25519'
 }
 
 /**
  * Encoding algorithm used for signing requests to Harbour API
  */
 export enum EncodingAlgorithm {
-  Hex = "hex",
-  Base64 = "base64",
+  Hex = 'hex',
+  Base64 = 'base64',
 }
 
 /**
