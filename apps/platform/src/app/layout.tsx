@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Share_Tech_Mono } from 'next/font/google';
-import '@allo/kit/styles.css';
 import './globals.css';
 
 import { WalletStatus } from './WalletStatus';
@@ -22,7 +21,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='hr'>
-			<body>
+			<body className={dmSans.className}>
 				<AlloKitProviders>
 					<Header />
 					<WalletStatus />

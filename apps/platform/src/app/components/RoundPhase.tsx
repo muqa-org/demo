@@ -6,7 +6,7 @@ interface RoundBoxProps {
 	type: string;
 }
 
-export function RoundStatusBox({ title, dateTime, type }: RoundBoxProps) {
+export function RoundPhase({ title, dateTime, type }: RoundBoxProps) {
 	let bgColor = type === 'past' ? 'bg-[#F0F7FE]' : 'bg-white';
 	bgColor = type === 'current' ? 'bg-blue' : bgColor;
 
