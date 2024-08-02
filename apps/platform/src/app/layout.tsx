@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='hr'>
-			<body>
+			<body className={dmSans.className}>
 				<AlloKitProviders>
 					<Header />
 					<WalletStatus />
