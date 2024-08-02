@@ -3,10 +3,10 @@ import { HomepageRoundBoxes } from './components/homepage/HomepageRoundBoxes';
 
 export default function Home() {
 	return (
-		<section className='flex flex-col bg-[#F0F7FE] pt-20 pb-36'>
+		<div className='bg-[#F0F7FE] pb-36 pt-20'>
 			<HomepageIntro />
 			<HomepageRoundBoxes />
-		</section>
+		</div>
 	);
 }
 

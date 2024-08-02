@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function Socials() {
 	return (
-		<div className='items-center flex gap-6'>
+		<div className='mb-6 flex items-center gap-6 lg:mb-0'>
 			<Link href='/' className='hover:opacity-85'>
 				<Image
 					width='20'
