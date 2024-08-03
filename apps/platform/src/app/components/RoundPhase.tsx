@@ -2,11 +2,20 @@ import Image from 'next/image';
 
 interface RoundBoxProps {
 	title: string;
-	dateTime: string;
-	type: string;
+	startDate: Date;
+	endDate: Date;
 }
 
-export function RoundPhase({ title, dateTime, type }: RoundBoxProps) {
+export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
+	const now = new Date();
+	let type = 'future';
+  
+	if (new Date(endDate) < now) {
+	  type = 'past';
+	} else if (new Date(startDate) <= now && new Date(endDate) >= now) {
+	  type = 'current';
+	}
+
 	let bgColor = type === 'past' ? 'bg-[#F0F7FE]' : 'bg-white';
 	bgColor = type === 'current' ? 'bg-blue' : bgColor;
 
