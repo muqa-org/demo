@@ -9,11 +9,11 @@ interface RoundBoxProps {
 export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 	const now = new Date();
 	let type = 'future';
-  
+
 	if (new Date(endDate) < now) {
-	  type = 'past';
+		type = 'past';
 	} else if (new Date(startDate) <= now && new Date(endDate) >= now) {
-	  type = 'current';
+		type = 'current';
 	}
 
 	let bgColor = type === 'past' ? 'bg-[#F0F7FE]' : 'bg-white';
