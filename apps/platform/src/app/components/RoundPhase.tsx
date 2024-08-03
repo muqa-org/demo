@@ -2,16 +2,27 @@ import Image from 'next/image';
 
 interface RoundBoxProps {
 	title: string;
-	dateTime: string;
-	type: string;
+	startDate: Date;
+	endDate: Date;
 }
 
-export function RoundPhase({ title, dateTime, type }: RoundBoxProps) {
+export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
+	const now = new Date();
+	let type = 'future';
+  
+	if (new Date(endDate) < now) {
+	  type = 'past';
+	} else if (new Date(startDate) <= now && new Date(endDate) >= now) {
+	  type = 'current';
+	}
+
 	let bgColor = type === 'past' ? 'bg-[#F0F7FE]' : 'bg-white';
 	bgColor = type === 'current' ? 'bg-blue' : bgColor;
 
 	let titleColor = type === 'past' ? 'text-blue' : 'text-grayLight';
 	titleColor = type === 'current' ? 'text-white' : titleColor;
+
+	const formattedDateTime = `${startDate.getDate()}.${startDate.getMonth()} - ${endDate.getDate()}.${endDate.getMonth()}.${endDate.getFullYear()}. | ${endDate.getHours()}:${String(endDate.getMinutes()).padStart(2, '0')} h`;
 
 	return (
 		<div
@@ -19,7 +30,7 @@ export function RoundPhase({ title, dateTime, type }: RoundBoxProps) {
 		>
 			<div className='relative w-full'>
 				<h4 className='mb-2 text-base font-bold'>{title}</h4>
-				<p className='text-sm font-medium'>{dateTime}</p>
+				<p className='text-sm font-medium'>{formattedDateTime}</p>
 				{type === 'past' && (
 					<span className='absolute right-1 top-1 block h-[18px] w-[18px]'>
 						<Image
