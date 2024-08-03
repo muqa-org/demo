@@ -9,7 +9,7 @@ import { Button } from './components/Button';
 export function Header() {
 	return (
 		<header className='border-color-borderGray border-b'>
-			<div className='mx-auto flex items-center justify-between py-5 px-5 xl:max-w-7xl xl:px-0 2xl:max-w-7xl 2xl:px-0'>
+			<div className='mx-auto flex items-center justify-between px-5 py-5 xl:max-w-7xl xl:px-0 2xl:max-w-7xl 2xl:px-0'>
 				<Link href='/'>
 					<Image
 						width='44'

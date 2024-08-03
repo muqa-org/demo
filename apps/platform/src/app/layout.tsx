@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Share_Tech_Mono } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
 
+import { Header } from './Header';
 import { WalletStatus } from './WalletStatus';
 import { Footer } from './components/footer/Footer';
-import { Header } from './header';
 import { AlloKitProviders } from './providers';
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'] });

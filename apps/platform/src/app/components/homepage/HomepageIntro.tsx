@@ -15,8 +15,8 @@ export function HomepageIntro() {
 				Sudjeluj u prvom kvadratnom financiranju grada splita
 			</h1>
 			<div className='text-center text-xl font-normal text-gray'>
-				This round is open to people from Split. Connect your wallet to
-				verify your eligibility and generate a key.
+				This round is open to people from Split. Connect your wallet to verify
+				your eligibility and generate a key.
 			</div>
 			<div className='mt-10'>
 				<Button

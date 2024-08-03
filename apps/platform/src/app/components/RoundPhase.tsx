@@ -9,11 +9,11 @@ interface RoundBoxProps {
 export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 	const now = new Date();
 	let type = 'future';
-  
+
 	if (new Date(endDate) < now) {
-	  type = 'past';
+		type = 'past';
 	} else if (new Date(startDate) <= now && new Date(endDate) >= now) {
-	  type = 'current';
+		type = 'current';
 	}
 
 	let bgColor = type === 'past' ? 'bg-[#F0F7FE]' : 'bg-white';
@@ -22,7 +22,7 @@ export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 	let titleColor = type === 'past' ? 'text-blue' : 'text-grayLight';
 	titleColor = type === 'current' ? 'text-white' : titleColor;
 
-	const formattedDateTime = `${startDate.getDate()}.${startDate.getMonth()} - ${endDate.getDate()}.${endDate.getMonth()}.${endDate.getFullYear()}. | ${endDate.getHours()}:${String(endDate.getMinutes()).padStart(2, '0')} h`;
+	const formattedDateTime = `${startDate.getDate()}.${startDate.getMonth() + 1}. - ${endDate.getDate()}.${endDate.getMonth() + 1}.${endDate.getFullYear()}. | ${endDate.getHours()}:${String(endDate.getMinutes()).padStart(2, '0')} h`;
 
 	return (
 		<div
