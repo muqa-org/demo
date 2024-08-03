@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import icons from '../common/Icons';
+
 export function FooterLinks() {
 	return (
 		<div className='flex items-center gap-10'>
@@ -13,7 +15,7 @@ export function FooterLinks() {
 					width='20'
 					height='20'
 					alt='Top Right Arrow'
-					src={`/images/icons/icon-top-right-arrow.svg`}
+					src={icons.topRightArrowIcon}
 				/>
 			</Link>
 			<Link
@@ -25,7 +27,7 @@ export function FooterLinks() {
 					width='18'
 					height='18'
 					alt='Top Right Arrow'
-					src={`/images/icons/icon-top-right-arrow.svg`}
+					src={icons.topRightArrowIcon}
 				/>
 			</Link>
 		</div>

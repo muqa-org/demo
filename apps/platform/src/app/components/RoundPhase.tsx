@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import icons from './common/Icons';
+
 interface RoundBoxProps {
 	title: string;
 	startDate: Date;
@@ -37,7 +39,7 @@ export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 							width='18'
 							height='18'
 							alt='Confirmed Icon'
-							src={`/images/icons/icon-yes.svg`}
+							src={icons.confirmedIcon}
 						/>
 					</span>
 				)}
