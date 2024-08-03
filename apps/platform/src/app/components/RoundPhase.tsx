@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import icons from './common/Icons';
+
 interface RoundBoxProps {
 	title: string;
 	startDate: Date;
