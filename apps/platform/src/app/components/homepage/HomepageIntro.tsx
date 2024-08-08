@@ -2,7 +2,7 @@
 
 import { Share_Tech_Mono } from 'next/font/google';
 
-import { Button } from '../Button';
+import { MuqaConnectButton } from '../MuqaConnectButton';
 
 const shareTechMono = Share_Tech_Mono({ weight: '400', subsets: ['latin'] });
 
@@ -19,14 +19,7 @@ export function HomepageIntro() {
 				your eligibility and generate a key.
 			</div>
 			<div className='mt-10'>
-				<Button
-					buttonType='black'
-					handleOnClick={() => {
-						return true;
-					}}
-				>
-					Prijavi se
-				</Button>
+				<MuqaConnectButton />
 			</div>
 		</div>
 	);
