@@ -45,6 +45,17 @@ function AddressTooltip({ show, label }: { show: boolean, label?: `0x${string}`}
   );
 }
 
+function LoadingIcon() {
+  const { isConnecting, isReconnecting } = useAccount();
+  const isLoading = isConnecting || isReconnecting;
+
+  return (
+    <>
+    {isLoading && <div className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-primary rounded-full"></div>}
+    </>
+  );
+}
+
 export function MuqaConnectButton(props: ButtonProps): JSX.Element {
   const account = useAccount()
   const { connect } = useConnect()
@@ -69,6 +80,7 @@ export function MuqaConnectButton(props: ButtonProps): JSX.Element {
         onMouseLeave={onMouseLeave}
         {...props}
       >
+        <LoadingIcon />
         {label}
       </Button>
       <AddressTooltip show={showTooltip} label={account.address} />
