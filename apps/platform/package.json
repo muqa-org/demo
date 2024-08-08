@@ -19,6 +19,7 @@
   "devDependencies": {
     "@muqa/eslint-config": "workspace:*",
     "@muqa/typescript-config": "workspace:*",
+    "@next/bundle-analyzer": "^14.2.5",
     "@types/node": "20",
     "@types/react": "18",
     "@types/react-dom": "18",
