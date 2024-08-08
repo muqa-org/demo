@@ -1,21 +1,53 @@
+'use client';
+
 import { ComethButton } from '@allo/kit';
+import Image from 'next/image';
 import Link from 'next/link';
 
+import { Button } from './components/Button';
+import Images from './components/common/Images';
+
 export function Header() {
-  return (
-    <header className="h-16 max-w-screen-lg mx-auto flex items-center justify-between">
-      <Link href="/">
-        <span className="font-semibold mr-2">MUQA initiative</span>
-        <span className="text-xs">demo</span>
-      </Link>
+	return (
+		<header className='border-color-borderGray border-b'>
+			<div className='mx-auto flex items-center justify-between px-5 py-5 xl:max-w-7xl xl:px-0 2xl:max-w-7xl 2xl:px-0'>
+				<Link href='/'>
+					<Image width='44' height='44' alt='MUQA logo' src={Images.MUQALogo} />
+				</Link>
 
-      <nav className="flex gap-8">
-        <Link href={'/admin/rounds'}>My Rounds</Link>
-        <Link href={'/admin/rounds/create'}>Create Round</Link>
-        <Link href={'/11155111/projects/create'}>Create Project</Link>
-      </nav>
+				<nav className='ml-24 flex gap-8'>
+					<Link
+						href={'/admin/rounds'}
+						className='text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
+					>
+						Projekti
+					</Link>
+					<Link
+						href={'/admin/rounds/create'}
+						className='text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
+					>
+						Create Round
+					</Link>
+					<Link
+						href={'/11155111/projects/create'}
+						className='text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
+					>
+						Create Project
+					</Link>
+				</nav>
 
-      <ComethButton />
-    </header>
-  );
+				<div className='ml-auto'>
+					<Button
+						buttonType='blue'
+						handleOnClick={() => {
+							return true;
+						}}
+					>
+						Prijavi se
+					</Button>
+					<ComethButton />
+				</div>
+			</div>
+		</header>
+	);
 }

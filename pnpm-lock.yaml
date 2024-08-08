@@ -57,6 +57,12 @@ importers:
       postcss:
         specifier: '8'
         version: 8.4.39
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.3
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.1
+        version: 0.6.5(prettier@3.3.3)
       tailwindcss:
         specifier: 3.4.1
         version: 3.4.1(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))
@@ -3366,6 +3372,7 @@ packages:
 
   '@walletconnect/sign-client@2.11.0':
     resolution: {integrity: sha512-H2ukscibBS+6WrzQWh+WyVBqO5z4F5et12JcwobdwgHnJSlqIoZxqnUYYWNCI5rUR5UKsKWaUyto4AE9N5dw4Q==}
+    deprecated: Reliability and performance greatly improved - please see https://github.com/WalletConnect/walletconnect-monorepo/releases
 
   '@walletconnect/time@1.0.2':
     resolution: {integrity: sha512-uzdd9woDcJ1AaBZRhqy5rNC9laqWGErfc4dxA9a87mPdKOgWMD85mcFo9dIYIts/Jwocfwn07EC6EzclKubk/g==}
