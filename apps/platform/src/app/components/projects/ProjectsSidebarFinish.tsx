@@ -1,3 +1,5 @@
+'use client';
+
 import { Share_Tech_Mono } from 'next/font/google';
 import { useEffect, useState } from 'react';
 
