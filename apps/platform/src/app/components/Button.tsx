@@ -1,23 +1,28 @@
-interface buttonProps {
-	children: string;
-	className?: string;
-	handleOnClick: () => void;
-	buttonType?: string;
+import * as React from 'react';
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>  {
+	variant?: string
 }
 
-export function Button({
-	children,
-	className,
-	handleOnClick,
-	buttonType,
-}: buttonProps) {
-	const buttonBg = buttonType === 'blue' ? 'bg-blue' : 'bg-primaryBlack';
-	return (
-		<button
-			onClick={handleOnClick}
-			className={`${buttonBg} ${className} flex items-center rounded-lg px-5 py-2 text-base font-normal leading-6 text-white hover:opacity-85 focus:outline-none`}
-		>
-			{children}
-		</button>
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+	({
+		children,
+		className,
+		variant,
+		...props
+	}: ButtonProps,
+	ref,
+	) => {
+			const buttonBg = variant === 'blue' ? 'bg-blue' : 'bg-primaryBlack';
+			const classes = `${buttonBg} ${className} flex items-center rounded-lg px-5 py-2 text-base font-normal leading-6 text-white hover:opacity-85 focus:outline-none`;
+			return (
+				<button
+					ref={ref}
+					className={classes}
+					{...props}
+				>
+					{children}
+				</button>
+			);
+		}
 	);
-}
