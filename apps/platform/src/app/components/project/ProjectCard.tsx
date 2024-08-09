@@ -32,7 +32,7 @@ export default function ProjectCard({ className }: ProjectCardProps) {
 			</div>
 			<div className='px-[18px] pb-6 pt-[46px]'>
 				<h3 className='mb-1 text-base font-medium leading-normal text-primaryBlack'>
-					NAZIV PROJEKTA
+					<Link href='/3/projects/3/'>NAZIV PROJEKTA</Link>
 				</h3>
 				<div className='mb-3 text-sm font-normal leading-normal text-gray'>
 					Lorem ipsum dolor sit amet consectetur. Eu nam libero arcu ipsum
