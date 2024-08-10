@@ -14,6 +14,7 @@ const icons = {
 	arrowRightIcon: '/images/icons/icon-arrow-right.svg',
 	arrowTopRight16Icon: '/images/icons/icon-arrow-top-right-blue-16.svg',
 	globeIcon: '/images/icons/icon-globe.svg',
+	closeIcon: '/images/icons/icon-close.svg',
 	
 	ethIconBlue: '/images/icons/icon-eth-blue.svg',
 	ethIconBlue12: '/images/icons/icon-eth-blue-12.svg',

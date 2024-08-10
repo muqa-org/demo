@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import RemoveFromCart from '@/app/components/cart/RemoveFromCart';
 import AddToCartAmount from '@/app/components/cart/AddToCartAmount';
+import RemoveFromCart from '@/app/components/cart/RemoveFromCart';
 import icons from '@/app/components/common/Icons';
 import images from '@/app/components/common/Images';
 

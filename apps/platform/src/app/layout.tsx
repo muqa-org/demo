@@ -10,6 +10,7 @@ import Header from './Header';
 import { WalletStatus } from './WalletStatus';
 import Footer from './components/footer/Footer';
 import { AlloKitProviders } from './providers';
+import NotificationBar from '@/app/components/NotificationBar';
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
 			<body className={dmSans.className}>
 				<NextIntlClientProvider messages={messages}>
 					<AlloKitProviders>
+						<NotificationBar message='notification' />
 						<Header />
 						<WalletStatus />
 						<main>{children}</main>

@@ -37,6 +37,7 @@ const config: Config = {
 			borderBlack: '#0B0B0B',
 			lightGray: '#F6F6F6',
 			lightBlue: '#579BEA',
+			white: '#FFFFFF',
 		},
 	},
 	plugins: [],

@@ -1,4 +1,12 @@
 {
-  "title": "Hello",
-  "description": "Welcome to our site"
+  "home": {
+    "notification": "Now accepting project proposals until September 1st 2024"
+  },
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "myContribution": "My contribution",
+    "results": "Results",
+    "propose": "Propose a project"
+  }
 }
