@@ -27,5 +27,26 @@
     "roundDonation": "DONATION",
     "roundVotes": "VOTES COUNTING",
     "roundResults": "RESULTS"
+  },
+  "EligibleProjects": {
+    "title": "Eligible Projects",
+    "public": "Public land in Split",
+    "publicPrivate": "Private garden",
+    "publicStreet": "Public street",
+    "can": "Can be done in time",
+    "canHuge": "Huge park with lakes",
+    "canSmall": "Small area with a few trees",
+    "conflicting": "No conflicting plans or uses",
+    "conflictingMiddle": "Middle of a road",
+    "conflictingGreeen": "Green patch next to road",
+    "contains": "Contains only these interventions",
+    "containsTrees": "Trees",
+    "containsGrass": "Grass",
+    "containsBenches": "Benches",
+    "containsCleanup": "Cleanup",
+    "containsBushes": "Bushes",
+    "containsFlowers": "Flowers",
+    "containsTaps": "Taps",
+    "containsDesign": "Design"
   }
 }

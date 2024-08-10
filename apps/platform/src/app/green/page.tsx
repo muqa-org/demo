@@ -1,3 +1,4 @@
+import { HomepageEligibleProjects } from '@/app/components/homepage/HomepageEligibleProjects';
 import { HomepageExampleProject } from '@/app/components/homepage/HomepageExampleProject';
 import { HomepageHero } from '@/app/components/homepage/HomepageHero';
 import { HomepageIntro } from '@/app/components/homepage/HomepageIntro';
@@ -10,6 +11,7 @@ export default function HomeGreen() {
 			<HomepageExampleProject />
 			<HomepageStats />
 			<HomepageIntro />
+			<HomepageEligibleProjects />
 		</>
 	);
 }
