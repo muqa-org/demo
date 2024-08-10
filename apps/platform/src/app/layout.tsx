@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
+import { cookies } from 'next/headers';
 import './globals.css';
+
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 import Header from './Header';
 import { WalletStatus } from './WalletStatus';
@@ -14,20 +18,27 @@ export const metadata: Metadata = {
 	description: '',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const locale = await getLocale();
+
+	// Providing all messages to the client
+	const messages = await getMessages();
+
 	return (
-		<html lang='hr'>
+		<html lang={locale}>
 			<body className={dmSans.className}>
-				<AlloKitProviders>
-					<Header />
-					<WalletStatus />
-					<main>{children}</main>
-					<Footer />
-				</AlloKitProviders>
+				<NextIntlClientProvider messages={messages}>
+					<AlloKitProviders>
+						<Header />
+						<WalletStatus />
+						<main>{children}</main>
+						<Footer />
+					</AlloKitProviders>
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	);
