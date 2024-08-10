@@ -17,7 +17,7 @@ export default function Header() {
 					<Image width='44' height='44' alt='MUQA logo' src={Images.MUQALogo} />
 				</Link> */}
 
-				<nav className='ml-24 flex gap-8'>
+				<nav className='flex gap-8'>
 					<Link
 						href={'/'}
 						className='border-b border-lightBlue px-1 pb-1 text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'

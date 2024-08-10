@@ -1,6 +1,12 @@
 {
   "home": {
-    "notification": "Now accepting project proposals until September 1st 2024"
+    "notification": "Now accepting project proposals until September 1st 2024",
+    "heroText": "Propose a project for a green space. Ideas with the most votes will get funding.",
+    "exampleProjectSubtitle": "Example project",
+    "exampleDisctrict": "Discrict",
+    "exampleStreet": "Street",
+    "exampleLocationDescription": "Location description",
+    "exampleProjectDescription": "Project description"
   },
   "navigation": {
     "home": "Home",

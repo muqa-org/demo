@@ -30,6 +30,9 @@ const config: Config = {
 				grayLight: {
 					DEFAULT: '#B0B0B0',
 				},
+				grayDark: {
+					DEFAULT: '#4A4A4A',
+				},
 			},
 		},
 		borderColor: {

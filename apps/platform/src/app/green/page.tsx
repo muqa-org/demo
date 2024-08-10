@@ -1,12 +1,16 @@
+import { HomepageExampleProject } from '@/app/components/homepage/HomepageExampleProject';
+import { HomepageHero } from '@/app/components/homepage/HomepageHero';
 import { HomepageIntro } from '@/app/components/homepage/HomepageIntro';
 import { HomepageRoundBoxes } from '@/app/components/homepage/HomepageRoundBoxes';
 
 export default function HomeGreen() {
 	return (
-		<div className='bg-[#F0F7FE] pb-36 pt-20'>
+		<>
+			<HomepageHero />
+			<HomepageExampleProject />
 			<HomepageIntro />
 			<HomepageRoundBoxes />
-		</div>
+		</>
 	);
 }
 
