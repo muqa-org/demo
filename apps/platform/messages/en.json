@@ -6,7 +6,12 @@
     "exampleDisctrict": "Discrict",
     "exampleStreet": "Street",
     "exampleLocationDescription": "Location description",
-    "exampleProjectDescription": "Project description"
+    "exampleProjectDescription": "Project description",
+    "stats": "Stats",
+    "statsBudget": "City's budget for this round.",
+    "statsAccepted": "Will be accepted into call.",
+    "statsLearn": "Learn why.",
+    "statsPeriod": "Period for voting."
   },
   "navigation": {
     "home": "Home",
