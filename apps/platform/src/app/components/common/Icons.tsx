@@ -7,6 +7,7 @@ const icons = {
 	DiscordLogo: '/images/icons/socials/icon-discord.svg',
 
 	confirmedIcon: '/images/icons/icon-yes.svg',
+	confirmedIconWhite: '/images/icons/icon-yes-white.svg',
 	topRightArrowIcon: '/images/icons/icon-top-right-arrow.svg',
 	searchIcon: '/images/icons/icon-search.svg',
 	arrowDownIcon: '/images/icons/icon-arrow-down.svg',

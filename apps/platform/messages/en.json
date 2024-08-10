@@ -13,11 +13,19 @@
     "statsLearn": "Learn why.",
     "statsPeriod": "Period for voting."
   },
-  "navigation": {
+    "navigation": {
     "home": "Home",
     "projects": "Projects",
     "myContribution": "My contribution",
     "results": "Results",
     "propose": "Propose a project"
+  },
+  "round": {
+    "timeline": "Timeline",
+    "buttonTitle": "Propose a project",
+    "roundApplication": "APPLICATIONS",
+    "roundDonation": "DONATION",
+    "roundVotes": "VOTES COUNTING",
+    "roundResults": "RESULTS"
   }
 }

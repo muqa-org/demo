@@ -1,10 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-import { useTranslations } from 'next-intl';
-
-import images from '@/app/components/common/Images';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export function HomepageStats() {
 	const t = useTranslations('home');

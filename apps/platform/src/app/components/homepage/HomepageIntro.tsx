@@ -1,8 +1,13 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { Button } from '../Button';
+import { HomepageRoundBoxes } from '@/app/components/homepage/HomepageRoundBoxes';
 
 export function HomepageIntro() {
+	const t = useTranslations('round');
+
 	return (
 		<div className='mx-auto flex flex-col items-center justify-center px-5 xl:max-w-7xl xl:px-48 2xl:max-w-7xl'>
 			<h1 className='mb-7 text-center text-5xl font-normal uppercase text-primaryBlack'>
