@@ -1,6 +1,7 @@
-import { RoundPhase } from '../RoundPhase';
+import RoundPhase from '@/app/components/RoundPhase';
+import { RoundData } from '@/app/types/round';
 
-export default function ProjectsSidebarPhases({ round }) {
+export default function ProjectsSidebarPhases({ round }: { round: RoundData }) {
 	return (
 		<div className='mt-6'>
 			<RoundPhase

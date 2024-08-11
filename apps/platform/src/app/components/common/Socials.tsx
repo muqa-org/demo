@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import icons from './Icons';
 
-export function Socials() {
+export default function Socials() {
 	return (
 		<div className='mb-6 flex items-center gap-6 lg:mb-0'>
 			<Link href='/' className='hover:opacity-85'>

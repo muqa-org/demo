@@ -1,7 +1,7 @@
-import { HomepageIntro } from './components/homepage/HomepageIntro';
-import { HomepageRoundBoxes } from './components/homepage/HomepageRoundBoxes';
-
 import { useTranslations } from 'next-intl';
+
+import HomepageIntro from '@/app/components/homepage/HomepageIntro';
+import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
 
 export default function Home() {
 	const t = useTranslations();

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import icons from '../common/Icons';
 
-export function FooterLinks() {
+export default function FooterLinks() {
 	return (
 		<div className='flex items-center gap-10'>
 			<Link

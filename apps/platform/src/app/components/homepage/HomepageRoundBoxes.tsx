@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 
-import { RoundPhase } from '../RoundPhase';
+import RoundPhase from '@/app/components/RoundPhase';
 
-export function HomepageRoundBoxes() {
+export default function HomepageRoundBoxes() {
 	const t = useTranslations('round');
 
 	return (

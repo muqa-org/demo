@@ -1,16 +1,15 @@
 'use client';
 
-import Image from 'next/image';
+import Container from '@/app/components/Container';
+
 import { useTranslations } from 'next-intl';
 
-import icons from '@/app/components/common/Icons';
-
-export function HomepageEligibleProjects() {
+export default function HomepageEligibleProjects() {
 	const t = useTranslations('EligibleProjects');
 
 	return (
 		<div className='pb-20 pt-20 leading-normal'>
-			<div className='mx-auto flex flex-col px-72 xl:max-w-7xl 2xl:max-w-[1440px]'>
+			<Container className='mx-auto flex flex-col px-72'>
 				<h2 className='mb-12 text-center text-4xl font-semibold'>
 					{t('title')}
 				</h2>
@@ -104,7 +103,7 @@ export function HomepageEligibleProjects() {
 						</ul>
 					</div>
 				</div>
-			</div>
+			</Container>
 		</div>
 	);
 }

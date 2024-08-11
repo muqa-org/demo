@@ -3,14 +3,15 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
+import Container from '@/app/components/Container';
 import images from '@/app/components/common/Images';
 
-export function HomepageExampleProject() {
+export default function HomepageExampleProject() {
 	const t = useTranslations('home');
 
 	return (
 		<div className='bg-cover bg-center bg-no-repeat pt-7 leading-normal'>
-			<div className='mx-auto flex flex-col xl:max-w-7xl 2xl:max-w-[1440px]'>
+			<Container className='mx-auto flex flex-col'>
 				<h4 className='text-grayDark mb-3 text-center text-base font-normal'>
 					{t('exampleProjectSubtitle')}
 				</h4>
@@ -58,7 +59,7 @@ export function HomepageExampleProject() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</Container>
 		</div>
 	);
 }

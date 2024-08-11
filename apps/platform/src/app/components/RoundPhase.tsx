@@ -8,7 +8,7 @@ interface RoundBoxProps {
 	endDate: Date;
 }
 
-export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
+export default function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 	const now = new Date();
 	let type = 'future';
 

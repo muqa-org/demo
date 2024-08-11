@@ -3,17 +3,19 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-export function HomepageStats() {
+import Container from '@/app/components/Container';
+
+export default function HomepageStats() {
 	const t = useTranslations('home');
 
 	return (
 		<div className='mt-14 bg-cover bg-center bg-no-repeat pb-16 leading-normal'>
-			<div className='mx-auto flex flex-col xl:max-w-7xl 2xl:max-w-[1440px]'>
+			<Container className='mx-auto flex flex-col'>
 				<div className='mb-20 h-[1px] border-2 border-dashed border-borderGray'></div>
 				<h2 className='mb-5 text-center text-4xl font-normal text-primaryBlack'>
 					{t('stats')}
 				</h2>
-				<div className='text-grayDark mx-10 mt-10 grid grid-cols-1 gap-[17em] py-6 text-base font-normal md:grid-cols-3'>
+				<div className='mx-10 mt-10 grid grid-cols-1 gap-[17em] py-6 text-base font-normal text-grayDark md:grid-cols-3'>
 					<div className='col-span-1 text-center'>
 						<h3 className='mb-6 text-[45px] font-bold text-[#39A56A]'>
 							50.000€
@@ -38,7 +40,7 @@ export function HomepageStats() {
 						<div>{t('statsPeriod')}</div>
 					</div>
 				</div>
-			</div>
+			</Container>
 		</div>
 	);
 }

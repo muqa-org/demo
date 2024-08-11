@@ -1,7 +1,6 @@
 import ProjectsSidebarFinish from '@/app/components/projects/ProjectsSidebarFinish';
 import ProjectsSidebarPhases from '@/app/components/projects/ProjectsSidebarPhases';
 import ProjectsSidebarsUserDonations from '@/app/components/projects/ProjectsSidebarsUserDonations';
-
 import { RoundData } from '@/app/types/round';
 
 export default function ProjectsSidebar({ round }: { round: RoundData }) {
