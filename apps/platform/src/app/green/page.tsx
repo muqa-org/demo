@@ -5,6 +5,7 @@ import HomepageHero from '@/app/components/homepage/HomepageHero';
 import HomepageIntro from '@/app/components/homepage/HomepageIntro';
 import HomepageStats from '@/app/components/homepage/HomepageStats';
 import HomepageFAQ from '@/app/components/homepage/HomepageFAQ';
+import HomepageBanner from '@/app/components/homepage/HomepageBanner';
 
 export default function HomeGreen() {
 	return (
@@ -16,6 +17,7 @@ export default function HomeGreen() {
 			<HomepageEligibleProjects />
 			<HomepageFoundsAllocated />
 			<HomepageFAQ />
+			<HomepageBanner />
 		</>
 	);
 }
