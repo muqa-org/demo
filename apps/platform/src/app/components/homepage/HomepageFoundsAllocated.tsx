@@ -11,7 +11,7 @@ export default function HomepageFoundsAllocated() {
 	const t = useTranslations('foundsAllocated');
 
 	return (
-		<div className='py-16 pb-24'>
+		<div className='py-16 pb-12'>
 			<Container className='mx-auto justify-between'>
 				<div className='mb-20 h-[1px] border-2 border-dashed border-borderGray'></div>
 				<div className='flex flex-row mx-32'>

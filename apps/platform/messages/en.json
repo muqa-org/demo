@@ -53,5 +53,20 @@
     "title": "How are funds allocated?",
     "votingMechanism": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City.",
     "allowsAnyone": "It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project fromthe matching pool."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "voting": "Why are we voting with donations?",
+    "votingAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "city": "Why does the city use Quadratic funding instead of simple voting?",
+    "cityAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "vote": "How do I vote / donate?",
+    "voteAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "canVote": "Who can vote?",
+    "canVoteAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "decide": "Who decides which proposals will be accepted for voting and how?",
+    "decideAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "should": "Why should I donate?",
+    "shouldAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool."
   }
 }
