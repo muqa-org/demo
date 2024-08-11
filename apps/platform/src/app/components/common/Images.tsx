@@ -5,6 +5,7 @@ const images = {
 	ZazelenimoLogo: '/images/zazelenimoLogo.svg',
 	parkSample: '/images/park-sample.png',
 	mapSample: '/images/map-sample.png',
+	contributionMatchedSample: '/images/contribution-matched-sample.webp',
 };
 
 export default images;

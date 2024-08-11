@@ -1,35 +1,37 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
-import Button from '@/app/components/Button';
 import Container from '@/app/components/Container';
-import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
+
+import Images from '@/app/components/common/Images';
 
 export default function HomepageFoundsAllocated() {
-	const t = useTranslations('round');
+	const t = useTranslations('foundsAllocated');
 
 	return (
 		<div className='py-16 pb-24'>
-			<div className='mb-20 h-[1px] border-2 border-dashed border-borderGray'></div>
-			<Container className='mx-auto flex flex-col items-center justify-center'>
-				<h1 className='mb-4 text-center text-5xl font-normal text-primaryBlack'>
-					{t('timeline')}
-				</h1>
-				<div className='text-center text-xl font-normal text-gray'>
-					August - September 2024
-				</div>
-				<HomepageRoundBoxes />
-				<div className='mt-10'>
-					<Button
-						buttonType='green'
-						handleOnClick={() => {
-							return true;
-						}}
-						className='px-16'
-					>
-						{t('buttonTitle')}
-					</Button>
+			<Container className='mx-auto justify-between'>
+				<div className='mb-20 h-[1px] border-2 border-dashed border-borderGray'></div>
+				<div className='flex flex-row mx-32'>
+					<div className='w-1/3'>
+						<Image
+							width={394}
+							height={240}
+							src={Images.contributionMatchedSample}
+							alt='Contribution Matched Sample'
+						/>
+					</div>
+					<div className='w-2/3 pl-24'>
+						<h1 className='mb-6 text-5xl font-normal text-primaryBlack'>
+							{t('title')}
+						</h1>
+						<div className='text-base text-grayDark'>
+							<p className='mb-4'>{t('votingMechanism')}</p>
+							<p>{t('allowsAnyone')}</p>
+						</div>
+					</div>
 				</div>
 			</Container>
 		</div>
