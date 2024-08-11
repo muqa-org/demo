@@ -10,7 +10,7 @@ export default function HomepageBanner() {
 
 	return (
 		<div className='py-8 pb-20'>
-			<Container className='mx-auto justify-between'>
+			<Container className='mx-auto'>
 				<Banner message={t('bannerMessage')} />
 			</Container>
 		</div>

@@ -24,9 +24,9 @@ export default function HomepageFoundsAllocated() {
 						/>
 					</div>
 					<div className='w-2/3 pl-24'>
-						<h1 className='mb-6 text-5xl font-normal text-primaryBlack'>
+						<h2 className='mb-6 text-5xl font-normal text-primaryBlack'>
 							{t('title')}
-						</h1>
+						</h2>
 						<div className='text-base text-grayDark'>
 							<p className='mb-4'>{t('votingMechanism')}</p>
 							<p>{t('allowsAnyone')}</p>
