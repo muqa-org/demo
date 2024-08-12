@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
 
-import Header from './Header';
+import { Header } from './Header';
 import { WalletStatus } from './WalletStatus';
-import Footer from './components/footer/Footer';
+import { Footer } from './components/footer/Footer';
 import { AlloKitProviders } from './providers';
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'] });

@@ -26,13 +26,8 @@ const config: Config = {
 				grayLight: {
 					DEFAULT: '#B0B0B0',
 				},
+				borderGray: '#D1D1D1',
 			},
-		},
-		borderColor: {
-			borderGray: '#D1D1D1',
-			borderBlack: '#0B0B0B',
-			lightGray: '#F6F6F6',
-			lightBlue: '#579BEA',
 		},
 	},
 	plugins: [],

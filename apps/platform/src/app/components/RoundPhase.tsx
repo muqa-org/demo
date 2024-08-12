@@ -28,7 +28,7 @@ export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 
 	return (
 		<div
-			className={`flex w-full items-center justify-between rounded-lg border border-gray-300 ${bgColor} ${titleColor} mb-3.5 px-2.5 py-2`}
+			className={`flex w-full items-center justify-between rounded-lg border border-gray-300 ${bgColor} ${titleColor} px-2.5 py-2`}
 		>
 			<div className='relative w-full'>
 				<h4 className='mb-2 text-base font-bold'>{title}</h4>

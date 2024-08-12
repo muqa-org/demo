@@ -17,7 +17,7 @@ function Datum({ title, value, children }: {
 }
 
 export function WalletStatus() {
-	const account = useAccount();
+  const account = useAccount();
 
   return (
     <div className="fixed top-20 left-0 w-auto h-auto px-4 py-2 opacity-50 bg-white border-gray-200">
