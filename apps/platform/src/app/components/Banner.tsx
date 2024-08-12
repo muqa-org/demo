@@ -1,5 +1,4 @@
 import images from '@/app/components/common/Images';
-import Button from '@/app/components/Button';
 
 const Banner = ({ message }: { message: string }) => {
 	return (
