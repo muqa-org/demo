@@ -1,11 +1,12 @@
 'use client';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { MuqaConnectButton } from './components/MuqaConnectButton';
-import Images from './components/common/Images';
+import { MuqaConnectButton } from '@/app/components/MuqaConnectButton';
+// import Images from '@/app/components/common/Images';
+import Container from '@/app/components/Container';
 
 export default function Header() {
 	const t = useTranslations('navigation');
