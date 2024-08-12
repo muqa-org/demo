@@ -1,11 +1,18 @@
+'use client'
+
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import Container from '@/app/components/Container';
 import icons from '@/app/components/common/Icons';
+import { useState } from 'react';
 
 const NotificationBar = ({ message }: { message: string }) => {
 	const t = useTranslations('home');
+
+	const [isShown, toggleNotification] = useState(true);
+
+	if (!isShown) return null;
 
 	return (
 		<div className='bg-[#6AFCAD]'>
@@ -19,6 +26,7 @@ const NotificationBar = ({ message }: { message: string }) => {
 						height='16'
 						alt='Close Icon'
 						src={icons.closeIcon}
+						onClick={() => toggleNotification(false)}
 						className='hover:opacity-50'
 					/>
 				</button>
