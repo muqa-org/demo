@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 
-import Button from '@/app/components/Button';
 import Container from '@/app/components/Container';
 import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
+import { MuqaConnectButton } from '../MuqaConnectButton';
 
 export default function HomepageIntro() {
 	const t = useTranslations('round');
