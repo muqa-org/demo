@@ -23,7 +23,3 @@ export default function HomeGreen() {
 		</>
 	);
 }
-
-function fixSvg(svg: string) {
-	return svg.replace(/(width|height)="[^"]*"/g, '$1="100%"');
-}
