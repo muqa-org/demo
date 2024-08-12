@@ -1,10 +1,9 @@
 'use client';
 
-import { ComethButton } from '@allo/kit';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Button } from './components/Button';
+import { MuqaConnectButton } from './components/MuqaConnectButton';
 import Images from './components/common/Images';
 
 export default function Header() {
@@ -37,15 +36,7 @@ export default function Header() {
 				</nav>
 
 				<div className='ml-auto'>
-					<Button
-						buttonType='blue'
-						handleOnClick={() => {
-							return true;
-						}}
-					>
-						Prijavi se
-					</Button>
-					<ComethButton />
+					<MuqaConnectButton  variant='blue' />
 				</div>
 			</div>
 		</header>

@@ -13,14 +13,7 @@ export function HomepageIntro() {
 				your eligibility and generate a key.
 			</div>
 			<div className='mt-10'>
-				<Button
-					buttonType='black'
-					handleOnClick={() => {
-						return true;
-					}}
-				>
-					Prijavi se
-				</Button>
+				<MuqaConnectButton />
 			</div>
 		</div>
 	);
