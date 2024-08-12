@@ -33,6 +33,9 @@ const config: Config = {
 				grayDark: {
 					DEFAULT: '#4A4A4A',
 				},
+				green: {
+					DEFAULT: '#39A56A',
+				},
 			},
 		},
 		borderColor: {

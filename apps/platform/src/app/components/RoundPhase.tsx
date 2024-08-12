@@ -19,7 +19,7 @@ export default function RoundPhase({ title, startDate, endDate }: RoundBoxProps)
 	}
 
 	let bgColor = type === 'past' ? 'bg-[#77b995]' : 'bg-white';
-	bgColor = type === 'current' ? 'bg-[#39A56A]' : bgColor;
+	bgColor = type === 'current' ? 'bg-green' : bgColor;
 
 	let titleColor = type === 'past' ? 'text-white' : 'text-grayLight';
 	titleColor = type === 'current' ? 'text-white' : titleColor;
