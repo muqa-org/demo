@@ -3,20 +3,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Images from './components/common/Images';
 import { MuqaConnectButton } from './components/MuqaConnectButton';
+import Images from './components/common/Images';
 
-export function Header() {
+export default function Header() {
 	return (
-		<header className='border-color-borderGray border-b'>
-			<div className='mx-auto flex items-center justify-between px-5 py-5 xl:max-w-7xl xl:px-0 2xl:max-w-7xl 2xl:px-0'>
+		<header className='border-borderGray border-b'>
+			<div className='mx-auto flex items-center justify-between px-5 py-5 xl:max-w-7xl xl:px-0 2xl:max-w-[1440px] 2xl:px-0'>
 				<Link href='/'>
 					<Image width='44' height='44' alt='MUQA logo' src={Images.MUQALogo} />
 				</Link>
 
 				<nav className='ml-24 flex gap-8'>
 					<Link
-						href={'/admin/rounds'}
+						href={'/projects'}
 						className='text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
 					>
 						Projekti
