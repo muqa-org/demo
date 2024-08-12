@@ -3,7 +3,7 @@ import ProjectDetails from '@/app/components/project/ProjectDetails';
 import ProjectsSidebar from '@/app/components/projects/ProjectsSidebar';
 import { RoundData } from '@/app/types/round';
 
-const roundData: RoundData = {
+        const roundData: RoundData = {
 	title:
 		'NATJEČAJ ZA KAZALIŠNU, GLAZBENO-SCENSKU I KONCERTNU DJELATNOST ZA 2025. GODINU',
 	endDate: '2024-09-08T13:00:00.000Z',
