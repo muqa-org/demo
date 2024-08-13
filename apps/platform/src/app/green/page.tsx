@@ -1,3 +1,5 @@
+import { getLocale } from 'next-intl/server';
+
 import HomepageEligibleProjects from '@/app/components/homepage/HomepageEligibleProjects';
 import HomepageExampleProject from '@/app/components/homepage/HomepageExampleProject';
 import HomepageFundsAllocated from '@/app/components/homepage/HomepageFundsAllocated';
@@ -8,10 +10,12 @@ import HomepageFAQ from '@/app/components/homepage/HomepageFAQ';
 import HomepageBanner from '@/app/components/homepage/HomepageBanner';
 import HomepageAbout from '@/app/components/homepage/HomepageAbout';
 
-export default function HomeGreen() {
+export default async function HomeGreen() {
+	const locale = await getLocale();
+
 	return (
 		<>
-			<HomepageHero />
+			<HomepageHero locale={locale} />
 			<HomepageExampleProject />
 			<HomepageStats />
 			<HomepageIntro />
