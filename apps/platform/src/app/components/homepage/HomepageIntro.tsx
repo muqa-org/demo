@@ -1,10 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 import Container from '@/app/components/Container';
 import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
-import { MuqaConnectButton } from '../MuqaConnectButton';
 
 export default function HomepageIntro() {
 	const t = useTranslations('round');
@@ -20,9 +20,9 @@ export default function HomepageIntro() {
 				</div>
 				<HomepageRoundBoxes />
 				<div className='mt-10'>
-					<button className='rounded-xl bg-green text-base font-normal px-10 py-3 text-white hover:opacity-85'>
+					<Link href="https://coda.io/form/Zazelenimo-Split-obrazac-za-prijedloge_dbtTs0gGIcq" target='_blank' className='rounded-xl bg-green text-base font-normal px-10 py-3 text-white hover:opacity-85'>
 						{t('buttonTitle')}
-					</button>
+					</Link>
 				</div>
 			</Container>
 		</div>

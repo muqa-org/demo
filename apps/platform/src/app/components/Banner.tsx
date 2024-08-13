@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import images from '@/app/components/common/Images';
 
 const Banner = ({
@@ -13,9 +15,9 @@ const Banner = ({
 			style={{ backgroundImage: `url(${images.bannerBg})` }}
 		>
 			<h2 className='text-4xl font-normal text-white'>{message}</h2>
-			<button className='rounded-md bg-white px-4 py-2 text-base font-normal text-green shadow-md hover:bg-green-50'>
+			<Link href="https://coda.io/form/Zazelenimo-Split-obrazac-za-prijedloge_dbtTs0gGIcq" target='_blank' className='rounded-md bg-white px-4 py-2 text-base font-normal text-green shadow-md hover:bg-green-50'>
 				{buttonText}
-			</button>
+			</Link>
 		</div>
 	);
 };
