@@ -4,8 +4,8 @@ const images = {
 	heroGreen: '/images/heroGreen.webp',
 	zazelenimoLogo: '/images/zazelenimoLogo.svg',
 	zazelenimoLogohr: '/images/zazelenimoLogo_hr.svg',
-	parkSample: '/images/park-sample.png',
-	mapSample: '/images/map-sample.png',
+	parkSample: '/images/park-sample.webp',
+	mapSample: '/images/map-sample.webp',
 	contributionMatchedSample: '/images/contribution-matched-sample.webp',
 	bannerBg: '/images/banner-bg.svg',
 };
