@@ -14,7 +14,8 @@
     "statsPeriod": "Trajanje glasovanja.",
     "bannerMessage": "Upravo prikupljamo prijedloge",
     "projectsSuffix": "projekata",
-    "days": "dana"
+    "days": "dana",
+    "bannerButtonText": "Predloži projekt"
   },
     "navigation": {
     "home": "Naslovnica",

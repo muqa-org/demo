@@ -14,7 +14,8 @@
     "statsPeriod": "Period for voting.",
     "bannerMessage": "Now accepting proposals",
     "projectsSuffix": "projects",
-    "days": "days"
+    "days": "days",
+    "bannerButtonText": "Propose a project"
   },
   "navigation": {
     "home": "Home",

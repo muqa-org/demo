@@ -11,7 +11,7 @@ export default function HomepageBanner() {
 	return (
 		<div className='py-8 pb-20'>
 			<Container className='mx-auto'>
-				<Banner message={t('bannerMessage')} />
+				<Banner message={t('bannerMessage')} buttonText={t('bannerButtonText')} />
 			</Container>
 		</div>
 	);
