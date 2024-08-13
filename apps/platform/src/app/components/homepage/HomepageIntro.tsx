@@ -20,9 +20,9 @@ export default function HomepageIntro() {
 				</div>
 				<HomepageRoundBoxes />
 				<div className='mt-10'>
-					<MuqaConnectButton variant='green' className='px-10'>
+					<button className='rounded-xl bg-green text-base font-normal px-10 py-3 text-white hover:opacity-85'>
 						{t('buttonTitle')}
-					</MuqaConnectButton>
+					</button>
 				</div>
 			</Container>
 		</div>
