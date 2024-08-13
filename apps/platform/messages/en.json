@@ -29,7 +29,7 @@
     "roundVotes": "VOTES COUNTING",
     "roundResults": "RESULTS"
   },
-  "EligibleProjects": {
+  "eligibleProjects": {
     "title": "Eligible Projects",
     "public": "Public land in Split",
     "publicPrivate": "Private garden",

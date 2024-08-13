@@ -17,14 +17,14 @@ export default function HomepageStats() {
 				</h2>
 				<div className='mx-10 mt-10 grid grid-cols-1 gap-[17em] py-6 text-base font-normal text-grayDark md:grid-cols-3'>
 					<div className='col-span-1 text-center'>
-						<h3 className='mb-6 text-[45px] font-bold text-[#39A56A]'>
+						<h3 className='mb-6 text-[45px] font-bold text-green'>
 							50.000€
 						</h3>
 						<div>{t('statsBudget')}</div>
 					</div>
 
 					<div className='col-span-1 text-center'>
-						<h3 className='mb-6 text-[45px] font-bold text-[#39A56A]'>
+						<h3 className='mb-6 text-[45px] font-bold text-green'>
 							25 projects
 						</h3>
 						<div>{t('statsAccepted')}</div>
@@ -34,7 +34,7 @@ export default function HomepageStats() {
 					</div>
 
 					<div className='col-span-1 text-center'>
-						<h3 className='mb-6 text-[45px] font-bold text-[#39A56A]'>
+						<h3 className='mb-6 text-[45px] font-bold text-green'>
 							20 days
 						</h3>
 						<div>{t('statsPeriod')}</div>

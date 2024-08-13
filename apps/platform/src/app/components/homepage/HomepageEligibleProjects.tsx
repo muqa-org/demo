@@ -5,7 +5,7 @@ import Container from '@/app/components/Container';
 import { useTranslations } from 'next-intl';
 
 export default function HomepageEligibleProjects() {
-	const t = useTranslations('EligibleProjects');
+	const t = useTranslations('eligibleProjects');
 
 	return (
 		<div className='pb-20 pt-20 leading-normal'>

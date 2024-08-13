@@ -1,11 +1,9 @@
 'use client';
 
-// import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { MuqaConnectButton } from '@/app/components/MuqaConnectButton';
-// import Images from '@/app/components/common/Images';
 import Container from '@/app/components/Container';
 
 export default function Header() {
@@ -14,10 +12,6 @@ export default function Header() {
 	return (
 		<header className='border-b border-borderGray'>
 			<Container className='mx-auto flex items-center justify-between px-5 py-5'>
-				{/* <Link href='/'>
-					<Image width='44' height='44' alt='MUQA logo' src={Images.MUQALogo} />
-				</Link> */}
-
 				<nav className='flex gap-8'>
 					<Link
 						href={'/'}
