@@ -9,6 +9,8 @@ module.exports = {
     require.resolve("@vercel/style-guide/eslint/next"),
     "eslint-config-turbo",
     "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
     './common-config.js',
   ],
   globals: {
