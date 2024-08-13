@@ -1,13 +1,15 @@
-'use client';
-
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 import Container from '@/app/components/Container';
 import images from '@/app/components/common/Images';
 
 export default function HomepageHero() {
 	const t = useTranslations('home');
+	const locale = getLocale();
+
+	const logo = locale === 'hr' ? images.zazelenimoLogohr : images.zazelenimoLogo;
 
 	return (
 		<div
@@ -19,7 +21,7 @@ export default function HomepageHero() {
 					width='354'
 					height='83'
 					alt='Zazelenimo Split Logo'
-					src={images.ZazelenimoLogo}
+					src={logo}
 				/>
 				<div className='w-1/3 pt-9 text-[32px] font-normal text-white'>
 					{t('heroText')}

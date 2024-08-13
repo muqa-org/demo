@@ -1,4 +1,78 @@
 {
-  "title": "Hello",
-  "description": "Welcome to our site"
+  "home": {
+    "notification": "Now accepting project proposals until September 1st 2024",
+    "heroText": "Propose a project for a green space. Ideas with the most votes will get funding.",
+    "exampleProjectSubtitle": "Example project",
+    "exampleDisctrict": "Discrict",
+    "exampleStreet": "Street",
+    "exampleLocationDescription": "Location description",
+    "exampleProjectDescription": "Project description",
+    "stats": "Stats",
+    "statsBudget": "City's budget for this round.",
+    "statsAccepted": "Will be accepted into call.",
+    "statsLearn": "Learn why.",
+    "statsPeriod": "Period for voting.",
+    "bannerMessage": "Now accepting proposals"
+  },
+    "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "myContribution": "My contribution",
+    "results": "Results",
+    "propose": "Propose a project"
+  },
+  "round": {
+    "timeline": "Timeline",
+    "buttonTitle": "Propose a project",
+    "roundApplication": "APPLICATIONS",
+    "roundDonation": "DONATION",
+    "roundVotes": "VOTES COUNTING",
+    "roundResults": "RESULTS"
+  },
+  "eligibleProjects": {
+    "title": "Eligible Projects",
+    "public": "Public land in Split",
+    "publicPrivate": "Private garden",
+    "publicStreet": "Public street",
+    "can": "Can be done in time",
+    "canHuge": "Huge park with lakes",
+    "canSmall": "Small area with a few trees",
+    "conflicting": "No conflicting plans or uses",
+    "conflictingMiddle": "Middle of a road",
+    "conflictingGreeen": "Green patch next to road",
+    "contains": "Contains only these interventions",
+    "containsTrees": "Trees",
+    "containsGrass": "Grass",
+    "containsBenches": "Benches",
+    "containsCleanup": "Cleanup",
+    "containsBushes": "Bushes",
+    "containsFlowers": "Flowers",
+    "containsTaps": "Taps",
+    "containsDesign": "Design"
+  },
+  "fundsAllocated": {
+    "title": "How are funds allocated?",
+    "votingMechanism": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City.",
+    "allowsAnyone": "It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project fromthe matching pool."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "voting": "Why are we voting with donations?",
+    "votingAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "city": "Why does the city use Quadratic funding instead of simple voting?",
+    "cityAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "vote": "How do I vote / donate?",
+    "voteAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "canVote": "Who can vote?",
+    "canVoteAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "decide": "Who decides which proposals will be accepted for voting and how?",
+    "decideAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "should": "Why should I donate?",
+    "shouldAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool."
+  },
+  "homeAbout": {
+    "title": "About the project",
+    "firstParagraph": "This project is pilot of Muqa - Municipal Quadratic Funding Initiative. It is based on the technology of Ethereum and idea of Quadratic funding.",
+    "secondParagraph": "Development of our application is funded by Ethereum Foundation. Learn more about Muqa here."
+  }
 }
