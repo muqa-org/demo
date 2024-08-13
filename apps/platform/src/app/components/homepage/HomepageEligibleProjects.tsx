@@ -7,6 +7,43 @@ import { useTranslations } from 'next-intl';
 export default function HomepageEligibleProjects() {
 	const t = useTranslations('eligibleProjects');
 
+	const eligibleProjects = [
+		{
+			title: t('public'),
+			criteria: [
+				{ label: t('publicPrivate'), eligible: false },
+				{ label: t('publicStreet'), eligible: true },
+			],
+		},
+		{
+			title: t('can'),
+			criteria: [
+				{ label: t('canHuge'), eligible: false },
+				{ label: t('canSmall'), eligible: true },
+			],
+		},
+		{
+			title: t('conflicting'),
+			criteria: [
+				{ label: t('conflictingMiddle'), eligible: false },
+				{ label: t('conflictingGreeen'), eligible: true },
+			],
+		},
+		{
+			title: t('contains'),
+			criteria: [
+				{ label: t('containsTrees'), eligible: true },
+				{ label: t('containsBushes'), eligible: true },
+				{ label: t('containsGrass'), eligible: true },
+				{ label: t('containsFlowers'), eligible: true },
+				{ label: t('containsBenches'), eligible: true },
+				{ label: t('containsTaps'), eligible: true },
+				{ label: t('containsCleanup'), eligible: true },
+				{ label: t('containsDesign'), eligible: true },
+			],
+		},
+	];
+
 	return (
 		<div className='pb-20 pt-20 leading-normal'>
 			<Container>
@@ -16,93 +53,41 @@ export default function HomepageEligibleProjects() {
 					</h2>
 
 					<div className='grid grid-cols-1 gap-16 md:grid-cols-2'>
-						<div className='text-xl text-gray'>
-							<h3 className='mb-4 text-xl font-bold uppercase text-primaryBlack'>
-								{t('public')}
-							</h3>
-							<ul className='space-y-2'>
-								<li className='flex items-center'>
-									<span className='text-red-500'>🚫</span>
-									<span className='ml-2'>{t('publicPrivate')}</span>
-								</li>
-								<li className='flex items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('publicStreet')}</span>
-								</li>
-							</ul>
-						</div>
-
-						<div className='pl-10 text-xl text-gray'>
-							<h3 className='mb-4 text-xl font-bold uppercase text-primaryBlack'>
-								{t('can')}
-							</h3>
-							<ul className='space-y-2'>
-								<li className='flex items-center'>
-									<span className='text-red-500'>🚫</span>
-									<span className='ml-2'>{t('canHuge')}</span>
-								</li>
-								<li className='flex items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('canSmall')}</span>
-								</li>
-							</ul>
-						</div>
-
-						<div className='text-xl text-gray'>
-							<h3 className='mb-4 text-xl font-bold uppercase text-primaryBlack'>
-								{t('conflicting')}
-							</h3>
-							<ul className='space-y-2'>
-								<li className='flex items-center'>
-									<span className='text-red-500'>🚫</span>
-									<span className='ml-2'>{t('conflictingMiddle')}</span>
-								</li>
-								<li className='flex items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('conflictingGreeen')}</span>
-								</li>
-							</ul>
-						</div>
-
-						<div className='pl-10 text-xl text-gray'>
-							<h3 className='mb-4 text-xl font-bold uppercase text-primaryBlack'>
-								{t('contains')}
-							</h3>
-							<ul className='flex flex-row flex-wrap space-y-2'>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsTrees')}</span>
-								</li>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsBushes')}</span>
-								</li>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsGrass')}</span>
-								</li>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsFlowers')}</span>
-								</li>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsBenches')}</span>
-								</li>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsTaps')}</span>
-								</li>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsCleanup')}</span>
-								</li>
-								<li className='flex w-1/2 items-center'>
-									<span className='text-green-500'>✅</span>
-									<span className='ml-2'>{t('containsDesign')}</span>
-								</li>
-							</ul>
-						</div>
+						{eligibleProjects.map((project, index) => (
+							<div
+								key={index}
+								className={`text-xl text-gray ${
+									index % 2 !== 0 ? 'pl-10' : ''
+								}`}
+							>
+								<h3 className='mb-4 text-xl font-bold uppercase text-primaryBlack'>
+									{project.title}
+								</h3>
+								<ul
+									className={`space-y-2 ${
+										project.title === t('contains') ? 'flex flex-wrap' : ''
+									}`}
+								>
+									{project.criteria.map((criterion, idx) => (
+										<li
+											key={idx}
+											className={`flex items-center ${
+												project.title === t('contains') ? 'w-1/2' : ''
+											}`}
+										>
+											<span
+												className={
+													criterion.eligible ? 'text-green-500' : 'text-red-500'
+												}
+											>
+												{criterion.eligible ? '✅' : '🚫'}
+											</span>
+											<span className='ml-2'>{criterion.label}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
 					</div>
 				</div>
 			</Container>
