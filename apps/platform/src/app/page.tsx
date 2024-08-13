@@ -1,12 +1,29 @@
-import HomepageIntro from '@/app/components/homepage/HomepageIntro';
-import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
+import { getLocale } from 'next-intl/server';
 
-export default function Home() {
+import HomepageEligibleProjects from '@/app/components/homepage/HomepageEligibleProjects';
+import HomepageExampleProject from '@/app/components/homepage/HomepageExampleProject';
+import HomepageFundsAllocated from '@/app/components/homepage/HomepageFundsAllocated';
+import HomepageHero from '@/app/components/homepage/HomepageHero';
+import HomepageIntro from '@/app/components/homepage/HomepageIntro';
+import HomepageStats from '@/app/components/homepage/HomepageStats';
+import HomepageFAQ from '@/app/components/homepage/HomepageFAQ';
+import HomepageBanner from '@/app/components/homepage/HomepageBanner';
+import HomepageAbout from '@/app/components/homepage/HomepageAbout';
+
+export default async function HomeGreen() {
+	const locale = await getLocale();
 
 	return (
-		<div className='bg-[#F0F7FE] pb-36 pt-20'>
+		<>
+			<HomepageHero locale={locale} />
+			<HomepageExampleProject />
+			<HomepageStats />
 			<HomepageIntro />
-			<HomepageRoundBoxes />
-		</div>
+			<HomepageEligibleProjects />
+			<HomepageFundsAllocated />
+			<HomepageFAQ />
+			<HomepageBanner />
+			<HomepageAbout />
+		</>
 	);
 }
