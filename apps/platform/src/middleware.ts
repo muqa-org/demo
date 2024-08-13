@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
 
 	// Additional check for common static file extensions if necessary
 	const staticFileRegex =
-		/\.(ico|png|jpg|jpeg|gif|webp|css|js|map|svg|woff|woff2|ttf|eot|pdf|doc|docx|xls|xlsx|ppt|pptx)$/i;
+		/\.(ico|png|jpg|jpeg|gif|webp|bmp|tiff|tif|css|css2|js|mjs|map|svg|woff|woff2|ttf|eot|otf|pdf|doc|docx|xls|xlsx|ppt|pptx|mp3|wav|ogg|mp4|webm|avi|mov|mkv|flv|zip|rar|tar|gz|json|xml|txt|md)$/i;
 	if (staticFileRegex.test(pathname)) {
 		return NextResponse.next();
 	}
