@@ -7,7 +7,7 @@ const images = {
 	parkSample: '/images/park-sample.webp',
 	mapSample: '/images/map-sample.webp',
 	contributionMatchedSample: '/images/contribution-matched-sample.webp',
-	bannerBg: '/images/banner-bg.svg',
+	bannerBg: '/images/banner-bg.webp',
 };
 
 export default images;
