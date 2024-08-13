@@ -23,6 +23,12 @@
     "results": "Results",
     "propose": "Propose a project"
   },
+  "auth": {
+    "connect": "Sign in",
+    "connecting": "Connecting...",
+    "reconnect": "Reconnect...",
+    "disconnect": "Disconnect"
+  },
   "round": {
     "timeline": "Timeline",
     "timelinePeriod": "August - September 2024",

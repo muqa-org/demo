@@ -40,7 +40,7 @@ export default function Header() {
 				</nav>
 
 				<div className='ml-auto'>
-					<MuqaConnectButton  variant='blue' />
+					<MuqaConnectButton  variant='green' />
 				</div>
 			</Container>
 		</header>

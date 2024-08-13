@@ -23,6 +23,12 @@
     "results": "Rezultati",
     "propose": "Predloži projekt"
   },
+  "auth": {
+    "connect": "Prijavi se",
+    "connecting": "Prijavljujem se...",
+    "reconnect": "Ponovno prijavljivanje...",
+    "disconnect": "Odjavi"
+  },
   "round": {
     "timeline": "Raspored",
     "timelinePeriod": "Kolovoz - Rujan 2024",
