@@ -1,5 +1,4 @@
 const images = {
-	MUQALogo: '/images/logo/logo-muqa.svg',
 	lineBlue: '/images/line-blue.svg',
 	heroGreen: '/images/heroGreen.webp',
 	zazelenimoLogo: '/images/zazelenimoLogo.svg',
