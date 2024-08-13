@@ -16,7 +16,7 @@ export default function HomepageIntro() {
 					{t('timeline')}
 				</h1>
 				<div className='text-center text-xl font-normal text-gray'>
-					August - September 2024
+					{t('timelinePeriod')}
 				</div>
 				<HomepageRoundBoxes />
 				<div className='mt-10'>

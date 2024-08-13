@@ -12,9 +12,11 @@
     "statsAccepted": "Will be accepted into call.",
     "statsLearn": "Learn why.",
     "statsPeriod": "Period for voting.",
-    "bannerMessage": "Now accepting proposals"
+    "bannerMessage": "Now accepting proposals",
+    "projectsSuffix": "projects",
+    "days": "days"
   },
-    "navigation": {
+  "navigation": {
     "home": "Home",
     "projects": "Projects",
     "myContribution": "My contribution",
@@ -23,11 +25,13 @@
   },
   "round": {
     "timeline": "Timeline",
+    "timelinePeriod": "August - September 2024",
+    "projects": "projects",
     "buttonTitle": "Propose a project",
-    "roundApplication": "APPLICATIONS",
-    "roundDonation": "DONATION",
-    "roundVotes": "VOTES COUNTING",
-    "roundResults": "RESULTS"
+    "roundApplication": "PROPOSALS",
+    "roundDonation": "VOTING",
+    "roundVotes": "CALCULATION",
+    "roundResults": "EXECUTION"
   },
   "eligibleProjects": {
     "title": "Eligible Projects",

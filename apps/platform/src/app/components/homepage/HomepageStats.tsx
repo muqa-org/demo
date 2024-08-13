@@ -15,7 +15,7 @@ export default function HomepageStats() {
 				<h2 className='mb-5 text-center text-4xl font-normal text-primaryBlack'>
 					{t('stats')}
 				</h2>
-				<div className='mx-10 mt-10 grid grid-cols-1 gap-[17em] py-6 text-base font-normal text-grayDark md:grid-cols-3'>
+				<div className='mx-10 mt-10 grid grid-cols-1 gap-[15em] py-6 text-base font-normal text-grayDark md:grid-cols-3'>
 					<div className='col-span-1 text-center'>
 						<h3 className='mb-6 text-[45px] font-bold text-green'>
 							50.000€
@@ -25,7 +25,7 @@ export default function HomepageStats() {
 
 					<div className='col-span-1 text-center'>
 						<h3 className='mb-6 text-[45px] font-bold text-green'>
-							25 projects
+							25 {t('projectsSuffix')}
 						</h3>
 						<div>{t('statsAccepted')}</div>
 						<Link href='/' className='underline hover:text-blue'>
@@ -35,7 +35,7 @@ export default function HomepageStats() {
 
 					<div className='col-span-1 text-center'>
 						<h3 className='mb-6 text-[45px] font-bold text-green'>
-							20 days
+							20 {t('days')}
 						</h3>
 						<div>{t('statsPeriod')}</div>
 					</div>

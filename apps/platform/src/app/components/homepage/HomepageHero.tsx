@@ -16,7 +16,7 @@ export default function HomepageHero({ locale }: { locale: string }) {
 		<div
 			style={{ backgroundImage: `url("${images.heroGreen}")` }}
 			className='bg-cover bg-center bg-no-repeat pb-[35em] pt-44'
-		>{locale}
+		>
 			<Container className='mx-auto flex flex-col'>
 				<Image width='354' height='83' alt='Zazelenimo Split Logo' src={logo} />
 				<div className='w-1/3 pt-9 text-[32px] font-normal text-white'>
