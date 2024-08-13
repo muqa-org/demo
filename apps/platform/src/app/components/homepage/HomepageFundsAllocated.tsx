@@ -7,8 +7,8 @@ import Container from '@/app/components/Container';
 
 import Images from '@/app/components/common/Images';
 
-export default function HomepageFoundsAllocated() {
-	const t = useTranslations('foundsAllocated');
+export default function HomepageFundsAllocated() {
+	const t = useTranslations('fundsAllocated');
 
 	return (
 		<div className='py-16 pb-12'>

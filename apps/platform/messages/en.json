@@ -50,7 +50,7 @@
     "containsTaps": "Taps",
     "containsDesign": "Design"
   },
-  "foundsAllocated": {
+  "fundsAllocated": {
     "title": "How are funds allocated?",
     "votingMechanism": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City.",
     "allowsAnyone": "It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project fromthe matching pool."

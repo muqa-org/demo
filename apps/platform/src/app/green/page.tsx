@@ -1,6 +1,6 @@
 import HomepageEligibleProjects from '@/app/components/homepage/HomepageEligibleProjects';
 import HomepageExampleProject from '@/app/components/homepage/HomepageExampleProject';
-import HomepageFoundsAllocated from '@/app/components/homepage/HomepageFoundsAllocated';
+import HomepageFundsAllocated from '@/app/components/homepage/HomepageFundsAllocated';
 import HomepageHero from '@/app/components/homepage/HomepageHero';
 import HomepageIntro from '@/app/components/homepage/HomepageIntro';
 import HomepageStats from '@/app/components/homepage/HomepageStats';
@@ -16,7 +16,7 @@ export default function HomeGreen() {
 			<HomepageStats />
 			<HomepageIntro />
 			<HomepageEligibleProjects />
-			<HomepageFoundsAllocated />
+			<HomepageFundsAllocated />
 			<HomepageFAQ />
 			<HomepageBanner />
 			<HomepageAbout />
