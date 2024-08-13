@@ -20,7 +20,7 @@ export default function HomepageIntro() {
 				</div>
 				<HomepageRoundBoxes />
 				<div className='mt-10'>
-					<MuqaConnectButton className='bg-green'>
+					<MuqaConnectButton variant='green' className='px-10'>
 						{t('buttonTitle')}
 					</MuqaConnectButton>
 				</div>
