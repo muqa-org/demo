@@ -8,7 +8,7 @@ interface RoundBoxProps {
 	endDate: Date;
 }
 
-export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
+export default function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 	const now = new Date();
 	let type = 'future';
 
@@ -18,10 +18,10 @@ export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 		type = 'current';
 	}
 
-	let bgColor = type === 'past' ? 'bg-[#F0F7FE]' : 'bg-white';
-	bgColor = type === 'current' ? 'bg-blue' : bgColor;
+	let bgColor = type === 'past' ? 'bg-[#77b995]' : 'bg-white';
+	bgColor = type === 'current' ? 'bg-green' : bgColor;
 
-	let titleColor = type === 'past' ? 'text-blue' : 'text-grayLight';
+	let titleColor = type === 'past' ? 'text-white' : 'text-grayLight';
 	titleColor = type === 'current' ? 'text-white' : titleColor;
 
 	const formattedDateTime = `${startDate.getDate()}.${startDate.getMonth() + 1}. - ${endDate.getDate()}.${endDate.getMonth() + 1}.${endDate.getFullYear()}. | ${endDate.getHours()}:${String(endDate.getMinutes()).padStart(2, '0')} h`;
@@ -38,8 +38,8 @@ export function RoundPhase({ title, startDate, endDate }: RoundBoxProps) {
 						<Image
 							width='18'
 							height='18'
-							alt='Confirmed Icon'
-							src={icons.confirmedIcon}
+							alt='Confirmed Icon White'
+							src={icons.confirmedIconWhite}
 						/>
 					</span>
 				)}

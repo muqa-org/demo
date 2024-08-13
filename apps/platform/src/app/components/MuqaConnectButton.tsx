@@ -4,7 +4,8 @@ import { useAccount, useConnect, useDisconnect } from 'wagmi';
 
 import { Button, ButtonProps } from './Button';
 import { comethConnector } from '@allo/kit/wagmi';
-import { useState } from 'react';
+import { PropsWithChildren, ReactNode, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 const TRUNCATE_LENGTH = 20;
 const TRUNCATE_OFFSET = 3;
@@ -13,23 +14,17 @@ const truncate = (str?: `0x${string}`) => str && str.length > TRUNCATE_LENGTH
   ? `${str.slice(0, TRUNCATE_OFFSET + 2)}...${str.slice(-TRUNCATE_OFFSET)}`
   : `${str}`;
 
-const LABELS = {
-  connect: () => 'Prijavi se',
-  connecting: () => 'Prijavljujem se',
-  reconnecting: () => 'Pononvno prijavljivanje',
-  disconnect: (account: string) => `Odjavi ${account}`
-}
-
 function getLabel() {
+  const t = useTranslations('auth');
   const { isConnected, isConnecting, isReconnecting } = useAccount();
   const account = useAccount()
 
-  let label = LABELS.connect();
+  let label = t('connect');
+  const address = truncate(account.address);
 
-  if (isConnecting) label = LABELS.connecting();
-  else if (isReconnecting) label = LABELS.reconnecting();
-  else if (isConnected) label = LABELS.disconnect(truncate(account.address));
-  else label = LABELS.connect();
+  if (isConnecting) label = t('connecting');
+  else if (isReconnecting) label = t('reconnect');
+  else if (isConnected) label = `${t('disconnect')} ${address}`;
 
   return label;
 }
@@ -56,7 +51,7 @@ function LoadingIcon() {
   );
 }
 
-export function MuqaConnectButton(props: ButtonProps): JSX.Element {
+export function MuqaConnectButton({ children, ...props }: PropsWithChildren<ButtonProps>): JSX.Element {
   const account = useAccount()
   const { connect } = useConnect()
   const { disconnect } = useDisconnect()
@@ -81,7 +76,7 @@ export function MuqaConnectButton(props: ButtonProps): JSX.Element {
         {...props}
       >
         <LoadingIcon />
-        {label}
+        {children || label}
       </Button>
       <AddressTooltip show={showTooltip} label={account.address} />
      </div>

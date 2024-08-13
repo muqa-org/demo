@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import { useAccount } from 'wagmi';
 
@@ -18,6 +19,11 @@ function Datum({ title, value, children }: {
 
 export function WalletStatus() {
 	const account = useAccount();
+  const pathname = usePathname();
+
+  const isHidden = true || pathname.includes('green')
+
+  if (isHidden) return null;
 
   return (
     <div className="fixed top-20 left-0 w-auto h-auto px-4 py-2 opacity-50 bg-white border-gray-200">

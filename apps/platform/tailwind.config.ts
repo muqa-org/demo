@@ -30,6 +30,12 @@ const config: Config = {
 				grayLight: {
 					DEFAULT: '#B0B0B0',
 				},
+				grayDark: {
+					DEFAULT: '#4A4A4A',
+				},
+				green: {
+					DEFAULT: '#39A56A',
+				},
 			},
 		},
 		borderColor: {
@@ -37,6 +43,7 @@ const config: Config = {
 			borderBlack: '#0B0B0B',
 			lightGray: '#F6F6F6',
 			lightBlue: '#579BEA',
+			white: '#FFFFFF',
 		},
 	},
 	plugins: [],

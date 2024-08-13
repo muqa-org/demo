@@ -1,12 +1,9 @@
-
-import ProjectsSidebar from '@/app/components/projects/ProjectsSidebar';
+import Container from '@/app/components/Container';
 import ProjectDetails from '@/app/components/project/ProjectDetails';
-
+import ProjectsSidebar from '@/app/components/projects/ProjectsSidebar';
 import { RoundData } from '@/app/types/round';
 
-
-
-const roundData: RoundData = {
+        const roundData: RoundData = {
 	title:
 		'NATJEČAJ ZA KAZALIŠNU, GLAZBENO-SCENSKU I KONCERTNU DJELATNOST ZA 2025. GODINU',
 	endDate: '2024-09-08T13:00:00.000Z',
@@ -17,10 +14,10 @@ export default function ProjectPage({
 }) {
   return (
     <section className='py-4'>
-			<div className='mx-auto flex gap-10 justify-between px-5 py-5 mb-6 xl:max-w-7xl xl:px-0 2xl:max-w-[1440px] 2xl:px-0'>
+			<Container className='mx-auto flex gap-10 justify-between px-5 py-5 mb-6'>
 				<ProjectsSidebar round={roundData} />
 				<ProjectDetails />
-			</div>
+			</Container>
 		</section>
   );
 }

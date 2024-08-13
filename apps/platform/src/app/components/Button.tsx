@@ -13,7 +13,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	}: ButtonProps,
 	ref,
 	) => {
-			const buttonBg = variant === 'blue' ? 'bg-blue' : 'bg-primaryBlack';
+			let buttonBg = variant === 'blue' ? 'bg-blue' : 'bg-primaryBlack';
+			buttonBg = variant === 'green' ? 'bg-green' : buttonBg;
 			const classes = `${buttonBg} ${className} flex items-center rounded-lg px-5 py-2 text-base font-normal leading-6 text-white hover:opacity-85 focus:outline-none`;
 			return (
 				<button

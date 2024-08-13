@@ -1,0 +1,88 @@
+{
+  "home": {
+    "notification": "Primamo prijedloge projekata do 1. rujna 2024.",
+    "heroText": "Predložite projekt uređenja zelene površine. Ideje s najviše glasova dobit će financiranje.",
+    "exampleProjectSubtitle": "Primjer projekta",
+    "exampleDisctrict": "Kvart",
+    "exampleStreet": "Ulica",
+    "exampleLocationDescription": "Opis lokacije",
+    "exampleProjectDescription": "Opis projekta",
+    "stats": "U brojkama",
+    "statsBudget": "Gradski proračun za ovaj poziv.",
+    "statsAccepted": "Bit će izabrano u uži krug.",
+    "statsLearn": "Saznaj više.",
+    "statsPeriod": "Trajanje glasovanja.",
+    "bannerMessage": "Upravo prikupljamo prijedloge",
+    "projectsSuffix": "projekata",
+    "days": "dana",
+    "bannerButtonText": "Predloži projekt"
+  },
+    "navigation": {
+    "home": "Naslovnica",
+    "projects": "Projekti",
+    "myContribution": "Moj doprinos",
+    "results": "Rezultati",
+    "propose": "Predloži projekt"
+  },
+  "auth": {
+    "connect": "Prijavi se",
+    "connecting": "Prijavljujem se...",
+    "reconnect": "Ponovno prijavljivanje...",
+    "disconnect": "Odjavi"
+  },
+  "round": {
+    "timeline": "Raspored",
+    "timelinePeriod": "Kolovoz - Rujan 2024",
+    "buttonTitle": "Predloži projekt",
+    "roundApplication": "PRIJAVE",
+    "roundDonation": "GLASOVANJE",
+    "roundVotes": "REZULTATI",
+    "roundResults": "IZVEDBA"
+  },
+  "eligibleProjects": {
+    "title": "Prihvatljivi projekti",
+    "public": "Javno vlasništvo u splitu",
+    "publicPrivate": "Privatni vrt",
+    "publicStreet": "Ulica",
+    "can": "Izvedivo u kratkom roku",
+    "canHuge": "Veliki park s jezerom",
+    "canSmall": "Mala površina s više stabala",
+    "conflicting": "U skladu s planovima korištenja",
+    "conflictingMiddle": "Stablo nasred ceste",
+    "conflictingGreeen": "Stablo na postojećoj zelenoj površini",
+    "contains": "Sadrži samo sljedeće intervencije u prostor",
+    "containsTrees": "Stabla",
+    "containsGrass": "Trava",
+    "containsBenches": "Klupe",
+    "containsCleanup": "Čišćenje",
+    "containsBushes": "Grmovi",
+    "containsFlowers": "Cvijeće",
+    "containsTaps": "Špine",
+    "containsDesign": "Dizajn"
+  },
+  "fundsAllocated": {
+    "title": "Kako se dijele sredstva?",
+    "votingMechanism": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City.",
+    "allowsAnyone": "It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project fromthe matching pool."
+  },
+  "faq": {
+    "title": "Najčešća pitanja",
+    "voting": "Zašto se glasuje donacijama?",
+    "votingAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "city": "Zašto se koristi kvadratno financiranje?",
+    "cityAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "vote": "Kako mogu donirati?",
+    "voteAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "canVote": "Tko može donirati?",
+    "canVoteAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "decide": "Tko odlučuje koji projekti ulaze u uži odabir?",
+    "decideAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool.",
+    "should": "Zašto bi itko glasovao?",
+    "shouldAnswer": "A new voting mechanism is used, called Quadratic Funding. The project with most donations will get the most funding from the City. It allows anyone to vote by donating money to their favourite projects. With every donation, funding is given to project from the matching pool."
+  },
+  "homeAbout": {
+    "title": "O ovom projektu",
+    "firstParagraph": "Ovo je pilot projekt u sklopu Municipalne Inicijative za Kvadratno Financiranje (MUQA).",
+    "secondParagraph": "Temelji se na Ethereum tehnologiji i provodi uz financijsku podršku Ethereum Foundation. Saznajte više o Muqi ovdje."
+  }
+}
