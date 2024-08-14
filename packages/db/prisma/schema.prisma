@@ -25,3 +25,12 @@ model User {
 
   @@map("user")
 }
+
+model RoundPhase {
+  id          Int       @id @default(autoincrement())
+  title       String    @unique
+  startDate   DateTime  @map(name: "start_date")
+  endDate     DateTime  @map(name: "end_date")
+
+  @@map("round_phase")
+}
