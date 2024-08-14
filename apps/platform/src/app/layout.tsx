@@ -13,8 +13,8 @@ import Footer from '@/app/components/footer/Footer';
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export const metadata: Metadata = {
-	title: 'MUQA initiative Demo App test1',
-	description: '',
+	title: 'Zazelenimo Split',
+	description: 'Zazelenimo Split',
 };
 
 export default async function RootLayout({

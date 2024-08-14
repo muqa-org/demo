@@ -16,10 +16,10 @@ export default function HomepageExampleProject() {
 					{t('exampleProjectSubtitle')}
 				</h4>
 				<h2 className='mb-5 text-center text-4xl font-normal text-primaryBlack'>
-					Blatine - sadnja stabala u Dubrovačkoj ulici
+					Blatine - planting trees along Dubrovačka street
 				</h2>
 				<div className='mx-20 mt-10 grid grid-cols-1 gap-14 p-6 md:grid-cols-3'>
-					<div className='col-span-1'>
+					<div className='col-span-1 rounded'>
 						<Image
 							width='325'
 							height='325'
@@ -31,8 +31,8 @@ export default function HomepageExampleProject() {
 
 					<div className='col-span-1'>
 						<Image
-							width='354'
-							height='83'
+							width='325'
+							height='325'
 							alt='Park Sample Image'
 							src={images.mapSample}
 							className='h-auto w-full rounded-[30px] shadow-md'
@@ -42,19 +42,16 @@ export default function HomepageExampleProject() {
 					<div className='col-span-1'>
 						<div className='text-grayDark text-left text-base'>
 							<p>
-								<strong>{t('exampleDisctrict')}:</strong> Blatine–Škrape, Gripe
+								<strong>{t('exampleDisctrict')}:</strong> Blatine-Škrape and Gripe
 							</p>
 							<p>
-								<strong>{t('exampleStreet')}:</strong> Dubrovačka ulica
+								<strong>{t('exampleStreet')}:</strong> Dubrovnik street
 							</p>
 							<p>
-								<strong>{t('exampleLocationDescription')}:</strong> Ispod
-								"tunela" u Dubrovačkoj, povise bolnice.
+								<strong>{t('exampleLocationDescription')}:</strong> Below the tunnel, above the hospital
 							</p>
 							<p className='mt-4'>
-								<strong>{t('exampleProjectDescription')}:</strong> Triba posadit
-								stabla koja bi pravila sjen na široke trotoare. Na nekim mistima
-								triba prokopat beton i napravit odgovarajuće rupe.
+								<strong>{t('exampleProjectDescription')}:</strong> Along the street we can plant trees to provide the shade along the wide sidewalks. Where necessary, make holes in asphalt for trees.
 							</p>
 						</div>
 					</div>
