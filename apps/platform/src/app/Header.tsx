@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { MuqaConnectButton } from '@/app/components/MuqaConnectButton';
 import Container from '@/app/components/Container';
 import { usePathname } from 'next/navigation';
+
+import { CodaFormProjectLink } from '@/app/config/config';
 
 export default function Header() {
 	const t = useTranslations('navigation');
@@ -58,7 +59,9 @@ export default function Header() {
 				</nav>
 
 				<div className='ml-auto'>
-					<MuqaConnectButton variant='green' />
+					<Link href={CodaFormProjectLink} target='_blank' className='rounded-xl bg-green text-base font-normal px-10 py-3 text-white hover:opacity-85'>
+						{t('propose')}
+					</Link>
 				</div>
 			</Container>
 		</header>
