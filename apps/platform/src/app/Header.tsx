@@ -5,42 +5,60 @@ import { useTranslations } from 'next-intl';
 
 import { MuqaConnectButton } from '@/app/components/MuqaConnectButton';
 import Container from '@/app/components/Container';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
 	const t = useTranslations('navigation');
+	const pathname = usePathname();
 
 	return (
 		<header className='border-b border-borderGray'>
 			<Container className='mx-auto flex items-center justify-between px-5 py-5'>
 				<nav className='flex gap-8'>
 					<Link
-						href={'/'}
-						className='border-b border-lightBlue px-1 pb-1 text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
+						href='/'
+						className={`border-b px-1 pb-1 text-sm font-medium uppercase leading-6 hover:text-blue ${
+							pathname === '/'
+								? 'border-lightBlue text-primaryBlack'
+								: 'border-white text-primaryBlack'
+						}`}
 					>
 						{t('home')}
 					</Link>
 					<Link
-						href={'/projects'}
-						className='border-b border-white text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
+						href='/projects'
+						className={`border-b text-sm font-medium uppercase leading-6 hover:text-blue ${
+							pathname === '/projects'
+								? 'border-lightBlue text-primaryBlack'
+								: 'border-white text-primaryBlack'
+						}`}
 					>
 						{t('projects')}
 					</Link>
 					<Link
-						href={'/admin/rounds/create'}
-						className='border-b border-white text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
+						href='/admin/rounds/create'
+						className={`border-b text-sm font-medium uppercase leading-6 hover:text-blue ${
+							pathname === '/admin/rounds/create'
+								? 'border-lightBlue text-primaryBlack'
+								: 'border-white text-primaryBlack'
+						}`}
 					>
 						{t('myContribution')}
 					</Link>
 					<Link
-						href={'/11155111/projects/create'}
-						className='border-b border-white text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue'
+						href='/11155111/projects/create'
+						className={`border-b text-sm font-medium uppercase leading-6 hover:text-blue ${
+							pathname === '/11155111/projects/create'
+								? 'border-lightBlue text-primaryBlack'
+								: 'border-white text-primaryBlack'
+						}`}
 					>
 						{t('results')}
 					</Link>
 				</nav>
 
 				<div className='ml-auto'>
-					<MuqaConnectButton  variant='green' />
+					<MuqaConnectButton variant='green' />
 				</div>
 			</Container>
 		</header>
