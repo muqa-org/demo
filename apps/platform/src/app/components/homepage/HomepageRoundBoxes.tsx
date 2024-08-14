@@ -1,32 +1,27 @@
 import { useTranslations } from 'next-intl';
 
 import RoundPhase from '@/app/components/RoundPhase';
+import prisma from '@muqa/db';
 
-export default function HomepageRoundBoxes() {
+export default async function HomepageRoundBoxes() {
 	const t = useTranslations('round');
 
+	const phases = await prisma.roundPhase.findMany({
+		orderBy: {
+			startDate: 'asc',
+		},
+	});
+
 	return (
-		<div className='mt-10 flex w-full flex-col items-center justify-center gap-2 p-5 pb-1.5 lg:flex-row'>
-			<RoundPhase
-				title={t('roundApplication')}
-				startDate={new Date('2024-08-19T12:00:00')}
-				endDate={new Date('2024-09-02T12:00:00')}
-			/>
-			<RoundPhase
-				title={t('roundDonation')}
-				startDate={new Date('2024-09-16T12:00:00')}
-				endDate={new Date('2024-09-30T12:00:00')}
-			/>
-			<RoundPhase
-				title={t('roundVotes')}
-				startDate={new Date('2024-10-01T12:00:00')}
-				endDate={new Date('2024-10-10T12:00:00')}
-			/>
-			<RoundPhase
-				title={t('roundResults')}
-				startDate={new Date('2024-10-15T12:00:00')}
-				endDate={new Date('2024-30-11T12:00:00')}
-			/>
-		</div>
+			<div className='mt-10 flex w-full flex-col items-center justify-center gap-2 p-5 pb-1.5 lg:flex-row'>
+				{phases.map((phase) => (
+					<RoundPhase
+						key={phase.id}
+						title={t(`round${phase.title}`)}
+						startDate={new Date(phase.startDate)}
+						endDate={new Date(phase.endDate)}
+					/>
+				))}
+			</div>
 	);
 }
