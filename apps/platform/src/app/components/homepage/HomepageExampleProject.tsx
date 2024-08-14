@@ -42,7 +42,7 @@ export default function HomepageExampleProject() {
 					<div className='col-span-1'>
 						<div className='text-grayDark text-left text-base'>
 							<p>
-								<strong>{t('exampleDisctrict')}:</strong> Blatine-Škrape and Gripe
+								<strong>{t('exampleNeighborhood')}:</strong> Blatine-Škrape and Gripe
 							</p>
 							<p>
 								<strong>{t('exampleStreet')}:</strong> Dubrovnik street

@@ -24,11 +24,7 @@ const nextConfig = {
         hostname: 'picsum.photos',
       },
     ],
-  },
-  i18n: {
-    locales: ['en', 'hr'],
-    defaultLocale: 'en',
-  },
+  }
 };
 
 export default withNextIntl(nextConfig);
