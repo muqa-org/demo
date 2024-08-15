@@ -36,9 +36,9 @@
     "projects": "projects",
     "buttonTitle": "Propose a project",
     "roundApplication": "PROPOSALS",
-    "roundDonation": "VOTING",
+    "roundDonation": "DONATING",
     "roundVotes": "CALCULATION",
-    "roundResults": "EXECUTION"
+    "roundResults": "IMPLEMENTATION"
   },
   "eligibleProjects": {
     "title": "Eligible Projects",
