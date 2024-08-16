@@ -1,14 +1,18 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import prisma from '@muqa/db';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import Container from '@/app/components/Container';
 import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
 
 import { CodaFormProjectLink } from '@/app/config/config';
+type HomepageIntroProps = {
+	phases: prisma.RoundPhase[];
+};
 
-export default function HomepageIntro() {
+export default function HomepageIntro({ phases }: HomepageIntroProps) {
 	const t = useTranslations('round');
 
 	return (
@@ -20,7 +24,7 @@ export default function HomepageIntro() {
 				<div className='text-center text-xl font-normal text-gray'>
 					{t('timelinePeriod')}
 				</div>
-				<HomepageRoundBoxes />
+				<HomepageRoundBoxes phases={phases} />
 				<div className='mt-10'>
 					<Link
 						href={CodaFormProjectLink}
