@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { MuqaConnectButton } from '@/app/components/MuqaConnectButton';
@@ -14,53 +13,27 @@ export default function Header() {
 	return (
 		<header className='border-b border-borderGray'>
 			<Container className='mx-auto flex items-center justify-between px-5 py-5'>
-				<nav className='flex gap-8'>
-					<Link
-						href='/'
-						className={`border-b px-1 pb-1 text-sm font-medium uppercase leading-6 hover:text-blue ${
-							pathname === '/'
-								? 'border-lightBlue text-primaryBlack'
-								: 'border-white text-primaryBlack'
-						}`}
-					>
-						{t('home')}
-					</Link>
-					<Link
-						href='/projects'
-						className={`border-b text-sm font-medium uppercase leading-6 hover:text-blue ${
-							pathname === '/projects'
-								? 'border-lightBlue text-primaryBlack'
-								: 'border-white text-primaryBlack'
-						}`}
-					>
-						{t('projects')}
-					</Link>
-					<Link
-						href='/admin/rounds/create'
-						className={`border-b text-sm font-medium uppercase leading-6 hover:text-blue ${
-							pathname === '/admin/rounds/create'
-								? 'border-lightBlue text-primaryBlack'
-								: 'border-white text-primaryBlack'
-						}`}
-					>
-						{t('myContribution')}
-					</Link>
-					<Link
-						href='/11155111/projects/create'
-						className={`border-b text-sm font-medium uppercase leading-6 hover:text-blue ${
-							pathname === '/11155111/projects/create'
-								? 'border-lightBlue text-primaryBlack'
-								: 'border-white text-primaryBlack'
-						}`}
-					>
-						{t('results')}
-					</Link>
-				</nav>
+				<button className='text-2xl md:hidden' onClick={toggleMenu}>
+					☰
+				</button>
+				<div className='hidden gap-8 md:flex'>
+					<Navigation />
+				</div>
 
 				<div className='ml-auto'>
 					<MuqaConnectButton variant='green' />
 				</div>
 			</Container>
+			<div
+				className={`${
+					isOpen ? 'block' : 'hidden'
+				} absolute left-0 top-0 h-full w-2/3 bg-green p-7 md:hidden`}
+			>
+				<Navigation
+					navClassName='flex-column flex-wrap'
+					linkClassName='mt-2 w-full border-b-0 text-lg text-white'
+				/>
+			</div>
 		</header>
 	);
 }
