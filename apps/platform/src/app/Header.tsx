@@ -16,7 +16,7 @@ export default function Header() {
 				<button className='text-2xl md:hidden' onClick={toggleMenu}>
 					☰
 				</button>
-				<div className='hidden gap-8 md:flex'>
+				<div className='hidden md:flex'>
 					<Navigation />
 				</div>
 
