@@ -59,7 +59,11 @@ export default function Header() {
 				</nav>
 
 				<div className='ml-auto'>
-					<Link href={CodaFormProjectLink} target='_blank' className='rounded-xl bg-green text-base font-normal px-10 py-3 text-white hover:opacity-85'>
+					<Link
+						href={CodaFormProjectLink}
+						target='_blank'
+						className='rounded-xl bg-green px-10 py-3 text-base font-normal text-white hover:opacity-85'
+					>
 						{t('propose')}
 					</Link>
 				</div>
