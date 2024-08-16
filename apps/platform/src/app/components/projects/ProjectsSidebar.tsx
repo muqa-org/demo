@@ -14,7 +14,7 @@ export default function ProjectsSidebar({ round }: { round: RoundData }) {
 					{round.title}
 				</h2>
 				<ProjectsSidebarFinish round={round} />
-				<ProjectsSidebarPhases round={round} />
+				<ProjectsSidebarPhases phases={round.phases} />
 			</div>
 			<ProjectsSidebarsUserDonations />
 		</div>

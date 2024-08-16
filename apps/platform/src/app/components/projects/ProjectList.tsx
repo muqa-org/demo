@@ -1,3 +1,5 @@
+'use client';
+
 import ProjectListHeader from '@/app/components/projects/ProjectListHeader';
 import ProjectListTable from '@/app/components/projects/ProjectListTable';
 
