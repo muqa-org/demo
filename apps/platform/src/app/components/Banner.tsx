@@ -11,11 +11,17 @@ const Banner = ({
 }) => {
 	return (
 		<div
-			className='flex items-center justify-between rounded-[30px] bg-cover bg-center bg-no-repeat px-12 py-8'
+			className='flex flex-col items-center justify-between rounded-[30px] bg-cover bg-center bg-no-repeat px-12 py-8 md:flex-row'
 			style={{ backgroundImage: `url(${images.bannerBg})` }}
 		>
-			<h2 className='text-4xl font-normal text-white'>{message}</h2>
-			<Link href="https://coda.io/form/Zazelenimo-Split-obrazac-za-prijedloge_dbtTs0gGIcq" target='_blank' className='rounded-md bg-white px-4 py-2 text-base font-normal text-green shadow-md hover:bg-green-50'>
+			<h2 className='mb-16 text-center text-4xl font-normal text-white sm:mb-0 md:text-left'>
+				{message}
+			</h2>
+			<Link
+				href='https://coda.io/form/Zazelenimo-Split-obrazac-za-prijedloge_dbtTs0gGIcq'
+				target='_blank'
+				className='rounded-md bg-white px-4 py-2 text-base font-normal text-green shadow-md hover:bg-green-50'
+			>
 				{buttonText}
 			</Link>
 		</div>

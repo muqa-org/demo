@@ -45,19 +45,19 @@ export default function HomepageEligibleProjects() {
 	];
 
 	return (
-		<div className='pb-20 pt-20 leading-normal'>
+		<div className='py-10 sm:pb-20 sm:pt-20 leading-normal'>
 			<Container>
-				<div className='flex flex-col px-44'>
+				<div className='flex flex-col px-5 sm:px-16 xl:px-44'>
 					<h2 className='mb-12 text-center text-4xl font-semibold'>
 						{t('title')}
 					</h2>
 
-					<div className='grid grid-cols-1 gap-16 md:grid-cols-2'>
+					<div className='grid grid-cols-1 gap-8 lg:grid-cols-2 xl:gap-16'>
 						{eligibleProjects.map((project, index) => (
 							<div
 								key={index}
 								className={`text-xl text-gray ${
-									index % 2 !== 0 ? 'pl-10' : ''
+									index % 2 !== 0 ? 'lg:pl-10' : ''
 								}`}
 							>
 								<h3 className='mb-4 text-xl font-bold uppercase text-primaryBlack'>

@@ -9,12 +9,12 @@ export default function HomepageBanner() {
 	const t = useTranslations('homeAbout');
 
 	return (
-		<div className='py-8 pb-20'>
+		<div className='mx-5 py-8 pb-20 sm:mx-0'>
 			<Container className='mx-auto text-center'>
-				<h2 className='mb-8 text-5xl font-normal text-primaryBlack'>
+				<h2 className='mb-8 text-4xl font-normal text-primaryBlack sm:text-5xl'>
 					{t('title')}
 				</h2>
-				<div className='mx-auto w-4/6 px-20 text-xl text-grayDark'>
+				<div className='mx-auto text-xl text-grayDark lg:w-4/6 lg:px-20'>
 					<p className='mb-6'>{t('firstParagraph')}</p>
 					<p>{t('secondParagraph')}</p>
 				</div>

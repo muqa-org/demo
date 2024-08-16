@@ -6,7 +6,7 @@ export default function HomepageRoundBoxes() {
 	const t = useTranslations('round');
 
 	return (
-		<div className='mt-10 flex w-full flex-col items-center justify-center gap-2 p-5 pb-1.5 lg:flex-row'>
+		<div className='mt-10 flex w-full flex-col items-center justify-center gap-2 p-5 pb-1.5 xl:flex-row'>
 			<RoundPhase
 				title={t('roundApplication')}
 				startDate={new Date('2024-08-19T12:00:00')}
@@ -25,7 +25,7 @@ export default function HomepageRoundBoxes() {
 			<RoundPhase
 				title={t('roundResults')}
 				startDate={new Date('2024-10-15T12:00:00')}
-				endDate={new Date('2024-30-11T12:00:00')}
+				endDate={new Date('2024-11-30T12:00:00')}
 			/>
 		</div>
 	);
