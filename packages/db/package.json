@@ -2,16 +2,20 @@
   "name": "@muqa/db",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "files": [
-    "lib"
-  ],
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "postinstall": "prisma generate",
+    "typecheck": "tsc --noEmit"
+  },
   "devDependencies": {
     "@muqa/typescript-config": "workspace:^",
     "@types/node": "^22.3.0",

@@ -1,4 +1,4 @@
-import prisma from '@muqa/db';
+import { getRoundPhases } from '@muqa/db';
 import { getLocale } from 'next-intl/server';
 
 import HomepageAbout from '@/app/components/homepage/HomepageAbout';
@@ -14,11 +14,7 @@ import HomepageStats from '@/app/components/homepage/HomepageStats';
 export default async function HomeGreen() {
 	const locale = await getLocale();
 
-	const phases = await prisma.roundPhase.findMany({
-		orderBy: {
-			startDate: 'asc',
-		},
-	});
+	const phases = await getRoundPhases();
 
 	return (
 		<>

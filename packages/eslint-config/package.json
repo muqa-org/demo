@@ -7,9 +7,6 @@
     "next.js",
     "react-internal.js"
   ],
-  "scripts": {
-    "nuke": "pnpm dlx del-cli .turbo dist node_modules"
-  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",

@@ -1,4 +1,4 @@
-import prisma from '@muqa/db';
+import { RoundPhase as RoundPhaseType } from '@muqa/db';
 import { useTranslations } from 'next-intl';
 
 import RoundPhase from '@/app/components/RoundPhase';
@@ -6,7 +6,7 @@ import RoundPhase from '@/app/components/RoundPhase';
 export default function ProjectsSidebarPhases({
 	phases,
 }: {
-	phases: prisma.RoundPhase[];
+	phases: RoundPhaseType[];
 }) {
 	const t = useTranslations('round');
 
