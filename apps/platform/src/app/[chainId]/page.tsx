@@ -1,4 +1,4 @@
-'use client';
+import prisma from '@muqa/db';
 
 import Container from '@/app/components/Container';
 import ProjectList from '@/app/components/projects/ProjectList';
@@ -9,9 +9,15 @@ const roundData: RoundData = {
 	title:
 		'NATJEČAJ ZA KAZALIŠNU, GLAZBENO-SCENSKU I KONCERTNU DJELATNOST ZA 2025. GODINU',
 	endDate: '2024-09-08T13:00:00.000Z',
+	phases: [],
 };
 
-export default function DiscoverRoundsPage() {
+export default async function DiscoverRoundsPage() {
+	roundData.phases = await prisma.roundPhase.findMany({
+		orderBy: {
+			startDate: 'asc',
+		},
+	});
 	return (
 		<section className='py-4'>
 			<Container className='mx-auto flex gap-10 justify-between px-5 py-5 mb-6'>
@@ -34,14 +40,14 @@ export default function DiscoverRoundsPage() {
 //         /*
 //       DiscoverRounds is a pre-made component that does most of the heavy lifting
 //       in fetching and displaying rounds.
-      
+
 //       It fetches the rounds based on a provided query (with sane defaults) and
 //       renders it (as a grid by default but easy to customize with own components).
 //     */
 //         query={{
-//           /* 
-//         The query prop enables a powerful way to fetch data from the indexer. 
-        
+//           /*
+//         The query prop enables a powerful way to fetch data from the indexer.
+
 //         For example:
 //         - only rounds with these strategies (deployed contract address)
 //         - order by when they were created, newest first
@@ -62,7 +68,7 @@ export default function DiscoverRoundsPage() {
 //         /*
 
 //       The renderItem function lets us change what component is rendered.
-      
+
 //       For example:
 //         - Wrap the default RoundItem component in a link  */
 //         renderItem={(round, Component) => (
@@ -73,13 +79,13 @@ export default function DiscoverRoundsPage() {
 //         /*
 
 //       Columns let us choose how to render the rounds.
-      
+
 //       For example:
 //       - 1 column on phones
 //       - 2 columns on small to medium
 //       - 3 columns on medium to large
 //       - 4 columns on large and above
-      
+
 //       We could also set it to [1] to render as list on all screens
 //       */
 //         columns={[1, 2, 3]}
