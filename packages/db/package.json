@@ -12,6 +12,9 @@
   "files": [
     "lib"
   ],
+  "scripts": {
+    "postinstall": "prisma generate"
+  },
   "devDependencies": {
     "@muqa/typescript-config": "workspace:^",
     "@types/node": "^22.3.0",
