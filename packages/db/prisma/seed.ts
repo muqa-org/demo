@@ -1,4 +1,4 @@
-import prisma from '../lib/db';
+import { prisma } from '../lib/client';
 import seedRoundPhases from './seeds/round-phases';
 
 async function seed() {
