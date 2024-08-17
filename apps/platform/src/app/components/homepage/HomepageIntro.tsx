@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Container from '@/app/components/Container';
 import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
 
+import { CodaFormProjectLink } from '@/app/config/config';
+
 export default function HomepageIntro() {
 	const t = useTranslations('round');
 
@@ -20,7 +22,11 @@ export default function HomepageIntro() {
 				</div>
 				<HomepageRoundBoxes />
 				<div className='mt-10'>
-					<Link href="https://coda.io/form/Zazelenimo-Split-obrazac-za-prijedloge_dbtTs0gGIcq" target='_blank' className='rounded-xl bg-green text-base font-normal px-10 py-3 text-white hover:opacity-85'>
+					<Link
+						href={CodaFormProjectLink}
+						target='_blank'
+						className='rounded-xl bg-green px-10 py-3 text-base font-normal text-white hover:opacity-85'
+					>
 						{t('buttonTitle')}
 					</Link>
 				</div>
