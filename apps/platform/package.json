@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "nuke": "pnpm dlx del-cli .turbo .next .output node_modules"
+    "nuke": "pnpm dlx del-cli .turbo .next .output node_modules",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@allo/kit": "workspace:*",

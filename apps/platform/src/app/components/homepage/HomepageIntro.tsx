@@ -1,6 +1,4 @@
-'use client';
-
-import prisma from '@muqa/db';
+import { RoundPhase } from '@muqa/db';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
@@ -8,8 +6,9 @@ import Container from '@/app/components/Container';
 import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
 
 import { CodaFormProjectLink } from '@/app/config/config';
+
 type HomepageIntroProps = {
-	phases: prisma.RoundPhase[];
+	phases: RoundPhase[]
 };
 
 export default function HomepageIntro({ phases }: HomepageIntroProps) {

@@ -1,9 +1,11 @@
+import { RoundPhase as RoundPhaseType } from '@muqa/db';
+
 import { useTranslations } from 'next-intl';
 
 import RoundPhase from '@/app/components/RoundPhase';
 
 type HomepageRoundBoxesProps = {
-	phases: prisma.RoundPhase[];
+	phases: RoundPhaseType[];
 };
 
 export default function HomepageRoundBoxes({
