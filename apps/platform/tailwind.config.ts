@@ -39,6 +39,7 @@ const config: Config = {
 			},
 		},
 		borderColor: {
+			borderGreen: '#39A56A',
 			borderGray: '#D1D1D1',
 			borderBlack: '#0B0B0B',
 			lightGray: '#F6F6F6',
