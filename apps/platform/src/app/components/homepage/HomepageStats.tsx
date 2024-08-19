@@ -15,7 +15,7 @@ export default function HomepageStats() {
 				<h2 className='mb-5 text-center text-4xl font-normal text-primaryBlack'>
 					{t('stats')}
 				</h2>
-				<div className='mx-2 mt-10 grid grid-cols-1 gap-[5em] py-6 text-base font-normal text-grayDark lg:grid-cols-3 xl:mx-10 xl:gap-[15em] 2xl:mx-10'>
+				<div className='mx-2 mt-10 grid grid-cols-1 gap-[5em] py-6 text-base font-normal text-grayDark lg:grid-cols-3 xl:mx-10 xl:gap-[12em] 2xl:mx-10 2xl:gap-[15em]'>
 					<div className='col-span-1 text-center'>
 						<h3 className='mb-6 text-[45px] font-bold text-green'>50.000€</h3>
 						<div>{t('statsBudget')}</div>

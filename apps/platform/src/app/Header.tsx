@@ -29,12 +29,12 @@ export default function Header() {
 					<Image width='24' height='18' alt='Menu Icon' src={icons.menuIcon} />
 				</button>
 				<div className='hidden md:flex'>
-					<Navigation />
+					<Navigation screen='desktop' />
 				</div>
 
 				<div className='ml-auto flex items-center justify-end'>
 					<div className='hidden md:block'>
-						<LanguageSwitcher />
+						<LanguageSwitcher screen='desktop' />
 					</div>
 					<MuqaConnectButton variant='green' className='ml-4' />
 				</div>
@@ -45,14 +45,23 @@ export default function Header() {
 				} absolute left-0 top-0 h-full w-full md:hidden`}
 			>
 				<div className='flex h-full w-full flex-row'>
-					<div className='h-full w-2/3 bg-green p-7'>
-						<LanguageSwitcher />
+					<div className='h-full w-3/4 bg-green p-7'>
+						<LanguageSwitcher screen='mobile' />
 						<Navigation
-							navClassName='flex-column flex-wrap'
-							linkClassName='mt-2 w-full border-b-0 text-lg text-white'
+							screen='mobile'
 						/>
 					</div>
-					<div className='h-full w-1/3 bg-green p-7'></div>
+					<button
+						onClick={toggleMenu}
+						className='flex h-full w-1/4 flex-col items-center justify-start bg-black bg-opacity-80 p-7'
+					>
+						<Image
+							width='24'
+							height='18'
+							alt='Menu Icon'
+							src={icons.closeIconGray}
+						/>
+					</button>
 				</div>
 			</div>
 		</header>
