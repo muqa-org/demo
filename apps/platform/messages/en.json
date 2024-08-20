@@ -89,5 +89,10 @@
   "languages" : {
     "en": "English",
     "hr": "Croatian"
+  },
+  "projects" : {
+    "title": "Projects",
+    "map": "Map",
+    "board": "Board"
   }
 }

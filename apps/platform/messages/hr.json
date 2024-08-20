@@ -88,5 +88,10 @@
   "languages" : {
     "en": "Engleski",
     "hr": "Hrvatski"
+  },
+  "projects" : {
+    "title": "Projekti",
+    "map": "Mapa",
+    "board": "Ploča"
   }
 }

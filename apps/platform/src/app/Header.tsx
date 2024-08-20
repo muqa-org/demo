@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import icons from '@/app/components/common/Icons';
 
@@ -35,7 +36,7 @@ export default function Header() {
 				</div>
 
 				<div className='ml-auto flex items-center justify-end'>
-          <div className='hidden md:block'>
+					<div className='mr-4 hidden md:block'>
 						<LanguageSwitcher screen='desktop' />
 					</div>
 					<Link
@@ -55,9 +56,7 @@ export default function Header() {
 				<div className='flex h-full w-full flex-row'>
 					<div className='h-full w-3/4 bg-green p-7'>
 						<LanguageSwitcher screen='mobile' />
-						<Navigation
-							screen='mobile'
-						/>
+						<Navigation screen='mobile' />
 					</div>
 					<button
 						onClick={toggleMenu}

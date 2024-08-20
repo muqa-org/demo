@@ -1,13 +1,33 @@
-'use client';
+import ProjectCard from '@/app/components/project/ProjectCard';
+import Pagination from '@/app/components/Pagination';
 
-import ProjectListHeader from '@/app/components/projects/ProjectListHeader';
-import ProjectListTable from '@/app/components/projects/ProjectListTable';
-
-export default function ProjectList() {
+export default function ProjectListTable() {
 	return (
-		<div className='w-3/4'>
-			<ProjectListHeader />
-			<ProjectListTable />
+		<div className='flex flex-col gap-4'>
+			<div className='w-3/4'>
+				<div className='mt-10 grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+					<ProjectCard className='mb-5' />
+				</div>
+				<div>
+					<Pagination
+						currentPage={2}
+						totalPages={10}
+						baseLink='/projects'
+						maxVisiblePages={5}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }

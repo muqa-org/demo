@@ -42,6 +42,7 @@ const config: Config = {
 			borderGreen: '#39A56A',
 			borderGreenDark: '#126F3C',
 			borderGray: '#D1D1D1',
+			borderGrayLight: '#DDDDDD',
 			borderBlack: '#0B0B0B',
 			lightGray: '#F6F6F6',
 			lightBlue: '#579BEA',
