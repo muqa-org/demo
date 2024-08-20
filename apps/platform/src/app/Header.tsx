@@ -12,7 +12,7 @@ import Navigation from '@/app/components/Navigation';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
 import { CodaFormProjectLink } from '@/app/config/config';
-
+import { MuqaConnectButton } from './components/MuqaConnectButton';
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +37,9 @@ export default function Header() {
 					<div className='mr-4 hidden md:block'>
 						<LanguageSwitcher screen='desktop' />
 					</div>
+					{process.env.NODE_ENV === 'development' && (
+						<MuqaConnectButton className='mx-4 bg-blue px-10 py-3' />
+					)}
 					<Link
 						href={CodaFormProjectLink}
 						target='_blank'
