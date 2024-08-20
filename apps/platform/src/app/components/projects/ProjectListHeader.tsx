@@ -18,9 +18,9 @@ export default function ProjectListHeader({
 	}, [activeTab, onTabChange]);
 
 	return (
-		<div className='border-borderGrayLight flex w-full justify-between items-center border-b pb-10'>
-			<h1 className='w-1/4 text-[28px] md:text-4xl font-normal leading-normal text-primaryBlack'>
-				{t('title')}
+		<div className='flex w-full items-center justify-between border-b border-borderGrayLight pb-10'>
+			<h1 className='w-1/4 text-[28px] font-normal leading-normal text-primaryBlack md:text-4xl'>
+				{activeTab === 'board' ? t('title') : t('projectsMap')}
 			</h1>
 			<div className='flex h-8 space-x-1 overflow-hidden rounded-md border border-borderGreen p-0'>
 				<button

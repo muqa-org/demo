@@ -94,7 +94,8 @@
     "map": "Mapa",
     "board": "Ploča",
     "neighborhood": "Po kvartovima",
-    "filterNeighborhood": "Filter po kvartovima"
+    "filterNeighborhood": "Filter po kvartovima",
+    "projectsMap": "Projekti na mapi"
   },
   "projectCard" : {
     "funded": "financiran"

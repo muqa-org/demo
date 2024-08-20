@@ -3,8 +3,9 @@
 import { useState } from 'react';
 
 import Container from '@/app/components/Container';
-import ProjectList from '@/app/components/projects/ProjectList';
 import ProjectListHeader from '@/app/components/projects/ProjectListHeader';
+import ProjectList from '@/app/components/projects/ProjectList';
+import ProjectListMap from '@/app/components/projects/ProjectListMap';
 
 export default function DiscoverRoundsPage() {
 	const [activeTab, setActiveTab] = useState('board'); // Default to 'board'
@@ -17,12 +18,8 @@ export default function DiscoverRoundsPage() {
 		<section className='mt-16 py-4'>
 			<Container className='mx-auto mb-6 flex flex-col justify-between gap-10 px-5 py-5'>
 				<ProjectListHeader onTabChange={handleTabChange} />
-				{activeTab === 'map' && (
-						<ProjectList />
-				)}
-				{activeTab === 'board' && (
-						<ProjectList />
-				)}
+				{activeTab === 'map' && <ProjectList />}
+				{activeTab === 'board' && <ProjectListMap />}
 			</Container>
 		</section>
 	);

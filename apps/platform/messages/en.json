@@ -95,7 +95,8 @@
     "map": "Map",
     "board": "Board",
     "neighborhood": "By neighborhood",
-    "filterNeighborhood": "Filter by Neigbourghood"
+    "filterNeighborhood": "Filter by Neigbourghood",
+    "projectsMap": "Projects on the map"
   },
   "projectCard" : {
     "funded": "funded"
