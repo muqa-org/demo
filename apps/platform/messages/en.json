@@ -85,5 +85,9 @@
     "title": "About the project",
     "firstParagraph": "This project is pilot of Muqa - Municipal Quadratic Funding Initiative. It is based on the technology of Ethereum and idea of Quadratic funding.",
     "secondParagraph": "Development of our application is funded by Ethereum Foundation. Learn more about Muqa here."
+  },
+  "languages" : {
+    "en": "English",
+    "hr": "Croatian"
   }
 }

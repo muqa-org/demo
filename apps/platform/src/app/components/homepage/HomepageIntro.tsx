@@ -15,8 +15,8 @@ export default function HomepageIntro({ phases }: HomepageIntroProps) {
 	const t = useTranslations('round');
 
 	return (
-		<div className='bg-[#F0FEF7] py-36'>
-			<Container className='mx-auto flex flex-col items-center justify-center px-5'>
+		<div className='bg-[#F0FEF7] py-16 sm:py-36'>
+			<Container className='mx-auto flex flex-col items-center justify-center px-1 sm:px-5'>
 				<h1 className='mb-7 text-center text-5xl font-normal uppercase text-primaryBlack'>
 					{t('timeline')}
 				</h1>
