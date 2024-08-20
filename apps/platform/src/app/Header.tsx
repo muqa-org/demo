@@ -6,11 +6,12 @@ import Image from 'next/image';
 
 import icons from '@/app/components/common/Icons';
 
-import { MuqaConnectButton } from '@/app/components/MuqaConnectButton';
 import Container from '@/app/components/Container';
 import { usePathname } from 'next/navigation';
 import Navigation from '@/app/components/Navigation';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
+
+import { CodaFormProjectLink } from '@/app/config/config';
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -33,10 +34,16 @@ export default function Header() {
 				</div>
 
 				<div className='ml-auto flex items-center justify-end'>
-					<div className='hidden md:block'>
+          <div className='hidden md:block'>
 						<LanguageSwitcher screen='desktop' />
 					</div>
-					<MuqaConnectButton variant='green' className='ml-4' />
+					<Link
+						href={CodaFormProjectLink}
+						target='_blank'
+						className='rounded-xl bg-green px-10 py-3 text-base font-normal text-white hover:opacity-85'
+					>
+						{t('propose')}
+					</Link>
 				</div>
 			</Container>
 			<div

@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "nuke": "pnpm dlx del-cli .turbo .next .output node_modules"
+    "nuke": "pnpm dlx del-cli .turbo .next .output node_modules",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@allo/kit": "workspace:*",
+    "@muqa/db": "workspace:*",
     "next": "14.2.2",
     "next-intl": "^3.17.2",
     "react": "18",

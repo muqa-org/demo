@@ -55,7 +55,7 @@ export default function Pagination({
 					{page}
 				</Link>
 			))}
-			{pages[pages.length - 1] < totalPages && (
+			{pages[pages.length - 1] || 0 < totalPages && (
 				<>
 					<span className='px-2 py-1 text-sm font-normal text-gray'>...</span>
 					<Link

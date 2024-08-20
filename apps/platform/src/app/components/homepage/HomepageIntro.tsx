@@ -1,12 +1,17 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { RoundPhase } from '@muqa/db';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import Container from '@/app/components/Container';
 import HomepageRoundBoxes from '@/app/components/homepage/HomepageRoundBoxes';
 
-export default function HomepageIntro() {
+import { CodaFormProjectLink } from '@/app/config/config';
+
+type HomepageIntroProps = {
+	phases: RoundPhase[]
+};
+
+export default function HomepageIntro({ phases }: HomepageIntroProps) {
 	const t = useTranslations('round');
 
 	return (
@@ -18,9 +23,13 @@ export default function HomepageIntro() {
 				<div className='text-center text-xl font-normal text-gray'>
 					{t('timelinePeriod')}
 				</div>
-				<HomepageRoundBoxes />
+				<HomepageRoundBoxes phases={phases} />
 				<div className='mt-10'>
-					<Link href="https://coda.io/form/Zazelenimo-Split-obrazac-za-prijedloge_dbtTs0gGIcq" target='_blank' className='rounded-xl bg-green text-base font-normal px-10 py-3 text-white hover:opacity-85'>
+					<Link
+						href={CodaFormProjectLink}
+						target='_blank'
+						className='rounded-xl bg-green px-10 py-3 text-base font-normal text-white hover:opacity-85'
+					>
 						{t('buttonTitle')}
 					</Link>
 				</div>
