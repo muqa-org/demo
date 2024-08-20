@@ -34,3 +34,8 @@ export function upsertUserNonce(user: User, { nonce, expiresAt }: generatedNonce
   });
 }
 
+export function deleteUserNonce(user: User) {
+  return prisma.authNonce.delete({
+    where: { userId: user.id }
+  });
+}
