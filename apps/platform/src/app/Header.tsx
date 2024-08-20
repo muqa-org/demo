@@ -8,7 +8,6 @@ import Link from 'next/link';
 import icons from '@/app/components/common/Icons';
 
 import Container from '@/app/components/Container';
-import { usePathname } from 'next/navigation';
 import Navigation from '@/app/components/Navigation';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
@@ -19,7 +18,6 @@ export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const t = useTranslations('navigation');
-	const pathname = usePathname();
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);

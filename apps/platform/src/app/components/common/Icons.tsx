@@ -20,6 +20,8 @@ const icons = {
 	closeIcon: '/images/icons/icon-close.svg',
 	closeIconGray: '/images/icons/icon-close-gray.svg',
 	menuIcon: '/images/icons/icon-menu.svg',
+	cartIconGreen: '/images/icons/icon-cart-green.svg',
+	checkedIcon: '/images/icons/icon-checked.svg',
 	
 	ethIconBlue: '/images/icons/icon-eth-blue.svg',
 	ethIconBlue12: '/images/icons/icon-eth-blue-12.svg',

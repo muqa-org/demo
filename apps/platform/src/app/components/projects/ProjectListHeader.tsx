@@ -18,20 +18,20 @@ export default function ProjectListHeader({
 	}, [activeTab, onTabChange]);
 
 	return (
-		<div className='border-borderGrayLight flex w-full justify-between border-b pb-10'>
-			<h1 className='w-1/4 text-4xl font-normal leading-normal text-primaryBlack'>
+		<div className='border-borderGrayLight flex w-full justify-between items-center border-b pb-10'>
+			<h1 className='w-1/4 text-[28px] md:text-4xl font-normal leading-normal text-primaryBlack'>
 				{t('title')}
 			</h1>
-			<div className='border-green-500 flex space-x-1 overflow-hidden rounded-md border'>
+			<div className='flex h-8 space-x-1 overflow-hidden rounded-md border border-borderGreen p-0'>
 				<button
 					onClick={() => setActiveTab('map')}
-					className={`px-3 py-1 font-semibold ${activeTab === 'map' ? 'bg-green-500 text-white' : 'bg-green-100 text-green-700'}`}
+					className={`px-3 py-[2px] text-xs font-medium uppercase leading-none ${activeTab === 'map' ? 'bg-green text-white' : 'bg-white text-green'}`}
 				>
 					{t('map')}
 				</button>
 				<button
 					onClick={() => setActiveTab('board')}
-					className={`px-3 py-1 font-semibold ${activeTab === 'board' ? 'bg-green-500 text-white' : 'bg-green-100 text-green-700'}`}
+					className={`px-3 py-[2px] text-xs font-medium uppercase leading-none ${activeTab === 'board' ? 'bg-green text-white' : 'bg-white text-green'}`}
 				>
 					{t('board')}
 				</button>

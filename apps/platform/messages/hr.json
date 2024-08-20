@@ -92,6 +92,11 @@
   "projects" : {
     "title": "Projekti",
     "map": "Mapa",
-    "board": "Ploča"
+    "board": "Ploča",
+    "neighborhood": "Po kvartovima",
+    "filterNeighborhood": "Filter po kvartovima"
+  },
+  "projectCard" : {
+    "funded": "financiran"
   }
 }
