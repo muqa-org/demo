@@ -38,7 +38,7 @@ export default function LanguageSwitcher({ screen }: { screen: string }) {
 			? 'flex text-white w-full bg-white text-xs text-[#999999] justify-between rounded-md px-3 py-2 items-center mb-6'
 			: 'border-green inline-flex items-center justify-center rounded-md border px-3 py-2 text-base font-normal text-green focus:outline-none';
 
-	const swithHolder =
+	const switchHolder =
 		screen === 'mobile'
 			? 'w-full border-borderGreen absolute right-0 mt-0 top-8 rounded-md border bg-white shadow-lg'
 			: 'w-30 border-borderGreen absolute right-0 mt-2 origin-top-right rounded-md border bg-white shadow-lg';
@@ -56,7 +56,7 @@ export default function LanguageSwitcher({ screen }: { screen: string }) {
 				/>
 			</button>
 			{isOpen && (
-				<div className={swithHolder}>
+				<div className={switchHolder}>
 					<div className='py-1'>
 						{languages.map(lang => (
 							<button
