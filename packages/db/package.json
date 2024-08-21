@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -13,7 +10,7 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && prisma migrate deploy && ts-node prisma/seed.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
