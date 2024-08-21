@@ -9,7 +9,7 @@ export default function ProjectListHeader({
 	onTabChange: (tab: string) => void;
 }) {
 	const t = useTranslations('projects');
-	const [activeTab, setActiveTab] = useState('board');
+	const [activeTab, setActiveTab] = useState('map');
 
 	useEffect(() => {
 		if (onTabChange) {
