@@ -1,4 +1,4 @@
-import { prisma } from '../../lib/client';
+import { prisma, RoundPhase } from '../../lib/client';
 
 const roundPhases = [
   {
@@ -24,9 +24,14 @@ const roundPhases = [
 ];
 
 export default async function seedRoundPhases() {
-  for (const phase of roundPhases) {
-    await prisma.roundPhase.create({
-      data: phase,
-    });
+  const existingPhases = await prisma.roundPhase.findMany();
+  if (existingPhases.length > 0) {
+    console.log('Round phases already seeded');
+    return;
   }
+
+  console.log('Seeding round phases');
+  await prisma.roundPhase.createMany({
+    data: roundPhases,
+  });
 }
