@@ -5,14 +5,45 @@ import AddToCartAmount from '@/app/components/cart/AddToCartAmount';
 import RemoveFromCart from '@/app/components/cart/RemoveFromCart';
 import icons from '@/app/components/common/Icons';
 import images from '@/app/components/common/Images';
+import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
 
 interface ProjectCardProps {
 	className?: string;
 }
 
 export default function ProjectDetails({ className }: ProjectCardProps) {
+	let progressColor = getProjectProgressBGColor(68);
+
 	return (
 		<div className={`${className} flex h-full w-full flex-col justify-between`}>
+			<h1 className='w-full border-b border-borderGrayLight pb-10 pt-16 text-[28px] font-normal leading-normal text-primaryBlack md:text-4xl'>
+				Klupe od Đardina do Jokera
+			</h1>
+			<div className='flex flex-row justify-between pt-16'>
+				<div className='w-4/6'>
+					<Image
+						width='1028'
+						height='221'
+						src='https://picsum.photos/908/514'
+						alt='Project Image'
+						className='w-full rounded-xl'
+					/>
+				</div>
+				<div className='w-2/6 pl-20'>
+					<div className='mb-4 h-2 w-full rounded-full bg-[#E2E2E2]'>
+						<div
+							className={`h-full rounded-full ${progressColor}`}
+							style={{ width: `${68}%` }}
+						></div>
+					</div>
+					<h2>€ 1,474</h2>
+					<h4>funded of €2,000 goal</h4>
+					<h3>67</h3>
+					<h4>bakers</h4>
+					<h3>34</h3>
+					<h4>days to go</h4>
+				</div>
+			</div>
 			<div className='relative'>
 				<Image
 					width='1028'
@@ -27,7 +58,7 @@ export default function ProjectDetails({ className }: ProjectCardProps) {
 						height='110'
 						src='https://picsum.photos/110/110?grayscale'
 						alt='Project Image Badge'
-						className='border-white rounded-full border'
+						className='rounded-full border border-white'
 					/>
 				</div>
 			</div>
@@ -108,7 +139,7 @@ export default function ProjectDetails({ className }: ProjectCardProps) {
 				felis risus enim purus. Nunc venenatis etiam nisi venenatis facilisi
 				posuere malesuada convallis.
 			</div>
-			<h4 className='text-lightBlack mb-1 text-sm font-medium leading-normal'>
+			<h4 className='mb-1 text-sm font-medium leading-normal text-lightBlack'>
 				CONTRIBUTION LINKS
 			</h4>
 			<div className='mb-7'>
@@ -144,7 +175,7 @@ export default function ProjectDetails({ className }: ProjectCardProps) {
 				felis risus enim purus. Nunc venenatis etiam nisi venenatis facilisi
 				posuere malesuada convallis.
 			</div>
-			<h4 className='text-lightBlack mb-1 text-sm font-medium leading-normal'>
+			<h4 className='mb-1 text-sm font-medium leading-normal text-lightBlack'>
 				IMPACT METRICS LINKS
 			</h4>
 			<div className='mb-7'>
