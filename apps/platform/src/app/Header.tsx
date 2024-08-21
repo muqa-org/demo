@@ -12,7 +12,7 @@ import Navigation from '@/app/components/Navigation';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
 import { CodaFormProjectLink } from '@/app/config/config';
-import Link from 'next/link';
+
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
