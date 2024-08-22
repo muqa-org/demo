@@ -72,6 +72,7 @@ async function getNonce(address: `0x${string}`) {
 export function MuqaConnectButton({ children, ...props }: PropsWithChildren<ButtonProps>): JSX.Element {
   const account = useAccount();
   const { connectAsync } = useConnect();
+  const { disconnect } = useDisconnect();
   const { signMessageAsync } = useSignMessage();
 
   const label = getLabel();
@@ -88,20 +89,19 @@ export function MuqaConnectButton({ children, ...props }: PropsWithChildren<Butt
     const signedNonce = await signMessageAsync({ message: nonce });
 
     console.log('signing in with web3', address, signedNonce);
-    return signIn('credentials', { address, signedNonce, callbackUrl: '/' });
+    const response = await signIn('credentials', { address, signedNonce, redirect: false });
+    console.log('response', response);
   }
 
   async function signOutWithWeb3() {
-    const { disconnect } = useDisconnect();
     disconnect();
-
     // TODO: remove JWT token
   }
 
   function onClick() {
-    return account.isDisconnected
-      ? signInWithWeb3()
-      : signOutWithWeb3();
+    return account.isConnected
+      ? signOutWithWeb3()
+      : signInWithWeb3();
   }
 
   return (
