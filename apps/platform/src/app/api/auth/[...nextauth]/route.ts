@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth/next';
 import authOptions from '@/lib/next-auth/web3-provider/auth-options';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 // Below duplicated interface from next-auth/next because it's not exported
 interface RouteHandlerContext {
