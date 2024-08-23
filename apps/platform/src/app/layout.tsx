@@ -29,7 +29,7 @@ export default async function RootLayout({
 
 	return (
 		<html lang={locale}>
-			<body className={dmSans.className}>
+			<body className={`${dmSans.className} bg-[#FBFBFB]`}>
 				<NextIntlClientProvider messages={messages}>
 					<AlloKitProviders>
 						<NotificationBar message='notification' />

@@ -24,7 +24,7 @@ export default function Header() {
 	};
 
 	return (
-		<header className='border-b border-borderGray'>
+		<header className='border-b border-borderGray bg-white'>
 			<Container className='mx-auto flex items-center justify-between px-5 py-5'>
 				<button className='text-2xl md:hidden' onClick={toggleMenu}>
 					<Image width='24' height='18' alt='Menu Icon' src={icons.menuIcon} />
