@@ -9,7 +9,13 @@ import icons from '@/app/components/common/Icons';
 
 import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
 
-export default function CartProjectCard({ item }: { item: CartItemType }) {
+export default function CartProjectCard({
+	item,
+	variant = 'cart',
+}: {
+	item: CartItemType;
+	variant?: string;
+}) {
 	const t = useTranslations('cart');
 	const [donationAmount, setDonationAmount] = useState(item.amount);
 
@@ -37,7 +43,7 @@ export default function CartProjectCard({ item }: { item: CartItemType }) {
 				className='w-full rounded-t-md lg:w-1/6 lg:rounded-md'
 			/>
 			<div className='w-full lg:w-4/6 lg:flex-grow lg:pl-6'>
-				<div className='mb-4 h-2 w-full rounded-b bg-[#E2E2E2] lg:w-2/6 lg:rounded lg:mt-2'>
+				<div className='mb-4 h-2 w-full rounded-b bg-[#E2E2E2] lg:mt-2 lg:w-2/6 lg:rounded'>
 					<div
 						className={`h-full rounded-b lg:rounded ${progressColor}`}
 						style={{ width: `${item.funded}%` }}
@@ -60,21 +66,27 @@ export default function CartProjectCard({ item }: { item: CartItemType }) {
 				</p>
 			</div>
 			<div className='mb-10 mt-7 flex items-center lg:mb-0 lg:mt-0'>
-				<input
-					type='text'
-					value={`${donationAmount} €`}
-					onChange={handleInputChange}
-					className='w-20 rounded-md border border-borderGray px-2 py-2 text-left text-sm text-black focus:outline-none'
-				/>
-				<button className='lg:inline-blockblock hidden'>
-					<Image
-						src={icons.trashIcon}
-						alt='Trash icon'
-						width={20}
-						height={20}
-						className='ml-4'
-					/>
-				</button>
+				{variant === 'completed' ? (
+					<span>{donationAmount} €</span>
+				) : (
+					<>
+						<input
+							type='text'
+							value={`${donationAmount} €`}
+							onChange={handleInputChange}
+							className='w-20 rounded-md border border-borderGray px-2 py-2 text-left text-sm text-black focus:outline-none'
+						/>
+						<button className='lg:inline-blockblock hidden'>
+							<Image
+								src={icons.trashIcon}
+								alt='Trash icon'
+								width={20}
+								height={20}
+								className='ml-4'
+							/>
+						</button>
+					</>
+				)}
 			</div>
 		</div>
 	);
