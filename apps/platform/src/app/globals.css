@@ -2,3 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+.content p {
+  margin: 0 0 2em 0;
+}
+
+input[type='range'] {
+	-webkit-appearance: none;
+	appearance: none;
+	height: 6px;
+	background: black; /* Fallback for non-chrome browsers */
+	outline: none;
+	border-radius: 10px;
+}
+input[type='range']::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 6px;
+	background: transparent;
+	border-radius: 10px;
+}
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 22px;
+	height: 22px;
+	background: #ffffff;
+	border: 3px solid #39a56a;
+	cursor: pointer;
+	border-radius: 50%;
+	margin-top: -8px; /* Center thumb vertically */
+}
+input[type='range']:focus::-webkit-slider-runnable-track {
+	background: black;
+}
+input[type='range']::-moz-range-thumb {
+	width: 22px;
+	height: 22px;
+	background: #ffffff;
+	border: 3px solid #39a56a;
+	cursor: pointer;
+	border-radius: 50%;
+}
+input[type='range']::-moz-range-track {
+	width: 100%;
+	height: 6px;
+	background: transparent;
+	border-radius: 4px;
+}

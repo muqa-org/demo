@@ -13,8 +13,8 @@ export default function Navigation({ screen }: { screen: string }) {
 
 	const linkClassName =
 		screen === 'mobile'
-			? 'mt-2 w-full border-b-0 text-lg border-b border-lightBlue px-1 pb-1 font-medium uppercase leading-6 text-white hover:text-blue'
-			: 'border-b border-lightBlue px-1 pb-1 text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-blue';
+			? 'mt-2 w-full border-b-0 text-lg border-b border-borderGreen px-1 pb-1 font-medium uppercase leading-6 text-white hover:text-green'
+			: 'border-b-2 border-borderGreen px-1 pb-1 text-sm font-medium uppercase leading-6 text-primaryBlack hover:text-green';
 
 	return (
 		<nav className={navClassName}>
@@ -22,7 +22,7 @@ export default function Navigation({ screen }: { screen: string }) {
 				href={'/'}
 				className={`${linkClassName} ${
 					pathname === '/'
-						? 'border-lightBlue text-primaryBlack'
+						? 'border-borderGreen text-primaryBlack'
 						: 'border-white text-primaryBlack'
 				}`}
 			>
@@ -32,7 +32,7 @@ export default function Navigation({ screen }: { screen: string }) {
 				href={'/projects'}
 				className={`${linkClassName} ${
 					pathname === '/projects'
-						? 'border-lightBlue text-primaryBlack'
+						? 'border-borderGreen text-primaryBlack'
 						: 'border-white text-primaryBlack'
 				}`}
 			>
@@ -42,7 +42,7 @@ export default function Navigation({ screen }: { screen: string }) {
 				href={'/admin/rounds/create'}
 				className={`${linkClassName} ${
 					pathname === '/admin/rounds/create'
-						? 'border-lightBlue text-primaryBlack'
+						? 'border-borderGreen text-primaryBlack'
 						: 'border-white text-primaryBlack'
 				}`}
 			>
@@ -52,7 +52,7 @@ export default function Navigation({ screen }: { screen: string }) {
 				href={'/11155111/projects/create'}
 				className={`${linkClassName} ${
 					pathname === '/11155111/projects/create'
-						? 'border-lightBlue text-primaryBlack'
+						? 'border-borderGreen text-primaryBlack'
 						: 'border-white text-primaryBlack'
 				}`}
 			>

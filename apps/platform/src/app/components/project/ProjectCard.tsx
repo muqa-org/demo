@@ -2,59 +2,49 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import AddToCart from '@/app/components/cart/AddToCart';
+import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
 
 interface ProjectCardProps {
 	className?: string;
+	progressPercentage: number;
 }
 
-export default function ProjectCard({ className }: ProjectCardProps) {
+export default function ProjectCard({
+	className,
+	progressPercentage,
+}: ProjectCardProps) {
+	let progressColor = getProjectProgressBGColor(progressPercentage);
+
 	return (
-		<div
-			className={`${className} flex h-full flex-col justify-between rounded-xl border border-lightGray shadow-[0_8px_18px_rgba(0,0,0,0.08),0_0px_1px_rgba(0,0,0,0.05)]`}
-		>
-			<div className='relative'>
+		<div className={`${className} flex h-full flex-col gap-1 overflow-hidden`}>
+			<div className='relative mb-2'>
 				<Image
 					width='330'
 					height='135'
-					src='https://picsum.photos/330/135?grayscale'
+					src='https://picsum.photos/315/200'
 					alt='Project Image'
-					className='w-full rounded-t-xl'
+					className='w-full rounded-t-md'
 				/>
-				<div className='absolute -bottom-[32px] left-6 top-auto h-[62px] w-[62px] overflow-hidden rounded-full border border-lightGray bg-white shadow-[0_8px_18px_rgba(0,0,0,0.08),0_0px_1px_rgba(0,0,0,0.05)]'>
-					<Image
-						width='60'
-						height='60'
-						src='https://picsum.photos/60/60?grayscale'
-						alt='Project Image Badge'
-						className='border-white rounded-full border'
-					/>
+				<div className='h-1.5 rounded-b-md bg-white'>
+					<div
+						className={`h-1.5 rounded-b-md ${progressColor}`}
+						style={{ width: progressPercentage + '%' }}
+					></div>
 				</div>
 			</div>
-			<div className='px-[18px] pb-6 pt-[46px]'>
-				<h3 className='mb-1 text-base font-medium leading-normal text-primaryBlack'>
-					<Link href='/3/projects/3/'>NAZIV PROJEKTA</Link>
+			<div className='px-0 pb-1 pt-2'>
+				<h3 className='flex items-center justify-between gap-1'>
+					<Link
+						href='/3/projects/3/'
+						className='text-xl font-medium leading-normal text-primaryBlack hover:text-green'
+					>
+						Klupe od Đardina do Jokera
+					</Link>
+					<AddToCart variant='icon' />
 				</h3>
-				<div className='mb-3 text-sm font-normal leading-normal text-gray'>
-					Lorem ipsum dolor sit amet consectetur. Eu nam libero arcu ipsum
-					varius commodo libero cursus orci.
-				</div>
-				<div>
-					<Link
-						href='/'
-						className='border-lightBlue mr-1 rounded border px-2 py-1 text-[10px] font-normal leading-normal text-blue'
-					>
-						Ethereum Infrastructure
-					</Link>
-					<Link
-						href='/'
-						className='border-lightBlue mr-1 rounded border px-2 py-1 text-[10px] font-normal leading-normal text-blue'
-					>
-						Web3 Community & Education
-					</Link>
-				</div>
-				<div className='mt-12 text-right'>
-					<AddToCart />
-				</div>
+			</div>
+			<div className='text-base text-gray'>
+				{progressPercentage}% funded (2000 €)
 			</div>
 		</div>
 	);

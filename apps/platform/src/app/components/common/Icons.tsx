@@ -1,10 +1,12 @@
 const icons = {
 	XLogo: '/images/icons/socials/icon-x.svg',
 	XLogoBlue: '/images/icons/socials/icon-x-blue.svg',
+	XLogoWhite: '/images/icons/socials/icon-x-white.svg',
 	TelegramLogo: '/images/icons/socials/icon-telegram.svg',
 	GithubLogo: '/images/icons/socials/icon-github.svg',
 	GithubLogoBlue: '/images/icons/socials/icon-github-blue.svg',
 	DiscordLogo: '/images/icons/socials/icon-discord.svg',
+	FacebookLogo: '/images/icons/socials/icon-facebook-white.svg',
 
 	confirmedIcon: '/images/icons/icon-yes.svg',
 	confirmedIconWhite: '/images/icons/icon-yes-white.svg',
@@ -20,6 +22,11 @@ const icons = {
 	closeIcon: '/images/icons/icon-close.svg',
 	closeIconGray: '/images/icons/icon-close-gray.svg',
 	menuIcon: '/images/icons/icon-menu.svg',
+	cartIconGreen: '/images/icons/icon-cart-green.svg',
+	cartIconWhite: '/images/icons/icon-cart-white.svg',
+	checkedIcon: '/images/icons/icon-checked.svg',
+	markerIcon: '/images/icons/icon-marker.svg',
+	markerIconZero: '/images/icons/icon-marker-zero.svg',
 	
 	ethIconBlue: '/images/icons/icon-eth-blue.svg',
 	ethIconBlue12: '/images/icons/icon-eth-blue-12.svg',

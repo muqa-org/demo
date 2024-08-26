@@ -88,5 +88,27 @@
   "languages" : {
     "en": "Engleski",
     "hr": "Hrvatski"
+  },
+  "projects" : {
+    "title": "Projekti",
+    "map": "Mapa",
+    "board": "Ploča",
+    "neighborhood": "Po kvartovima",
+    "filterNeighborhood": "Filter po kvartovima",
+    "projectsMap": "Projekti na mapi"
+  },
+  "projectCard" : {
+    "funded": "financiran"
+  },
+  "project" : {
+    "funded": "donirano od ciljanih €{amount}",
+    "bakers": "donatora",
+    "daysGo": "dana preostalo",
+    "donationAmount": "Iznos donacije",
+    "estimatedMatch": "Procijenjeni doprinos iz proračuna",
+    "supportProject": "Podržite projekt dijeljenjem"
+  },
+  "cart" : {
+    "addCart": "Dodaj u Košaricu"
   }
 }

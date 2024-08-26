@@ -3,7 +3,6 @@
 import { useTranslations } from 'next-intl';
 
 import Container from '@/app/components/Container';
-import Banner from '@/app/components//Banner';
 
 export default function HomepageBanner() {
 	const t = useTranslations('homeAbout');

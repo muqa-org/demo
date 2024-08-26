@@ -89,5 +89,27 @@
   "languages" : {
     "en": "English",
     "hr": "Croatian"
+  },
+  "projects" : {
+    "title": "Projects",
+    "map": "Map",
+    "board": "Board",
+    "neighborhood": "By neighborhood",
+    "filterNeighborhood": "Filter by Neigbourghood",
+    "projectsMap": "Projects on the map"
+  },
+  "projectCard" : {
+    "funded": "funded"
+  },
+  "project" : {
+    "funded": "funded of €{amount} goal",
+    "bakers": "bakers",
+    "daysGo": "days to go",
+    "donationAmount": "Donation amount",
+    "estimatedMatch": "Estimated match from the city",
+    "supportProject": "Support the project by sharing"
+  },
+  "cart" : {
+    "addCart": "Add to Cart"
   }
 }

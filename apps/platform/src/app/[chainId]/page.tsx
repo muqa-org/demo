@@ -1,24 +1,25 @@
-import { getRoundPhases} from '@muqa/db';
+'use client';
+
+import { useState } from 'react';
 
 import Container from '@/app/components/Container';
+import ProjectListHeader from '@/app/components/projects/ProjectListHeader';
 import ProjectList from '@/app/components/projects/ProjectList';
-import ProjectsSidebar from '@/app/components/projects/ProjectsSidebar';
-import { RoundData } from '@/app/types/round';
+import ProjectListMap from '@/app/components/projects/ProjectListMap';
 
-export default async function DiscoverRoundsPage() {
-	const phases = await getRoundPhases();
-	const roundData: RoundData = {
-		title:
-			'NATJEČAJ ZA KAZALIŠNU, GLAZBENO-SCENSKU I KONCERTNU DJELATNOST ZA 2025. GODINU',
-		endDate: '2024-09-08T13:00:00.000Z',
-		phases,
+export default function DiscoverRoundsPage() {
+	const [activeTab, setActiveTab] = useState('map');
+
+	const handleTabChange = (tab: string) => {
+		setActiveTab(tab);
 	};
 
 	return (
-		<section className='py-4'>
-			<Container className='mx-auto flex gap-10 justify-between px-5 py-5 mb-6'>
-				<ProjectsSidebar round={roundData} />
-				<ProjectList />
+		<section className='mt-16 py-4'>
+			<Container className='mx-auto mb-6 flex flex-col justify-between gap-10 px-5 py-5'>
+				<ProjectListHeader onTabChange={handleTabChange} />
+				{activeTab === 'board' && <ProjectList />}
+				{activeTab === 'map' && <ProjectListMap />}
 			</Container>
 		</section>
 	);
