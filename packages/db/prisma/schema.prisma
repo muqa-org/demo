@@ -16,7 +16,7 @@ datasource db {
 }
 
 model User {
-  id                String    @id @default(cuid())
+  id                String    @id @default(uuid())
   address           String?   @unique @map("address")
   email             String?   @unique
   password          String?
@@ -72,7 +72,7 @@ model VerificationToken {
 }
 
 model Session {
-  id           String   @id @default(cuid())
+  id           String   @id @default(uuid())
   sessionToken String   @unique @map("session_token")
   userId       String   @map("user_id")
   expires      DateTime
@@ -83,7 +83,7 @@ model Session {
 
 
 model RoundPhase {
-  id          String       @id @default(cuid())
+  id          String    @id @default(uuid())
   title       String    @unique
   startDate   DateTime  @map(name: "start_date")
   endDate     DateTime  @map(name: "end_date")
