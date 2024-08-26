@@ -6,7 +6,7 @@ import { Button, ButtonProps } from './Button';
 import { comethConnector } from '@allo/kit/wagmi';
 import { PropsWithChildren, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { signIn } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import { WalletNonceResponse } from '../api/auth/web3/nonce/route';
 
 const TRUNCATE_LENGTH = 20;
@@ -87,15 +87,12 @@ export function MuqaConnectButton({ children, ...props }: PropsWithChildren<Butt
     const [address] = accounts;
     const nonce = await getNonce(address);
     const signedNonce = await signMessageAsync({ message: nonce });
-
-    console.log('signing in with web3', address, signedNonce);
-    const response = await signIn('credentials', { address, signedNonce, redirect: false });
-    console.log('response', response);
+    await signIn('credentials', { address, signedNonce, redirect: false });
   }
 
   async function signOutWithWeb3() {
     disconnect();
-    // TODO: remove JWT token
+    await signOut();
   }
 
   function onClick() {
