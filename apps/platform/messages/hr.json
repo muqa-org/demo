@@ -115,6 +115,8 @@
     "removeAllProjects": "Ukloni sve projekte",
     "totalAmount": "Ukupni iznos",
     "finalSubmission": "Ovo je konačna vrijednost donacija. Nakon što kliknete na plaćanje, iznose donacija više nećete moći promijeniti.",
-    "checkout": "Na plaćanje"
+    "checkout": "Na plaćanje",
+    "donationSuccess": "Tvoja donacija je uspješno zaprimljena!",
+    "resultAvailable": "Rezultati će biti dostupni nakon zbrajanja"
   }
 }

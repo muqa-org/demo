@@ -48,17 +48,24 @@ export default function CartCompleted() {
 	return (
 		<section className='py-4 pb-32'>
 			<Container className='mx-auto mb-6 flex flex-wrap justify-between gap-1 px-5 py-5 lg:gap-10'>
-				<h1 className='w-full pb-4 pt-4 text-center text-[28px] font-normal leading-normal text-primaryBlack md:text-4xl lg:border-b lg:border-borderGrayLight lg:pb-10 lg:pt-10 lg:text-left'>
-					{t('selectedProjects')}
+				<h1 className='w-full pb-4 pt-4 text-center text-[28px] font-normal leading-tight text-primaryBlack md:text-4xl lg:border-b lg:border-borderGrayLight lg:pb-10 lg:pt-10 lg:text-left lg:leading-normal'>
+					{t('donationSuccess')}
+					<Image
+						src={icons.partyIcon}
+						width={37}
+						height={37}
+						alt='Party Icon'
+						className='inline-block ml-2 mb-3'
+					/>
+					<span className='mt-3 block px-8 text-base text-gray lg:mt-0 lg:px-0'>
+						{t('resultAvailable')} Nov 15 2024
+					</span>
 				</h1>
 				<div className='mt-4 flex w-full flex-row flex-wrap justify-between'>
 					<div className='mb-8 flex w-full flex-col gap-4 lg:mb-0 lg:w-4/6'>
 						{items.map(item => (
 							<CartProjectCard key={item.id} item={item} variant='completed' />
 						))}
-						<button className='ml-5 mt-10 hidden self-start text-sm text-primaryBlack underline hover:text-gray lg:inline-block'>
-							{t('removeAllProjects')}
-						</button>
 					</div>
 
 					<div className='w-full pl-0 lg:w-2/6 lg:pl-24'>
