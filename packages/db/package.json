@@ -13,7 +13,12 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && prisma migrate deploy && prisma db seed",
+    "db:generate": "prisma generate",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:seed": "ts-node prisma/seed.ts",
+    "db:reset": "prisma migrate reset",
+    "nuke": "prisma migrate reset --force",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
