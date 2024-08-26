@@ -5,7 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
 import { WalletStatus } from './WalletStatus';
-import { AlloKitProviders } from './providers';
+import { AlloKitProviders, MuqaSessionProvider } from './providers';
 import Header from '@/app/Header';
 import NotificationBar from '@/app/components/NotificationBar';
 import Footer from '@/app/components/footer/Footer';
@@ -19,8 +19,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
 	children,
+	session,
 }: Readonly<{
 	children: React.ReactNode;
+	session: any;
 }>) {
 	const locale = await getLocale();
 
@@ -31,13 +33,15 @@ export default async function RootLayout({
 		<html lang={locale}>
 			<body className={`${dmSans.className} bg-[#FBFBFB]`}>
 				<NextIntlClientProvider messages={messages}>
-					<AlloKitProviders>
-						<NotificationBar message='notification' />
-						<Header />
-						<WalletStatus />
-						<main>{children}</main>
-						<Footer />
-					</AlloKitProviders>
+					<MuqaSessionProvider session={session}>
+						<AlloKitProviders>
+							<NotificationBar message='notification' />
+							<Header />
+							<WalletStatus />
+							<main>{children}</main>
+							<Footer />
+						</AlloKitProviders>
+					</MuqaSessionProvider>
 				</NextIntlClientProvider>
 			</body>
 		</html>

@@ -13,15 +13,23 @@ import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
 import { CodaFormProjectLink } from '@/app/config/config';
 import { MuqaConnectButton } from './components/MuqaConnectButton';
+import { useSession } from 'next-auth/react';
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
+	const { data: session } = useSession();
 
 	const t = useTranslations('navigation');
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
+
+	if (session) {
+		console.log(`Signed in as ${session.user?.name}`);
+	} else {
+		console.log('Not signed in');
+	}
 
 	return (
 		<header className='border-b border-borderGray bg-white'>
