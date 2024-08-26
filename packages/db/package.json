@@ -13,7 +13,7 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && prisma migrate deploy && prisma db seed",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
