@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
 	LoadScript,
 	Libraries,
@@ -11,6 +11,7 @@ import {
 
 import icons from '@/app/components/common/Icons';
 import ProjectMapInfoWindow from '@/app/components/project/ProjectMapInfoWindow';
+import { getCustomPercentageMarkerIcon } from '@/app/helpers/projectHelper';
 
 export interface ICoords {
 	lat: number;
@@ -19,30 +20,6 @@ export interface ICoords {
 
 // If you need some special libraries, you can add them here
 const libraries: Libraries = [];
-
-function getCustomPercentageMarkerIcon(percentage: number): string {
-	const svgMarker = `
-			<svg width="94" height="86" viewBox="0 0 94 86" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<g filter="url(#filter0_f_274_2813)">
-						<path d="M73.6635 56.3125C72.547 60.6875 47.534 66 47.534 66C47.534 66 21.907 60.2188 20.3995 56.3125C18.892 52.4063 20.3995 46 47.534 46C74.6685 46 74.78 51.9375 73.6635 56.3125Z" fill="black" fill-opacity="0.5"/>
-				</g>
-				<path d="M75.3976 33C74.2866 47 49.3975 64 49.3975 64C49.3975 64 23.8976 45.5 22.3975 33C20.8975 20.5 22.3975 0 49.3975 0C76.3975 0 76.5085 19 75.3976 33Z" fill="#FF9500"/>
-				<text x="52%" y="32%" fill="white" font-size="20" font-family="Arial" font-weight="bold" text-anchor="middle" dy=".3em">${percentage}%</text>
-				<defs>
-						<filter id="filter0_f_274_2813" x="0" y="26" width="94" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-								<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-								<feGaussianBlur stdDeviation="10" result="effect1_foregroundBlur_274_2813"/>
-						</filter>
-				</defs>
-		</svg>
-	`;
-
-	const encoded = encodeURIComponent(svgMarker);
-	const iconUrl = `data:image/svg+xml,${encoded}`;
-
-	return iconUrl;
-}
 
 export default function ProjectListMap() {
 	const [coords, setCoords] = useState<ICoords>({

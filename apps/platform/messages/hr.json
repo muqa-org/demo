@@ -99,5 +99,16 @@
   },
   "projectCard" : {
     "funded": "financiran"
+  },
+  "project" : {
+    "funded": "donirano od ciljanih €{amount}",
+    "bakers": "donatora",
+    "daysGo": "dana preostalo",
+    "donationAmount": "Iznos donacije",
+    "estimatedMatch": "Procijenjeni doprinos iz proračuna",
+    "supportProject": "Podržite projekt dijeljenjem"
+  },
+  "cart" : {
+    "addCart": "Dodaj u Košaricu"
   }
 }

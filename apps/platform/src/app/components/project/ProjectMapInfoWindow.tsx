@@ -1,5 +1,6 @@
 import React from 'react';
 import AddToCart from '@/app/components/cart/AddToCart';
+import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
 
 export default function ProjectMapInfoWindow({
 	title,
@@ -10,14 +11,7 @@ export default function ProjectMapInfoWindow({
 	progressPercentage: number;
 	fundedAmount: number;
 }) {
-	let progressColor = 'bg-green';
-	if (progressPercentage > 0 && progressPercentage <= 33) {
-		progressColor = 'bg-[#C9767B]';
-	} else if (progressPercentage > 33 && progressPercentage <= 66) {
-		progressColor = 'bg-[#E2CB55]';
-	} else if (progressPercentage > 66 && progressPercentage <= 100) {
-		progressColor = 'bg-green';
-	}
+	let progressColor = getProjectProgressBGColor(progressPercentage);
 
 	return (
 		<div className='rounded-lg bg-white p-0 shadow-lg'>

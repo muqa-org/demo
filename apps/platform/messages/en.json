@@ -100,5 +100,16 @@
   },
   "projectCard" : {
     "funded": "funded"
+  },
+  "project" : {
+    "funded": "funded of €{amount} goal",
+    "bakers": "bakers",
+    "daysGo": "days to go",
+    "donationAmount": "Donation amount",
+    "estimatedMatch": "Estimated match from the city",
+    "supportProject": "Support the project by sharing"
+  },
+  "cart" : {
+    "addCart": "Add to Cart"
   }
 }
