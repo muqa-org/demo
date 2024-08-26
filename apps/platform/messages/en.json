@@ -110,6 +110,14 @@
     "supportProject": "Support the project by sharing"
   },
   "cart" : {
-    "addCart": "Add to Cart"
+    "addCart": "Add to Cart",
+    "selectedProjects": "Selected Projects",
+    "funded": "funded",
+    "removeAllProjects": "Remove all projects",
+    "totalAmount": "Total amount",
+    "finalSubmission": "This is a final submission. Once you submit your ballot, you won't be able to change it.",
+    "checkout": "Checkout",
+    "donationSuccess": "Your donation has been successfully received!",
+    "resultAvailable": "Results will be available after tallying on"
   }
 }

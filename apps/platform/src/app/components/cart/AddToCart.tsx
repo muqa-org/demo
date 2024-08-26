@@ -1,7 +1,15 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Noto_Sans } from 'next/font/google';
 
 import icons from '@/app/components/common/Icons';
+
+const notoSans = Noto_Sans({
+	subsets: ['latin'],
+	weight: ['400'],
+	style: ['normal'],
+	display: 'swap',
+});
 
 interface AddButtonProps {
 	className?: string;
@@ -11,7 +19,7 @@ interface AddButtonProps {
 export default function AddToCart({ className, variant }: AddButtonProps) {
 	const t = useTranslations('cart');
 	return (
-		<button className={`${className}`}>
+		<button className={`${className} ${notoSans.className}`}>
 			{variant === 'icon' ? (
 				<Image
 					src={icons.cartIconGreen}

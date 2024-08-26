@@ -27,6 +27,9 @@ const icons = {
 	checkedIcon: '/images/icons/icon-checked.svg',
 	markerIcon: '/images/icons/icon-marker.svg',
 	markerIconZero: '/images/icons/icon-marker-zero.svg',
+	trashIcon: '/images/icons/icon-trash.svg',
+	alertIcon: '/images/icons/icon-alert.svg',
+	partyIcon: '/images/icons/icon-party.svg',
 	
 	ethIconBlue: '/images/icons/icon-eth-blue.svg',
 	ethIconBlue12: '/images/icons/icon-eth-blue-12.svg',
