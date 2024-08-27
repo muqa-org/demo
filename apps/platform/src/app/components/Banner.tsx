@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import images from '@/app/components/common/Images';
 
-import { CodaFormProjectLink } from '@/app/config/config';
+import { CodaFormProjectLink } from '@/app/config';
 
 const Banner = ({
 	message,
