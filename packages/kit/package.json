@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@allo-team/allo-v2-sdk": "^1.0.76",
+    "@cometh/connect-sdk": "^1.2.29",
     "@cometh/connect-sdk-viem": "^2.0.5",
     "@gitcoin/gitcoin-chain-data": "^1.0.17",
     "@hookform/resolvers": "^3.6.0",

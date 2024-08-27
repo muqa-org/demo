@@ -157,6 +157,9 @@ importers:
       '@allo-team/allo-v2-sdk':
         specifier: ^1.0.76
         version: 1.0.77(@typechain/ethers-v6@0.5.1(ethers@5.7.2(bufferutil@4.0.8))(typechain@8.3.2(typescript@5.5.3))(typescript@5.5.3))(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8))(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typechain@8.3.2(typescript@5.5.3))(typescript@5.5.3)(zod@3.23.8)
+      '@cometh/connect-sdk':
+        specifier: ^1.2.29
+        version: 1.2.29(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8)
       '@cometh/connect-sdk-viem':
         specifier: ^2.0.5
         version: 2.0.5(@react-native-async-storage/async-storage@1.24.0(react-native@0.74.3(@babel/core@7.24.8)(@babel/preset-env@7.24.8(@babel/core@7.24.8))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1)))(@tanstack/query-core@5.51.1)(@tanstack/react-query@5.51.1(react@18.3.1))(@types/react@18.3.3)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.3(@babel/core@7.24.8)(@babel/preset-env@7.24.8(@babel/core@7.24.8))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(rollup@4.18.1)(typescript@5.5.3)(zod@3.23.8)
@@ -1109,8 +1112,8 @@ packages:
   '@cometh/connect-sdk-viem@2.0.5':
     resolution: {integrity: sha512-TTs4n8oUIDsIx/pJDPQ8ubeYzVB9XHIBQOfl3WqkS6Q+if1W7HNFRtlIcTnFvkqKByjc1KdFjLL/jij74VtrLg==}
 
-  '@cometh/connect-sdk@1.2.24':
-    resolution: {integrity: sha512-9L37NaC6/+b9UQE+Qa3M/Qn0Xgx6SZXPB9h4Gz/e6uzqdYX7TwWlSOLAY63+W4PiLu54zB2ewM+523zXDiOb2A==}
+  '@cometh/connect-sdk@1.2.29':
+    resolution: {integrity: sha512-qS5GHBflS6JPHg3yAbVJSgq7V3fnluJIZfSe/YSZ15vqmog97jYg7gcarITeFJ5AKnxgOgBtAAi+ZuQkSykkFg==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -3794,9 +3797,6 @@ packages:
   axe-core@4.9.1:
     resolution: {integrity: sha512-QbUdXJVTpvUTHU7871ppZkdOLBeGUKBQWHkHrvN2V9IQWGMt61zf3B45BtzjxEJzYuj0JBjBZP/hmYS/R9pmAw==}
     engines: {node: '>=4'}
-
-  axios@1.7.2:
-    resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
 
   axios@1.7.4:
     resolution: {integrity: sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==}
@@ -9700,7 +9700,7 @@ snapshots:
   '@cometh/connect-sdk-viem@2.0.5(@react-native-async-storage/async-storage@1.24.0(react-native@0.74.3(@babel/core@7.24.8)(@babel/preset-env@7.24.8(@babel/core@7.24.8))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1)))(@tanstack/query-core@5.51.1)(@tanstack/react-query@5.51.1(react@18.3.1))(@types/react@18.3.3)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.3(@babel/core@7.24.8)(@babel/preset-env@7.24.8(@babel/core@7.24.8))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(rollup@4.18.1)(typescript@5.5.3)(zod@3.23.8)':
     dependencies:
       '@babel/traverse': 7.24.8
-      '@cometh/connect-sdk': 1.2.24(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8)
+      '@cometh/connect-sdk': 1.2.29(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8)
       '@rainbow-me/rainbowkit': 2.1.3(@tanstack/react-query@5.51.1(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(viem@2.17.4(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8))(wagmi@2.9.0(@react-native-async-storage/async-storage@1.24.0(react-native@0.74.3(@babel/core@7.24.8)(@babel/preset-env@7.24.8(@babel/core@7.24.8))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1)))(@tanstack/query-core@5.51.1)(@tanstack/react-query@5.51.1(react@18.3.1))(@types/react@18.3.3)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.3(@babel/core@7.24.8)(@babel/preset-env@7.24.8(@babel/core@7.24.8))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(rollup@4.18.1)(typescript@5.5.3)(viem@2.17.4(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8))(zod@3.23.8))
       '@types/babel__core': 7.20.5
       viem: 2.17.4(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8)
@@ -9736,7 +9736,7 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@cometh/connect-sdk@1.2.24(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8)':
+  '@cometh/connect-sdk@1.2.29(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8)':
     dependencies:
       '@alembic/ui': 1.5.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@babel/traverse': 7.24.8
@@ -9746,7 +9746,7 @@ snapshots:
       '@simplewebauthn/server': 7.4.0
       '@types/babel__core': 7.20.5
       '@web3-onboard/common': 2.4.2(bufferutil@4.0.8)(typescript@5.5.3)(zod@3.23.8)
-      axios: 1.7.2
+      axios: 1.7.4
       bowser: 2.11.0
       cbor-js: 0.1.0
       elliptic: 6.5.5
@@ -13432,14 +13432,6 @@ snapshots:
       possible-typed-array-names: 1.0.0
 
   axe-core@4.9.1: {}
-
-  axios@1.7.2:
-    dependencies:
-      follow-redirects: 1.15.6(debug@4.3.5)
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
 
   axios@1.7.4:
     dependencies:

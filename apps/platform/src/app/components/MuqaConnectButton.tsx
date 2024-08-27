@@ -3,7 +3,7 @@
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 
 import { Button, ButtonProps } from './Button';
-import { comethConnector } from '@allo/kit/wagmi';
+import { comethConnector } from '@allo/kit';
 import { PropsWithChildren, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { signIn, signOut } from 'next-auth/react';
@@ -74,10 +74,8 @@ export function MuqaConnectButton({ children, ...props }: PropsWithChildren<Butt
   const { connectAsync } = useConnect();
   const { disconnect } = useDisconnect();
   const { signMessageAsync } = useSignMessage();
-
-  const label = getLabel();
-
   const [showTooltip, setShowTooltip] = useState(false);
+  const label = getLabel();
 
   const onMouseEnter = () => setShowTooltip(!!account?.address && true);
   const onMouseLeave = () => setShowTooltip(false);
