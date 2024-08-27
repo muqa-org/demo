@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import icons from '@/app/components/common/Icons';
-import { GutHubLink, FacebookLink } from '@/app/config/config';
+import { GitHubLink, FacebookLink } from '@/app/config/config';
 
 export default function Socials() {
 	return (
 		<div className='mb-6 flex items-center gap-6 lg:mb-0'>
-			<Link href={GutHubLink} className='hover:opacity-85' target='_blank'>
+			<Link href={GitHubLink} className='hover:opacity-85' target='_blank'>
 				<Image
 					width='23'
 					height='23'
