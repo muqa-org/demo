@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
+import { DocumentationLink, ForumLink } from '@/app/config/config';
+
 export default function Navigation({ screen }: { screen: string }) {
 	const t = useTranslations('navigation');
 	const pathname = usePathname();
@@ -29,7 +31,7 @@ export default function Navigation({ screen }: { screen: string }) {
 				{t('home')}
 			</Link>
 			<Link
-				href={'https://docs.zazelenimo.com/'}
+				href={DocumentationLink}
 				className={`${linkClassName} ${
 					pathname === '/documentation'
 						? 'border-borderGreen text-primaryBlack'
@@ -40,7 +42,7 @@ export default function Navigation({ screen }: { screen: string }) {
 				{t('documentation')}
 			</Link>
 			<Link
-				href={'https://forum.zazelenimo.com/'}
+				href={ForumLink}
 				className={`${linkClassName} ${
 					pathname === '/documentation'
 						? 'border-borderGreen text-primaryBlack'
