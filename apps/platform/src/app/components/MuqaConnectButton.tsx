@@ -1,11 +1,13 @@
 'use client';
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 
 import { Button, ButtonProps } from './Button';
-import { comethConnector } from '@allo/kit/wagmi';
-import { PropsWithChildren, ReactNode, useState } from 'react';
+import { comethConnector } from '@allo/kit';
+import { PropsWithChildren, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { signIn, signOut } from 'next-auth/react';
+import { WalletNonceResponse } from '../api/auth/web3/nonce/route';
 
 const TRUNCATE_LENGTH = 20;
 const TRUNCATE_OFFSET = 3;
@@ -51,21 +53,51 @@ function LoadingIcon() {
   );
 }
 
-export function MuqaConnectButton({ children, ...props }: PropsWithChildren<ButtonProps>): JSX.Element {
-  const account = useAccount()
-  const { connect } = useConnect()
-  const { disconnect } = useDisconnect()
+async function getNonce(address: `0x${string}`) {
+  const body = JSON.stringify({ address });
+  const headers = {
+    'Content-Type': 'application/json',
+  };
 
+  const res = await fetch('/api/auth/web3/nonce', {
+     method: 'POST',
+     headers,
+     body,
+  });
+
+  const { nonce } = await res.json() as WalletNonceResponse;
+  return nonce;
+}
+
+export function MuqaConnectButton({ children, ...props }: PropsWithChildren<ButtonProps>): JSX.Element {
+  const account = useAccount();
+  const { connectAsync } = useConnect();
+  const { disconnect } = useDisconnect();
+  const { signMessageAsync } = useSignMessage();
+  const [showTooltip, setShowTooltip] = useState(false);
   const label = getLabel();
 
-  const onClick = account.status === 'disconnected'
-    ? () => connect({ connector: comethConnector })
-    : () => disconnect();
+  const onMouseEnter = () => setShowTooltip(!!account?.address && true);
+  const onMouseLeave = () => setShowTooltip(false);
 
- const [showTooltip, setShowTooltip] = useState(false);
+  async function signInWithWeb3() {
+    const { accounts } = await connectAsync({ connector: comethConnector });
+    const [address] = accounts;
+    const nonce = await getNonce(address);
+    const signedNonce = await signMessageAsync({ message: nonce });
+    await signIn('credentials', { address, signedNonce, redirect: false });
+  }
 
- const onMouseEnter = () => setShowTooltip(!!account?.address && true);
- const onMouseLeave = () => setShowTooltip(false);
+  async function signOutWithWeb3() {
+    disconnect();
+    await signOut();
+  }
+
+  function onClick() {
+    return account.isConnected
+      ? signOutWithWeb3()
+      : signInWithWeb3();
+  }
 
   return (
      <div className='relative'>

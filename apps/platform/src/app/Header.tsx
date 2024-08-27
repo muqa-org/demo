@@ -12,16 +12,24 @@ import Navigation from '@/app/components/Navigation';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
 import { CodaFormProjectLink } from '@/app/config/config';
-
+import { MuqaConnectButton } from './components/MuqaConnectButton';
+import { useSession } from 'next-auth/react';
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
+	const { data: session } = useSession();
 
 	const t = useTranslations('navigation');
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
+
+	if (session) {
+		console.log(`Signed in as ${session.user?.name}`);
+	} else {
+		console.log('Not signed in');
+	}
 
 	return (
 		<header className='border-b border-borderGray bg-white'>
@@ -37,6 +45,9 @@ export default function Header() {
 					<div className='mr-4 hidden md:block'>
 						<LanguageSwitcher screen='desktop' />
 					</div>
+					{process.env.NODE_ENV === 'development' && (
+						<MuqaConnectButton className='mx-4 bg-blue px-10 py-3' />
+					)}
 					<Link
 						href={CodaFormProjectLink}
 						target='_blank'

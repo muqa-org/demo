@@ -36,5 +36,5 @@ export function Web3Provider({
         <RainbowKitProvider>{children}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
-  );
+);
 }
