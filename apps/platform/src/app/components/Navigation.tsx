@@ -29,34 +29,36 @@ export default function Navigation({ screen }: { screen: string }) {
 				{t('home')}
 			</Link>
 			<Link
-				href={'/projects'}
+				href={'https://docs.zazelenimo.com/'}
 				className={`${linkClassName} ${
-					pathname === '/projects'
+					pathname === '/documentation'
 						? 'border-borderGreen text-primaryBlack'
 						: 'border-white text-primaryBlack'
 				}`}
+				target='_blank'
 			>
-				{t('projects')}
+				{t('documentation')}
 			</Link>
 			<Link
-				href={'/admin/rounds/create'}
+				href={'https://forum.zazelenimo.com/'}
 				className={`${linkClassName} ${
-					pathname === '/admin/rounds/create'
+					pathname === '/documentation'
 						? 'border-borderGreen text-primaryBlack'
 						: 'border-white text-primaryBlack'
 				}`}
+				target='_blank'
 			>
-				{t('myContribution')}
+				{t('forum')}
 			</Link>
 			<Link
-				href={'/11155111/projects/create'}
+				href={'/#faq'}
 				className={`${linkClassName} ${
-					pathname === '/11155111/projects/create'
+					pathname === '/documentation'
 						? 'border-borderGreen text-primaryBlack'
 						: 'border-white text-primaryBlack'
 				}`}
 			>
-				{t('results')}
+				{t('faq')}
 			</Link>
 		</nav>
 	);

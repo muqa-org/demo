@@ -1,6 +1,6 @@
 // link to external form for submitting projects
 export const CodaFormProjectLink =
-	'https://coda.io/form/Zazelenimo-Split-obrazac-za-prijedloge_dbtTs0gGIcq';
+	'https://forum.zazelenimo.com/t/uputa-za-podnosenje-prijedloga/15';
 
 // List of Split city neighborhoods
 export const neighborhoods = [
