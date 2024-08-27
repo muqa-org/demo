@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
-import { DocumentationLink, ForumLink } from '@/app/config/config';
+import { DocumentationLink, ForumLink } from '@/app/config';
 
 export default function Navigation({ screen }: { screen: string }) {
 	const t = useTranslations('navigation');

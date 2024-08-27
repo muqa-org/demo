@@ -7,7 +7,7 @@ import Container from '@/app/components/Container';
 import icons from '@/app/components/common/Icons';
 import { useState } from 'react';
 
-import { CodaFormProjectLink } from '@/app/config/config';
+import { CodaFormProjectLink } from '@/app/config';
 
 const NotificationBar = ({ message }: { message: string }) => {
 	const t = useTranslations('home');

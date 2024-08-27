@@ -11,7 +11,7 @@ import Container from '@/app/components/Container';
 import Navigation from '@/app/components/Navigation';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
-import { CodaFormProjectLink } from '@/app/config/config';
+import { CodaFormProjectLink } from '@/app/config';
 import { MuqaConnectButton } from './components/MuqaConnectButton';
 import { useSession } from 'next-auth/react';
 

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import icons from '@/app/components/common/Icons';
-import { GitHubLink, FacebookLink } from '@/app/config/config';
+import { GitHubLink, FacebookLink } from '@/app/config';
 
 export default function Socials() {
 	return (

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import icons from '../common/Icons';
-import { DocumentationLink, ForumLink } from '@/app/config/config';
+import { DocumentationLink, ForumLink } from '@/app/config';
 
 export default function FooterLinks() {
 	const t = useTranslations('footer');
