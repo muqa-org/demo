@@ -36,6 +36,15 @@ const config: Config = {
 				green: {
 					DEFAULT: '#39A56A',
 				},
+				progressLow: {
+					DEFAULT: '#C9767B',
+				},
+				progressMedium: {
+					DEFAULT: '#E2CB55',
+				},
+				progressHigh: {
+					DEFAULT: '#09CE78',
+				},
 			},
 		},
 		borderColor: {

@@ -5,9 +5,9 @@
  * @param {number} progressPercentage - The current progress of the project as a percentage (from 0 to 100).
  * @returns {string} - A string representing the CSS class name for the background color.
  *
- * - Returns `'bg-[#C9767B]'` for progress between 1% and 33%.
- * - Returns `'bg-[#E2CB55]'` for progress between 34% and 66%.
- * - Returns `'bg-[#09CE78]'` for progress between 67% and 100%.
+ * - Returns `'bg-progressLow'` for progress between 1% and 33%.
+ * - Returns `'bg-progressMedium'` for progress between 34% and 66%.
+ * - Returns `'bg-progressHigh'` for progress between 67% and 100%.
  * - Returns `'bg-green'` if progress is 0% or any other value outside the 1-100 range.
  */
 export const getProjectProgressBGColor = (
@@ -15,11 +15,11 @@ export const getProjectProgressBGColor = (
 ): string => {
 	let progressColor = 'bg-green';
 	if (progressPercentage > 0 && progressPercentage <= 33) {
-		progressColor = 'bg-[#C9767B]';
+		progressColor = 'bg-progressLow';
 	} else if (progressPercentage > 33 && progressPercentage <= 66) {
-		progressColor = 'bg-[#E2CB55]';
+		progressColor = 'bg-progressMedium';
 	} else if (progressPercentage > 66 && progressPercentage <= 100) {
-		progressColor = 'bg-[#09CE78]';
+		progressColor = 'bg-progressHigh';
 	}
 	return progressColor;
 };
