@@ -22,7 +22,10 @@
     "projects": "Projects",
     "myContribution": "My contribution",
     "results": "Results",
-    "propose": "Propose a project"
+    "propose": "Propose a project",
+    "documentation": "Documentation",
+    "forum": "Forum",
+    "faq": "Faq"
   },
   "auth": {
     "connect": "Sign in",
@@ -85,5 +88,39 @@
     "title": "About the project",
     "firstParagraph": "This project is pilot of Muqa - Municipal Quadratic Funding Initiative. It is based on the technology of Ethereum and idea of Quadratic funding.",
     "secondParagraph": "Development of our application is funded by Ethereum Foundation. Learn more about Muqa here."
+  },
+  "languages" : {
+    "en": "English",
+    "hr": "Croatian"
+  },
+  "projects" : {
+    "title": "Projects",
+    "map": "Map",
+    "board": "Board",
+    "neighborhood": "By neighborhood",
+    "filterNeighborhood": "Filter by Neigbourghood",
+    "projectsMap": "Projects on the map"
+  },
+  "projectCard" : {
+    "funded": "funded"
+  },
+  "project" : {
+    "funded": "funded of €{amount} goal",
+    "backers": "backers",
+    "daysGo": "days to go",
+    "donationAmount": "Donation amount",
+    "estimatedMatch": "Estimated match from the city",
+    "supportProject": "Support the project by sharing"
+  },
+  "cart" : {
+    "addCart": "Add to Cart",
+    "selectedProjects": "Selected Projects",
+    "funded": "funded",
+    "removeAllProjects": "Remove all projects",
+    "totalAmount": "Total amount",
+    "finalSubmission": "This submission is final. Once you submit your ballot, you won't be able to change it.",
+    "checkout": "Checkout",
+    "donationSuccess": "Your donation has been successfully received!",
+    "resultAvailable": "Results will be available after tallying on"
   }
 }

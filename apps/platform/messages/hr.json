@@ -22,7 +22,10 @@
     "projects": "Projekti",
     "myContribution": "Moj doprinos",
     "results": "Rezultati",
-    "propose": "Predloži projekt"
+    "propose": "Predloži projekt",
+    "documentation": "Dokumentacija",
+    "forum": "Forum",
+    "faq": "Najčešća pitanja"
   },
   "auth": {
     "connect": "Prijavi se",
@@ -84,5 +87,39 @@
     "title": "O ovom projektu",
     "firstParagraph": "Ovo je pilot projekt u sklopu Municipalne Inicijative za Kvadratno Financiranje (MUQA).",
     "secondParagraph": "Temelji se na Ethereum tehnologiji i provodi uz financijsku podršku Ethereum Foundation. Saznajte više o Muqi ovdje."
+  },
+  "languages" : {
+    "en": "Engleski",
+    "hr": "Hrvatski"
+  },
+  "projects" : {
+    "title": "Projekti",
+    "map": "Karta",
+    "board": "Ploča",
+    "neighborhood": "Po kvartovima",
+    "filterNeighborhood": "Filter po kvartovima",
+    "projectsMap": "Projekti na karti"
+  },
+  "projectCard" : {
+    "funded": "financiran"
+  },
+  "project" : {
+    "funded": "donirano od ciljanih €{amount}",
+    "backers": "donatora",
+    "daysGo": "dana preostalo",
+    "donationAmount": "Iznos donacije",
+    "estimatedMatch": "Procijenjeni doprinos iz proračuna",
+    "supportProject": "Podržite projekt dijeljenjem"
+  },
+  "cart" : {
+    "addCart": "Dodaj u Košaricu",
+    "selectedProjects": "Odabrani projekti",
+    "funded": "financiran",
+    "removeAllProjects": "Ukloni sve projekte",
+    "totalAmount": "Ukupni iznos",
+    "finalSubmission": "Ovo je konačna vrijednost donacija. Nakon što kliknete na plaćanje, iznose donacija više nećete moći promijeniti.",
+    "checkout": "Na plaćanje",
+    "donationSuccess": "Tvoja donacija je uspješno zaprimljena!",
+    "resultAvailable": "Rezultati će biti dostupni nakon zbrajanja"
   }
 }

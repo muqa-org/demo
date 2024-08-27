@@ -10,7 +10,7 @@ module.exports = {
     "eslint-config-turbo",
     "prettier",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
     './common-config.js',
   ],
   globals: {

@@ -1,11 +1,17 @@
+import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin';
 import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'path';
+
+const isDeployed = process.env.CI === '1';
 
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    if (isServer && isDeployed) {
+      config.plugins = [...config.plugins, new PrismaPlugin()]
+    }
     config.resolve.fallback = { fs: false, net: false, tls: false };
     config.resolve.symlinks = true;
     // Uncomment and adjust these lines if you need to resolve specific modules

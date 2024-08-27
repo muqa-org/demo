@@ -1,22 +1,78 @@
-import ProjectsSidebarFinish from '@/app/components/projects/ProjectsSidebarFinish';
-import ProjectsSidebarPhases from '@/app/components/projects/ProjectsSidebarPhases';
-import ProjectsSidebarsUserDonations from '@/app/components/projects/ProjectsSidebarsUserDonations';
-import { RoundData } from '@/app/types/round';
+'use client';
 
-export default function ProjectsSidebar({ round }: { round: RoundData }) {
+import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+
+import { neighborhoods } from '@/app/config/config';
+import icons from '@/app/components/common/Icons';
+
+export default function ProjectsSidebar() {
+	const t = useTranslations('projects');
+	const [isOpen, setIsOpen] = useState(false);
+
+	const [selectedNeighborhoods, setSelectedNeighborhoods] = useState<string[]>(
+		[],
+	);
+
+	const handleCheckboxChange = (neighborhood: string) => {
+		setSelectedNeighborhoods((prevSelected: string[]) =>
+			prevSelected.includes(neighborhood)
+				? prevSelected.filter((item: string) => item !== neighborhood)
+				: [...prevSelected, neighborhood], 
+		);
+	};
+
 	return (
-		<div className='w-1/4'>
-			<div className='rounded-lg border border-lightGray p-5 pb-1.5 shadow-[0_8px_18px_rgba(0,0,0,0.08),0_0px_1px_rgba(0,0,0,0.05)]'>
-				<h3 className='font-sans text-base font-normal uppercase leading-[150%] text-gray'>
-					Natječaj
-				</h3>
-				<h2 className='text-2xl font-normal uppercase text-primaryBlack'>
-					{round.title}
-				</h2>
-				<ProjectsSidebarFinish round={round} />
-				<ProjectsSidebarPhases round={round} />
+		<div className='space-y-2'>
+			<h3 className='mb-5 hidden text-base font-medium text-primaryBlack lg:block'>
+				{t('neighborhood')}
+			</h3>
+			<h3 className='mb-5 block lg:hidden'>
+				<button
+					onClick={() => setIsOpen(!isOpen)}
+					className='flex w-full flex-row items-center justify-between rounded border border-borderGray bg-white px-4 py-2 text-[#999999] mb-6'
+				>
+					<span>{t('filterNeighborhood')}</span>
+					<Image
+						width='13'
+						height='8'
+						alt='Arrow Down Icon'
+						src={icons.arrowDownIconGray}
+						className='ml-2'
+					/>
+				</button>
+			</h3>
+			<div className={`${isOpen ? 'block' : 'hidden'} lg:block`}>
+				{neighborhoods.map(neighborhood => (
+					<label
+						key={neighborhood}
+						className='mb-2 flex cursor-pointer items-center'
+					>
+						<input
+							type='checkbox'
+							className='peer hidden'
+							checked={selectedNeighborhoods.includes(neighborhood)}
+							onChange={() => handleCheckboxChange(neighborhood)}
+						/>
+						<span className='border-borderGrayMedium peer-checked:border-borderGrayMedium flex h-5 w-5 items-center justify-center rounded-md border bg-[#EFEFEF] peer-checked:bg-green peer-focus:ring-2 peer-focus:ring-green'>
+							{selectedNeighborhoods.includes(neighborhood) && (
+								<Image
+									src={icons.checkedIcon}
+									alt='Add to cart'
+									width={10}
+									height={8}
+								/>
+							)}
+						</span>
+						<span
+							className={`${selectedNeighborhoods.includes(neighborhood) ? 'text-green' : 'text-primaryBlack'} ml-2 hover:text-green`}
+						>
+							{neighborhood}
+						</span>
+					</label>
+				))}
 			</div>
-			<ProjectsSidebarsUserDonations />
 		</div>
 	);
 }
