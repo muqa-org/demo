@@ -102,7 +102,7 @@
   },
   "project" : {
     "funded": "donirano od ciljanih €{amount}",
-    "bakers": "donatora",
+    "backers": "donatora",
     "daysGo": "dana preostalo",
     "donationAmount": "Iznos donacije",
     "estimatedMatch": "Procijenjeni doprinos iz proračuna",
