@@ -42,7 +42,7 @@ export default function ProjectSidebar() {
 				{t('funded', { amount: '2,000' })}
 			</h4>
 			<h3 className='mt-8 text-[32px] leading-normal text-[#3F3F3F]'>67</h3>
-			<h4 className='leading-normal text-gray'>{t('bakers')}</h4>
+			<h4 className='leading-normal text-gray'>{t('backers')}</h4>
 			<h3 className='mt-8 text-[32px] leading-normal text-[#3F3F3F]'>34</h3>
 			<h4 className='leading-normal text-gray'>{t('daysGo')}</h4>
 

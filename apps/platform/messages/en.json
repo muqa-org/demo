@@ -106,7 +106,7 @@
   },
   "project" : {
     "funded": "funded of €{amount} goal",
-    "bakers": "bakers",
+    "backers": "backers",
     "daysGo": "days to go",
     "donationAmount": "Donation amount",
     "estimatedMatch": "Estimated match from the city",

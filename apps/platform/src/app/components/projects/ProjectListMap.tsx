@@ -27,9 +27,9 @@ export default function ProjectListMap() {
 		lng: 16.4402,
 	});
 
-	const [selectedMarker, setSelectedMarker] = useState<{ coords: ICoords; info: { title: string; progressPercentage: number; fundedAmount: number } } | null>(null);
+	const [selectedMarker, setSelectedMarker] = useState<{ coords: ICoords; info: { title: string; progress: number; fundedAmount: number } } | null>(null);
 
-	const onSelect = useCallback((marker: { coords: ICoords; info: { title: string; progressPercentage: number; fundedAmount: number } }) => {
+	const onSelect = useCallback((marker: { coords: ICoords; info: { title: string; progress: number; fundedAmount: number } }) => {
 		setSelectedMarker(marker);
 	}, []);
 
@@ -61,7 +61,7 @@ export default function ProjectListMap() {
 			icon: getCustomPercentageMarkerIcon(15),
 			info: {
 				title: 'Project 1',
-				progressPercentage: 15,
+				progress: 15,
 				fundedAmount: 500,
 			},
 		},
@@ -71,7 +71,7 @@ export default function ProjectListMap() {
 			icon: zeroMarkerIcon,
 			info: {
 				title: 'Project 2',
-				progressPercentage: 0,
+				progress: 0,
 				fundedAmount: 0,
 			},
 		},
@@ -81,7 +81,7 @@ export default function ProjectListMap() {
 			icon: greenMarkerIcon,
 			info: {
 				title: 'Klupe od Đardina do Jokera',
-				progressPercentage: 100,
+				progress: 100,
 				fundedAmount: 2000,
 			},
 		},
@@ -118,7 +118,7 @@ export default function ProjectListMap() {
 						>
 							<ProjectMapInfoWindow
 								title={selectedMarker.info.title}
-								progressPercentage={selectedMarker.info.progressPercentage}
+								progress={selectedMarker.info.progress}
 								fundedAmount={selectedMarker.info.fundedAmount}
 							/>
 						</InfoWindow>

@@ -94,18 +94,18 @@
   },
   "projects" : {
     "title": "Projekti",
-    "map": "Mapa",
+    "map": "Karta",
     "board": "Ploča",
     "neighborhood": "Po kvartovima",
     "filterNeighborhood": "Filter po kvartovima",
-    "projectsMap": "Projekti na mapi"
+    "projectsMap": "Projekti na karti"
   },
   "projectCard" : {
     "funded": "financiran"
   },
   "project" : {
     "funded": "donirano od ciljanih €{amount}",
-    "bakers": "donatora",
+    "backers": "donatora",
     "daysGo": "dana preostalo",
     "donationAmount": "Iznos donacije",
     "estimatedMatch": "Procijenjeni doprinos iz proračuna",
