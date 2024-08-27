@@ -8,7 +8,7 @@ import ProjectList from '@/app/components/projects/ProjectList';
 import ProjectListMap from '@/app/components/projects/ProjectListMap';
 
 export default function DiscoverRoundsPage() {
-	const [activeTab, setActiveTab] = useState('map');
+	const [activeTab, setActiveTab] = useState('board');
 
 	const handleTabChange = (tab: string) => {
 		setActiveTab(tab);
