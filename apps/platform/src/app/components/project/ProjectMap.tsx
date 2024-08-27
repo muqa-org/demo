@@ -27,7 +27,7 @@ export default function ProjectMap() {
 
 	const [selectedMarker, setSelectedMarker] = useState<{
 		coords: ICoords;
-		info: { title: string; progressPercentage: number; fundedAmount: number };
+		info: { title: string; progress: number; fundedAmount: number };
 	} | null>(null);
 
 	const mapStyles = [

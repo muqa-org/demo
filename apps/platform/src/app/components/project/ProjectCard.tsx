@@ -6,14 +6,14 @@ import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
 
 interface ProjectCardProps {
 	className?: string;
-	progressPercentage: number;
+	progress: number;
 }
 
 export default function ProjectCard({
 	className,
-	progressPercentage,
+	progress,
 }: ProjectCardProps) {
-	let progressColor = getProjectProgressBGColor(progressPercentage);
+	let progressColor = getProjectProgressBGColor(progress);
 
 	return (
 		<div className={`${className} flex h-full flex-col gap-1 overflow-hidden`}>
@@ -28,7 +28,7 @@ export default function ProjectCard({
 				<div className='h-1.5 rounded-b-md bg-white'>
 					<div
 						className={`h-1.5 rounded-b-md ${progressColor}`}
-						style={{ width: progressPercentage + '%' }}
+						style={{ width: progress + '%' }}
 					></div>
 				</div>
 			</div>
@@ -44,7 +44,7 @@ export default function ProjectCard({
 				</h3>
 			</div>
 			<div className='text-base text-gray'>
-				{progressPercentage}% funded (2000 €)
+				{progress}% funded (2000 €)
 			</div>
 		</div>
 	);
