@@ -122,5 +122,9 @@
     "checkout": "Checkout",
     "donationSuccess": "Your donation has been successfully received!",
     "resultAvailable": "Results will be available after tallying on"
+  },
+  "footer" : {
+    "documentation": "Documentation",
+    "forum": "Forum"
   }
 }
