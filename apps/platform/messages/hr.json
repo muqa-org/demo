@@ -22,7 +22,10 @@
     "projects": "Projekti",
     "myContribution": "Moj doprinos",
     "results": "Rezultati",
-    "propose": "Predloži projekt"
+    "propose": "Predloži projekt",
+    "documentation": "Dokumentacija",
+    "forum": "Forum",
+    "faq": "Najčešća pitanja"
   },
   "auth": {
     "connect": "Prijavi se",

@@ -42,7 +42,7 @@ export default function HomepageFAQ() {
 	];
 
 	return (
-		<div className='py-16 pb-4'>
+		<div id="faq" className='py-16 pb-4'>
 			<Container className='mx-auto justify-between'>
 				<div className='mx-5 mb-20 h-[1px] border-2 border-dashed border-borderGray sm:mx-5 lg:mx-0'></div>
 				<div className='py-10 mx-5 sm:mx-16 xl:mx-56'>

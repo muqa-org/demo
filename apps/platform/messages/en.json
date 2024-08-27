@@ -22,7 +22,10 @@
     "projects": "Projects",
     "myContribution": "My contribution",
     "results": "Results",
-    "propose": "Propose a project"
+    "propose": "Propose a project",
+    "documentation": "Documentation",
+    "forum": "Forum",
+    "faq": "Faq"
   },
   "auth": {
     "connect": "Sign in",
