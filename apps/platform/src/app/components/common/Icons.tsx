@@ -7,6 +7,7 @@ const icons = {
 	GithubLogoBlue: '/images/icons/socials/icon-github-blue.svg',
 	DiscordLogo: '/images/icons/socials/icon-discord.svg',
 	FacebookLogo: '/images/icons/socials/icon-facebook-white.svg',
+	FacebookLogoDark: '/images/icons/socials/icon-facebook.svg',
 
 	confirmedIcon: '/images/icons/icon-yes.svg',
 	confirmedIconWhite: '/images/icons/icon-yes-white.svg',
