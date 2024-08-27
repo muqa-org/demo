@@ -1,17 +1,22 @@
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import icons from '../common/Icons';
+import { DocumentationLink, ForumLink } from '@/app/config';
 
 export default function FooterLinks() {
+	const t = useTranslations('footer');
+
 	return (
 		<div className='flex items-center gap-10'>
 			<Link
-				href='/'
+				href={DocumentationLink}
 				className='flex items-center gap-2 font-medium leading-6 text-primaryBlack hover:text-blue'
+				target='_blank'
 			>
-				Documentation
+				{t('documentation')}
 				<Image
 					width='20'
 					height='20'
@@ -20,10 +25,10 @@ export default function FooterLinks() {
 				/>
 			</Link>
 			<Link
-				href='/'
+				href={ForumLink}
 				className='flex items-center gap-2 font-medium leading-6 text-primaryBlack hover:text-blue'
 			>
-				About Quadratic Funding
+				{t('forum')}
 				<Image
 					width='18'
 					height='18'

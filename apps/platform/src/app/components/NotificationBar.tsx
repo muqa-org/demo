@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -6,6 +6,8 @@ import { useTranslations } from 'next-intl';
 import Container from '@/app/components/Container';
 import icons from '@/app/components/common/Icons';
 import { useState } from 'react';
+
+import { CodaFormProjectLink } from '@/app/config';
 
 const NotificationBar = ({ message }: { message: string }) => {
 	const t = useTranslations('home');
@@ -18,7 +20,9 @@ const NotificationBar = ({ message }: { message: string }) => {
 		<div className='bg-[#6AFCAD]'>
 			<Container className='mx-auto flex items-center justify-between px-5 py-5'>
 				<span className='font-normal leading-normal text-black'>
-					{t(message)}
+					{t.rich('notification', {
+						guidelines: chunks => <a href={CodaFormProjectLink} target='_blank'>{chunks}</a>,
+					})}
 				</span>
 				<button>
 					<Image
@@ -34,5 +38,4 @@ const NotificationBar = ({ message }: { message: string }) => {
 		</div>
 	);
 };
-
 export default NotificationBar;
