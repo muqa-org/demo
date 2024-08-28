@@ -35,7 +35,7 @@ export default function LanguageSwitcher({ screen }: { screen: string }) {
 
 	const classNameToggler =
 		screen === 'mobile'
-			? 'flex text-white w-full bg-white text-xs text-[#999999] justify-between rounded-md px-3 py-2 items-center mb-6'
+			? 'flex text-gray w-full bg-white text-xs text-[#999999] justify-between rounded-md px-3 py-2 items-center mb-6'
 			: 'border-green inline-flex items-center justify-center rounded-md border px-3 py-2 text-base font-normal text-green focus:outline-none';
 
 	const switchHolder =
@@ -46,7 +46,7 @@ export default function LanguageSwitcher({ screen }: { screen: string }) {
 	return (
 		<div className={classNameContainer}>
 			<button onClick={toggleDropdown} className={classNameToggler}>
-				{locale.toUpperCase()}
+				{t(locale)}
 				<Image
 					width='13'
 					height='8'
