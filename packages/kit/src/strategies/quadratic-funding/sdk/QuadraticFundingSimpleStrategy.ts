@@ -53,7 +53,7 @@ export class QuadraticFundingSimpleStrategy {
     this.strategyAddress = strategyAddress;
     this.strategyContract = getContract({
       address: strategyAddress,
-      abi: qfSimpleAbi as any,
+      abi: qfSimpleAbi,
       client: {
         public: this.client,
       }
