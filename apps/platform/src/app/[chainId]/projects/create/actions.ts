@@ -51,12 +51,12 @@ export async function createProjectAction(prevState: any, formData: FormData) {
 			headers: {
 				'Content-Type': 'application/json',
 				'Api-Key': apiKey,
-				'Api-Username': newUserUsername,
+				'Api-Username': apiUsername,
 			},
 			body: JSON.stringify({
 				title: 'Prijedlog:' + title,
 				raw: description,
-				category: 8,
+				category: 9,
 			}),
 		});
 
