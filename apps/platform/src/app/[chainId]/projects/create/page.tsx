@@ -4,11 +4,16 @@ import Container from '@/app/components/Container';
 import { useFormState, useFormStatus } from 'react-dom';
 
 import { createProjectAction } from './actions';
+import { useTranslations } from 'next-intl';
+
+import { neighborhoods } from '@/app/config';
 
 export default function CreateProjectPage() {
+	const t = useTranslations('proposalForm');
+
 	const [state, formAction] = useFormState(createProjectAction, {
-		message: '',
-		status: '',
+		message: [],
+		status: false,
 	});
 	const { pending } = useFormStatus();
 
@@ -17,60 +22,197 @@ export default function CreateProjectPage() {
 			<Container className='mx-auto mb-6 flex flex-wrap justify-between gap-10 px-5 py-5'>
 				<div className='flex h-full w-full flex-col flex-wrap justify-between'>
 					<h1 className='w-full border-b border-borderGrayLight pb-10 pt-10 text-[28px] font-normal leading-normal text-primaryBlack md:text-4xl'>
-						Predložite projekt
+						{t('title')}
 					</h1>
 				</div>
 				<div className='w-full'>
-					<form action={formAction} className='mx-auto max-w-lg space-y-6 p-4'>
-						<div>
+					{/* Display all error messages */}
+					{!state.status && state.message.length > 0 && (
+						<div className='mt-4 text-red-500'>
+							<ul>
+								{state.message.map((msg, idx) => (
+									<li key={idx}>{msg}</li>
+								))}
+							</ul>
+						</div>
+					)}
+					<div className='mx-auto max-w-xl p-4 text-lg text-grayDark'>
+						{t('description')}
+					</div>
+					<form action={formAction} className='mx-auto max-w-xl p-4'>
+						<div className='mb-6'>
 							<label
-								htmlFor='email'
-								className='block text-sm font-medium text-gray-700'
+								htmlFor='project'
+								className='block text-lg font-medium text-primaryBlack'
 							>
-								Email
+								{t('projectTitle')}
+							</label>
+							<input
+								type='text'
+								id='project'
+								name='project'
+								className='focus:border-indigo-500 border-grayLight mb-2 mt-1 block w-full rounded-md border p-2 shadow-sm'
+							/>
+							<div className='text-base italic text-grayDark'>
+								{t('projectDesc')}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='disctrict'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('disctrictTitle')}
+							</label>
+							<select
+								id='disctrict'
+								name='disctrict'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
+								required
+							>
+								{neighborhoods.map(neighborhood => (
+									<option key={neighborhood} value={neighborhood}>
+										{neighborhood}
+									</option>
+								))}
+							</select>
+							<div className='text-base italic text-grayDark'>
+								{t('disctrictDesc')}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='street'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('streetTitle')}
+							</label>
+							<input
+								type='text'
+								id='street'
+								name='street'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
+							/>
+							<div className='text-base italic text-grayDark'>
+								{t('streetDesc')}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='location'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('locationTitle')}
+							</label>
+							<textarea
+								id='location'
+								name='location'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-80 w-full rounded-md border p-2 shadow-sm'
+							/>
+							<div className='text-base italic text-grayDark'>
+								{t('locationDesc1')}
+								<div className='mt-3 block'>{t('locationDesc2')}</div>
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='description'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('descriptionTitle')}
+							</label>
+							<textarea
+								id='description'
+								name='description'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-96 w-full rounded-md border p-2 shadow-sm'
+							/>
+							<div className='text-base italic text-grayDark'>
+								{t('descriptionDesc1')}
+								<div className='mt-3 block'>{t('descriptionDesc2')}</div>
+								<div className='mt-3 block'>{t('descriptionDesc3')}</div>
+								<div className='mt-3 block'>
+									<ul className='list-disc pl-10'>
+										<li>
+											{t.rich('descriptionDesc4', {
+												guidelines: chunks => <strong>{chunks}</strong>,
+											})}
+										</li>
+										<li>
+											{t.rich('descriptionDesc5', {
+												guidelines: chunks => <strong>{chunks}</strong>,
+											})}
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<h2>Fotografija</h2>
+
+						<div className='mb-6'>
+							<label
+								htmlFor='proposer'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('proposerTitle')}
+							</label>
+							<input
+								type='text'
+								id='proposer'
+								name='proposer'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
+							/>
+							<div className='text-base italic text-grayDark'>
+								{t('proposerDesc')}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='proposer'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('emailTitle')}
 							</label>
 							<input
 								type='email'
 								id='email'
 								name='email'
-								className='border-gray-300 focus:border-indigo-500 mt-1 block w-full rounded-md border p-2 shadow-sm focus:ring-indigo-500 sm:text-sm'
-								required
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
 							/>
+							<div className='text-base italic text-grayDark'>
+								{t('emailDesc')}
+							</div>
 						</div>
-						<div>
+						<div className='mb-6'>
 							<label
-								htmlFor='title'
-								className='block text-sm font-medium text-gray-700'
+								htmlFor='additional'
+								className='block text-lg font-medium text-primaryBlack'
 							>
-								Title
-							</label>
-							<input
-								type='text'
-								id='title'
-								name='title'
-								className='border-gray-300 focus:border-indigo-500 mt-1 block w-full rounded-md border p-2 shadow-sm focus:ring-indigo-500 sm:text-sm'
-								required
-							/>
-						</div>
-						<div>
-							<label
-								htmlFor='description'
-								className='block text-sm font-medium text-gray-700'
-							>
-								Description
+								{t('additionalTitle')}
 							</label>
 							<textarea
-								id='description'
-								name='description'
-								className='border-gray-300 focus:border-indigo-500 mt-1 block w-full rounded-md border p-2 shadow-sm focus:ring-indigo-500 sm:text-sm'
-								required
+								id='additional'
+								name='additional'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-80 w-full rounded-md border p-2 shadow-sm'
 							/>
+							<div className='text-base italic text-grayDark'>
+								{t('additionalDesc')}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<div className='text-base italic text-grayDark'>
+								{t.rich('formFooterDesc1', {
+									guidelines: chunks => <strong>{chunks}</strong>,
+								})}
+								<div className='mt-3 block'>{t('formFooterDesc2')}</div>
+								<div className='mt-3 block'>{t('formFooterDesc3')}</div>
+							</div>
 						</div>
 						<button
 							type='submit'
 							className='border-transparent inline-flex justify-center rounded-md border bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
 						>
-							{pending ? 'Submitting...' : 'Submit'}
+							{pending ? t('buttonSubmitting') : t('buttonName')}
 						</button>
 					</form>
 				</div>
