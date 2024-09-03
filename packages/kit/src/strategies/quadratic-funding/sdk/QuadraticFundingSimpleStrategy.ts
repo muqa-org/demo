@@ -67,31 +67,27 @@ export class QuadraticFundingSimpleStrategy {
   }
 
   /**
-   *
-   * @param allocation - Allocation[]: [{token: `0x${string}`, recipientId: `0x${string}`, amount: bigint}]
-   * @returns TransactionData: {to: `0x${string}`, data: `0x${string}`, value: string}
+   * Generates the transaction data for allocating voice credits to recipients.
+   * @param allocations - Allocation[]: [{recipientId: `0x${string}`, voiceCreditsToAllocate: bigint}]
+   * @returns TransactionData object: {to: `0x${string}`, data: `0x${string}`, value: string}
    */
-  public getAllocateData(allocations: Allocation[]): TransactionData {
+  public getAllocateData(allocation: Allocation): TransactionData {
     this.checkPoolId();
 
+    // TODO: Add check if the token is native and add to totalNativeAmount if so
     let totalNativeAmount = BigInt(0);
 
-    for (const allocation of allocations) {
-      if (allocation.token.toLowerCase() === NATIVE.toLowerCase())
-        totalNativeAmount += allocation.amount;
-    }
-
-    const encoded = encodeAbiParameters(
+    const strategyParams = encodeAbiParameters(
       parseAbiParameters(
-        '(address token, address recipientId, uint256 amount)[]',
+        '(address recipientId, uint256 voiceCreditsToAllocate)',
       ),
-      [allocations],
+      [allocation],
     );
 
     const encodedData = encodeFunctionData({
       abi: alloAbi,
       functionName: 'allocate',
-      args: [this.poolId, encoded],
+      args: [this.poolId, strategyParams],
     });
 
     return {
