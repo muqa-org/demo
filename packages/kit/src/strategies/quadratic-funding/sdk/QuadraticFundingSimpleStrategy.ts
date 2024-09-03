@@ -1,9 +1,9 @@
-import { Allo, ConstructorArgs, NATIVE, TransactionData,  } from '@allo-team/allo-v2-sdk';
+import { Allo, ConstructorArgs, TransactionData } from '@allo-team/allo-v2-sdk';
 import { abi as alloAbi } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
 import { Chain, getContract, http, PublicClient, Transport, createPublicClient, extractChain, encodeAbiParameters, parseAbiParameters, encodeFunctionData } from 'viem';
 
 import { supportedChains } from './chains.config';
-import qfSimpleAbi from './quadraticFundingSimpleAbi';
+import strategyAbi from './strategyAbi';
 import { Allocation } from './types';
 
 export class QuadraticFundingSimpleStrategy {
@@ -53,7 +53,7 @@ export class QuadraticFundingSimpleStrategy {
     this.strategyAddress = strategyAddress;
     this.strategyContract = getContract({
       address: strategyAddress,
-      abi: qfSimpleAbi,
+      abi: strategyAbi,
       client: {
         public: this.client,
       }
@@ -94,6 +94,22 @@ export class QuadraticFundingSimpleStrategy {
       to: this.allo.address(),
       data: encodedData,
       value: totalNativeAmount.toString(),
+    };
+  }
+
+  public getAddAllocatorData(allocator: `0x${string}`): TransactionData {
+    this.checkPoolId();
+
+    const encodedData = encodeFunctionData({
+      abi: strategyAbi,
+      functionName: 'addAllocator',
+      args: [allocator],
+    });
+
+    return {
+      to: this.strategyAddress as `0x${string}`,
+      data: encodedData,
+      value: BigInt(0).toString(),
     };
   }
 }

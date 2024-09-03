@@ -1,4 +1,4 @@
-export default [
+const abi = [
   {
     'inputs': [
       {
@@ -376,3 +376,9 @@ export default [
     'type': 'receive'
   }
 ];
+
+export function getAbi(name: string) {
+  return abi.find(it => it.name === name);
+}
+
+export default abi;
