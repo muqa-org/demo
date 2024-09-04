@@ -7,6 +7,7 @@ import { createProjectAction } from './actions';
 import { useTranslations } from 'next-intl';
 
 import { neighborhoods } from '@/app/config';
+import ProjectProposalFormButton from '@/app/components/project/ProjectProposalFormButton';
 
 export default function CreateProjectPage() {
 	const t = useTranslations('proposalForm');
@@ -15,7 +16,15 @@ export default function CreateProjectPage() {
 		message: [],
 		status: false,
 	});
-	const { pending } = useFormStatus();
+
+	if (state.status && state.message.includes('success')) {
+		return (
+			<div className='mb-10 mt-10 flex flex-col items-center justify-center'>
+				<h1 className='mb-6 text-center text-2xl font-bold'>{t('success')}</h1>
+				<p className='text-center text-lg'>{t('successDesc')}</p>
+			</div>
+		);
+	}
 
 	return (
 		<section className='py-4'>
@@ -28,7 +37,7 @@ export default function CreateProjectPage() {
 				<div className='w-full'>
 					{/* Display all error messages */}
 					{!state.status && state.message.length > 0 && (
-						<div className='mt-4 text-red-500'>
+						<div className='mx-auto mt-4 max-w-2xl p-4 text-red-500'>
 							<ul>
 								{state.message.map((msg, idx) => (
 									<li key={idx}>{msg}</li>
@@ -36,10 +45,10 @@ export default function CreateProjectPage() {
 							</ul>
 						</div>
 					)}
-					<div className='mx-auto max-w-xl p-4 text-lg text-grayDark'>
+					<div className='mx-auto max-w-2xl p-4 text-lg text-grayDark'>
 						{t('description')}
 					</div>
-					<form action={formAction} className='mx-auto max-w-xl p-4'>
+					<form action={formAction} className='mx-auto max-w-2xl p-4'>
 						<div className='mb-6'>
 							<label
 								htmlFor='project'
@@ -147,7 +156,23 @@ export default function CreateProjectPage() {
 							</div>
 						</div>
 
-						<h2>Fotografija</h2>
+						<div className='mb-6'>
+							<label
+								htmlFor='proposer'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('fotoTitle')}
+							</label>
+							<input
+								type='file'
+								id='photo'
+								name='photo'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
+							/>
+							<div className='text-base italic text-grayDark'>
+								{t('fotoDesc')}
+							</div>
+						</div>
 
 						<div className='mb-6'>
 							<label
@@ -208,12 +233,12 @@ export default function CreateProjectPage() {
 								<div className='mt-3 block'>{t('formFooterDesc3')}</div>
 							</div>
 						</div>
-						<button
-							type='submit'
-							className='border-transparent inline-flex justify-center rounded-md border bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-						>
-							{pending ? t('buttonSubmitting') : t('buttonName')}
-						</button>
+						<ProjectProposalFormButton />
+						{!state.status && state.message.length > 0 && (
+							<div className='mt-3 block rounded-lg bg-red-500 p-4 text-white'>
+								{t('notification')}
+							</div>
+						)}
 					</form>
 				</div>
 			</Container>

@@ -162,6 +162,11 @@
     "formFooterDesc2": "Please make your proposal thorough and clear. If you have any questions or need help, please feel free to contact the program coordinators.",
     "formFooterDesc3": "Let's make Split greener together!",
     "buttonName": "Suggest",
-    "buttonSubmitting": "I suggest..."
+    "buttonSubmitting": "I suggest...",
+    "fotoTitle": "Photo",
+    "fotoDesc": "Attach a photo of the location that is relevant to your proposal.",
+    "notification": "Please check all the entered data carefully. Ensure that all fields are correctly filled out and there are no errors. Once submitted, you won’t be able to make changes.",
+    "success": "Your suggestion has been successfully sent!",
+    "successDesc": "Your proposal will be reviewed and will be published on the Zazelenimo Forum for public discussion and preparation."
   }
 }

@@ -161,6 +161,11 @@
     "formFooterDesc2": "Molimo vas da vaš prijedlog bude temeljit i jasan. Ako imate bilo kakva pitanja ili trebate pomoć, slobodno se obratite koordinatorima programa.",
     "formFooterDesc3": "Zajedno učinimo Split zelenijim!",
     "buttonName": "Predloži",
-    "buttonSubmitting": "Predlažem..."
+    "buttonSubmitting": "Predlažem...",
+    "fotoTitle": "Fotografija",
+    "fotoDesc": "Priložite fotografiju lokacije koja je relevantna za vaš prijedlog.",
+    "notification": "Pažljivo provjerite sve unesene podatke. Uvjerite se da su sva polja ispravno popunjena i da nema grešaka. Nakon slanja, nećete moći unositi promjene.",
+    "success": "Vaš prijedlog je uspješno poslan!",
+    "successDesc": "Vaš prijedlog će biti pregledan i biti će objavljen na Zazelenimo Forumu za javnu raspravu i pripremu."
   }
 }

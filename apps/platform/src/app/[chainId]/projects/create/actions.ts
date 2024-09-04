@@ -1,6 +1,12 @@
 'use server';
 
 import { generatePassword } from '@/app/helpers/appHelpers';
+import {
+	createDiscourseTopic,
+	createDiscourseUser,
+	generateProposalTopicDescription,
+	uploadFileToDiscourse,
+} from '@/app/helpers/discourseHelpers';
 import { getTranslations } from 'next-intl/server';
 
 export async function createProjectAction(
@@ -14,13 +20,13 @@ export async function createProjectAction(
 	const apiUsername = process.env.NEXT_DISCOURSE_USERNAME || '';
 
 	const project = formData.get('project')?.toString().trim();
-	const disctrict = formData.get('disctrict')?.toString().trim();
-	const street = formData.get('street')?.toString().trim();
-	const location = formData.get('location')?.toString().trim();
-	const description = formData.get('description')?.toString().trim();
-	const proposer = formData.get('descproposeription')?.toString().trim();
-	const email = formData.get('email')?.toString().trim();
-	const additional = formData.get('additional')?.toString().trim();
+	const disctrict = formData.get('disctrict')?.toString().trim() ?? '';
+	const street = formData.get('street')?.toString().trim() ?? '';
+	const location = formData.get('location')?.toString().trim() ?? '';
+	const description = formData.get('description')?.toString().trim() ?? '';
+	const proposer = formData.get('proposer')?.toString().trim() ?? '';
+	const email = formData.get('email')?.toString().trim() ?? '';
+	const additional = formData.get('additional')?.toString().trim() ?? '';
 
 	// Validate each field and accumulate errors
 	const errors: string[] = [];
@@ -61,27 +67,18 @@ export async function createProjectAction(
 		};
 	}
 
+	// If all fields are valid, proceed with creating user
 	const newUserUsername = email?.split('@')[0] || '';
 
 	const userData = {
 		name: newUserUsername,
 		username: newUserUsername,
-		email: email || '',
+		email: email ?? '',
 		password: generatePassword(),
-		active: true,
-		approved: true,
 	};
 
 	// First create user on forum
-	const responseUser = await fetch(`${apiUrl}/users.json`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'Api-Key': apiKey!,
-			'Api-Username': apiUsername,
-		},
-		body: JSON.stringify(userData),
-	});
+	const responseUser = await createDiscourseUser(userData);
 
 	if (!responseUser.ok) {
 		const errorText = await responseUser.text();
@@ -94,21 +91,32 @@ export async function createProjectAction(
 		// User created successfully, now create topic
 		const dataUser = await responseUser.json();
 
+		// Upload file to Discourse if it exist
+		let fileUrl = '';
+		const file = formData.get('photo') as File;
+		if (file) {
+			fileUrl = await uploadFileToDiscourse(file);
+		}
+
+		const topicData = {
+			title: 'Prijedlog:' + project,
+			description: generateProposalTopicDescription({
+				disctrict,
+				street,
+				location,
+				description,
+				proposer,
+				username: newUserUsername,
+				email,
+				additional,
+				fileUrl,
+			}),
+			category: 9,
+		};
+
 		console.log('User created successfully:', dataUser);
 
-		const responseTopic = await fetch(`${apiUrl}/posts.json`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				'Api-Key': apiKey,
-				'Api-Username': apiUsername,
-			},
-			body: JSON.stringify({
-				title: 'Prijedlog:' + project,
-				raw: description,
-				category: 9,
-			}),
-		});
+		const responseTopic = await createDiscourseTopic(topicData);
 
 		if (!responseTopic.ok) {
 			const errorText = await responseTopic.text();
@@ -120,11 +128,10 @@ export async function createProjectAction(
 		}
 
 		const data = await responseTopic.json();
-		console.log('Topic created successfully:', data);
 	}
 
 	return {
 		status: true,
-		message: ['Topic created successfully!'],
+		message: ['success'],
 	};
 }
