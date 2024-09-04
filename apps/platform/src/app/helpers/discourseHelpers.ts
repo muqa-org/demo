@@ -31,8 +31,8 @@ export const createDiscourseUser = async ({
 		username: username,
 		email: email,
 		password: password,
-		active: true,
-		approved: true,
+		active: false,
+		approved: false,
 	};
 
 	const response = await fetch(`${apiUrl}/users.json`, {
