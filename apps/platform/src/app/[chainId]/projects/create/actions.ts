@@ -28,19 +28,17 @@ export async function createProjectAction(
 	const email = formData.get('email')?.toString().trim() ?? '';
 	const additional = formData.get('additional')?.toString().trim() ?? '';
 
+	//temporray check files
+
+	const files = formData.getAll('photo') as File[];
+
+	console.log(files);
+
 	// Validate each field and accumulate errors
 	const errors: string[] = [];
 
 	if (!project || project.length < 10) {
 		errors.push(t('projectError'));
-	}
-
-	if (!disctrict || disctrict.length < 1) {
-		errors.push(t('disctrictError'));
-	}
-
-	if (!street || street.length < 1) {
-		errors.push(t('streetError'));
 	}
 
 	if (!location || location.length < 15) {
@@ -99,6 +97,7 @@ export async function createProjectAction(
 		}
 
 		const topicData = {
+			username: newUserUsername,
 			title: 'Prijedlog:' + project,
 			description: generateProposalTopicDescription({
 				disctrict,
@@ -111,7 +110,7 @@ export async function createProjectAction(
 				additional,
 				fileUrl,
 			}),
-			category: 9,
+			category: 8,
 		};
 
 		console.log('User created successfully:', dataUser);
@@ -132,6 +131,6 @@ export async function createProjectAction(
 
 	return {
 		status: true,
-		message: ['success'],
+		message: ['successREMOVE'],
 	};
 }

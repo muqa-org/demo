@@ -31,8 +31,8 @@ export const createDiscourseUser = async ({
 		username: username,
 		email: email,
 		password: password,
-		active: false,
-		approved: false,
+		active: true,
+		approved: true,
 	};
 
 	const response = await fetch(`${apiUrl}/users.json`, {
@@ -92,6 +92,7 @@ export async function uploadFileToDiscourse(formDataFile: any) {
  * Function to create a new topic (post) in Discourse.
  *
  * @param {Object} topicData - The data required to create the new topic.
+ * @param {string} topicData.username - The username of the new topic.
  * @param {string} topicData.title - The title of the new topic.
  * @param {string} topicData.description - The content of the post for the topic.
  * @param {number} topicData.category - The ID of the category where the topic will be created.
@@ -99,10 +100,12 @@ export async function uploadFileToDiscourse(formDataFile: any) {
  * @returns {Promise<Response>} - Returns the API response from Discourse. It includes status and any error information if the request fails.
  */
 export const createDiscourseTopic = async ({
+	username,
 	title,
 	description,
 	category,
 }: {
+	username: string;
 	title: string;
 	description: string;
 	category: number;
@@ -112,12 +115,14 @@ export const createDiscourseTopic = async ({
 		headers: {
 			'Content-Type': 'application/json',
 			'Api-Key': apiKey,
-			'Api-Username': apiUsername,
+			'Api-Username': username,
 		},
 		body: JSON.stringify({
 			title: title,
 			raw: description,
 			category: category,
+			archetype: 'private_message',
+			target_recipients: `kechy,${username}`, // Replace `admin` with the actual admin username
 		}),
 	});
 

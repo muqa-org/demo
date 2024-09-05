@@ -1,13 +1,18 @@
 'use client';
 
 import Container from '@/app/components/Container';
-import { useFormState, useFormStatus } from 'react-dom';
-
-import { createProjectAction } from './actions';
+import { useFormState } from 'react-dom';
+import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-import { neighborhoods } from '@/app/config';
+import { createProjectAction } from './actions';
+
 import ProjectProposalFormButton from '@/app/components/project/ProjectProposalFormButton';
+
+type FileWithPreview = {
+	file: File;
+	url: string;
+};
 
 export default function CreateProjectPage() {
 	const t = useTranslations('proposalForm');
@@ -16,6 +21,51 @@ export default function CreateProjectPage() {
 		message: [],
 		status: false,
 	});
+
+	const [selectedFiles, setSelectedFiles] = useState<FileWithPreview[]>([]);
+	const inputRef = useRef<HTMLInputElement | null>(null);
+
+	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const files: File[] = event.target.files
+			? Array.from(event.target.files)
+			: [];
+
+		// Map through files and create a preview URL for each file
+		const filePreviews: FileWithPreview[] = files.map(file => ({
+			file,
+			url: URL.createObjectURL(file),
+		}));
+
+		setSelectedFiles(prevFiles => [...prevFiles, ...filePreviews]);
+	};
+
+	const handleButtonClick = () => {
+		if (inputRef.current) {
+			inputRef.current.click();
+		}
+	};
+
+	const removeFile = (index: number) => {
+		const updatedFiles = selectedFiles.filter((_, i) => i !== index);
+		setSelectedFiles(updatedFiles);
+
+		// Create a new FileList based on updatedFiles
+		const dataTransfer = new DataTransfer();
+		updatedFiles.forEach(filePreview => {
+			dataTransfer.items.add(filePreview.file);
+		});
+
+		// Update the inputRef to reflect the new FileList
+		if (inputRef.current) {
+			inputRef.current.files = dataTransfer.files;
+		}
+	};
+
+	const handleSubmit = (formData: FormData) => {
+		selectedFiles.forEach(({ file }) => {
+			formData.append('photo', file);
+		});
+	};
 
 	if (state.status && state.message.includes('success')) {
 		return (
@@ -68,46 +118,6 @@ export default function CreateProjectPage() {
 						</div>
 						<div className='mb-6'>
 							<label
-								htmlFor='disctrict'
-								className='block text-lg font-medium text-primaryBlack'
-							>
-								{t('disctrictTitle')}
-							</label>
-							<select
-								id='disctrict'
-								name='disctrict'
-								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
-								required
-							>
-								{neighborhoods.map(neighborhood => (
-									<option key={neighborhood} value={neighborhood}>
-										{neighborhood}
-									</option>
-								))}
-							</select>
-							<div className='text-base italic text-grayDark'>
-								{t('disctrictDesc')}
-							</div>
-						</div>
-						<div className='mb-6'>
-							<label
-								htmlFor='street'
-								className='block text-lg font-medium text-primaryBlack'
-							>
-								{t('streetTitle')}
-							</label>
-							<input
-								type='text'
-								id='street'
-								name='street'
-								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
-							/>
-							<div className='text-base italic text-grayDark'>
-								{t('streetDesc')}
-							</div>
-						</div>
-						<div className='mb-6'>
-							<label
 								htmlFor='location'
 								className='block text-lg font-medium text-primaryBlack'
 							>
@@ -119,8 +129,7 @@ export default function CreateProjectPage() {
 								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-80 w-full rounded-md border p-2 shadow-sm'
 							/>
 							<div className='text-base italic text-grayDark'>
-								{t('locationDesc1')}
-								<div className='mt-3 block'>{t('locationDesc2')}</div>
+								{t('locationDesc')}
 							</div>
 						</div>
 						<div className='mb-6'>
@@ -136,27 +145,11 @@ export default function CreateProjectPage() {
 								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-96 w-full rounded-md border p-2 shadow-sm'
 							/>
 							<div className='text-base italic text-grayDark'>
-								{t('descriptionDesc1')}
-								<div className='mt-3 block'>{t('descriptionDesc2')}</div>
-								<div className='mt-3 block'>{t('descriptionDesc3')}</div>
-								<div className='mt-3 block'>
-									<ul className='list-disc pl-10'>
-										<li>
-											{t.rich('descriptionDesc4', {
-												guidelines: chunks => <strong>{chunks}</strong>,
-											})}
-										</li>
-										<li>
-											{t.rich('descriptionDesc5', {
-												guidelines: chunks => <strong>{chunks}</strong>,
-											})}
-										</li>
-									</ul>
-								</div>
+								{t('descriptionDesc')}
 							</div>
 						</div>
 
-						<div className='mb-6'>
+						<div className='mb-10'>
 							<label
 								htmlFor='proposer'
 								className='block text-lg font-medium text-primaryBlack'
@@ -167,13 +160,67 @@ export default function CreateProjectPage() {
 								type='file'
 								id='photo'
 								name='photo'
-								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
+								multiple
+								ref={inputRef}
+								onChange={handleFileChange}
+								accept='image/png, image/gif, image/jpeg, image/webp'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 hidden w-full rounded-md border p-2 shadow-sm'
 							/>
+							<button
+								type='button'
+								onClick={handleButtonClick}
+								className='my-2 rounded-lg bg-green px-4 py-2 text-white hover:opacity-70'
+							>
+								{t('fotoButton')}
+							</button>
+
+							{selectedFiles.length > 0 && (
+								<div className='mb-5 mt-4 flex flex-wrap gap-4'>
+									{selectedFiles.map((fileData, index) => (
+										<div
+											key={index}
+											className='border-gray-300 group relative h-32 w-32 rounded border-borderGreen'
+										>
+											<img
+												src={fileData.url}
+												alt={`preview-${index}`}
+												className='h-full w-full rounded object-cover'
+											/>
+											{/* "X" button */}
+											<button
+												onClick={() => removeFile(index)}
+												className='absolute right-[-10px] top-[-10px] h-6 w-6 rounded-full bg-red-500 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100'
+											>
+												X
+											</button>
+										</div>
+									))}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t('fotoDesc')}
 							</div>
 						</div>
 
+						<div className='mb-8 h-1 w-full border-t border-borderGray'></div>
+
+						<div className='mb-6'>
+							<label
+								htmlFor='name'
+								className='block text-lg font-medium text-primaryBlack'
+							>
+								{t('nameTitle')}
+							</label>
+							<input
+								type='text'
+								id='name'
+								name='name'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
+							/>
+							<div className='text-base italic text-grayDark'>
+								{t('nameDesc')}
+							</div>
+						</div>
 						<div className='mb-6'>
 							<label
 								htmlFor='proposer'
@@ -189,6 +236,23 @@ export default function CreateProjectPage() {
 							/>
 							<div className='text-base italic text-grayDark'>
 								{t('proposerDesc')}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='publish'
+								className='block cursor-pointer text-lg font-medium text-primaryBlack'
+							>
+								<input
+									type='checkbox'
+									id='publish'
+									name='publish'
+									className='mr-3'
+								/>
+								{t('publishTitle')}
+							</label>
+							<div className='text-base italic text-grayDark'>
+								{t('publishDesc')}
 							</div>
 						</div>
 						<div className='mb-6'>
@@ -210,19 +274,120 @@ export default function CreateProjectPage() {
 						</div>
 						<div className='mb-6'>
 							<label
-								htmlFor='additional'
+								htmlFor='mobile'
 								className='block text-lg font-medium text-primaryBlack'
 							>
-								{t('additionalTitle')}
+								{t('mobileTitle')}
 							</label>
-							<textarea
-								id='additional'
-								name='additional'
-								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-80 w-full rounded-md border p-2 shadow-sm'
+							<input
+								type='text'
+								id='mobile'
+								name='mobile'
+								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
 							/>
 							<div className='text-base italic text-grayDark'>
-								{t('additionalDesc')}
+								{t('mobileDesc')}
 							</div>
+						</div>
+						<div className='mb-6'>
+							<label className='mb-2 block text-lg font-medium text-primaryBlack'>
+								{t('futherTitle')}
+							</label>
+							<div className='mb-4 flex items-center'>
+								<input
+									id='option-yes'
+									name='futher'
+									type='radio'
+									value={t('futherYes')}
+									className='border-grayLight h-4 w-4 text-green-600 focus:ring-green-500'
+								/>
+								<label htmlFor='option-yes' className='ml-3 block text-base'>
+									{t('futherYes')}
+								</label>
+							</div>
+							<div className='flex items-center'>
+								<input
+									id='option-no'
+									name='futher'
+									type='radio'
+									value={t('futherNo')}
+									className='border-grayLight h-4 w-4 text-green-600 focus:ring-green-500'
+								/>
+								<label htmlFor='option-no' className='ml-3 block text-base'>
+									{t('futherNo')}
+								</label>
+							</div>
+							<div className='mt-3 text-base italic text-grayDark'>
+								{t('futherDesc')}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='terms'
+								className='block cursor-pointer text-lg font-medium text-primaryBlack'
+							>
+								<input
+									type='checkbox'
+									id='terms'
+									name='terms'
+									className='mr-3'
+								/>
+								{t('termsTitle')}
+							</label>
+							<div className='text-base italic text-grayDark'>
+								{t.rich('termsDesc', {
+									guidelines: chunks => (
+										<a
+											href='/terms'
+											target='_blank'
+											className='text-green hover:opacity-70'
+										>
+											{chunks}
+										</a>
+									),
+								})}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='privacy'
+								className='block cursor-pointer text-lg font-medium text-primaryBlack'
+							>
+								<input
+									type='checkbox'
+									id='privacy'
+									name='privacy'
+									className='mr-3'
+								/>
+								{t('privacyTitle')}
+							</label>
+							<div className='text-base italic text-grayDark'>
+								{t.rich('privacyDesc', {
+									guidelines: chunks => (
+										<a
+											href='/privacy'
+											target='_blank'
+											className='text-green hover:opacity-70'
+										>
+											{chunks}
+										</a>
+									),
+								})}
+							</div>
+						</div>
+						<div className='mb-6'>
+							<label
+								htmlFor='allow'
+								className='block cursor-pointer text-lg font-medium text-primaryBlack'
+							>
+								<input
+									type='checkbox'
+									id='allow'
+									name='allow'
+									className='mr-3'
+								/>
+								{t('allowTitle')}
+							</label>
 						</div>
 						<div className='mb-6'>
 							<div className='text-base italic text-grayDark'>
