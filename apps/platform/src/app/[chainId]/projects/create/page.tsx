@@ -14,6 +14,19 @@ type FileWithPreview = {
 	url: string;
 };
 
+type MessageType = {
+	key: string;
+	notice: string;
+};
+
+const getErrorMessage = (
+	messages: MessageType[] | string[],
+	key: string,
+): string | null => {
+	const message = (messages as MessageType[]).find(msg => msg.key === key);
+	return message ? message.notice : null;
+};
+
 export default function CreateProjectPage() {
 	const t = useTranslations('proposalForm');
 
@@ -67,14 +80,14 @@ export default function CreateProjectPage() {
 		});
 	};
 
-	if (state.status && state.message.includes('success')) {
-		return (
-			<div className='mb-10 mt-10 flex flex-col items-center justify-center'>
-				<h1 className='mb-6 text-center text-2xl font-bold'>{t('success')}</h1>
-				<p className='text-center text-lg'>{t('successDesc')}</p>
-			</div>
-		);
-	}
+	// if (state.status && getErrorMessage(state.message, 'success')) {
+	// 	return (
+	// 		<div className='mb-10 mt-10 flex flex-col items-center justify-center'>
+	// 			<h1 className='mb-6 text-center text-2xl font-bold'>{t('success')}</h1>
+	// 			<p className='text-center text-lg'>{t('successDesc')}</p>
+	// 		</div>
+	// 	);
+	// }
 
 	return (
 		<section className='py-4'>
@@ -85,16 +98,6 @@ export default function CreateProjectPage() {
 					</h1>
 				</div>
 				<div className='w-full'>
-					{/* Display all error messages */}
-					{!state.status && state.message.length > 0 && (
-						<div className='mx-auto mt-4 max-w-2xl p-4 text-red-500'>
-							<ul>
-								{state.message.map((msg, idx) => (
-									<li key={idx}>{msg}</li>
-								))}
-							</ul>
-						</div>
-					)}
 					<div className='mx-auto max-w-2xl p-4 text-lg text-grayDark'>
 						{t('description')}
 					</div>
@@ -112,6 +115,11 @@ export default function CreateProjectPage() {
 								name='project'
 								className='focus:border-indigo-500 border-grayLight mb-2 mt-1 block w-full rounded-md border p-2 shadow-sm'
 							/>
+							{getErrorMessage(state.message, 'project') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'project')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t('projectDesc')}
 							</div>
@@ -128,6 +136,11 @@ export default function CreateProjectPage() {
 								name='location'
 								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-80 w-full rounded-md border p-2 shadow-sm'
 							/>
+							{getErrorMessage(state.message, 'location') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'location')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t('locationDesc')}
 							</div>
@@ -144,6 +157,11 @@ export default function CreateProjectPage() {
 								name='description'
 								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block h-96 w-full rounded-md border p-2 shadow-sm'
 							/>
+							{getErrorMessage(state.message, 'description') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'description')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t('descriptionDesc')}
 							</div>
@@ -151,7 +169,7 @@ export default function CreateProjectPage() {
 
 						<div className='mb-10'>
 							<label
-								htmlFor='proposer'
+								htmlFor='photo'
 								className='block text-lg font-medium text-primaryBlack'
 							>
 								{t('fotoTitle')}
@@ -217,6 +235,11 @@ export default function CreateProjectPage() {
 								name='name'
 								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
 							/>
+							{getErrorMessage(state.message, 'name') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'name')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t('nameDesc')}
 							</div>
@@ -257,7 +280,7 @@ export default function CreateProjectPage() {
 						</div>
 						<div className='mb-6'>
 							<label
-								htmlFor='proposer'
+								htmlFor='email'
 								className='block text-lg font-medium text-primaryBlack'
 							>
 								{t('emailTitle')}
@@ -268,6 +291,11 @@ export default function CreateProjectPage() {
 								name='email'
 								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
 							/>
+							{getErrorMessage(state.message, 'email') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'email')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t('emailDesc')}
 							</div>
@@ -285,6 +313,11 @@ export default function CreateProjectPage() {
 								name='mobile'
 								className='focus:border-indigo-500 border-grayLight mb-1 mt-1 block w-full rounded-md border p-2 shadow-sm'
 							/>
+							{getErrorMessage(state.message, 'mobile') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'mobile')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t('mobileDesc')}
 							</div>
@@ -317,6 +350,11 @@ export default function CreateProjectPage() {
 									{t('futherNo')}
 								</label>
 							</div>
+							{getErrorMessage(state.message, 'futher') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'futher')}
+								</div>
+							)}
 							<div className='mt-3 text-base italic text-grayDark'>
 								{t('futherDesc')}
 							</div>
@@ -334,6 +372,11 @@ export default function CreateProjectPage() {
 								/>
 								{t('termsTitle')}
 							</label>
+							{getErrorMessage(state.message, 'terms') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'terms')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t.rich('termsDesc', {
 									guidelines: chunks => (
@@ -361,6 +404,11 @@ export default function CreateProjectPage() {
 								/>
 								{t('privacyTitle')}
 							</label>
+							{getErrorMessage(state.message, 'privacy') && (
+								<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+									{getErrorMessage(state.message, 'privacy')}
+								</div>
+							)}
 							<div className='text-base italic text-grayDark'>
 								{t.rich('privacyDesc', {
 									guidelines: chunks => (
@@ -389,6 +437,11 @@ export default function CreateProjectPage() {
 								{t('allowTitle')}
 							</label>
 						</div>
+						{getErrorMessage(state.message, 'allow') && (
+							<div className='mx-auto mt-1 max-w-2xl text-red-500'>
+								{getErrorMessage(state.message, 'allow')}
+							</div>
+						)}
 						<div className='mb-6'>
 							<div className='text-base italic text-grayDark'>
 								{t.rich('formFooterDesc1', {

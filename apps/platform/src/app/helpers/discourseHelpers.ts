@@ -121,8 +121,6 @@ export const createDiscourseTopic = async ({
 			title: title,
 			raw: description,
 			category: category,
-			archetype: 'private_message',
-			target_recipients: `kechy,${username}`, // Replace `admin` with the actual admin username
 		}),
 	});
 
@@ -130,60 +128,78 @@ export const createDiscourseTopic = async ({
 };
 
 /**
- * Function to generate a formatted description for a Discourse topic.
+ * Function to generate a Markdown-formatted description for a proposal topic.
  *
- * This function formats the provided information (like location, description, etc.)
- * into a structured Markdown-style string that will be used as the topic's content.
+ * @param {Object} params - The parameters for generating the proposal description.
+ * @param {string} params.location - A description of the proposal's location.
+ * @param {string} params.description - A detailed description of the proposal.
+ * @param {string} params.name - The name of the person submitting the proposal.
+ * @param {string} params.proposer - The name of the proposer (may differ from the submitter).
+ * @param {string} params.publish - Indicates whether the proposer's name should be published ('on' for yes).
+ * @param {string} params.email - The email address of the proposer.
+ * @param {string} params.mobile - The mobile number of the proposer.
+ * @param {string} params.futher - Indicates if the proposer wants to further participate in the discussion ('on' for yes).
+ * @param {string} params.terms - Indicates if the proposer accepts the terms ('on' for yes).
+ * @param {string} params.privacy - Indicates if the proposer accepts the privacy policy ('on' for yes).
+ * @param {string} params.allow - Indicates if the proposer allows further contact ('on' for yes).
+ * @param {string[]} params.fileUrls - An array of URLs of the uploaded files.
  *
- * @param {Object} proposalData - The data to include in the topic description.
- * @param {string} proposalData.disctrict - The name of the district where the proposal will be carried out.
- * @param {string} proposalData.street - The street where the proposal will be carried out.
- * @param {string} proposalData.location - Detailed location description.
- * @param {string} proposalData.description - Description of the proposal.
- * @param {string} proposalData.proposer - The name of the person or organization submitting the proposal.
- * @param {string} proposalData.username - The username of the person submitting the proposal.
- * @param {string} proposalData.email - The email address of the person submitting the proposal.
- * @param {string} proposalData.additional - Any additional information related to the proposal.
- * @param {string} [proposalData.fileUrl] - Optional URL of a file (image or document) to be included in the proposal.
- *
- * @returns {string} - Returns a formatted string that will be used as the post's content in Markdown format.
+ * @returns {string} - Returns a Markdown-formatted string representing the proposal topic, including images and user details.
  */
 export const generateProposalTopicDescription = ({
-	disctrict,
-	street,
 	location,
 	description,
+	name,
 	proposer,
-	username,
+	publish,
 	email,
-	additional,
-	fileUrl,
+	mobile,
+	futher,
+	terms,
+	privacy,
+	allow,
+	fileUrls,
 }: {
-	disctrict: string;
-	street: string;
 	location: string;
 	description: string;
+	name: string;
 	proposer: string;
-	username: string;
+	publish: string;
 	email: string;
-	additional: string;
-	fileUrl: string;
+	mobile: string;
+	futher: string;
+	terms: string;
+	privacy: string;
+	allow: string;
+	fileUrls: string[];
 }) => {
+	const fileSection = fileUrls.length
+		? fileUrls
+				.map((fileUrl, index) =>
+					fileUrl.trim() !== ''
+						? `![Fotografija prijedloga ${index + 1}](${fileUrl})`
+						: 'nemamo fotografiju :(',
+				)
+				.join('\n')
+		: 'nemamo fotografiju :(';
+
 	const rawDescription = `
-**Kvart:** ${disctrict}
-**Ulica:** ${street}
-**Opis lokacije:**
+**Opiši lokaciju:**
 ${location}
-
-**Opis prijedloga:**
+**Opiši prijedlog:**
 ${description}
+**Fotografije lokacije:**
+${fileSection}
 
-**Fotografija:** 
-${fileUrl && fileUrl.trim() !== '' ? `![Fotografija prijedloga](${fileUrl})` : 'nemamo fotografiju :('}
-**Predlagatelj:** ${proposer}
-**Predlagateljov username:** @${username}
-**Predlagateljov email:** ${email}
-**Dodatne informacije:** ${additional}
+**Tvoje ime i prezime:** ${name}
+**Naziv predlagatelja:** ${proposer}
+**Želim li da objavite moje ime uz prijedlog:** ${publish && publish.trim() === 'on' ? `Da` : 'Ne'}
+**Tvoja email adresa:** ${email}
+**Tvoj broj mobitela:** ${mobile}
+**Želim sudjelovati u daljnjoj razradi prijedloga:** ${futher}
+**Prihvaćam uvjete korištenja Zazelenimo:** ${terms && terms.trim() === 'on' ? `Da` : 'Ne'}
+**Prihvaćam uvjete korištenja Zazelenimo:** ${privacy && privacy.trim() === 'on' ? `Da` : 'Ne'}
+**Dopuštam da me Zazelenimo kontaktira i obavještava vezano za moj prijedlog:** ${allow && allow.trim() === 'on' ? `Da` : 'Ne'}
     `;
 
 	return rawDescription.trim();
