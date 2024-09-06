@@ -46,12 +46,12 @@ export default function Header() {
 						<LanguageSwitcher screen='desktop' />
 					</div>
 					{process.env.NODE_ENV === 'development' && (
-						<MuqaConnectButton className='mx-4 bg-blue px-10 py-3' />
+						<MuqaConnectButton className='mx-4 rounded-md bg-blue px-10 py-[0.55em]' />
 					)}
 					<Link
 						href={CodaFormProjectLink}
 						target='_blank'
-						className='rounded-xl bg-green px-10 py-3 text-base font-normal text-white hover:opacity-85'
+						className='rounded-md bg-green px-10 py-[0.55em] text-base font-normal text-white hover:opacity-85'
 					>
 						{t('propose')}
 					</Link>
