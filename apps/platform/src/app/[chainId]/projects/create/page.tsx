@@ -80,14 +80,14 @@ export default function CreateProjectPage() {
 		});
 	};
 
-	// if (state.status && getErrorMessage(state.message, 'success')) {
-	// 	return (
-	// 		<div className='mb-10 mt-10 flex flex-col items-center justify-center'>
-	// 			<h1 className='mb-6 text-center text-2xl font-bold'>{t('success')}</h1>
-	// 			<p className='text-center text-lg'>{t('successDesc')}</p>
-	// 		</div>
-	// 	);
-	// }
+	if (state.status && getErrorMessage(state.message, 'success')) {
+		return (
+			<div className='mb-10 mt-10 flex flex-col items-center justify-center h-[calc(100vh-395px)]'>
+				<h1 className='mb-6 text-center text-2xl font-bold'>{t('success')}</h1>
+				<p className='text-center text-lg'>{t('successDesc')}</p>
+			</div>
+		);
+	}
 
 	return (
 		<section className='py-4'>
