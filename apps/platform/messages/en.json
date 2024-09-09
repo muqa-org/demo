@@ -129,7 +129,7 @@
   },
   "proposalForm" : {
     "title": "Proposal form",
-    "description": "He proposes an investment in the green area of ​​the city of Split. We will review your proposal and publish it on the Zazelenimo Forum for public discussion and preparation.",
+    "description": "Propose an investment in the green area of the city of Split. We will review your proposal and publish it on the Zazelenimo Forum for public discussion and preparation.",
     "projectTitle": "The proposal name",
     "projectDesc": "Summarize your proposal in a few words. Examples: Tree line in Dubrovačka under the tunnel, Reforestation of the park in Ostravska, Benches on the stretch from Joker to Đardin, Tree in front of Matica Hrvatska 23. Make sure that the name is such that it can be easily distinguished from other proposals.",
     "projectError": "Enter the name of your proposal. Minimum 10 characters.",
