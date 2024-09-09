@@ -18,7 +18,7 @@ const NotificationBar = ({ message }: { message: string }) => {
 
 	return (
 		<div className='bg-[#6AFCAD]'>
-			<Container className='mx-auto flex items-center justify-between px-5 py-5'>
+			<div className='mx-auto flex items-center justify-between px-5 py-2'>
 				<span className='font-normal leading-normal text-black'>
 					{t.rich('notification', {
 						guidelines: chunks => <a href={CodaFormProjectLink} target='_blank'>{chunks}</a>,
@@ -34,7 +34,7 @@ const NotificationBar = ({ message }: { message: string }) => {
 						className='hover:opacity-50'
 					/>
 				</button>
-			</Container>
+			</div>
 		</div>
 	);
 };

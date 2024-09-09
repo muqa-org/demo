@@ -33,7 +33,7 @@ export default function Header() {
 
 	return (
 		<header className='border-b border-borderGray bg-white'>
-			<Container className='mx-auto flex items-center justify-between px-5 py-5'>
+			<div className='mx-auto flex items-center justify-between px-5 py-5'>
 				<button className='text-2xl md:hidden' onClick={toggleMenu}>
 					<Image width='24' height='18' alt='Menu Icon' src={icons.menuIcon} />
 				</button>
@@ -56,7 +56,7 @@ export default function Header() {
 						{t('propose')}
 					</Link>
 				</div>
-			</Container>
+			</div>
 			<div
 				className={`${
 					isOpen ? 'block' : 'hidden'
