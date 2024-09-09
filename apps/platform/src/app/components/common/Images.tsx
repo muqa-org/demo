@@ -1,6 +1,8 @@
 const images = {
 	lineBlue: '/images/line-blue.svg',
 	heroGreen: '/images/heroGreen.webp',
+	heroGreenPNG: '/images/heroGreen.png',
+	heroGreenEye: '/images/heroGreenEye.webp',
 	zazelenimoLogo: '/images/zazelenimoLogo.svg',
 	zazelenimoLogohr: '/images/zazelenimoLogo_hr.svg',
 	parkSample: '/images/sample-preview.jpeg',
