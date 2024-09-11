@@ -1,5 +1,4 @@
-import z from 'zod';
-
+import { call as allocateCall } from './allocate';
 import { StrategyExtension } from '..';
 import { supportedChains } from '../..';
 
@@ -12,9 +11,8 @@ export const quadraticFunding: StrategyExtension = {
     {},
   ),
   components: {
-    createRound: {
-      schema: z.any(),
-      component: () => <div>QF Component</div>,
+    allocate: {
+      call: allocateCall,
     },
   },
 };
