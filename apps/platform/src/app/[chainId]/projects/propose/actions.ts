@@ -1,5 +1,6 @@
 'use server';
 
+import { ForumLink } from '@/app/config';
 import {
 	createDiscourseTopic,
 	generateProposalTopicDescription,
@@ -32,8 +33,6 @@ export async function createProjectAction(
 	const terms = formData.get('terms')?.toString().trim() ?? '';
 	const privacy = formData.get('privacy')?.toString().trim() ?? '';
 	const allow = formData.get('allow')?.toString().trim() ?? '';
-
-	console.log({ publish });
 
 	// Validate each field and accumulate errors
 	const errors: MessageType[] = [];
@@ -120,6 +119,7 @@ export async function createProjectAction(
 			privacy,
 			allow,
 			fileUrls,
+			notice: t('proposalLastData'),
 		}),
 		category: 9,
 	};
@@ -141,11 +141,9 @@ export async function createProjectAction(
 	} else {
 		const data = await responseTopic.json();
 
-		console.log('Topic created successfully:', data);
-
 		return {
 			status: true,
-			message: [{ key: 'success', notice: 'Project created successfully!' }],
+			message: [{ key: 'success', notice: `${ForumLink}/t/${data.slug}/${data.topic_id}` }],
 		};
 	}
 }

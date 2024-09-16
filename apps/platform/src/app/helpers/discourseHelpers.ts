@@ -143,6 +143,7 @@ export const createDiscourseTopic = async ({
  * @param {string} params.privacy - Indicates if the proposer accepts the privacy policy ('on' for yes).
  * @param {string} params.allow - Indicates if the proposer allows further contact ('on' for yes).
  * @param {string[]} params.fileUrls - An array of URLs of the uploaded files.
+ * @param {string} params.notice - The last notice on topic.
  *
  * @returns {string} - Returns a Markdown-formatted string representing the proposal topic, including images and user details.
  */
@@ -159,6 +160,7 @@ export const generateProposalTopicDescription = ({
 	privacy,
 	allow,
 	fileUrls,
+	notice,
 }: {
 	location: string;
 	description: string;
@@ -172,6 +174,7 @@ export const generateProposalTopicDescription = ({
 	privacy: string;
 	allow: string;
 	fileUrls: string[];
+	notice: string;
 }) => {
 	const fileSection = fileUrls.length
 		? fileUrls
@@ -200,6 +203,7 @@ ${fileSection}
 **Prihvaćam uvjete korištenja Zazelenimo:** ${terms && terms.trim() === 'on' ? `Da` : 'Ne'}
 **Prihvaćam uvjete korištenja Zazelenimo:** ${privacy && privacy.trim() === 'on' ? `Da` : 'Ne'}
 **Dopuštam da me Zazelenimo kontaktira i obavještava vezano za moj prijedlog:** ${allow && allow.trim() === 'on' ? `Da` : 'Ne'}
+**Napomena:** ${notice}
     `;
 
 	return rawDescription.trim();
