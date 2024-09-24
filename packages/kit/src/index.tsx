@@ -2,6 +2,7 @@ export * from './api/provider';
 export * from './api/providers/grants-stack';
 export * from './api/providers/easy-rpgf';
 export * from './wagmi';
+export * from './config';
 export * from './ui/drawer';
 export * from './ui/markdown';
 export * from './ui/token-amount';

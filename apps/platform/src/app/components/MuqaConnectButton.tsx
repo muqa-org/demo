@@ -3,7 +3,7 @@
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 
 import { Button, ButtonProps } from './Button';
-import { comethConnector } from '@allo/kit';
+import { comethConfig } from '@allo/kit';
 import { PropsWithChildren, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { signIn, signOut } from 'next-auth/react';
@@ -81,7 +81,7 @@ export function MuqaConnectButton({ children, ...props }: PropsWithChildren<Butt
   const onMouseLeave = () => setShowTooltip(false);
 
   async function signInWithWeb3() {
-    const { accounts } = await connectAsync({ connector: comethConnector });
+    const { accounts } = await connectAsync({ connector: comethConfig.connector });
     const [address] = accounts;
     const nonce = await getNonce(address);
     const signedNonce = await signMessageAsync({ message: nonce });

@@ -1,7 +1,7 @@
+import { comethConfig } from '@allo/kit';
 import axios from 'axios';
 
 const BASE_URL = 'https://api.connect.cometh.io';
-const API_KEY = process.env.COMETH_API_KEY;
 
 type verifySignatureResponse = {
   success: boolean,
@@ -11,7 +11,7 @@ type verifySignatureResponse = {
 const api = axios.create({
   baseURL: BASE_URL,
   headers: { common: {
-    apikey: API_KEY
+    apikey: comethConfig.apiKey
   }}
 });
 
