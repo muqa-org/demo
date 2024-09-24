@@ -5,6 +5,7 @@
       "dependsOn": ["^build"],
       "env": [
         "NEXT_PUBLIC_COMETH_API_KEY",
+        "NEXT_PUBLIC_SHOW_WALLET_STATUS",
         "PINATA_JWT",
         "PINATA_GATEWAY_URL"
       ],
