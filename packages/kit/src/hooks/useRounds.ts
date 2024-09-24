@@ -1,14 +1,10 @@
 'use client';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { CreateConnectorFn, useAccount, useClient, useConnections, useWalletClient } from 'wagmi';
+import { useAccount, useWalletClient } from 'wagmi';
 
-import { comethConnector, useAPI } from '..';
-import { API, AllocateInput, RoundInput, RoundsQuery } from '../api/types';
+import { useAPI } from '..';
+import { API, RoundInput, RoundsQuery } from '../api/types';
 import { useToast } from '../ui/use-toast';
-import { ComethWallet } from '@cometh/connect-sdk';
-import { COMETH_API_KEY, connectAdaptor } from '../auth';
-import { getConnectViemAccount, getConnectViemClient } from '@cometh/connect-sdk-viem';
-import { parseAccount } from 'viem/utils';
 
 const defaultQuery = {
   where: {},
