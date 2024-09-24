@@ -6,6 +6,7 @@
       "env": [
         "NEXT_PUBLIC_COMETH_API_KEY",
         "NEXT_PUBLIC_SHOW_WALLET_STATUS",
+        "NEXT_PUBLIC_SHOW_CONNECT_BUTTON",
         "PINATA_JWT",
         "PINATA_GATEWAY_URL"
       ],

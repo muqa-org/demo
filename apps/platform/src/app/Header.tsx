@@ -45,7 +45,7 @@ export default function Header() {
 					<div className='mr-4 hidden md:block'>
 						<LanguageSwitcher screen='desktop' />
 					</div>
-					{process.env.NODE_ENV === 'development' && (
+					{process.env.NEXT_PUBLIC_SHOW_CONNECT_BUTTON === 'true' && (
 						<MuqaConnectButton className='mx-4 rounded-md bg-blue px-10 py-[0.55em]' />
 					)}
 					<Link
