@@ -1,5 +1,7 @@
-import { Allo, Registry, TransactionData } from '@allo-team/allo-v2-sdk/';
+import { Allo, Registry } from '@allo-team/allo-v2-sdk/';
 import { abi as AlloABI } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
+import { ComethProvider, ComethWallet } from '@cometh/connect-sdk';
+import { getConnectViemAccount } from '@cometh/connect-sdk-viem';
 import {
   PublicClient,
   encodePacked,
@@ -10,8 +12,6 @@ import {
   WalletClient,
   encodeAbiParameters,
   parseAbiParameters,
-  TransactionBase,
-  TransactionRequestBase,
 } from 'viem';
 import { decodeEventLog, type Address, type Chain } from 'viem';
 
@@ -29,15 +29,22 @@ export const alloNativeToken: Address =
   '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
 
 export const allo2API: Partial<API> = {
-  createRound: async function (data, signer) {
+  createRound: async function (data, signer: WalletClient, account) {
     try {
+      let comethWallet: ComethWallet;
+      if (account?.connector) {
+        comethWallet = await account.connector.getComethWallet();
+        const connectViemAccount = getConnectViemAccount(comethWallet);
+        signer.account = connectViemAccount;
+      }
+
       if (!signer?.account) throw new Error('Signer missing');
 
       const allo = new Allo(createAlloOpts(signer.chain!));
 
       const client = signer.extend(publicActions);
       // Annoying that a profile must be created to deploy a pool
-      const profileId = await getOrCreateProfile(signer);
+      const profileId = await getOrCreateProfile(signer, comethWallet!);
 
       const {
         amount = BigInt(0),
@@ -50,7 +57,7 @@ export const allo2API: Partial<API> = {
       if (typeof initStrategyData !== 'string')
         throw new Error('initStrategyData must be a bytes string.');
 
-      const tx = allo.createPool({
+      const txData = allo.createPool({
         profileId,
         strategy,
         // Set token address to native token if empty or zero address
@@ -60,11 +67,21 @@ export const allo2API: Partial<API> = {
         metadata,
         initStrategyData,
       });
+      console.log('txData', txData);
 
-      const hash = await this.sendTransaction?.(tx, signer);
+      const provider = new ComethProvider(comethWallet!);
+
+      const safeTx = await comethWallet!.sendTransaction(txData);
+      console.log('safeTx', safeTx);
+
+      const txPending = await provider.getTransaction(safeTx.safeTxHash, safeTx.relayId);
+      console.log('txPending', txPending);
+
+      const txReceipt = await txPending.wait();
+      console.log('txReceipt', txReceipt);
 
       // Wait for PoolCreated event and return poolId
-      return createLogDecoder(AlloABI, client)(hash!, ['PoolCreated']).then(
+      return createLogDecoder(AlloABI, client)((safeTx.safeTxHash as Address)!, ['PoolCreated']).then(
         (logs) => {
           const id = String((logs?.[0]?.args as { poolId: bigint }).poolId);
           return { id, chainId: signer.chain?.id as number };
@@ -131,34 +148,45 @@ export const allo2API: Partial<API> = {
   distribute: () => {},
 };
 
-async function getOrCreateProfile(signer: WalletClient) {
+async function getOrCreateProfile(signer: WalletClient, wallet: ComethWallet) {
   const registry = new Registry(createAlloOpts(signer.chain!));
   const address = getAddress(signer.account?.address!);
   return registry
     ?.getProfileById(getProfileId(signer.account?.address!))
     .then(async (profile) => {
       if (profile?.anchor === zeroAddress) {
-        const { to, data } = registry.createProfile({
-          nonce: BigInt(0),
-          members: [address],
-          owner: address,
-          metadata: { protocol: BigInt(1), pointer: '' },
-          name: '',
-        });
-        const hash = await signer.sendTransaction({
-          to,
-          data,
-          account: address,
-          chain: signer.chain,
-        });
-        return createLogDecoder(AlloABI, signer.extend(publicActions))(hash, [
-          'ProfileCreated',
-        ]).then(
-          (logs) => (logs?.[0]?.args as { profileId: Address })?.profileId,
-        );
+        return profile.id;
       }
-      return profile.id;
-    });
+
+      const txData = registry.createProfile({
+        nonce: BigInt(0),
+        members: [address],
+        owner: address,
+        metadata: { protocol: BigInt(1), pointer: '' },
+        name: '',
+      });
+      console.log('txData', txData);
+
+      const provider = new ComethProvider(wallet);
+
+      const safeTx = await wallet.sendTransaction(txData);
+      console.log('safeTx', safeTx);
+
+      const txPending = await provider.getTransaction(safeTx.safeTxHash, safeTx.relayId);
+      console.log('txPending', txPending);
+
+      const txReceipt = await txPending.wait();
+      console.log('txReceipt', txReceipt);
+
+      // This will not work with built in Cometh getTransaction because it
+      // only checks for ExecutionSuccess event, and we need a specific event to
+      // get things like profile id from the ProfileCreated event
+      return createLogDecoder(AlloABI, signer.extend(publicActions))(safeTx.safeTxHash as Address, [
+        'ProfileCreated',
+      ]).then(
+        (logs) => (logs?.[0]?.args as { profileId: Address })?.profileId,
+      );
+  });
 }
 
 function createLogDecoder(

@@ -1,4 +1,4 @@
-import { Address, Hash, WalletClient } from 'viem';
+import { Account, Address, Hash, WalletClient } from 'viem';
 
 type OrderBy = 'asc' | 'desc';
 
@@ -90,6 +90,7 @@ export interface API {
   createRound: (
     data: RoundInput,
     signer: WalletClient,
+    account?: any,
   ) => Promise<RoundCreated>;
   projects: (query: ProjectsQuery) => Promise<Project[]>;
   projectById: (id: string, opts?: QueryOpts) => Promise<Project | undefined>;
