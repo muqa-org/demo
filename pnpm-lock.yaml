@@ -20,6 +20,9 @@ importers:
       '@allo/kit':
         specifier: workspace:*
         version: link:../../packages/kit
+      '@googlemaps/markerclusterer':
+        specifier: ^2.5.3
+        version: 2.5.3
       '@muqa/db':
         specifier: workspace:*
         version: link:../../packages/db

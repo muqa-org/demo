@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useRef, useEffect } from 'react';
 import {
 	LoadScript,
 	Libraries,
@@ -8,6 +8,7 @@ import {
 	Marker,
 	InfoWindow,
 } from '@react-google-maps/api';
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
 import icons from '@/app/components/common/Icons';
 import ProjectMapInfoWindow from '@/app/components/project/ProjectMapInfoWindow';
@@ -27,11 +28,23 @@ export default function ProjectListMap() {
 		lng: 16.4402,
 	});
 
-	const [selectedMarker, setSelectedMarker] = useState<{ coords: ICoords; info: { title: string; progress: number; fundedAmount: number } } | null>(null);
+	const [selectedMarker, setSelectedMarker] = useState<{
+		coords: ICoords;
+		info: { title: string; progress: number; fundedAmount: number };
+	} | null>(null);
 
-	const onSelect = useCallback((marker: { coords: ICoords; info: { title: string; progress: number; fundedAmount: number } }) => {
-		setSelectedMarker(marker);
-	}, []);
+	const mapRef = useRef<google.maps.Map | null>(null);
+	const markerClustererRef = useRef<MarkerClusterer | null>(null);
+
+	const onSelect = useCallback(
+		(marker: {
+			coords: ICoords;
+			info: { title: string; progress: number; fundedAmount: number };
+		}) => {
+			setSelectedMarker(marker);
+		},
+		[],
+	);
 
 	const onCloseClick = () => {
 		setSelectedMarker(null);
@@ -87,6 +100,31 @@ export default function ProjectListMap() {
 		},
 	];
 
+	useEffect(() => {
+		if (mapRef.current && markers.length > 0) {
+			const map = mapRef.current;
+			// Clear existing clusterer if it exists
+			if (markerClustererRef.current) {
+				markerClustererRef.current.clearMarkers();
+			}
+			// Create marker clusterer
+			const markerCluster = new MarkerClusterer({ map });
+			markers.forEach(markerData => {
+				const marker = new google.maps.Marker({
+					position: markerData.coords,
+					icon: markerData.icon,
+				});
+				markerCluster.addMarker(marker);
+
+				// Handle marker click
+				google.maps.event.addListener(marker, 'click', () => {
+					onSelect(markerData);
+				});
+			});
+			markerClustererRef.current = markerCluster;
+		}
+	}, [markers, onSelect]);
+
 	return (
 		<div className='mt-2 flex flex-row flex-wrap'>
 			<LoadScript
@@ -102,15 +140,8 @@ export default function ProjectListMap() {
 						disableDefaultUI: false,
 						styles: mapStyles,
 					}}
+					onLoad={(map: google.maps.Map) => (mapRef.current = map)}
 				>
-					{markers.map(marker => (
-						<Marker
-							key={marker.id}
-							position={marker.coords}
-							onClick={() => onSelect(marker)}
-							icon={marker.icon}
-						/>
-					))}
 					{selectedMarker && (
 						<InfoWindow
 							position={selectedMarker.coords}
