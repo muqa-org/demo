@@ -1,14 +1,12 @@
 'use client';
 
-import { useCallback, useState, useRef, useEffect } from 'react';
+import { useCallback, useState } from 'react';
 import {
-	LoadScript,
-	Libraries,
 	GoogleMap,
-	Marker,
 	InfoWindow,
+	Marker,
+	MarkerClustererF,
 } from '@react-google-maps/api';
-import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
 import icons from '@/app/components/common/Icons';
 import ProjectMapInfoWindow from '@/app/components/project/ProjectMapInfoWindow';
@@ -18,9 +16,6 @@ export interface ICoords {
 	lat: number;
 	lng: number;
 }
-
-// If you need some special libraries, you can add them here
-const libraries: Libraries = [];
 
 export default function ProjectListMap() {
 	const [coords, setCoords] = useState<ICoords>({
@@ -32,9 +27,6 @@ export default function ProjectListMap() {
 		coords: ICoords;
 		info: { title: string; progress: number; fundedAmount: number };
 	} | null>(null);
-
-	const mapRef = useRef<google.maps.Map | null>(null);
-	const markerClustererRef = useRef<MarkerClusterer | null>(null);
 
 	const onSelect = useCallback(
 		(marker: {
@@ -100,62 +92,46 @@ export default function ProjectListMap() {
 		},
 	];
 
-	useEffect(() => {
-		if (mapRef.current && markers.length > 0) {
-			const map = mapRef.current;
-			// Clear existing clusterer if it exists
-			if (markerClustererRef.current) {
-				markerClustererRef.current.clearMarkers();
-			}
-			// Create marker clusterer
-			const markerCluster = new MarkerClusterer({ map });
-			markers.forEach(markerData => {
-				const marker = new google.maps.Marker({
-					position: markerData.coords,
-					icon: markerData.icon,
-				});
-				markerCluster.addMarker(marker);
-
-				// Handle marker click
-				google.maps.event.addListener(marker, 'click', () => {
-					onSelect(markerData);
-				});
-			});
-			markerClustererRef.current = markerCluster;
-		}
-	}, [markers, onSelect]);
-
 	return (
 		<div className='mt-2 flex flex-row flex-wrap'>
-			<LoadScript
-				googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}
-				libraries={libraries}
+			<GoogleMap
+				mapContainerStyle={{ width: '100%', height: '665px' }}
+				center={coords}
+				zoom={13}
+				options={{
+					draggable: true,
+					disableDefaultUI: false,
+					styles: mapStyles,
+				}}
 			>
-				<GoogleMap
-					mapContainerStyle={{ width: '100%', height: '665px' }}
-					center={coords}
-					zoom={13}
-					options={{
-						draggable: true,
-						disableDefaultUI: false,
-						styles: mapStyles,
-					}}
-					onLoad={(map: google.maps.Map) => (mapRef.current = map)}
-				>
-					{selectedMarker && (
-						<InfoWindow
-							position={selectedMarker.coords}
-							onCloseClick={onCloseClick}
-						>
-							<ProjectMapInfoWindow
-								title={selectedMarker.info.title}
-								progress={selectedMarker.info.progress}
-								fundedAmount={selectedMarker.info.fundedAmount}
-							/>
-						</InfoWindow>
+				<MarkerClustererF>
+					{clusterer => (
+						<>
+							{markers.map(marker => (
+								<Marker
+									key={marker.id}
+									position={marker.coords}
+									icon={marker.icon}
+									clusterer={clusterer}
+									onClick={() => onSelect(marker)}
+								/>
+							))}
+						</>
 					)}
-				</GoogleMap>
-			</LoadScript>
+				</MarkerClustererF>
+				{selectedMarker && (
+					<InfoWindow
+						position={selectedMarker.coords}
+						onCloseClick={onCloseClick}
+					>
+						<ProjectMapInfoWindow
+							title={selectedMarker.info.title}
+							progress={selectedMarker.info.progress}
+							fundedAmount={selectedMarker.info.fundedAmount}
+						/>
+					</InfoWindow>
+				)}
+			</GoogleMap>
 		</div>
 	);
 }

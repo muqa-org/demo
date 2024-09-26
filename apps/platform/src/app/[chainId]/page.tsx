@@ -1,11 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { LoadScript, Libraries } from '@react-google-maps/api';
 
 import Container from '@/app/components/Container';
 import ProjectListHeader from '@/app/components/projects/ProjectListHeader';
 import ProjectList from '@/app/components/projects/ProjectList';
 import ProjectListMap from '@/app/components/projects/ProjectListMap';
+
+// If you need some special libraries, you can add them here
+const libraries: Libraries = [];
 
 export default function DiscoverRoundsPage() {
 	const [activeTab, setActiveTab] = useState('board');
@@ -17,9 +21,14 @@ export default function DiscoverRoundsPage() {
 	return (
 		<section className='mt-16 py-4'>
 			<Container className='mx-auto mb-6 flex flex-col justify-between gap-10 px-5 py-5'>
-				<ProjectListHeader onTabChange={handleTabChange} />
-				{activeTab === 'board' && <ProjectList />}
-				{activeTab === 'map' && <ProjectListMap />}
+				<LoadScript
+					googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}
+					libraries={libraries}
+				>
+					<ProjectListHeader onTabChange={handleTabChange} />
+					{activeTab === 'board' && <ProjectList />}
+					{activeTab === 'map' && <ProjectListMap />}
+				</LoadScript>
 			</Container>
 		</section>
 	);
