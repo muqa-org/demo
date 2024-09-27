@@ -198,5 +198,15 @@
     "privacyError": "Confirm that you accept the privacy policy of Zazelenimo",
     "allowTitle": "I allow Zazelenimo to contact me and inform me about my proposal",
     "allowError": "Confirm that you accept that Zazelenimo contacts and informs you about your proposal"
+  },
+  "proposalMail" : {
+    "subject": "Your proposal has been successfully received!",
+    "messagePart1": "Dear {name},",
+    "messagePart2": "Thank you for submitting your proposal for Zazelenimo Split. Your proposal has been successfully received and is currently under review by our expert team.",
+    "messagePart3": "You can view your proposal and track its progress at the following link: <link>Link to proposal</link>",
+    "messagePart4": "Please note that you will not be able to comment on the proposal at this stage. Once the proposal has been reviewed and meets all the conditions, it will be made public and opened for discussion. We recommend that you register on our Forum and follow the topic to receive notifications on the next steps.",
+    "messagePart5": "If you have any questions, feel free to contact us.",
+    "messagePart6": "Best regards,",
+    "messagePart7": "The Zazelenimo Split Team"
   }
 }

@@ -198,5 +198,15 @@
     "privacyError": "Potvrdite da prihvaćate pravila privatnosti Zazelenimo",
     "allowTitle": "Dopuštam da me Zazelenimo kontaktira i obavještava vezano za moj prijedlog",
     "allowError": "Potvrdite da prihvaćate da vas Zazelenimo kontaktira i obavještava vezano za vaš prijedlog."
+  },
+  "proposalMail" : {
+    "subject": "Vaš prijedlog je uspješno zaprimljen!",
+    "messagePart1": "Poštovani/a {name},",
+    "messagePart2": "Zahvaljujemo što ste podnijeli prijedlog za Zazelenimo Split. Vaš prijedlog je uspješno zaprimljen i trenutno se nalazi u fazi provjere od strane našeg stručnog tima.",
+    "messagePart3": "Možete vidjeti svoj prijedlog i pratiti njegov napredak na sljedećoj poveznici: <link>Link na prijedlog</link>",
+    "messagePart4": "Imajte na umu da u ovoj fazi nećete moći komentirati prijedlog. Nakon što prijedlog bude provjeren i zadovolji sve uvjete, bit će objavljen javno i otvoren za javnu raspravu. Preporučujemo da se registrirate na naš Forum i zapratite temu kako biste dobivali obavijesti o daljnjim koracima.",
+    "messagePart5": "Ako imate bilo kakvih pitanja, slobodno nas kontaktirajte.",
+    "messagePart6": "Srdačan pozdrav,",
+    "messagePart7": "Zazelenimo Split tim"
   }
 }

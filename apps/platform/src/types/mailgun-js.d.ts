@@ -1,22 +1,23 @@
 // types/mailgun-js.d.ts
 declare module 'mailgun-js' {
-  interface MailgunOptions {
+  export interface MailgunOptions {
     apiKey: string;
     domain: string;
+    host: string;
   }
 
-  interface MessageData {
+  export interface MessageData {
     from: string;
     to: string;
     subject: string;
-    text: string;
+    html: string;
   }
 
-  interface Messages {
+  export interface Messages {
     send: (data: MessageData) => Promise<any>;
   }
 
-  interface MailgunInstance {
+  export interface MailgunInstance {
     messages: () => Messages;
   }
 

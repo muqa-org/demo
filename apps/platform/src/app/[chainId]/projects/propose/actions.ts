@@ -1,12 +1,12 @@
 'use server';
 
-import mailgun from 'mailgun-js';
 import { ForumLink } from '@/app/config';
 import {
 	createDiscourseTopic,
 	generateProposalTopicDescription,
 	uploadFileToDiscourse,
 } from '@/app/helpers/discourseHelpers';
+import { sendMail } from '@/app/helpers/mailHelpers';
 import { getTranslations } from 'next-intl/server';
 
 type MessageType = {
@@ -18,30 +18,8 @@ export async function createProjectAction(
 	prevState: { status: boolean; message: MessageType[] | string[] },
 	formData: FormData,
 ) {
-	// Initialize Mailgun
-	// const DOMAIN = process.env.MAILGUN_DOMAIN;
-	console.log(process.env.MAILGUN_API_KEY);
-	console.log(process.env.MAILGUN_DOMAIN);
-	const mg = mailgun({
-		apiKey: process.env.MAILGUN_API_KEY || '',
-		domain: process.env.MAILGUN_DOMAIN || '',
-	});
-
-	const data = {
-		from: 'Zazelenimo <no-reply@forum.zazelenimo.com>',
-		to: 'kkatusic@gmail.com', // recipient email
-		subject: 'Test sending mail', // subject of the email
-		text: 'some text', // email body content
-	};
-
-	try {
-		const body = await mg.messages().send(data);
-		console.log('Email sent:', body);
-	} catch (error) {
-		console.error('Error sending email:', error);
-	}
-
 	const t = await getTranslations('proposalForm');
+	const tMail = await getTranslations('proposalMail');
 
 	const apiUsername = process.env.NEXT_DISCOURSE_USERNAME || '';
 
@@ -83,10 +61,6 @@ export async function createProjectAction(
 
 	if (!mobile || mobile.length < 6) {
 		errors.push({ key: 'mobile', notice: t('mobileError') });
-	}
-
-	if (!publish) {
-		errors.push({ key: 'publish', notice: t('mobileError') });
 	}
 
 	if (!futher) {
@@ -165,12 +139,36 @@ export async function createProjectAction(
 	} else {
 		const data = await responseTopic.json();
 
+		const topicLink = `${ForumLink}/t/${data.slug}/${data.topic_id}`;
+
+		// Send email to the proposer
+		if (data) {
+			const messagePart3 = tMail.rich('messagePart3', {
+				link: chunks =>
+					`<a href='${topicLink}' target='_blank' class='underline hover:text-blue'>${project}</a>`,
+			});
+
+			const sendMailData = sendMail({
+				from: 'Zazelenimo <postmaster@forum.zazelenimo.com>',
+				to: email,
+				subject: tMail('subject'),
+				html: `
+				<p>${tMail('messagePart1', { name: name })}</p>
+				<p>${tMail('messagePart2')}</p>
+				<p>${messagePart3}</p>
+				<p>${tMail('messagePart4')}</p>
+				<p>${tMail('messagePart5')}</p>
+				<p>${tMail('messagePart6')}<br />${tMail('messagePart7')}</p>
+				`,
+			});
+		}
+
 		return {
 			status: true,
 			message: [
 				{
 					key: 'success',
-					notice: `${ForumLink}/t/${data.slug}/${data.topic_id}`,
+					notice: topicLink,
 				},
 			],
 		};
