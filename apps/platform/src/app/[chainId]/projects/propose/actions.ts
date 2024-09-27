@@ -23,12 +23,12 @@ export async function createProjectAction(
 	console.log(process.env.MAILGUN_API_KEY);
 	console.log(process.env.MAILGUN_DOMAIN);
 	const mg = mailgun({
-		apiKey: process.env.MAILGUN_API_KEY,
-		domain: process.env.MAILGUN_DOMAIN,
+		apiKey: process.env.MAILGUN_API_KEY || '',
+		domain: process.env.MAILGUN_DOMAIN || '',
 	});
 
 	const data = {
-		from: 'Zazelenimo <no-reply@zazelenimo.com>',
+		from: 'Zazelenimo <no-reply@forum.zazelenimo.com>',
 		to: 'kkatusic@gmail.com', // recipient email
 		subject: 'Test sending mail', // subject of the email
 		text: 'some text', // email body content
