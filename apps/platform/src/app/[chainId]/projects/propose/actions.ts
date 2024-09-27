@@ -1,5 +1,6 @@
 'use server';
 
+import mailgun from 'mailgun-js';
 import { ForumLink } from '@/app/config';
 import {
 	createDiscourseTopic,
@@ -17,6 +18,29 @@ export async function createProjectAction(
 	prevState: { status: boolean; message: MessageType[] | string[] },
 	formData: FormData,
 ) {
+	// Initialize Mailgun
+	// const DOMAIN = process.env.MAILGUN_DOMAIN;
+	console.log(process.env.MAILGUN_API_KEY);
+	console.log(process.env.MAILGUN_DOMAIN);
+	const mg = mailgun({
+		apiKey: process.env.MAILGUN_API_KEY,
+		domain: process.env.MAILGUN_DOMAIN,
+	});
+
+	const data = {
+		from: 'Zazelenimo <no-reply@zazelenimo.com>',
+		to: 'kkatusic@gmail.com', // recipient email
+		subject: 'Test sending mail', // subject of the email
+		text: 'some text', // email body content
+	};
+
+	try {
+		const body = await mg.messages().send(data);
+		console.log('Email sent:', body);
+	} catch (error) {
+		console.error('Error sending email:', error);
+	}
+
 	const t = await getTranslations('proposalForm');
 
 	const apiUsername = process.env.NEXT_DISCOURSE_USERNAME || '';
@@ -143,7 +167,12 @@ export async function createProjectAction(
 
 		return {
 			status: true,
-			message: [{ key: 'success', notice: `${ForumLink}/t/${data.slug}/${data.topic_id}` }],
+			message: [
+				{
+					key: 'success',
+					notice: `${ForumLink}/t/${data.slug}/${data.topic_id}`,
+				},
+			],
 		};
 	}
 }
