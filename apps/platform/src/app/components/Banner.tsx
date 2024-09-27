@@ -21,7 +21,6 @@ const Banner = ({
 			</h2>
 			<Link
 				href={CodaFormProjectLink}
-				target='_blank'
 				className='rounded-md bg-white px-4 py-2 text-base font-normal text-green shadow-md hover:bg-green-50'
 			>
 				{buttonText}
