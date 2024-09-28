@@ -2,7 +2,7 @@
 
 import Container from '@/app/components/Container';
 import { useFormState } from 'react-dom';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { createProjectAction } from './actions';
@@ -80,9 +80,21 @@ export default function CreateProjectPage() {
 		});
 	};
 
+	useEffect(() => {
+		if (state.status && getErrorMessage(state.message, 'success')) {
+			const timer = setTimeout(() => {
+				if (state.message[0]) {
+					window.location.href = state.message[0].notice;
+				}
+			}, 15000);
+
+			return () => clearTimeout(timer);
+		}
+	}, [state.status, state.message]);
+
 	if (state.status && getErrorMessage(state.message, 'success')) {
 		return (
-			<div className='mb-10 mt-10 flex h-[calc(100vh-395px)] flex-col items-center justify-center'>
+			<div className='mx-auto mb-10 mt-10 flex h-[calc(100vh-395px)] w-11/12 flex-col items-center justify-center md:w-6/12'>
 				<h1 className='mb-6 text-center text-2xl font-bold'>{t('success')}</h1>
 				<p className='text-center text-lg'>{t('successDesc')}</p>
 			</div>

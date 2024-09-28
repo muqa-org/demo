@@ -50,7 +50,6 @@ export default function Header() {
 					)}
 					<Link
 						href={CodaFormProjectLink}
-						target='_blank'
 						className='rounded-md bg-green px-10 py-[0.55em] text-base font-normal text-white hover:opacity-85'
 					>
 						{t('propose')}

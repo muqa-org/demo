@@ -1,6 +1,6 @@
 // link to external form for submitting projects
 export const CodaFormProjectLink =
-	'https://forum.zazelenimo.com/t/uputa-za-podnosenje-prijedloga/15';
+	'/1/projects/propose';
 
 // link to documentation
 export const DocumentationLink = 'https://docs.zazelenimo.com/';
