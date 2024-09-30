@@ -187,8 +187,9 @@
     "fotoButton": "Add photos",
     "fotoDesc": "You can attach more photos. Make sure that the surfaces on which the intervention is proposed are clearly visible in the photographs.",
     "notification": "Please check all the entered data carefully. Ensure that all fields are correctly filled out and there are no errors. Once submitted, you won’t be able to make changes.",
-    "success": "Your suggestion has been successfully sent!",
-    "successDesc": "Your proposal will be reviewed and will be published on the Zazelenimo Forum for public discussion and preparation.",
+    "proposalLastData": "This proposal is currently under review. At this stage, only members of our expert team can comment on proposals. Once the proposal has been reviewed and meets all the criteria, it will be published publicly on the Forum and opened for comments. Please register and follow this topic to stay informed about the next steps.",
+    "success": "Your proposal has been successfully submitted and you will now be redirected to the proposal topic on our Forum.",
+    "successDesc": "You currently cannot comment on the proposal as it is under review by our expert team. We will notify you when the public discussion is open.",
     "termsTitle": "I accept the terms of use of Zazelenimo",
     "termsDesc": "Available at: <guidelines>zazelenimo.hr/terms</guidelines>",
     "termsError": "Confirm that you accept the terms of use of Zazelenimo",
@@ -197,5 +198,15 @@
     "privacyError": "Confirm that you accept the privacy policy of Zazelenimo",
     "allowTitle": "I allow Zazelenimo to contact me and inform me about my proposal",
     "allowError": "Confirm that you accept that Zazelenimo contacts and informs you about your proposal"
+  },
+  "proposalMail" : {
+    "subject": "Your proposal has been successfully received!",
+    "messagePart1": "Dear {name},",
+    "messagePart2": "Thank you for submitting your proposal for Zazelenimo Split. Your proposal has been successfully received and is currently under review by our expert team.",
+    "messagePart3": "You can view your proposal and track its progress at the following link: <link>Link to proposal</link>",
+    "messagePart4": "Please note that you will not be able to comment on the proposal at this stage. Once the proposal has been reviewed and meets all the conditions, it will be made public and opened for discussion. We recommend that you register on our Forum and follow the topic to receive notifications on the next steps.",
+    "messagePart5": "If you have any questions, feel free to contact us.",
+    "messagePart6": "Best regards,",
+    "messagePart7": "The Zazelenimo Split Team"
   }
 }

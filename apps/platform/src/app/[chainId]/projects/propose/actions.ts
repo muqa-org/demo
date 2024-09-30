@@ -1,10 +1,12 @@
 'use server';
 
+import { ForumLink } from '@/app/config';
 import {
 	createDiscourseTopic,
 	generateProposalTopicDescription,
 	uploadFileToDiscourse,
 } from '@/app/helpers/discourseHelpers';
+import { sendMail } from '@/app/helpers/mailHelpers';
 import { getTranslations } from 'next-intl/server';
 
 type MessageType = {
@@ -17,6 +19,7 @@ export async function createProjectAction(
 	formData: FormData,
 ) {
 	const t = await getTranslations('proposalForm');
+	const tMail = await getTranslations('proposalMail');
 
 	const apiUsername = process.env.NEXT_DISCOURSE_USERNAME || '';
 
@@ -32,8 +35,6 @@ export async function createProjectAction(
 	const terms = formData.get('terms')?.toString().trim() ?? '';
 	const privacy = formData.get('privacy')?.toString().trim() ?? '';
 	const allow = formData.get('allow')?.toString().trim() ?? '';
-
-	console.log({ publish });
 
 	// Validate each field and accumulate errors
 	const errors: MessageType[] = [];
@@ -60,10 +61,6 @@ export async function createProjectAction(
 
 	if (!mobile || mobile.length < 6) {
 		errors.push({ key: 'mobile', notice: t('mobileError') });
-	}
-
-	if (!publish) {
-		errors.push({ key: 'publish', notice: t('mobileError') });
 	}
 
 	if (!futher) {
@@ -120,6 +117,7 @@ export async function createProjectAction(
 			privacy,
 			allow,
 			fileUrls,
+			notice: t('proposalLastData'),
 		}),
 		category: 9,
 	};
@@ -141,11 +139,38 @@ export async function createProjectAction(
 	} else {
 		const data = await responseTopic.json();
 
-		console.log('Topic created successfully:', data);
+		const topicLink = `${ForumLink}/t/${data.slug}/${data.topic_id}`;
+
+		// Send email to the proposer
+		if (data) {
+			const messagePart3 = tMail.rich('messagePart3', {
+				link: chunks =>
+					`<a href='${topicLink}' target='_blank' class='underline hover:text-blue'>${project}</a>`,
+			});
+
+			const sendMailData = sendMail({
+				from: 'Zazelenimo <postmaster@forum.zazelenimo.com>',
+				to: email,
+				subject: tMail('subject'),
+				html: `
+				<p>${tMail('messagePart1', { name: name })}</p>
+				<p>${tMail('messagePart2')}</p>
+				<p>${messagePart3}</p>
+				<p>${tMail('messagePart4')}</p>
+				<p>${tMail('messagePart5')}</p>
+				<p>${tMail('messagePart6')}<br />${tMail('messagePart7')}</p>
+				`,
+			});
+		}
 
 		return {
 			status: true,
-			message: [{ key: 'success', notice: 'Project created successfully!' }],
+			message: [
+				{
+					key: 'success',
+					notice: topicLink,
+				},
+			],
 		};
 	}
 }
