@@ -2,7 +2,7 @@
 
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 
-import { comethConfig } from './config';
+import { comethConnector } from './config';
 import { Button } from './ui/button';
 
 const TRUNCATE_LENGTH = 20;
@@ -25,7 +25,7 @@ export function ComethButton(): JSX.Element {
   else label = 'Connect';
 
   const onClick = account.status === 'disconnected'
-    ? () => connect({ connector: comethConfig.connector })
+    ? () => connect({ connector: comethConnector })
     : () => disconnect();
 
   return (

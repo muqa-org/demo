@@ -4,7 +4,7 @@
     "build": {
       "dependsOn": ["^build"],
       "env": [
-        "NEXT_PUBLIC_COMETH_PROJECT_CHAIN",
+        "NEXT_PUBLIC_CHAIN",
         "NEXT_PUBLIC_USE_TENDERLY",
 
         "NEXT_PUBLIC_POLYGON_COMETH_API_KEY",

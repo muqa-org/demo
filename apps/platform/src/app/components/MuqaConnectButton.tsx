@@ -3,7 +3,7 @@
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 
 import { Button, ButtonProps } from './Button';
-import { comethConfig } from '@allo/kit';
+import { comethConnector } from '@allo/kit';
 import { PropsWithChildren, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { signIn, signOut } from 'next-auth/react';
