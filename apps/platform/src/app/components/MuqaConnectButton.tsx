@@ -31,13 +31,36 @@ function getLabel() {
   return label;
 }
 
-function AddressTooltip({ show, label }: { show: boolean, label?: `0x${string}`}) {
+function AddressTooltip({ show, label, onMouseEnter, onMouseLeave }: {
+  show: boolean,
+  label?: `0x${string}`,
+  onMouseEnter?: () => void,
+  onMouseLeave?: () => void
+}) {
+  const copyToClipboard = () => {
+    if (label) {
+      navigator.clipboard.writeText(label);
+    }
+  };
+
   return (
     <>
-    {show && !!label && <div className="absolute top-full right-0 mt-2 w-max p-2 bg-gray-700 font-mono text-white text-sm rounded">
-      {label}
-    </div>
-    }
+    {show && !!label && (
+      <div className="absolute top-8 right-0 mt-2 w-max p-2 bg-gray-700 font-mono text-white text-sm rounded flex items-center"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}>
+        <span>{label}</span>
+        <button
+          onClick={copyToClipboard}
+          className="ml-2 p-1 bg-gray-600 hover:bg-gray-500 rounded active:bg-gray-400 transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-400"
+          title="Copy to clipboard"
+        >
+          <span className="transform inline-block transition-transform duration-150 ease-in-out active:scale-90">
+            📋
+          </span>
+        </button>
+      </div>
+    )}
     </>
   );
 }
@@ -81,11 +104,11 @@ export function MuqaConnectButton({ children, ...props }: PropsWithChildren<Butt
   const onMouseLeave = () => setShowTooltip(false);
 
   async function signInWithWeb3() {
-    const { accounts } = await connectAsync({ connector: comethConfig.connector });
-    const [address] = accounts;
-    const nonce = await getNonce(address);
-    const signedNonce = await signMessageAsync({ message: nonce });
-    await signIn('credentials', { address, signedNonce, redirect: false });
+    const { accounts } = await connectAsync({ connector: comethConnector });
+    // const [address] = accounts;
+    // const nonce = await getNonce(address);
+    // const signedNonce = await signMessageAsync({ message: nonce });
+    // await signIn('credentials', { address, signedNonce, redirect: false });
   }
 
   async function signOutWithWeb3() {
@@ -110,7 +133,11 @@ export function MuqaConnectButton({ children, ...props }: PropsWithChildren<Butt
         <LoadingIcon />
         {children || label}
       </Button>
-      <AddressTooltip show={showTooltip} label={account.address} />
+      <AddressTooltip
+        show={showTooltip}
+        label={account.address}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave} />
      </div>
   )
 }
