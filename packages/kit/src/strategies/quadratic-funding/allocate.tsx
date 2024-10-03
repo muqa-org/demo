@@ -1,66 +1,53 @@
-import { DonationVotingMerkleDistributionStrategy } from '@allo-team/allo-v2-sdk';
-import { getAddress } from '@allo-team/allo-v2-sdk/dist/Allo/allo.config';
-import { Allocation, Permit2Data, PermitType } from '@allo-team/allo-v2-sdk/dist/strategies/DonationVotingMerkleDistributionStrategy/types';
+'use client';
+import { TransactionData } from '@allo-team/allo-v2-sdk';
+import { ComethProvider, ComethWallet } from '@cometh/connect-sdk';
+import { getConnectViemAccount } from '@cometh/connect-sdk-viem';
 import { TToken } from '@gitcoin/gitcoin-chain-data';
-import { Chain, WalletClient } from 'viem';
+import { parseUnits, WalletClient } from 'viem';
 
-import { signPermit2612 } from './utils/signPermit2612';
+import { CartAllocation } from './qf.types';
+import { getTokenMetadata } from './utils/getTokenMetadata';
+import { generateAllocateTransaction, generateApprovalTransaction } from './utils/payload';
 import { API, Round } from '../../api/types';
-
-type CartAllocation = {
-  recipientAddress: `0x${string}`,
-  amount: number,
-};
 
 export const call = async (
   round: Round,
+  token: TToken,
+  cartAllocation: CartAllocation,
+  account: any,
   api: Pick<API, 'sendTransaction'>,
   signer: WalletClient,
-  token: TToken,
-  cartAllocation: CartAllocation
-
 ) => {
-  // TODO: check rpc url
-  const strategy = new DonationVotingMerkleDistributionStrategy({
-    chain: round.chainId,
-    rpc: signer.chain?.rpcUrls.default.http[0],
-    address: getAddress({ id: round.chainId } as Chain),
-    poolId: BigInt(round.id),
-  });
+  const comethWallet: ComethWallet = await (account.connector as any).getComethWallet();
+  signer!.account = getConnectViemAccount(comethWallet);
 
-  const permit = await getPermit2Data(signer, round, token, cartAllocation);
+  const tokenMetadata = await getTokenMetadata(token, signer);
+  const amount = parseUnits(cartAllocation.amount.toString(), tokenMetadata.decimals);
 
-  const allocation: Allocation = {
-    recipientId: cartAllocation.recipientAddress,
-    permitType: PermitType.Permit,
-    permit2Data: permit,
-  }
+  const approvalTxData = await generateApprovalTransaction(
+    tokenMetadata,
+    round.strategy,
+    amount
+  );
+  const allocateTxData = await generateAllocateTransaction(
+    tokenMetadata,
+    round,
+    cartAllocation.recipientAddress,
+    amount);
 
-  const tx = strategy.getAllocateData(allocation);
-
-  return api.sendTransaction(tx, signer);
+  return approveAndSendTransaction(comethWallet, [approvalTxData, allocateTxData]);
 };
 
-async function getPermit2Data(
-  walletClient: WalletClient,
-  round: Round,
-  token: TToken,
-  cartAllocation: CartAllocation): Promise<Permit2Data>
-{
-  const deadline = round.phases.roundEnd
-    ? new Date(round.phases.roundEnd).getTime()
-    : Date.now() + 30 * 60 * 1000; // 30 minutes
+async function approveAndSendTransaction(comethWallet: ComethWallet, txData: TransactionData[]) {
+  const logNamespace = 'approveAndSendTransaction';
+  const provider = new ComethProvider(comethWallet!);
 
-  const spenderAddress = round.strategy;
+  const safeTx = await comethWallet!.sendBatchTransactions(txData);
+  console.log(`${logNamespace} safeTx`, safeTx);
 
-  const { signature, permit } = await signPermit2612({
-    walletClient,
-    token,
-    spenderAddress,
-    value: BigInt(cartAllocation.amount),
-    deadline: BigInt(deadline),
-    chainId: round.chainId
-  })
+  const txPending = await provider.getTransaction(safeTx.safeTxHash, safeTx.relayId);
+  console.log(`${logNamespace} txPending`, txPending);
 
-  return { signature, permit };
+  const txReceipt = await txPending.wait();
+  console.log(`${logNamespace} txReceipt`, txReceipt);
 }
