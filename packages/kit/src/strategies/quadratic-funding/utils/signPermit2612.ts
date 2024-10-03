@@ -1,13 +1,12 @@
-import { TToken } from '@gitcoin/gitcoin-chain-data';
 import { Hex, WalletClient } from 'viem';
 
-import { getErc20Data } from './getErc20Data';
+import { TokenMetadata } from '../qf.types';
 
 type SignPermitProps = {
   walletClient: WalletClient;
 
   // Token to be spent
-  token: TToken
+  tokenMetadata: TokenMetadata
 
   // Address of the spender
   spenderAddress: Hex;
@@ -27,9 +26,21 @@ type Eip2612Props = SignPermitProps & {
   value: bigint;
 };
 
+/**
+ * Signs a permit for EIP-2612 compliant tokens.
+ *
+ * This function generates a signature for permitting token spending without a separate approval transaction.
+ * It constructs the necessary data structures and calls the wallet's signTypedData method.
+ *
+ * Note: The signTypedData method doesn't work with the Cometh wallet, but is left here for future refactoring.
+ * Currently, this function will not work as expected with Cometh wallet integration.
+ *
+ * @param {Eip2612Props} props - The properties required for signing the permit.
+ * @returns {Promise<{signature: string, permit: object}>} The signature and permit object.
+ */
 export const signPermit2612 = async ({
   walletClient,
-  token,
+  tokenMetadata,
   spenderAddress,
   value,
   deadline,
@@ -47,7 +58,6 @@ export const signPermit2612 = async ({
   };
 
   const ownerAddress = walletClient.account!.address!;
-  const { tokenName, tokenAddress, nonce } = await getErc20Data(token, walletClient);
 
   const signature = await walletClient.signTypedData({
     account: ownerAddress,
@@ -55,14 +65,14 @@ export const signPermit2612 = async ({
       owner: ownerAddress,
       spender: spenderAddress,
       value,
-      nonce,
+      nonce: tokenMetadata.nonce,
       deadline,
     },
     domain: {
-      name: tokenName,
+      name: tokenMetadata.name,
       version: permitVersion ?? '1',
       chainId: chainId,
-      verifyingContract: tokenAddress,
+      verifyingContract: tokenMetadata.address,
     },
     primaryType: 'Permit',
     types,
@@ -70,9 +80,9 @@ export const signPermit2612 = async ({
 
   const permit = {
     deadline,
-    nonce,
+    nonce: tokenMetadata.nonce,
     permitted: {
-      token: tokenAddress,
+      token: tokenMetadata.address,
       amount: value,
     },
   };
