@@ -5,7 +5,6 @@ export type CartAllocation = {
 
 export type TokenMetadata = {
   name: string;
-  decimals: number;
   address: `0x${string}`;
   nonce: bigint;
 }

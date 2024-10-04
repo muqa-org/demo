@@ -14,19 +14,19 @@ import { TokenMetadata } from '../qf.types';
  * This function creates a TransactionData object that represents an ERC20 approval transaction.
  * It's used to allow a spender to spend a certain amount of tokens on behalf of the token owner.
  *
- * @param tokenMetadata - The metadata of the ERC20 token contract.
  * @param spender - The address of the account or contract that will be approved to spend the tokens.
+ * @param tokenAddress - The address of the ERC20 token contract.
  * @param amount - The amount of tokens to approve for spending.
  * @returns A Promise that resolves to a TransactionData object representing the approval transaction.
  */
 export async function generateApprovalTransaction(
-  tokenMetadata: TokenMetadata,
   spender: `0x${string}`,
+  tokenAddress: `0x${string}`,
   amount: bigint
 ): Promise<TransactionData> {
 
   return {
-    to: tokenMetadata.address,
+    to: tokenAddress,
     data: encodeFunctionData({
       abi: [
         {
@@ -47,7 +47,6 @@ export async function generateApprovalTransaction(
 };
 
 export async function generateAllocateTransaction(
-  tokenMetadata: TokenMetadata,
   round: Round,
   recipientId: `0x${string}`,
   amount: bigint,
@@ -64,7 +63,7 @@ export async function generateAllocateTransaction(
   const allocation: Allocation = {
     recipientId,
     permitType: PermitType.Permit,
-    permit2Data: generatePermitlessPayload(tokenMetadata, amount),
+    permit2Data: generatePermitlessPayload(round.token!, amount),
   }
 
   return strategy.getAllocateData(allocation);
@@ -83,7 +82,7 @@ export async function generateAllocateTransaction(
  * @returns A Permit2Data object with default values for a transaction that doesn't require a permit.
  */
 export function generatePermitlessPayload(
-  tokenMetadata: TokenMetadata,
+  tokenAddress: `0x${string}`,
   amount: bigint,
 ): Permit2Data
 {
@@ -92,7 +91,7 @@ export function generatePermitlessPayload(
       deadline: BigInt(0),
       nonce: BigInt(0),
       permitted: {
-        token: tokenMetadata.address,
+        token: tokenAddress,
         amount,
       },
     },

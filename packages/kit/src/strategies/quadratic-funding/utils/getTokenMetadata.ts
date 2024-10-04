@@ -8,7 +8,6 @@ export const getTokenMetadata = async (token: TToken, walletClient: WalletClient
     address: token.address,
     abi: parseAbi([
       'function nonces(address) public view returns (uint256)',
-      'function decimals() public view returns (uint8)',
       'function name() public view returns (string)',
     ]),
     client: walletClient,
@@ -16,12 +15,10 @@ export const getTokenMetadata = async (token: TToken, walletClient: WalletClient
 
   const owner = walletClient!.account!.address!;
   const nonce = await erc20Contract.read.nonces([owner]);
-  const decimals = await erc20Contract.read.decimals();
   const name = await erc20Contract.read.name();
 
   return {
     name,
-    decimals,
     address: token.address,
     nonce,
   }

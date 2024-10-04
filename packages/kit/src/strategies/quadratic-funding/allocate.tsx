@@ -15,7 +15,6 @@ export const call = async (
   token: TToken,
   cartAllocation: CartAllocation,
   account: any,
-  api: Pick<API, 'sendTransaction'>,
   signer: WalletClient,
 ) => {
   const comethWallet: ComethWallet = await (account.connector as any).getComethWallet();
