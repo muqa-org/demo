@@ -35,6 +35,7 @@ export type StrategyExtensions = Record<StrategyType, StrategyExtension>;
 
 const strategyMap = {
   'allov2.DirectGrantsLiteStrategy': 'directGrants',
+  'allov2.DonationVotingMerkleDistributionDirectTransferStrategy': 'quadraticFunding',
 } as const;
 
 function getStrategyTypeFromName(strategyName: string, chainId: number) {
@@ -82,6 +83,12 @@ export function useStrategyAddon(
     // Include api + signer
     call: useMutation({
       mutationFn: (args: unknown[]) => addon?.call?.(...args, api, signer),
+      onSuccess: (data) => {
+        console.log('call mutation data', data);
+      },
+      onError: (error) => {
+        console.log('call mutation error', error);
+      },
     }),
   };
 }
