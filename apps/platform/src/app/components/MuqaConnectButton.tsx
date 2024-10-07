@@ -92,7 +92,7 @@ async function getNonce(address: `0x${string}`) {
   return nonce;
 }
 
-export function MuqaConnectButton({ children, ...props }: PropsWithChildren<ButtonProps>): JSX.Element {
+export default function MuqaConnectButton({ children, ...props }: PropsWithChildren<ButtonProps>): JSX.Element {
   const account = useAccount();
   const { connectAsync } = useConnect();
   const { disconnect } = useDisconnect();
