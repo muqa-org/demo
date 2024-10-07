@@ -63,7 +63,7 @@ export async function generateAllocateTransaction(
   const allocation: Allocation = {
     recipientId,
     permitType: PermitType.Permit,
-    permit2Data: generatePermitlessPayload(round.token!, amount),
+    permit2Data: generatePermitlessPayload(round.matching.token, amount),
   }
 
   return strategy.getAllocateData(allocation);
