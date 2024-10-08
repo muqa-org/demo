@@ -9,6 +9,8 @@ import { AlloKitProviders, MuqaSessionProvider } from './providers';
 import Header from '@/app/Header';
 import NotificationBar from '@/app/components/NotificationBar';
 import Footer from '@/app/components/footer/Footer';
+import { createContext } from 'react';
+import { CartContext, defaultCartContext } from '@/lib/util/context/cart.context';
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
@@ -35,11 +37,13 @@ export default async function RootLayout({
 				<NextIntlClientProvider messages={messages}>
 					<MuqaSessionProvider session={session}>
 						<AlloKitProviders>
-							<NotificationBar message='notification' />
-							<Header />
-							<WalletStatus />
-							<main>{children}</main>
-							<Footer />
+							<CartContext.Provider value={defaultCartContext}>
+								<NotificationBar message='notification' />
+								<Header />
+								<WalletStatus />
+								<main>{children}</main>
+								<Footer />
+							</CartContext.Provider>
 						</AlloKitProviders>
 					</MuqaSessionProvider>
 				</NextIntlClientProvider>
