@@ -4,32 +4,39 @@ import { ComethProvider, ComethWallet } from '@cometh/connect-sdk';
 import { TToken } from '@gitcoin/gitcoin-chain-data';
 import { parseUnits } from 'viem';
 
-import { CartAllocation } from './qf.types';
+import { Donation } from './qf.types';
 import { generateAllocateTransaction, generateApprovalTransaction } from './utils/payload';
 import { Round } from '../../api/types';
 
 export const call = async (
   round: Round,
   token: TToken,
-  cartAllocation: CartAllocation,
+  donations: Donation[],
   wallet: ComethWallet,
 ) => {
-  const amount = parseUnits(cartAllocation.amount.toString(), token.decimals);
+  const transactions: TransactionData[] = [];
 
-  const approvalTxData = await generateApprovalTransaction(
-    round.strategy,
-    token.address,
-    amount
-  );
-  const allocateTxData = await generateAllocateTransaction(
-    round,
-    cartAllocation.recipientAddress,
-    amount);
+  for (const donation of donations) {
+    const amount = parseUnits(donation.amount.toString(), token.decimals);
 
-  return approveAndSendTransaction(wallet, [approvalTxData, allocateTxData]);
+    const approvalTxData = await generateApprovalTransaction(
+      round.strategy,
+      token.address,
+      amount
+    );
+    const allocateTxData = await generateAllocateTransaction(
+      round,
+      donation.recipientAddress,
+      amount
+    );
+
+    transactions.push(approvalTxData, allocateTxData);
+  };
+
+  return approveAndSendTransactions(wallet, transactions);
 };
 
-async function approveAndSendTransaction(wallet: ComethWallet, txData: TransactionData[]) {
+async function approveAndSendTransactions(wallet: ComethWallet, txData: TransactionData[]) {
   const logNamespace = 'approveAndSendTransaction';
   const provider = new ComethProvider(wallet!);
 
