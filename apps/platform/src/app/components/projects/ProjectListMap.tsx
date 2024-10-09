@@ -11,32 +11,33 @@ import {
 import icons from '@/app/components/common/Icons';
 import ProjectMapInfoWindow from '@/app/components/project/ProjectMapInfoWindow';
 import { getCustomPercentageMarkerIcon } from '@/app/helpers/projectHelper';
+import { FundedApplication } from '@allo/kit';
+
+type ProjectListProps = {
+	applications: FundedApplication[];
+};
 
 export interface ICoords {
 	lat: number;
 	lng: number;
 }
 
-export default function ProjectListMap() {
+type ApplicationWithCoords = FundedApplication & {
+	coords: ICoords;
+	icon: { url: string };
+};
+
+export default function ProjectListMap({ applications }: ProjectListProps) {
 	const [coords, setCoords] = useState<ICoords>({
 		lat: 43.5081,
 		lng: 16.4402,
 	});
 
-	const [selectedMarker, setSelectedMarker] = useState<{
-		coords: ICoords;
-		info: { title: string; progress: number; fundedAmount: number };
-	} | null>(null);
+	const [selectedMarker, setSelectedMarker] = useState<ApplicationWithCoords | null>(null);
 
-	const onSelect = useCallback(
-		(marker: {
-			coords: ICoords;
-			info: { title: string; progress: number; fundedAmount: number };
-		}) => {
-			setSelectedMarker(marker);
-		},
-		[],
-	);
+	const onSelect = useCallback((marker: ApplicationWithCoords) => {
+		setSelectedMarker(marker);
+	}, []);
 
 	const onCloseClick = () => {
 		setSelectedMarker(null);
@@ -59,38 +60,17 @@ export default function ProjectListMap() {
 	};
 
 	// TODO: Replace this with real data
-	const markers = [
-		{
-			id: 1,
-			coords: { lat: 43.5191413113884, lng: 16.449105382747074 },
-			icon: getCustomPercentageMarkerIcon(15),
-			info: {
-				title: 'Project 1',
-				progress: 15,
-				fundedAmount: 500,
-			},
-		},
-		{
-			id: 2,
-			coords: { lat: 43.51805339852162, lng: 16.44758970940925 },
-			icon: zeroMarkerIcon,
-			info: {
-				title: 'Project 2',
-				progress: 0,
-				fundedAmount: 0,
-			},
-		},
-		{
-			id: 3,
-			coords: { lat: 43.52046275847196, lng: 16.44811046218916 },
-			icon: greenMarkerIcon,
-			info: {
-				title: 'Klupe od Đardina do Jokera',
-				progress: 100,
-				fundedAmount: 2000,
-			},
-		},
+	const coordinates = [
+		{ coords: { lat: 43.5191413113884, lng: 16.449105382747074 } },
+		{ coords: { lat: 43.51805339852162, lng: 16.44758970940925 } },
+		{ coords: { lat: 43.52046275847196, lng: 16.44811046218916 } },
 	];
+
+	const markers: ApplicationWithCoords[] = coordinates.map((coordinate, index) => ({
+		...applications[index]!,
+		...coordinate,
+		icon: { url: getCustomPercentageMarkerIcon(applications[index]!.fundedPercentage) },
+	}));
 
 	return (
 		<div className='mt-2 flex flex-row flex-wrap'>
@@ -124,11 +104,7 @@ export default function ProjectListMap() {
 						position={selectedMarker.coords}
 						onCloseClick={onCloseClick}
 					>
-						<ProjectMapInfoWindow
-							title={selectedMarker.info.title}
-							progress={selectedMarker.info.progress}
-							fundedAmount={selectedMarker.info.fundedAmount}
-						/>
+						<ProjectMapInfoWindow application={selectedMarker} />
 					</InfoWindow>
 				)}
 			</GoogleMap>
