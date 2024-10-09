@@ -4,53 +4,54 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { CartItemType } from '@/app/types/cart';
 import icons from '@/app/components/common/Icons';
 
 import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
+import { CartAllocation } from '@allo/kit';
+import { useCart } from '@/lib/util/context/cart.context';
 
 export default function CartProjectCard({
 	item,
 	variant = 'cart',
 }: {
-	item: CartItemType;
+	item: CartAllocation;
 	variant?: string;
 }) {
 	const t = useTranslations('cart');
-	const [donationAmount, setDonationAmount] = useState(item.amount);
+	const [donationAmount, setDonationAmount] = useState(0);
+	const { setAmount, removeItem } = useCart();
 
-	let progressColor = getProjectProgressBGColor(item.funded);
+	let progressColor = getProjectProgressBGColor(item.project.fundedPercentage);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value.replace(/[^0-9]/g, '');
-		if (value === '') {
-			setDonationAmount(0);
-		} else {
-			setDonationAmount(parseInt(value, 10));
-		}
+		let value = e.target.value.replace(/[^0-9]/g, '') || '0';
+
+		const amount = parseInt(value, 10);
+		setAmount(item.project.id, amount);
+		setDonationAmount(amount);
 	};
 
 	return (
 		<div
-			key={item.id}
+			key={item.project.id}
 			className='mb-2 flex flex-row flex-wrap items-center lg:rounded-lg lg:border lg:border-borderGrayLight lg:bg-white lg:p-4'
 		>
 			<Image
 				width={150}
 				height={95}
-				src={item.image}
-				alt={item.name}
+				src={item.project.bannerUrl ?? 'https://picsum.photos/150/95'}
+				alt={item.project.name}
 				className='w-full rounded-t-md lg:w-1/6 lg:rounded-md'
 			/>
 			<div className='w-full lg:w-4/6 lg:flex-grow lg:pl-6'>
 				<div className='mb-4 h-2 w-full rounded-b bg-[#E2E2E2] lg:mt-2 lg:w-2/6 lg:rounded'>
 					<div
 						className={`h-full rounded-b lg:rounded ${progressColor}`}
-						style={{ width: `${item.funded}%` }}
+						style={{ width: `${item.project.fundedPercentage}%` }}
 					></div>
 				</div>
 				<h3 className='flex justify-between text-xl font-medium text-primaryBlack'>
-					{item.name}
+					{item.project.name}
 					<button className='inline-block lg:hidden'>
 						<Image
 							src={icons.trashIcon}
@@ -62,7 +63,7 @@ export default function CartProjectCard({
 					</button>
 				</h3>
 				<p className='text-base text-gray'>
-					{item.funded}% {t('funded')} ({item.amount} €)
+					{item.project.fundedPercentage}% {t('funded')} ({item.project.fundedAmount} €)
 				</p>
 			</div>
 			<div className='mb-10 mt-7 flex items-center lg:mb-0 lg:mt-0'>
@@ -76,7 +77,9 @@ export default function CartProjectCard({
 							onChange={handleInputChange}
 							className='w-20 rounded-md border border-borderGray px-2 py-2 text-left text-sm text-black focus:outline-none'
 						/>
-						<button className='lg:inline-blockblock hidden'>
+						<button
+							className='lg:inline-block'
+							onClick={() => removeItem(item.project.id)}>
 							<Image
 								src={icons.trashIcon}
 								alt='Trash icon'

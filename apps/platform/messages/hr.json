@@ -127,6 +127,9 @@
   "cart" : {
     "addCart": "Dodaj u Košaricu",
     "selectedProjects": "Odabrani projekti",
+    "emptyCart": "Vaša košarica je prazna",
+    "emptyCartDescription": "Dodajte nekoliko projekata u vašu košaricu kako biste mogli donirati.",
+    "browseProjects": "Pretražite projekte",
     "funded": "financiran",
     "removeAllProjects": "Ukloni sve projekte",
     "totalAmount": "Ukupni iznos",

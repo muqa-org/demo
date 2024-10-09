@@ -3,6 +3,8 @@ import { useTranslations } from 'next-intl';
 import { Noto_Sans } from 'next/font/google';
 
 import icons from '@/app/components/common/Icons';
+import { FundedApplication } from '@allo/kit';
+import { useCart } from '@/lib/util/context/cart.context';
 
 const notoSans = Noto_Sans({
 	subsets: ['latin'],
@@ -12,14 +14,22 @@ const notoSans = Noto_Sans({
 });
 
 interface AddButtonProps {
+	application: FundedApplication
 	className?: string;
 	variant: 'icon' | 'text';
 }
 
-export default function AddToCart({ className, variant }: AddButtonProps) {
+
+export default function AddToCart({ application, className, variant }: AddButtonProps) {
 	const t = useTranslations('cart');
+	const { addItem } = useCart();
+
+	const addToCart = () => {
+		addItem(application);
+	}
+
 	return (
-		<button className={`${className} ${notoSans.className}`}>
+		<button className={`${className} ${notoSans.className}`} onClick={addToCart}>
 			{variant === 'icon' ? (
 				<Image
 					src={icons.cartIconGreen}
