@@ -10,6 +10,7 @@ import { Donation } from '../strategies/quadratic-funding/qf.types';
 const roundId = process.env.NEXT_PUBLIC_ROUND_ID ?? '3';
 const { chain } = comethConfig;
 
+// TODO: Remove this function once USDC contract address is fixed
 const getTokenByChainIdAndAddress = (chainId: number, address: string) => {
   const chainData = getChainById(chainId);
   if (chainId === 43113) {
