@@ -55,19 +55,21 @@ export default function Header() {
 					>
 						{t('propose')}
 					</Link>
-					<Link
-						href={'/cart'}
-						className='flex items-center justify-center rounded-md bg-green px-2 py-[0.55em] text-base font-normal text-white hover:opacity-85 w-[70px]'
-					>
-						<Image
-							src={icons.cartIconWhite}
-							alt='Cart Icon'
-							width={14}
-							height={14}
-							className='mr-2'
-						/>
-						{items.length}
-					</Link>
+					{process.env.NEXT_PUBLIC_SHOW_CART_LINK === 'true' && (
+						<Link
+							href={'/cart'}
+							className='flex items-center justify-center rounded-md bg-green px-2 py-[0.55em] text-base font-normal text-white hover:opacity-85 w-[70px]'
+						>
+							<Image
+								src={icons.cartIconWhite}
+								alt='Cart Icon'
+								width={14}
+								height={14}
+								className='mr-2'
+							/>
+							{items.length}
+						</Link>
+					)}
 				</div>
 			</div>
 			<div
