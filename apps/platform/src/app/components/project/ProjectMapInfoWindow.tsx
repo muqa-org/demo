@@ -1,34 +1,31 @@
 import React from 'react';
 import AddToCart from '@/app/components/cart/AddToCart';
 import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
+import { FundedApplication } from '@allo/kit';
 
-export default function ProjectMapInfoWindow({
-	title,
-	progress,
-	fundedAmount,
-}: {
-	title: string;
-	progress: number;
-	fundedAmount: number;
-}) {
-	let progressColor = getProjectProgressBGColor(progress);
+type ProjectMapInfoWindowProps = {
+	application: FundedApplication;
+}
+
+export default function ProjectMapInfoWindow({ application }: ProjectMapInfoWindowProps) {
+	let progressColor = getProjectProgressBGColor(application.fundedPercentage);
 
 	return (
 		<div className='rounded-lg bg-white p-0 shadow-lg'>
 			<div className='mb-4 h-1.5 w-full rounded-full bg-gray'>
 				<div
 					className={`h-full rounded-full ${progressColor}`}
-					style={{ width: `${progress}%` }}
+					style={{ width: `${application.fundedPercentage}%` }}
 				></div>
 			</div>
 			<div className='flex items-center justify-between'>
-				<h3 className='text-xl font-medium text-primaryBlack'>{title}</h3>
+				<h3 className='text-xl font-medium text-primaryBlack'>{application.name}</h3>
 				<div className='ml-4'>
-					<AddToCart variant='icon' />
+					<AddToCart variant='icon' application={application} />
 				</div>
 			</div>
 			<p className='text-base text-gray'>
-				{progress}% funded ({fundedAmount} €)
+				{application.fundedPercentage}% funded ({application.fundedAmount} €)
 			</p>
 		</div>
 	);

@@ -7,15 +7,16 @@ import Link from 'next/link';
 
 import icons from '@/app/components/common/Icons';
 
-import Container from '@/app/components/Container';
 import Navigation from '@/app/components/Navigation';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
 import { CodaFormProjectLink } from '@/app/config';
-import { MuqaConnectButton } from './components/MuqaConnectButton';
+import MuqaConnectButton from '@/app/components/MuqaConnectButton';
 import { useSession } from 'next-auth/react';
+import { useCart } from '@/lib/util/context/cart.context';
 
 export default function Header() {
+	const { items } = useCart();
 	const [isOpen, setIsOpen] = useState(false);
 	const { data: session } = useSession();
 
@@ -45,15 +46,30 @@ export default function Header() {
 					<div className='mr-4 hidden md:block'>
 						<LanguageSwitcher screen='desktop' />
 					</div>
-					{process.env.NODE_ENV === 'development' && (
+					{process.env.NEXT_PUBLIC_SHOW_CONNECT_BUTTON === 'true' && (
 						<MuqaConnectButton className='mx-4 rounded-md bg-blue px-10 py-[0.55em]' />
 					)}
 					<Link
 						href={CodaFormProjectLink}
-						className='rounded-md bg-green px-10 py-[0.55em] text-base font-normal text-white hover:opacity-85'
+						className='rounded-md bg-green px-10 py-[0.55em] mx-4 text-base font-normal text-white hover:opacity-85'
 					>
 						{t('propose')}
 					</Link>
+					{process.env.NEXT_PUBLIC_SHOW_CART_LINK === 'true' && (
+						<Link
+							href={'/cart'}
+							className='flex items-center justify-center rounded-md bg-green px-2 py-[0.55em] text-base font-normal text-white hover:opacity-85 w-[70px]'
+						>
+							<Image
+								src={icons.cartIconWhite}
+								alt='Cart Icon'
+								width={14}
+								height={14}
+								className='mr-2'
+							/>
+							{items.length}
+						</Link>
+					)}
 				</div>
 			</div>
 			<div

@@ -117,7 +117,7 @@
     "funded": "funded"
   },
   "project" : {
-    "funded": "funded of €{amount} goal",
+    "funded": "funded of €{amount} goal ({percentage}%)",
     "backers": "backers",
     "daysGo": "days to go",
     "donationAmount": "Donation amount",
@@ -127,6 +127,9 @@
   "cart" : {
     "addCart": "Add to Cart",
     "selectedProjects": "Selected Projects",
+    "emptyCart": "Your cart is empty",
+    "emptyCartDescription": "Add some projects to your cart to proceed with the donation.",
+    "browseProjects": "Browse projects",
     "funded": "funded",
     "removeAllProjects": "Remove all projects",
     "totalAmount": "Total amount",

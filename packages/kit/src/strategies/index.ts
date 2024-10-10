@@ -1,3 +1,4 @@
+'use client';
 import { TContracts } from '@gitcoin/gitcoin-chain-data';
 import { useMutation } from '@tanstack/react-query';
 import { FunctionComponent, useMemo } from 'react';
@@ -6,6 +7,7 @@ import { useWalletClient } from 'wagmi';
 
 import { useAPI, useStrategies } from '..';
 import { Round } from '../api/types';
+import { useCometh } from '../hooks/useCometh';
 import { supportedChains } from '../wagmi';
 
 export type StrategyComponentType =
@@ -35,6 +37,7 @@ export type StrategyExtensions = Record<StrategyType, StrategyExtension>;
 
 const strategyMap = {
   'allov2.DirectGrantsLiteStrategy': 'directGrants',
+  'allov2.DonationVotingMerkleDistributionDirectTransferStrategy': 'quadraticFunding',
 } as const;
 
 function getStrategyTypeFromName(strategyName: string, chainId: number) {
@@ -73,6 +76,7 @@ export function useStrategyAddon(
   const api = useAPI();
   const strategies = useStrategies();
   const { data: signer } = useWalletClient();
+  const { wallet } = useCometh();
 
   const type = useStrategyType(round);
   const addon = type && (strategies as any)?.[type]?.components?.[component];
@@ -81,7 +85,13 @@ export function useStrategyAddon(
     // Wrap the strategy call function in useMutation (for loading + error states)
     // Include api + signer
     call: useMutation({
-      mutationFn: (args: unknown[]) => addon?.call?.(...args, api, signer),
+      mutationFn: (args: unknown[]) => addon?.call?.(...args, wallet, api, signer),
+      onSuccess: (data) => {
+        console.log('call mutation data', data);
+      },
+      onError: (error) => {
+        console.log('call mutation error', error);
+      },
     }),
   };
 }

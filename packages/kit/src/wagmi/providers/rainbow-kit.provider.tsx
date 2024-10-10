@@ -9,7 +9,14 @@ import type { Chain } from 'viem/chains';
 import * as wagmiChains from 'viem/chains';
 import { Config, WagmiProvider } from 'wagmi';
 
-export const supportedChains = getChains();
+import { customChains } from '../../config';
+
+const gitcoinChains = getChains();
+
+export const supportedChains = [
+  ...gitcoinChains,
+  ...customChains,
+]
 
 console.log(supportedChains);
 

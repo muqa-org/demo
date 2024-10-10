@@ -1,9 +1,9 @@
 'use client';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { useWalletClient } from 'wagmi';
+import { useAccount, useWalletClient } from 'wagmi';
 
 import { useAPI } from '..';
-import { API, AllocateInput, RoundInput, RoundsQuery } from '../api/types';
+import { API, RoundInput, RoundsQuery } from '../api/types';
 import { useToast } from '../ui/use-toast';
 
 const defaultQuery = {
@@ -33,11 +33,12 @@ export function useRoundById(id: RoundParams[0], opts?: RoundParams[1]) {
 }
 
 export function useCreateRound() {
+  const account = useAccount();
   const api = useAPI();
   const { toast } = useToast();
   const { data: client } = useWalletClient();
   return useMutation({
-    mutationFn: (data: RoundInput) => api.createRound(data, client!),
+    mutationFn: (data: RoundInput) => api.createRound(data, client!, account),
     onSuccess: () => toast({ title: 'Round created!' }),
     onError: (err) => toast({ variant: 'destructive', title: err.toString() }),
   });

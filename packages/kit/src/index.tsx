@@ -1,7 +1,10 @@
 export * from './api/provider';
 export * from './api/providers/grants-stack';
 export * from './api/providers/easy-rpgf';
+export type * from './api/types.d.ts';
+export type * from './strategies/quadratic-funding/qf.types';
 export * from './wagmi';
+export * from './config';
 export * from './ui/drawer';
 export * from './ui/markdown';
 export * from './ui/token-amount';
@@ -23,6 +26,7 @@ export * from './projects/create';
 export * from './projects/discover';
 export * from './projects/details';
 export * from './rounds/allocate';
+export * from './rounds/donate';
 export * from './rounds/card';
 export * from './rounds/create';
 export * from './rounds/details';
@@ -36,6 +40,7 @@ export * from './hooks/useRounds';
 export * from './hooks/useProjects';
 
 export * from './checkout/add-to-checkout';
+export * from './strategies';
 export * from './strategies/direct-grants';
 export * from './strategies/quadratic-funding';
 

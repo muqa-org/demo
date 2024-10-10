@@ -3,17 +3,18 @@ import Link from 'next/link';
 
 import AddToCart from '@/app/components/cart/AddToCart';
 import { getProjectProgressBGColor } from '@/app/helpers/projectHelper';
+import { FundedApplication } from '@allo/kit';
 
 interface ProjectCardProps {
+	application: FundedApplication;
 	className?: string;
-	progress: number;
 }
 
 export default function ProjectCard({
+	application,
 	className,
-	progress,
 }: ProjectCardProps) {
-	let progressColor = getProjectProgressBGColor(progress);
+	let progressColor = getProjectProgressBGColor(application.fundedPercentage);
 
 	return (
 		<div className={`${className} flex h-full flex-col gap-1 overflow-hidden`}>
@@ -21,14 +22,14 @@ export default function ProjectCard({
 				<Image
 					width='330'
 					height='135'
-					src='https://picsum.photos/315/200'
+					src={application.bannerUrl ?? 'https://picsum.photos/150/95'}
 					alt='Project Image'
 					className='w-full rounded-t-md'
 				/>
 				<div className='h-1.5 rounded-b-md bg-white'>
 					<div
 						className={`h-1.5 rounded-b-md ${progressColor}`}
-						style={{ width: progress + '%' }}
+						style={{ width: application.fundedPercentage + '%' }}
 					></div>
 				</div>
 			</div>
@@ -40,11 +41,11 @@ export default function ProjectCard({
 					>
 						Klupe od Đardina do Jokera
 					</Link>
-					<AddToCart variant='icon' />
+					<AddToCart variant='icon' application={application} />
 				</h3>
 			</div>
 			<div className='text-base text-gray'>
-				{progress}% funded (2000 €)
+				{application.fundedPercentage}% funded (${application.fundedAmount} €)
 			</div>
 		</div>
 	);

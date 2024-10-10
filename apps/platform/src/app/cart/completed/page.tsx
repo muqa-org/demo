@@ -6,6 +6,7 @@ import Container from '@/app/components/Container';
 import CartProjectCard from '@/app/components/cart/CartProjectCard';
 
 import icons from '@/app/components/common/Icons';
+import { useCart } from '@/lib/util/context/cart.context';
 
 const notoSans = Noto_Sans({
 	subsets: ['latin'],
@@ -17,33 +18,7 @@ const notoSans = Noto_Sans({
 export default function CartCompleted() {
 	const t = useTranslations('cart');
 
-	// TODO: Replace with actual data
-	const items = [
-		{
-			id: 1,
-			name: 'Klupe od Đardina do Jokera',
-			funded: 76,
-			fundedAmont: 2000,
-			amount: 10,
-			image: 'https://picsum.photos/150/95',
-		},
-		{
-			id: 2,
-			name: 'Klupe od Đardina do Jokera',
-			funded: 55,
-			fundedAmont: 2000,
-			amount: 20,
-			image: 'https://picsum.photos/150/95',
-		},
-		{
-			id: 3,
-			name: 'Klupe od Đardina do Jokera',
-			funded: 10,
-			fundedAmont: 2000,
-			amount: 10,
-			image: 'https://picsum.photos/150/95',
-		},
-	];
+	const { items } = useCart();
 
 	return (
 		<section className='py-4 pb-32'>
@@ -64,7 +39,7 @@ export default function CartCompleted() {
 				<div className='mt-4 flex w-full flex-row flex-wrap justify-between'>
 					<div className='mb-8 flex w-full flex-col gap-4 lg:mb-0 lg:w-4/6'>
 						{items.map(item => (
-							<CartProjectCard key={item.id} item={item} variant='completed' />
+							<CartProjectCard key={item.project.id} item={item} variant='completed' />
 						))}
 					</div>
 

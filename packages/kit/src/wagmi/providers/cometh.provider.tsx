@@ -3,18 +3,9 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
-import { avalancheFuji } from 'viem/chains';
-import { Config, createConfig, http, WagmiProvider } from 'wagmi';
+import { Config, createConfig, WagmiProvider } from 'wagmi';
 
-const wagmiConfig = createConfig({
-  chains: [
-    avalancheFuji
-  ],
-  ssr: true,
-  transports: {
-    [avalancheFuji.id]: http()
-  }
-})
+import { wagmiConfig } from '../../config/wagmi';
 
 const queryClient = new QueryClient();
 
@@ -22,7 +13,7 @@ export function ComethProvider({
   children
 }: PropsWithChildren<{ config?: Config }>) {
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={createConfig(wagmiConfig)}>
       <QueryClientProvider client={queryClient}>
         {children}
       </QueryClientProvider>

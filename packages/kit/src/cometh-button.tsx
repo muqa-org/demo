@@ -2,8 +2,8 @@
 
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 
+import { comethConnector } from './config';
 import { Button } from './ui/button';
-import { comethConnector } from './wagmi';
 
 const TRUNCATE_LENGTH = 20;
 
