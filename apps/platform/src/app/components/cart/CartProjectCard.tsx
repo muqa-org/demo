@@ -18,7 +18,7 @@ export default function CartProjectCard({
 	variant?: string;
 }) {
 	const t = useTranslations('cart');
-	const [donationAmount, setDonationAmount] = useState(0);
+	const [donationAmount, setDonationAmount] = useState(item.amount || 0);
 	const { setAmount, removeItem } = useCart();
 
 	let progressColor = getProjectProgressBGColor(item.project.fundedPercentage);

@@ -5,7 +5,7 @@ import { CartAllocation, FundedApplication } from '@allo/kit';
 
 export type CartContextType = {
 	items: CartAllocation[];
-	addItem: (item: FundedApplication) => void;
+	addItem: (item: FundedApplication, amount?: number) => void;
 	removeItem: (id: string) => void;
   setAmount: (id: string, amount: number) => void;
 	clearCart: () => void;
@@ -21,13 +21,13 @@ export const CartProvider: FC<PropsWithChildren> = ({ children, ...props }) => {
    * Adds a project (accepted application) to the cart.
    * @param project A FundedApplication object representing an accepted application to a round.
    */
-  const addItem = (project: FundedApplication) => {
+  const addItem = (project: FundedApplication, amount = 0) => {
     const existingItem = items.find((item) => item.project.id === project.id);
     if (existingItem) return;
 
     const item: CartAllocation = {
       project,
-      amount: 0
+      amount,
     };
     setItems([...items, item]);
   };

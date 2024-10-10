@@ -11,19 +11,23 @@ import { FundedApplication } from '@allo/kit';
 
 const fundPercentages = [20, 50, 75, 10, 30, 45, 88, 38, 90, 85, 32, 15];
 
-	const applications: FundedApplication[] = fundPercentages.map((fundedPercentage) => ({
-		id: crypto.randomUUID(),
-		name: 'Klupe od Đardina do Jokera',
-		description: 'Klupe od Đardina do Jokera',
-		recipient: `0x${Math.random().toString(16).slice(2, 40)}`,
-		chainId: 1,
-		projectId: crypto.randomUUID(),
-		status: 'APPROVED',
-		bannerUrl: 'https://picsum.photos/150/95',
+	const applications: FundedApplication[] = fundPercentages.map((fundedPercentage) => {
+		const targetAmount = Math.floor(Math.random() * 10000);
+		return {
+			id: crypto.randomUUID(),
+			name: 'Klupe od Đardina do Jokera',
+			description: 'Klupe od Đardina do Jokera',
+			recipient: `0x${Math.random().toString(16).slice(2, 40)}`,
+			chainId: 1,
+			projectId: crypto.randomUUID(),
+			status: 'APPROVED',
+			bannerUrl: 'https://picsum.photos/150/95',
 
-		fundedPercentage,
-		fundedAmount: Math.floor(Math.random() * 10000),
-	}));
+			targetAmount,
+			fundedAmount: Math.floor(targetAmount * (fundedPercentage / 100)),
+			fundedPercentage,
+		};
+	});
 
 // If you need some special libraries, you can add them here
 const libraries: Libraries = [];

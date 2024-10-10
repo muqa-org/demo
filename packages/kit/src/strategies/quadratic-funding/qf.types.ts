@@ -17,6 +17,7 @@ export type TokenMetadata = {
 }
 
 export type FundedApplication = Application & {
-  fundedPercentage: number;
+  targetAmount: number;
   fundedAmount: number;
+  fundedPercentage: number;
 }

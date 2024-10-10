@@ -15,17 +15,18 @@ const notoSans = Noto_Sans({
 
 interface AddButtonProps {
 	application: FundedApplication
+	amount?: number;
 	className?: string;
 	variant: 'icon' | 'text';
 }
 
 
-export default function AddToCart({ application, className, variant }: AddButtonProps) {
+export default function AddToCart({ application, amount, className, variant }: AddButtonProps) {
 	const t = useTranslations('cart');
 	const { addItem } = useCart();
 
 	const addToCart = () => {
-		addItem(application);
+		addItem(application, amount);
 	}
 
 	return (
