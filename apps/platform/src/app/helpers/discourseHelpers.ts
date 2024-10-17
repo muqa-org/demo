@@ -138,10 +138,7 @@ export const createDiscourseTopic = async ({
  * @param {string} params.publish - Indicates whether the proposer's name should be published ('on' for yes).
  * @param {string} params.email - The email address of the proposer.
  * @param {string} params.mobile - The mobile number of the proposer.
- * @param {string} params.futher - Indicates if the proposer wants to further participate in the discussion ('on' for yes).
- * @param {string} params.terms - Indicates if the proposer accepts the terms ('on' for yes).
- * @param {string} params.privacy - Indicates if the proposer accepts the privacy policy ('on' for yes).
- * @param {string} params.allow - Indicates if the proposer allows further contact ('on' for yes).
+  * @param {string} params.accept - Indicates if the proposer accept privacy policy.
  * @param {string[]} params.fileUrls - An array of URLs of the uploaded files.
  * @param {string} params.notice - The last notice on topic.
  *
